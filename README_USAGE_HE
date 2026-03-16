@@ -1,0 +1,515 @@
+## Stream – User & Admin Guide
+
+This guide explains how to use the Stream platform as a **regular user** and as an **administrator**.
+
+---
+
+## 1. Getting Started
+
+### 1.1 Logging in
+
+- Open the Stream URL in your browser.
+- Enter your **email** and **password**, then click **Log in**.
+- If you forgot your password, use **Forgot password** and follow the instructions sent by email.
+
+### 1.2 Main layout (high level)
+
+- **Top navigation bar** – access to search, upload, playlists, subscriptions, notifications, profile/settings and (for admins) the admin area.
+- **Left or center content area** – lists of videos, playlists, channels, or analytics depending on the page.
+- **Right side or below** – secondary information such as related videos, filters, or actions.
+
+---
+
+## 2. Regular User Guide
+
+### 2.1 Browsing and watching videos
+
+- From the home page you can:
+  - Scroll and discover recommended or recent videos.
+  - Click a video thumbnail or title to open the **watch page**.
+- On the watch page:
+  - Use the player controls (play / pause, volume, timeline, full screen).
+  - Read the video title, description, publish date, and view count.
+  - Use available actions: like / dislike, share, download, or open more options (depending on your configuration).
+
+### 2.2 Searching for content
+
+- Use the **search bar** in the header.
+- Type a keyword (title, topic, speaker name, etc.).
+- Press **Enter** or click the search icon.
+- On the results page you can:
+  - Filter videos using dropdowns or filters (if available).
+  - Change sorting (e.g. newest, most viewed) when such options appear.
+
+### 2.3 Playlists and subscriptions
+
+- **Playlists**
+  - Open the **Playlists** page from the main menu.
+  - Browse available playlists; each playlist groups a set of videos by topic.
+  - Click a playlist to see its videos and start playing them in sequence.
+
+- **Subscriptions / top channels**
+  - The **Subscriptions** page shows channels you follow (if this feature is enabled).
+  - The **Top channels** / **Leading channels** page shows popular channels in the system.
+  - From a channel page you can watch all videos from that creator and subscribe (if supported).
+
+### 2.4 Notifications and comments
+
+- **Notifications**
+  - Open the **Notifications** page from the top bar.
+  - You will see system messages such as:
+    - New videos relevant to you.
+    - Activity on your channel (e.g. comments).
+    - Changes made by admins that affect your account.
+  - Click any notification to go directly to the related video or page.
+
+- **Comments / questions**
+  - On the video watch page you may see a **comments** or **questions** section.
+  - You can:
+    - Read existing comments.
+    - Add your own comment or question (if allowed).
+    - In some setups, mark questions as helpful or important.
+
+### 2.5 Your profile and settings
+
+- **My channel / profile**
+  - Use the profile menu in the header to open **My channel** or **Profile**.
+  - Here you can see:
+    - Basic profile details (name, email, avatar).
+    - Your uploaded videos (if you have upload permissions).
+    - Basic statistics (views, followers, etc., depending on configuration).
+
+- **User settings**
+  - Open **User settings** from the profile menu.
+  - Typical actions:
+    - Change your password.
+    - Update personal details (where allowed).
+    - Configure notification preferences (if the system exposes them).
+
+### 2.6 Studio – creating a new video from segments (if enabled for regular users)
+
+If the **Studio** feature is available to you, you can create a new video by combining segments from existing videos.
+
+1. Open **Studio** from the header.
+2. In the left panel, you will see a list of **available videos**.
+3. For each video you want to use:
+   - Click **Add segment**.
+   - A modal opens with a timeline of the selected video.
+   - Drag the **start** and **end** handles to select the time range for your segment.
+   - Use **Play segment** to preview the chosen range.
+   - Click **Add segment** in the modal to add it to your new video.
+4. Repeat the process for all videos/segments you want to include.
+5. In the right panel:
+   - Review the list of added segments.
+   - Optionally remove segments you do not need.
+   - Enter a **title** for the new video and (optionally) a **description**.
+6. Click **Create video**.
+7. The system creates a new video in the background; once processing finishes, it appears in your channel/videos list.
+
+---
+
+## 3. Admin Guide
+
+Administrators have additional menu items and pages that regular users do not see. These allow full control over users, content, and system configuration.
+
+### 3.1 Accessing the admin area
+
+- After logging in as an admin, the header shows extra links, such as:
+  - **Users admin** (user management)
+  - **Videos admin** (video management)
+  - **Playlists admin**
+  - **Analytics** (metrics and insights)
+  - **Admin settings** (global configuration)
+- Click any of these to open the corresponding management screen.
+
+### 3.2 Managing users
+
+- Open **Users admin** from the header.
+- **Filtering and searching**
+  - Use the filters to search by name, email, or other fields.
+  - Filter by user type (admin / regular).
+  - Change sorting by ID, first name, last name, last login, or permission level.
+- **Editing a user**
+  - Click the **User settings** / edit button on a row.
+  - On the user settings screen you can (depending on configuration):
+    - Edit personal details.
+    - Activate or deactivate the user.
+    - Promote or demote the user to/from **admin**.
+- **Deleting a user**
+  - Click the **Delete** icon on the relevant user row.
+  - Confirm the deletion in the dialog.
+  - The user will be removed according to your system’s retention policy.
+
+### 3.3 Managing videos
+
+- Open **Videos admin**.
+- **Filtering and searching**
+  - Search by video title, ID, owner, or date range.
+  - Use filters for status (published, hidden, draft, etc., depending on your setup).
+  - Sort by creation date, views, duration, or other available columns.
+- **Editing a video**
+  - Click the **Edit** button for a video.
+  - On the edit screen you can:
+    - Change title and description.
+    - Assign the video to playlists or categories.
+    - Control visibility/privacy.
+    - Update thumbnails or other metadata (where supported).
+- **Bulk actions**
+  - Use checkboxes to select multiple videos.
+  - Execute bulk operations such as **bulk delete** or **bulk change of status**, if these actions are available.
+
+### 3.4 Managing playlists
+
+- Open the **Playlists** admin page.
+- **Create a new playlist**
+  - Click **Create new playlist**.
+  - Enter name and description and save.
+  - Add videos to the playlist using the chooser controls provided.
+- **Edit an existing playlist**
+  - Click the **Settings** / **Edit** icon on the playlist row.
+  - Change the playlist name, description, or cover.
+  - Add, remove, or reorder videos.
+
+### 3.5 Moderating comments and questions
+
+- Open the **Comments** / **FAQ** or **Video comments** admin page (depending on your installation).
+- **Filter comments**
+  - Filter by status (approved, pending, hidden).
+  - Filter by video, user, or date range.
+- **Moderation actions**
+  - Approve or reject pending comments.
+  - Hide or delete inappropriate comments.
+  - In Q&A/FAQ contexts, you may also pin or highlight important questions.
+
+### 3.6 Analytics – metrics and insights
+
+- Open the **Analytics** section from the admin menu.
+- Typical analytics (varies by configuration):
+  - Total videos, total views, watch time, and average watch time.
+  - Top performing videos and channels.
+  - User activity over time.
+- Use these dashboards to:
+  - Identify content that performs well or poorly.
+  - Track adoption of the platform.
+  - Support reporting needs for your organization.
+
+### 3.7 Admin settings and integrations
+
+- Open **Admin settings**.
+- Possible configuration areas include (depending on your deployment):
+  - Branding (logos, colors, titles).
+  - Default privacy and upload rules.
+  - External integrations (for example, YouTube authentication for automatic uploads).
+  - Feature toggles (whether Studio is available to all users or only admins).
+
+---
+
+## 4. Best practices
+
+- **For all users**
+  - Keep titles and descriptions clear and concise so videos are easy to find.
+  - Use playlists to group related content and improve navigation.
+  - Use comments/questions constructively to clarify content rather than replace formal support.
+
+- **For admins**
+  - Review analytics regularly to understand which content is used the most.
+  - Periodically audit users and permissions to ensure only the right people have admin access.
+  - Clean up outdated or low-quality content to keep the catalog relevant.
+
+---
+
+## 5. Getting help
+
+- If you experience errors (for example, video creation fails or a page does not load), note:
+  - The page you were on.
+  - What you clicked or tried to do.
+  - The time and any error message displayed.
+- Share this information with your system administrator or support team so they can investigate quickly.
+
+---
+
+# Stream Moodle Plugin
+
+![Stream Logo](https://support.centricapp.co.il/static/centricapp-wordmark-tight.svg)
+
+
+[![Maintained by Mattan Dor (CentricApp)](https://img.shields.io/badge/Maintained%20by-Mattan%20Dor%20(CentricApp)-brightgreen)](https://centricapp.co.il)
+
+
+Stream is a revolutionary video platform tailored for academic institutions, offering seamless integration into existing systems and unprecedented pedagogical optimization. This Moodle plugin facilitates the incorporation of Stream's powerful features directly into your learning management system, enhancing the educational experience for both instructors and students.
+
+## Explanation for non‑technical users / managers
+
+### What is the Stream activity?
+The Stream activity lets you show course videos from the Stream platform directly inside a Moodle course. Students and teachers can watch the videos in Moodle without leaving the course page, using a simple playlist and built‑in player.
+
+### What the plugin can do
+- **Central place for course videos**  
+  - Shows a playlist of all relevant course recordings and uploaded videos.  
+  - Can automatically collect new recordings (for example, from connected systems like Zoom, Webex, or Teams, depending on how Stream is configured).
+
+- **Easy viewing experience for students**  
+  - Students open the activity and see a clear list of videos for the course.  
+  - Videos are played in an embedded player inside Moodle, with audio options where enabled.
+
+- **Support for audio‑focused courses**  
+  - For certain courses (for example, music or language learning), the plugin can automatically show a built‑in audio player view, making audio‑only content easier to use.
+
+- **Flexible control for teachers and admins**  
+  - Choose which videos appear in the activity (manually select) or let the system collect them automatically.  
+  - Decide the order of videos in the playlist by simple drag‑and‑drop.  
+  - Control when the activity opens and closes for students (availability dates).
+
+- **Data and safety**  
+  - The plugin can send basic user details (name, email, student ID) to Stream to support security, analytics, and anti‑piracy features configured on the Stream side.
+
+### How a teacher uses the Stream activity
+1. **Add a new Stream activity**  
+   - In a Moodle course, turn editing on.  
+   - Click **“Add an activity or resource”**.  
+   - Choose **“STREAM”** from the list and click **Add**.
+
+2. **Basic settings**  
+   - Enter a **Title** (for example, “Lecture Videos” or “Unit 1 – Video Lessons”).  
+   - Optionally add a short description so students know what they will find inside.
+
+3. **Choose which videos to show**  
+   - If automatic collection is enabled by your admin, you can turn on **“Video Recordings Collection Mode”** to let the system pull in all relevant course recordings.  
+   - You can also **manually search and select videos** from the Stream server and add them to the playlist.
+
+4. **Arrange the playlist**  
+   - Use **drag‑and‑drop** to change the order of videos (for example, by date or by topic).  
+   - Save changes so students see the playlist in the order you defined.
+
+5. **Audio options (if enabled by your institution)**  
+   - For courses that should use an audio‑only player, your site admin can configure which courses get the built‑in audio player automatically.  
+   - As a teacher, you may see an option like **“Include Audio”** to decide whether audio is enabled in the player for this activity.
+
+6. **Control when students can access it**  
+   - In the **Timing** section, you can set an **Open time** (from when students can see/watch) and a **Close time** (until when it is available).  
+   - If you leave these disabled, students can access the activity at any time.
+
+7. **Save and display**  
+   - Click **Save and display** to see how the activity looks.  
+   - Students will now see a Stream activity in the course. When they click it, they get a clean video (or audio) viewing page with the playlist you configured.
+
+### What managers / admins should know
+- **Connection to Stream**  
+  - The plugin must be connected to your organization’s Stream server (API endpoint, account ID, identifiers, etc.). This is done once by a Moodle/IT admin in the plugin’s settings screen.  
+  - There is a **connection status** check in the settings to confirm that Moodle can successfully talk to the Stream system.
+
+- **Default behavior and automation**  
+  - Admins can define default settings (for example, whether audio is included by default, which courses get the audio‑only interface, and how automatic video collection behaves).  
+  - This allows consistent behavior across courses without requiring teachers to understand technical details.
+
+- **Privacy and data**  
+  - The plugin shares limited user information (full name, email, student ID) with the Stream service when a user accesses a Stream activity, so the external system can provide statistics, personalization, and security.  
+  - These details should be covered in your institution’s privacy and data‑processing documentation.
+
+## Features
+
+### Simplified Video Management
+- Upload videos manually or import recordings from Zoom, Webex, or Teams effortlessly.
+- Comprehensive video content management through one intuitive interface.
+
+### Professional Editing and Transcription
+- Professional editing capabilities enable users to create polished videos quickly.
+- Automatic transcription available in 98 languages, enhancing accessibility for all users.
+
+### User-Friendly Interface
+- Tailored for academic institutions, ensuring seamless navigation for both staff and students.
+- Easy video upload directly to the LMS with just one click.
+
+### Comprehensive Pedagogical Experience
+- Manage users, edit recordings, and facilitate collaboration through dedicated channels.
+- Seamless integration with any LMS via the LTI protocol, transforming the platform into a vital educational tool.
+
+### Customization and Branding
+- Flexible interface customization to align with your institution's branding and layout preferences.
+- Create a digital learning space tailored precisely to your organization's character.
+
+### Data-Driven Insights
+- Access shared statistical data and insights for informed decision-making and continuous improvement.
+- Real-time engagement metrics empower staff to design teaching plans based on user interaction.
+
+## Get Started
+To integrate Stream seamlessly into your Moodle platform and explore its full potential, schedule a consultation with our team. We are committed to understanding your organization's unique needs and providing personalized assistance.
+
+For further details and inquiries, feel free to [contact us](https://stream-platform.cloud/en/) via our contact form or email.
+
+Branches
+--------
+The following git branches are supported:
+
+| Moodle version     | Branch            |
+|--------------------|-------------------|
+| Moodle 3.4 to 4.1  | MOODLE_401 |
+| Moodle 4.2         | MOODLE_402 |
+
+**Stream © 2024**
+
+---
+## Stream Local Plugin
+
+The **Stream** local plugin adds automatic handling of online meeting recordings (for example, Zoom, Microsoft Teams, Unicko) and embeds them directly into Moodle courses, according to your configuration.
+
+This document explains what the plugin does and how to use it, with a special focus on Zoom integration and automatic embedding.
+
+---
+
+## הסבר קצר (בעברית): תוסף אינטגרציה ל‑Moodle
+
+תוסף ה‑**Stream** למודל הוא תוסף מקומי (local plugin) שמטרתו **לחבר בין מערכות הוידאו החיצוניות** (כגון Zoom, Microsoft Teams, Unicko) לבין קורסי ה‑Moodle, ולבצע:
+
+- **איתור אוטומטי של הקלטות אונליין** – התוסף ניגש לממשקי ה‑API של Zoom / Teams / Unicko, ומאתר הקלטות חדשות שהסתיימו ועברו עיבוד.
+- **יצירה אוטומטית של משאב במודל** – לכל הקלטה שנמצאה, התוסף יוצר פעילות/משאב במודל (לרוב `Page` או פעילות מוגדרת אחרת) שמטמיע את ההקלטה בתוך הקורס.
+- **שיוך לקורס ולחלק הנכון** – התוסף משייך את ההקלטה לקורס הנכון ולחלק (section) הנכון, ובתצורה טיפוסית ממקם את ההקלטה מתחת לפעילות המקורית (למשל פעילות Zoom בקורס).
+- **מניעת כפילויות** – התוסף מזהה הקלטות כפולות (למשל ע״פ מזהה Zoom UUID) ודואג שלא ליצור מספר משאבים עבור אותה הקלטה.
+- **התראות לסטודנטים (אופציונלי)** – אם מופעל, התוסף שולח הודעה למשתתפי הקורס כאשר הקלטה חדשה מוטמעת בקורס.
+
+בקצרה: המרצה יוצר מפגש Zoom/Teams מתוך הקורס, מקליט לענן, ותוסף Stream דואג מאחורי הקלעים שההקלטה תופיע אוטומטית כמשאב נפרד בקורס – ללא צורך בהורדה/העלאה ידנית מצד המרצה.
+
+להגדרות מפורטות, זרימת עבודה ומידע עבור מנהלי מערכת, מרצים וסטודנטים – ראו את ההמשך באנגלית.
+
+---
+
+## Main Features
+
+- **Automatic recording discovery**
+  - Connects to the configured video platform (Zoom / Teams / Unicko).
+  - Periodically checks for new recordings that are ready.
+
+- **Automatic embedding in Moodle courses**
+  - Creates or reuses a Moodle activity (for example, Page / LTI / Zoom / msteams) to display the recording.
+  - Places the recording in the correct course and section, based on the meeting data.
+  - Can place the recording activity directly under the original meeting activity (for example, under the Zoom meeting).
+
+- **De-duplication of recordings**
+  - Identifies duplicate recordings (for example, same Zoom UUID) and marks them so they are not embedded multiple times.
+
+- **Notifications to enrolled users (optional)**
+  - Can send notifications to enrolled users in the course when a new recording is embedded.
+  - Uses Moodle’s scheduled tasks and adhoc tasks to send messages.
+
+---
+
+## For Site Administrators
+
+### Installation
+
+1. Copy the plugin folder into `local/stream` in your Moodle codebase.
+2. Visit *Site administration → Notifications* and follow the standard Moodle upgrade steps.
+3. After installation, configure the plugin settings.
+
+### Configuration
+
+Go to:
+
+- **Site administration → Plugins → Local plugins → Stream** (or similar link in the admin menu).
+
+Key settings (names may vary slightly depending on your version):
+
+- **Platform**
+  - Choose the platform that provides the recordings:
+    - `Zoom`
+    - `Microsoft Teams`
+    - `Unicko` (via LTI)
+
+- **API / Integration settings**
+  - For **Zoom**:
+    - Enter the Zoom API credentials and required keys/secrets (JWT / OAuth / Server-to-server configuration, depending on your environment).
+    - Make sure Zoom is allowed to provide recording data (cloud recordings).
+  - For **Teams / Unicko**:
+    - Configure the corresponding credentials / URLs / LTI settings.
+
+- **Based grouping / duplicate handling**
+  - Optionally group by unique meeting identifier (for example, Zoom UUID) to avoid embedding multiple versions of the same recording.
+
+- **Embed order**
+  - Controls whether the recording activity is moved under the original meeting activity (for example, the Zoom activity) or simply placed in the same section.
+
+- **Scheduled task**
+  - Ensure the scheduled task `local_stream\task\embed` is **enabled**:
+    - Go to *Site administration → Server → Scheduled tasks*.
+    - Find **Embedded recordings (local_stream)**.
+    - Verify it is enabled and configured to run at appropriate intervals (for example, every 5–15 minutes, or hourly, depending on your needs).
+
+### Zoom Integration – High-Level Flow
+
+1. A teacher creates a **Zoom meeting** in a Moodle course (using the Zoom activity module).
+2. The meeting is held and Zoom creates a **cloud recording**.
+3. The Stream plugin’s scheduled task runs and:
+   - Fetches the list of recordings from Zoom.
+   - Matches each recording to the corresponding Moodle course and Zoom activity.
+4. For each new recording:
+   - The plugin creates a **Page (or other configured activity type)** containing the embedded recording link or player.
+   - The plugin moves the new Page into the same course and section as the original Zoom activity.
+   - Optionally, it moves the Page **directly under** the Zoom activity in the course section.
+5. If notifications are enabled:
+   - Enrolled users in the course receive a notification that a new recording is available.
+
+---
+
+## For Teachers / Course Managers
+
+### What You Need To Do
+
+In most cases, teachers do **not** need to manage the plugin directly. Typical workflow:
+
+1. **Create a Zoom meeting in your course**
+   - Add a new **Zoom** activity in the required course.
+   - Configure time, topic, and other options as usual.
+
+2. **Hold the meeting and record it in Zoom**
+   - Make sure the meeting is set to be recorded to the **cloud**.
+
+3. **Wait for automatic embedding**
+   - After Zoom finishes processing the recording, the Stream plugin’s scheduled task will:
+     - Detect the new recording.
+     - Automatically create an activity in your Moodle course for the recording.
+     - Place it in the same section as the original Zoom activity, and (depending on configuration) directly below it.
+
+4. **Check your course page**
+   - You should see a new resource/activity with the recording.
+   - Students will see it in the course and may receive a notification, depending on the site configuration.
+
+### Notes for Teachers
+
+- You do **not** need to manually download / upload recordings from Zoom.
+- If a recording does not appear:
+  - Confirm that the meeting was recorded to the **cloud**.
+  - Check with the site administrator that:
+    - The plugin is installed and configured correctly.
+    - The scheduled task `local_stream\task\embed` is running without errors.
+
+---
+
+## For Regular Users (Students)
+
+- After your teacher records a Zoom session and the recording is ready:
+  - The recording will appear automatically in the relevant course.
+  - You usually will find it:
+    - In the same section as the Zoom meeting, often directly under the meeting link.
+- You may receive a notification in Moodle when a new recording is added (depends on site configuration).
+- Just click the new recording activity to watch the session.
+
+---
+
+## Troubleshooting (Summary)
+
+- **Recording not embedded**
+  - Check that the scheduled task *Embedded recordings (local_stream)* is enabled and running.
+  - For Zoom, verify that:
+    - Cloud recordings are enabled.
+    - API credentials are correct.
+
+- **Recording in wrong course or section**
+  - Confirm that the meeting topic / course mapping rules are correct (for Teams / Unicko flows).
+  - Check plugin settings for how sections and order are chosen.
+
+- **Duplicate recordings**
+  - Make sure the “based grouping” setting is correctly configured so that multiple versions of the same Zoom recording are not embedded multiple times.
+
+If problems continue, enable debugging in Moodle, run the `local_stream\task\embed` scheduled task manually (via CLI or scheduled tasks page), and review the log output for error messages.
+
+# Stream Integration Moodle Plugin
