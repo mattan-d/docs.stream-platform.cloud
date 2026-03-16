@@ -1,0 +1,28 @@
+---
+description: Always bump styles.css version in HTML when CSS changes
+alwaysApply: true
+---
+
+# CSS Version Query Rule
+
+When you **change any CSS that is loaded via `styles.css`**, always bump the query-version in the HTML link tag so browsers won't use a stale cached file.
+
+## Required behavior
+
+- Whenever you edit `styles.css` (or another main stylesheet for the docs site), you **must**:
+  - Find the `<link rel="stylesheet" href="styles.css?v=...">` tag in the relevant HTML file (for example `index.html`).
+  - Increment or change the `v` query parameter (e.g. `v=1.0.1` → `v=1.0.2`).
+- The new version can be any monotonic change (you don't need semantic versioning), but it **must be different** from the previous one.
+
+## Example
+
+```html
+<!-- ❌ BEFORE (old version in HTML after CSS change) -->
+<link rel="stylesheet" href="styles.css?v=1.0.1">
+
+<!-- ✅ AFTER (version bumped to break browser cache) -->
+<link rel="stylesheet" href="styles.css?v=1.0.2">
+```
+
+Use this pattern consistently so that every CSS edit is paired with a version bump in the HTML.
+
