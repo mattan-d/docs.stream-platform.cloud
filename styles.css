@@ -223,6 +223,29 @@ a:hover {
   transform: translateY(0);
 }
 
+.sp-footer {
+  border-top: 1px solid rgba(148, 163, 184, 0.35);
+  background: radial-gradient(circle at 100% 0, rgba(56, 189, 248, 0.14), #020617 70%);
+  padding: 0.9rem 1.5rem 1.2rem;
+  margin-top: 1rem;
+}
+
+.sp-footer-inner {
+  max-width: 1120px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  color: #9ca3af;
+}
+
+.sp-footer-inner a {
+  color: #e5e7eb;
+  font-weight: 500;
+}
+
+.sp-footer-inner a:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 900px) {
   .sp-layout {
     grid-template-columns: minmax(0, 1fr);
