@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>TrustGrade – מדריך שימוש למרצים ולתלמידים</title>
+  <link rel="stylesheet" href="styles.css?v=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="https://originality.co.il" class="originality-logo" target="_blank" rel="noopener" aria-label="מקוריות – אתר החברה">
+        <img src="https://originality.co.il/images/logo1.png" alt="לוגו מקוריות" width="120" height="40">
+      </a>
+      <div>
+        <h1 class="logo">TrustGrade</h1>
+        <p class="tagline">מדריך שימוש למרצים ולתלמידים</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="תוכן עניינים">
+      <div class="toc-inner">
+        <h2 class="toc-title">תוכן עניינים</h2>
+        <ol class="toc-list">
+          <li><a href="#מהו-trustgrade">מהו TrustGrade?</a></li>
+          <li><a href="#למרצים-התחלה-מהירה">למרצים: התחלה מהירה</a></li>
+          <li><a href="#הגדרת-מטלה-עם-trustgrade">הגדרת מטלה עם TrustGrade</a></li>
+          <li><a href="#מאגר-שאלות-ובדיקת-הנחיות">מאגר שאלות ובדיקת הנחיות</a></li>
+          <li><a href="#יצירת-שאלות-מקובצים">יצירת שאלות מקובצים</a></li>
+          <li><a href="#דוח-חידון-והערכת-הגשה-ai">דוח חידון והערכת הגשה (AI)</a></li>
+          <li><a href="#עמוד-ציונים-וקישור-לדוח-תלמיד">עמוד ציונים וקישור לדוח תלמיד</a></li>
+          <li><a href="#לסטודנטים-הגשה-וחידון-ai">לסטודנטים: הגשה וחידון AI</a></li>
+          <li><a href="#שאלות-נפוצות">שאלות נפוצות</a></li>
+        </ol>
+      </div>
+    </nav>
+
+    <main class="content">
+      <p class="lead">מדריך זה מסביר כיצד להשתמש בתוסף TrustGrade ב-Moodle: הגדרת מטלות, יצירת שאלות, בדיקת הנחיות עם AI, חידונים לסטודנטים ודוחות.</p>
+
+      <p class="download-link">
+        <a href="https://moodle.org/plugins/local_trustgrade" target="_blank" rel="noopener">הורדת התוסף מקטלוג המודל העולמי (Moodle.org)</a>
+      </p>
+
+      <div class="video-embed">
+        <iframe src="https://player.vimeo.com/video/1172101063?badge=0" width="640" height="360" allowfullscreen allow="autoplay; fullscreen; picture-in-picture" title="AI – יושרה אקדמית בעידן"></iframe>
+      </div>
+
+      <section id="מהו-trustgrade" class="section">
+        <h2>מהו TrustGrade?</h2>
+        <p>TrustGrade הוא תוסף ל-Moodle שמאפשר:</p>
+        <ul>
+          <li><strong>יצירת שאלות אוטומטית</strong> – שאלות חידון נוצרות על בסיס ההגשה של הסטודנט (AI) ו/או ממאגר שאלות המרצה.</li>
+          <li><strong>בדיקת הנחיות עם AI</strong> – המלצות לשיפור הנחיות המטלה לפי קריטריונים פדגוגיים.</li>
+          <li><strong>חידון אישי לסטודנט</strong> – לאחר הגשה, הסטודנט מקבל חידון מותאם להגשה שלו.</li>
+          <li><strong>דוח חידון</strong> – ציוני חידון, יושרה (מעקב יציאה מהחלון), והערכת הגשה (AI): הערכה, ציון מוצע, חוזקות והצעות לשיפור.</li>
+        </ul>
+        <p class="requirement"><strong>דרישה:</strong> נדרש חיבור לשירות TrustGrade AI Gateway (מנוי דרך מקוריות).</p>
+      </section>
+
+      <section id="למרצים-התחלה-מהירה" class="section">
+        <h2>למרצים: התחלה מהירה</h2>
+        <ol class="steps">
+          <li>
+            <strong>הוספת מטלה</strong><br>
+            בקורס: <strong>הוסף פעילות או משאב</strong> → בחר <strong>מטלה (Assignment)</strong>.
+            <figure>
+              <img src="screenshots/23.png" alt="23 – הוספת מטלה בקורס" loading="lazy">
+              <figcaption>23 – הוספת מטלה בקורס</figcaption>
+            </figure>
+          </li>
+          <li>
+            <strong>הפעלת TrustGrade במטלה</strong><br>
+            בעריכת המטלה, בקטע <strong>TrustGrade</strong>:
+            <ul>
+              <li><strong>הפעלת הרכיב:</strong> בחר <strong>כן</strong>.</li>
+              <li>תחת <strong>הגדרות חידון</strong> הגדר חלוקת שאלות, זמן לכל שאלה ואם לחייב השלמת חידון.</li>
+            </ul>
+          </li>
+          <li>
+            <strong>מאגר שאלות ובדיקת הנחיות</strong><br>
+            בתפריט המטלה (<strong>עוד</strong> → <strong>מאגר שאלות ובדיקת הנחיות</strong>) – לעריכת הנחיות, העלאת קבצים ובדיקה עם AI. תפריט המטלה: תמונה 12b.
+          </li>
+          <li>
+            <strong>דוח חידון</strong><br>
+            <strong>עוד</strong> → <strong>TrustGrade Report</strong> – צפייה בציוני חידון, ציונים ידניים והערכת הגשה (AI) לכל סטודנט.
+          </li>
+        </ol>
+      </section>
+
+      <section id="הגדרת-מטלה-עם-trustgrade" class="section">
+        <h2>הגדרת מטלה עם TrustGrade</h2>
+        <p>צילום מסך של עמוד הגדרות המטלה ב-Moodle, בו מופיע בלוק <strong>TrustGrade</strong>. במסך זה המרצה מפעיל את התוסף ומגדיר פרמטרים.</p>
+        <figure>
+          <img src="screenshots/01.png" alt="01 – הגדרות TrustGrade בעמוד עריכת המטלה" loading="lazy">
+          <figcaption>01 – הגדרות TrustGrade בעמוד עריכת המטלה</figcaption>
+        </figure>
+        <h3>הפעלת הרכיב</h3>
+        <ul>
+          <li><strong>הפעלת הרכיב</strong> – כן / לא. רק כאשר מופעל, יוצגו לסטודנטים חידון ויכולות נוספות של TrustGrade.</li>
+        </ul>
+        <h3>הגדרות חידון</h3>
+        <ul>
+          <li><strong>מספר שאלות מהמאגר</strong> – מספר השאלות שיילקחו ממאגר השאלות (מאגר שאלות ובדיקת הנחיות).</li>
+          <li><strong>מספר שאלות מבוססות הגשה</strong> – מספר השאלות שייווצרו אוטומטית מההגשה של הסטודנט (AI).</li>
+          <li><strong>זמן לשאלה</strong> – זמן מוגבל לענות על כל שאלה (למשל 25 שניות).</li>
+          <li><strong>חייב את הסטודנט/ית להשלים את החידון</strong> – אם מסומן, גישה לעמודים אחרים ב-Moodle תיחסם עד השלמת החידון (עד 24 שעות מהפעם הראשונה).</li>
+          <li><strong>שלח התראה על שינוי תוכן</strong> – התראה לסטודנטים כשמשתנים שאלות או הגדרות.</li>
+        </ul>
+        <p>שמירה: <strong>שמור וחזור לקורס</strong> או <strong>שמור והצג</strong>.</p>
+      </section>
+
+      <section id="מאגר-שאלות-ובדיקת-הנחיות" class="section">
+        <h2>מאגר שאלות ובדיקת הנחיות</h2>
+        <p>נתיב: במטלה → <strong>עוד</strong> → <strong>מאגר שאלות ובדיקת הנחיות</strong>.</p>
+        <figure>
+          <img src="screenshots/12b.png" alt="12b – תפריט המטלה" loading="lazy">
+          <figcaption>12b – תפריט המטלה</figcaption>
+        </figure>
+        <h3>מה מופיע בעמוד</h3>
+        <ul>
+          <li><strong>הנחיות המטלה</strong> – מתוך הגדרות המטלה (תיאור המטלה והנחיות הפעילות).</li>
+          <li><strong>קבצים מהמטלה</strong> – קבצים מצורפים (intro, activity וכו').</li>
+          <li><strong>עריכת הנחיות</strong> – ניתן לערוך את ההנחיות ישירות ולשמור (כפתור <strong>שמור הנחיות</strong>).</li>
+          <li><strong>בדוק הנחיות עם AI</strong> – לחיצה על הכפתור שולחת את ההנחיות והקבצים ל-AI ומקבלים <strong>המלצת AI</strong>.</li>
+        </ul>
+        <h3>המלצת AI – בדיקת קריטריונים פדגוגיים (22)</h3>
+        <p>מסך בדיקת קריטריונים פדגוגיים: איכות המטלה, שימוש במקורות, רמת חשיבה, הערכה אקדמית.</p>
+        <figure>
+          <img src="screenshots/22.png" alt="22 – המלצות AI פדגוגיות" loading="lazy">
+          <figcaption>22 – המלצות AI פדגוגיות</figcaption>
+        </figure>
+        <ul>
+          <li><strong>קריטריון</strong> – מטרת למידה ברורה, דרישות ברורות, הנחיות לשימוש במקורות, קריטריוני הערכה, יושרה אקדמית.</li>
+          <li><strong>הושג</strong> – האם הקריטריון מתקיים (כן/לא).</li>
+          <li><strong>הצעות</strong> – המלצות ספציפיות לשיפור.</li>
+        </ul>
+        <p>בתחתית מופיעים <strong>הערכה</strong> כללית ו-<strong>המטלה המשופרת</strong> (טקסט מוצע להנחיות משופרות).</p>
+        <figure>
+          <img src="screenshots/15.png" alt="15 – הערכה והמטלה המשופרת" loading="lazy">
+          <figcaption>15 – הערכה והמטלה המשופרת</figcaption>
+        </figure>
+        <p>ניתן לערוך את ההנחיות בעמוד לפי ההמלצות ולשמור.</p>
+      </section>
+
+      <section id="יצירת-שאלות-מקובצים" class="section">
+        <h2>יצירת שאלות מקובצים</h2>
+        <p>ניתן ליצור שאלות אוטומטית מהקבצים שהמרצה מעלה (למשל קובץ Word עם חומר הקורס).</p>
+        <h3>מסך יצירת שאלות ע"י המרצה (12)</h3>
+        <p>מסך <strong>Create questions from files</strong>: המרצה יכול להעלות קבצים, לבחור מספר שאלות, להוסיף הנחיות ל-AI וליצור שאלות.</p>
+        <figure>
+          <img src="screenshots/12.png" alt="12 – יצירת שאלות ע&quot;י המרצה" loading="lazy">
+          <figcaption>12 – יצירת שאלות ע"י המרצה</figcaption>
+        </figure>
+        <h3>העלאת קבצים (19)</h3>
+        <p>מסך שבו המרצה מעלה קובצי מקור (למשל DOCX); המערכת משתמשת בהם כדי ליצור שאלות חידון.</p>
+        <figure>
+          <img src="screenshots/19.png" alt="19 – העלאת קבצים ליצירת שאלות" loading="lazy">
+          <figcaption>19 – העלאת קבצים ליצירת שאלות</figcaption>
+        </figure>
+        <ol>
+          <li><strong>העלאת קבצים</strong> – גרירה לאזור או לחיצה על הוספת קובץ.</li>
+          <li><strong>מספר שאלות</strong> – מספר השאלות ליצירה (למשל 5).</li>
+          <li><strong>הנחיות אופציונליות</strong> – טקסט חופשי להנחיית ה-AI.</li>
+          <li><strong>Generate questions</strong> – התחלת יצירת השאלות.</li>
+        </ol>
+        <h3>הודעה על יצירת השאלות (07)</h3>
+        <p>לאחר ההרצה מוצגת הודעה: <strong>Question generation has started</strong> ו-<strong>Generating questions… Please wait</strong> – תהליך ה-AI פועל ברקע.</p>
+        <figure>
+          <img src="screenshots/07.png" alt="07 – הודעה על יצירת השאלות" loading="lazy">
+          <figcaption>07 – הודעה על יצירת השאלות</figcaption>
+        </figure>
+        <h3>ניהול שאלות AI (20)</h3>
+        <p>מסך ניהול שאלות שנוצרו ע"י AI: ניתן לערוך שאלות, למחוק ולהגדיר חובה.</p>
+        <figure>
+          <img src="screenshots/20.png" alt="20 – ניהול שאלות AI" loading="lazy">
+          <figcaption>20 – ניהול שאלות AI</figcaption>
+        </figure>
+        <ul>
+          <li><strong>שאלה</strong> – טקסט השאלה, רמת Bloom (Remember, Understand וכו').</li>
+          <li><strong>סימון חובה (16)</strong> – "Mark as Mandatory" – לסמן שאלה כחובה שתופיע בחידון.</li>
+        </ul>
+        <figure>
+          <img src="screenshots/16.png" alt="16 – סימון שאלת חובה" loading="lazy">
+          <figcaption>16 – סימון שאלת חובה</figcaption>
+        </figure>
+        <ul>
+          <li><strong>אפשרויות תשובה</strong> – הסבר לכל אפשרות וסימון תשובה נכונה.</li>
+          <li><strong>עריכה / מחיקה</strong> – כפתורי Edit ו-Delete.</li>
+        </ul>
+        <p>ניתן לערוך שאלות, להוסיף למאגר המטלה ולהשתמש בהן ב"שאלות ממאגר המרצה".</p>
+      </section>
+
+      <section id="דוח-חידון-והערכת-הגשה-ai" class="section">
+        <h2>דוח חידון והערכת הגשה (AI)</h2>
+        <p>נתיב: במטלה → <strong>עוד</strong> → <strong>TrustGrade Report</strong> (או <strong>דוח חידון</strong>).</p>
+        <h3>דוח חידון תלמידים (09b)</h3>
+        <p>רשימת תלמידים בדוח החידון: ציוני חידון, ציון סופי, קישור לצפייה בפרטי התלמיד.</p>
+        <figure>
+          <img src="screenshots/09b.png" alt="09b – דוח חידון תלמידים" loading="lazy">
+          <figcaption>09b – דוח חידון תלמידים</figcaption>
+        </figure>
+        <ul>
+          <li><strong>סטודנט</strong> – שם וקישור לפרופיל.</li>
+          <li><strong>ציון חידון</strong> – X/Y (אחוז%), תאריך ושעה, זמן שהייה.</li>
+          <li><strong>ציון סופי</strong> – שדה להזנת ציון (נשמר אוטומטית לאחר ~2 שניות או מעבר שדה).</li>
+          <li><strong>פרטים</strong> – כפתור <strong>הצג פרטים</strong>.</li>
+        </ul>
+        <p>כפתורי פעולה: <strong>Export to Excel</strong>, <strong>Auto-grade by Quiz Score</strong>, <strong>Clear All Grades</strong>.</p>
+        <h3>דוח חידון והערכה (09)</h3>
+        <p>מסך שמציג תוצאות החידון, ניתוח AI של המטלה, ציון מוצע, חוזקות וחולשות של ההגשה והמלצות לשיפור.</p>
+        <figure>
+          <img src="screenshots/09.png" alt="09 – דוח חידון והערכה" loading="lazy">
+          <figcaption>09 – דוח חידון והערכה</figcaption>
+        </figure>
+        <h3>פרטי תלמיד (13)</h3>
+        <p>לחיצה על <strong>הצג פרטים</strong> פותחת כרטיס עם פרטי ניסיון החידון, זמן ביצוע, הפרות Integrity וציוני החידון.</p>
+        <figure>
+          <img src="screenshots/13.png" alt="13 – פרטי תלמיד" loading="lazy">
+          <figcaption>13 – פרטי תלמיד</figcaption>
+        </figure>
+        <ul>
+          <li><strong>מידע על המפגש</strong> – תאריך השלמה, זמן שנדרש, ציון חידון.</li>
+          <li><strong>סיכום יושרה</strong> – אירועי יציאה מהחלון (Window Blur).</li>
+          <li><strong>הערכת הגשה (AI)</strong> – הערכה, ציון מוצע, חוזקות, נקודות לשיפור, הצעות.</li>
+          <li><strong>פרטי חידון</strong> – כל שאלה, התשובה של הסטודנט והתוצאה (נכון/לא נכון).</li>
+        </ul>
+      </section>
+
+      <section id="עמוד-ציונים-וקישור-לדוח-תלמיד" class="section">
+        <h2>עמוד ציונים וקישור לדוח תלמיד (14)</h2>
+        <p>טבלת הגשות של המטלה הכוללת עמודת <strong>TrustGrade</strong>: ציון AI, אחוז אמינות, זמן ביצוע החידון וקישור לדוח תלמיד.</p>
+        <figure>
+          <img src="screenshots/14.png" alt="14 – גיליון ציונים של המטלה" loading="lazy">
+          <figcaption>14 – גיליון ציונים של המטלה</figcaption>
+        </figure>
+        <p>בכל שורת סטודנט שסיים חידון: ציון החידון (X/Y ואחוז), תאריך ושעה, זמן שנדרש, <strong>קישור "דוח תלמיד (הערכת הגשה AI)"</strong>. אם לסטודנט אין ציון חידון – יוצג "־" בלי קישור.</p>
+      </section>
+
+      <section id="לסטודנטים-הגשה-וחידון-ai" class="section">
+        <h2>לסטודנטים: הגשה וחידון AI</h2>
+        <h3>הגשת מטלה (10)</h3>
+        <p>מסך שבו סטודנט מגיש את המטלה. כולל בלוק <strong>AI-Enhanced Learning Experience</strong> המסביר כי לאחר ההגשה ייווצר חידון אישי.</p>
+        <figure>
+          <img src="screenshots/10.png" alt="10 – הגשת מטלה (סטודנט)" loading="lazy">
+          <figcaption>10 – הגשת מטלה (סטודנט)</figcaption>
+        </figure>
+        <ul>
+          <li>העלאת קבצים / הזנת טקסט לפי הגדרות המטלה.</li>
+          <li><strong>שמירת שינויים</strong> כדי לשלוח את ההגשה.</li>
+        </ul>
+        <h3>החידון בתהליך יצירה (17)</h3>
+        <p>הודעה לסטודנט שהחידון עדיין נוצר: אינדיקציה לטעינה והודעה שהמערכת מייצרת שאלות.</p>
+        <figure>
+          <img src="screenshots/17.png" alt="17 – החידון בתהליך יצירה" loading="lazy">
+          <figcaption>17 – החידון בתהליך יצירה</figcaption>
+        </figure>
+        <h3>הודעה שהחידון מוכן (06)</h3>
+        <p>הודעה קופצת לסטודנט לאחר ניתוח ההגשה: החידון האוטומטי מוכן, נוצר על בסיס ההגשה שלו, ואפשר להתחיל את החידון.</p>
+        <figure>
+          <img src="screenshots/06.png" alt="06 – הודעה שהחידון מוכן לסטודנט" loading="lazy">
+          <figcaption>06 – הודעה שהחידון מוכן לסטודנט</figcaption>
+        </figure>
+        <p><strong>"Your quiz is ready! Your AI-generated quiz is ready! This quiz will help you reflect on your submission and reinforce your learning."</strong></p>
+        <h3>המסך לפני כניסה לחידון (02)</h3>
+        <p>המסך שמוצג לסטודנט לפני התחלת החידון: הודעת Formal Assessment, כללי החידון, הגבלה לניסיון אחד, זמן לכל שאלה, מניעת חזרה לשאלות קודמות.</p>
+        <figure>
+          <img src="screenshots/02.png" alt="02 – המסך לפני כניסה לחידון (סטודנט)" loading="lazy">
+          <figcaption>02 – המסך לפני כניסה לחידון (סטודנט)</figcaption>
+        </figure>
+        <h3>חידון הסטודנט (03)</h3>
+        <p>מסך החידון עצמו: שאלות שנוצרו ע"י AI, מבוססות ההגשה, טיימר לשאלה, ניווט בין שאלות.</p>
+        <figure>
+          <img src="screenshots/03.png" alt="03 – חידון הסטודנט" loading="lazy">
+          <figcaption>03 – חידון הסטודנט</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Question X of Y</strong> – התקדמות. <strong>Time Remaining</strong> – זמן לכל שאלה.</li>
+          <li><strong>BASED ON YOUR SUBMISSION</strong> – השאלות מבוססות על ההגשה שלך.</li>
+          <li><strong>אפשרויות בחירה</strong> – לבחור תשובה אחת. <strong>Next Question →</strong> – מעבר לשאלה הבאה.</li>
+        </ul>
+        <p>ההתקדמות נשמרת אוטומטית; רענון דף ממשיך מהשאלה הנוכחית.</p>
+        <h3>סיום החידון (05)</h3>
+        <p>מסך הסיום לאחר שהסטודנט השלים את החידון: ציון סופי, סטטוס החידון, הצגת התשובות, סימון תשובות נכונות ושגויות.</p>
+        <figure>
+          <img src="screenshots/05.png" alt="05 – סיום החידון לפי הסטודנט" loading="lazy">
+          <figcaption>05 – סיום החידון לפי הסטודנט</figcaption>
+        </figure>
+        <p>אם המרצה הפעיל <strong>חייב את הסטודנט/ית להשלים את החידון</strong>, גישה לעמודים אחרים ב-Moodle תיחסם עד השלמת החידון (עד 24 שעות מהפעם הראשונה).</p>
+      </section>
+
+      <section id="שאלות-נפוצות" class="section">
+        <h2>שאלות נפוצות</h2>
+        <h3>למרצים</h3>
+        <dl class="faq">
+          <dt>איך מגיעים לדוח החידון?</dt>
+          <dd>מטלה → <strong>עוד</strong> → <strong>TrustGrade Report</strong> (או <strong>דוח חידון</strong>).</dd>
+          <dt>איך בודקים הנחיות עם AI?</dt>
+          <dd>מטלה → <strong>עוד</strong> → <strong>מאגר שאלות ובדיקת הנחיות</strong> → <strong>בדוק הנחיות עם AI</strong>.</dd>
+          <dt>איפה מופיעה הערכת ההגשה (AI)?</dt>
+          <dd>בדוח החידון – <strong>הצג פרטים</strong> אצל כל סטודנט; ובעמוד הציונים – קישור "דוח תלמיד (הערכת הגשה AI)" למי שיש לו ציון חידון.</dd>
+          <dt>השאלות לא נוצרות.</dt>
+          <dd>וודא ש-TrustGrade מופעל למטלה, שהסטודנט הגיש והחיבור ל-Gateway פעיל (ניהול אתר → הגדרות TrustGrade).</dd>
+        </dl>
+        <h3>לסטודנטים</h3>
+        <dl class="faq">
+          <dt>איפה החידון שלי?</dt>
+          <dd>אחרי הגשה, כשהחידון מוכן תופיע הודעה "Your quiz is ready!" בעמוד המטלה – משם נכנסים לחידון.</dd>
+          <dt>הדף נחסם ורוצה שאסיים חידון.</dt>
+          <dd>המרצה הפעיל "חייב את הסטודנט/ית להשלים את החידון". יש להשלים את חידון TrustGrade של המטלה; החסימה עד 24 שעות מהפעם הראשונה.</dd>
+          <dt>ההתקדמות נשמרת?</dt>
+          <dd>כן. רענון דף או יציאה וחזרה ימשיכו מהשאלה שבה עצרת.</dd>
+        </dl>
+      </section>
+
+      <footer class="site-footer">
+        <p><strong>תמיכה:</strong> לשאלות טכניות או למנוי לשירות TrustGrade AI Gateway – פנה ל<a href="https://originality.co.il" target="_blank" rel="noopener">מקוריות</a> (<a href="mailto:CustomerService@originality.co.il">CustomerService@originality.co.il</a> / <a href="https://originality.co.il" target="_blank" rel="noopener">originality.co.il</a>).</p>
+        <p class="copyright">כל הזכויות שמורות © א.ע. מקוריות בע"מ 2010–2026</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
