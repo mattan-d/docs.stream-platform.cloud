@@ -4,133 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Guías del sistema Stream | CentricApp</title>
-  <style>
-    :root {
-      --brand: #0d9488;
-      --brand-dark: #0f766e;
-      --brand-light: #ccfbf1;
-      --bg: #f0fdfa;
-      --surface: #fff;
-      --text: #134e4a;
-      --text-muted: #115e59;
-      --border: #99f6e4;
-      --radius: 12px;
-      --shadow: 0 1px 3px rgba(13, 148, 136, 0.08);
-      --shadow-hover: 0 4px 12px rgba(13, 148, 136, 0.15);
-      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-    .page-header {
-      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
-      color: #fff;
-      padding: 2rem 1.25rem 2.5rem;
-      text-align: center;
-    }
-    .page-header .wrap {
-      max-width: 640px;
-      margin: 0 auto;
-    }
-    .guide-logo {
-      display: inline-block;
-      height: 2.5rem;
-      width: auto;
-      margin-bottom: 1rem;
-      filter: brightness(0) invert(1);
-    }
-    .page-header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      margin: 0 0 0.35rem 0;
-      letter-spacing: -0.02em;
-    }
-    .page-header .tagline {
-      font-size: 0.95rem;
-      opacity: 0.95;
-      margin: 0;
-    }
-    .page-header a.company {
-      color: rgba(255,255,255,0.9);
-      text-decoration: none;
-      font-size: 0.85rem;
-      margin-top: 0.75rem;
-      display: inline-block;
-    }
-    .page-header a.company:hover {
-      text-decoration: underline;
-    }
-    .wrap {
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 1.25rem 2rem;
-      position: relative;
-      margin-top: -1.25rem;
-    }
-    .card-wrap {
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      border: 1px solid var(--border);
-      padding: 0.5rem;
-    }
-    .lead {
-      color: var(--text-muted);
-      font-size: 1rem;
-      margin: 0 0 1.25rem 0;
-      padding: 0 0.25rem;
-    }
-    ul { list-style: none; margin: 0; padding: 0; }
-    li { margin-bottom: 0.5rem; }
-    a.guide-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      background: var(--surface);
-      padding: 1rem 1.25rem;
-      border-radius: 10px;
-      color: var(--brand-dark);
-      text-decoration: none;
-      font-weight: 500;
-      border: 1px solid var(--border);
-      transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
-    }
-    a.guide-link:hover {
-      background: var(--brand-light);
-      border-color: var(--brand);
-      box-shadow: var(--shadow-hover);
-      color: var(--brand-dark);
-    }
-    a.guide-link::before {
-      content: '';
-      width: 4px;
-      height: 1.25em;
-      background: var(--brand);
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-    .guide-footer {
-      margin-top: 2.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid var(--border);
-      font-size: 0.9rem;
-      color: var(--text);
-      text-align: center;
-    }
-    .guide-footer p { margin: 0.35rem 0; }
-    .guide-footer a {
-      color: var(--brand);
-      text-decoration: none;
-      font-weight: 500;
-    }
-    .guide-footer a:hover { text-decoration: underline; }
-  </style>
+  <link rel="stylesheet" href="../index-page.css">
   <link rel="stylesheet" href="../lang-switch.css">
 </head>
 <body>
@@ -140,46 +14,235 @@
         <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
       </a>
       <h1>Guías del sistema Stream</h1>
-      <p class="tagline">Lista de guías disponibles para usar el sistema.</p>
-      <a href="https://centricapp.co.il/" class="company" target="_blank" rel="noopener">CentricApp LTD – Expertos en sistemas Moodle</a>
+      <p class="tagline">Guías por tema – crear, editar, Moodle y administración.</p>
+      <a href="https://centricapp.co.il/" class="company" target="_blank" rel="noopener">CentricApp LTD – expertos en sistemas Moodle</a>
       <div class="lang-switch-wrap">
-      <span class="lang-switch-label">Idioma</span>
-      <nav class="lang-switch" aria-label="Idioma">
-        <a href="../index.html" hreflang="he">עברית</a>
-        <a href="../en/index.html" hreflang="en">English</a>
-        <a href="index.html" hreflang="es" aria-current="page">Español</a>
-      </nav>
-    </div>
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+          <a href="../index.html" hreflang="he">עברית</a>
+          <a href="../en/index.html" hreflang="en">English</a>
+          <a href="index.html" hreflang="es" aria-current="page">Español</a>
+        </nav>
+      </div>
     </div>
   </header>
 
   <main class="wrap">
     <div class="card-wrap">
-      <p class="lead">Seleccione una guía de la lista para continuar leyendo.</p>
-      <ul>
-        <li><a class="guide-link" href="admin-settings.html">Configuración del sistema – para administradores (admin/settings)</a></li>
-        <li><a class="guide-link" href="saml2-admin.html">Conexión SAML2 (SSO) – guía de administrador, incluido Microsoft 365 / Entra ID</a></li>
-        <li><a class="guide-link" href="videos-admin.html">Gestión de vídeos – para administradores (videos/admin)</a></li>
-        <li><a class="guide-link" href="videos-my.html">Mis vídeos – gestionar tus subidas (videos/my)</a></li>
-        <li><a class="guide-link" href="user-admin.html">Gestión de usuarios – para administradores (user/admin)</a></li>
-        <li><a class="guide-link" href="playlist.html">Listas de reproducción – listado, creación y edición</a></li>
-        <li><a class="guide-link" href="moodle-integration.html">Integración con Moodle – instalación, configuración y sincronización con Zoom</a></li>
-        <li><a class="guide-link" href="moodle-stream-lecturer-quick-guide.html">Guía rápida para docentes – incrustar vídeos en Moodle con STREAM</a></li>
-        <li><a class="guide-link" href="moodle-stream-embed.html">Incrustar un vídeo en Moodle – elegir un vídeo existente en una actividad STREAM, con capturas</a></li>
-        <li><a class="guide-link" href="stream-voice.html">Stream Voice – guía para administradores: actividad de Moodle, grabación, puntuación e informe de uso, con capturas</a></li>
-        <li><a class="guide-link" href="moodle-questions-from-stream.html">Creación de preguntas Moodle desde un vídeo Stream – tipos de pregunta e interfaz Web Service</a></li>
-        <li><a class="guide-link" href="video-upload.html">Subida de vídeo – archivos y fuentes</a></li>
-        <li><a class="guide-link" href="video-record.html">Grabación personal – cámara, pantalla y anotación, con capturas</a></li>
-        <li><a class="guide-link" href="studio.html">Uso del estudio – crear un vídeo a partir de segmentos</a></li>
-        <li><a class="guide-link" href="video-settings.html">Configuración del vídeo – todas las opciones</a></li>
-        <li><a class="guide-link" href="video-topics.html">Temas (capítulos) del vídeo – añadir y editar para docentes</a></li>
-        <li><a class="guide-link" href="ai-navigation-topics-and-caption-chat.html">Temas de navegación automáticos desde subtítulos y chat de IA sobre el vídeo</a></li>
-        <li><a class="guide-link" href="video-transcription.html">Creación de transcripción de vídeo – pasos y flujo de trabajo</a></li>
-        <li><a class="guide-link" href="video-trim.html">Recorte de un solo vídeo – editor de línea de tiempo en configuración del vídeo</a></li>
-        <li><a class="guide-link" href="videos-comments.html">Gestión de comentarios</a></li>
-        <li><a class="guide-link" href="video-watch.html">Página de reproducción del vídeo – opciones</a></li>
-      </ul>
+      <p class="lead">Elija un tema y luego una guía corta de la lista.</p>
+
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#create">Crear contenido</a>
+        <a href="#manage">Gestionar y ver</a>
+        <a href="#edit">Editar vídeo</a>
+        <a href="#moodle">Moodle</a>
+        <a href="#admin">Administración</a>
+      </nav>
+
+      <section class="guide-topic" id="create">
+        <h2 class="guide-topic-title">Crear contenido</h2>
+        <p class="guide-topic-desc">Subida, grabación y Estudio – formas de crear un vídeo nuevo.</p>
+        <ul>
+          <li>
+            <a class="guide-link" href="video-upload.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Subida de vídeo</span>
+                <span class="guide-link-sub">Archivo del ordenador, YouTube o Facebook</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="video-record.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Grabación personal</span>
+                <span class="guide-link-sub">Cámara, pantalla y anotación</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="studio.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Estudio</span>
+                <span class="guide-link-sub">Crear un vídeo a partir de segmentos</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="guide-topic" id="manage">
+        <h2 class="guide-topic-title">Gestionar y ver</h2>
+        <p class="guide-topic-desc">Su biblioteca, listas, reproducción y comentarios.</p>
+        <ul>
+          <li>
+            <a class="guide-link" href="videos-my.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Mis vídeos</span>
+                <span class="guide-link-sub">Buscar, filtrar, eliminar y descargar</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="playlist.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Listas de reproducción</span>
+                <span class="guide-link-sub">Crear y editar listas de vídeos</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="video-watch.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Página de reproducción</span>
+                <span class="guide-link-sub">Reproductor, capítulos y opciones</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="videos-comments.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Gestión de comentarios</span>
+                <span class="guide-link-sub">Preguntas y notas durante la reproducción</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="guide-topic" id="edit">
+        <h2 class="guide-topic-title">Editar vídeo</h2>
+        <p class="guide-topic-desc">Configuración, subtítulos, recorte, capítulos e IA.</p>
+        <ul>
+          <li>
+            <a class="guide-link" href="video-settings.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Configuración del vídeo</span>
+                <span class="guide-link-sub">Título, privacidad, etiquetas y más</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="video-topics.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Temas (capítulos)</span>
+                <span class="guide-link-sub">Añadir y editar capítulos manualmente</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="video-transcription.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Transcripción</span>
+                <span class="guide-link-sub">Crear subtítulos y seguir el flujo</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="video-trim.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Recortar vídeo</span>
+                <span class="guide-link-sub">Editor de línea de tiempo</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="ai-navigation-topics-and-caption-chat.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Navegación IA y chat</span>
+                <span class="guide-link-sub">Capítulos automáticos y chat de IA</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="guide-topic" id="moodle">
+        <h2 class="guide-topic-title">Moodle</h2>
+        <p class="guide-topic-desc">Instalación, incrustación en el curso, Stream Voice y preguntas.</p>
+        <ul>
+          <li>
+            <a class="guide-link" href="moodle-integration.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Integración con Moodle</span>
+                <span class="guide-link-sub">Plugins, configuración y sincronización Zoom</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="moodle-stream-lecturer-quick-guide.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Guía rápida para docentes</span>
+                <span class="guide-link-sub">Incrustar vídeos en un curso Moodle</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="moodle-stream-embed.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Incrustar en actividad STREAM</span>
+                <span class="guide-link-sub">Elegir un vídeo existente para el curso</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="stream-voice.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Stream Voice</span>
+                <span class="guide-link-sub">Archivo bloqueado, grabación oral y nota</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="moodle-questions-from-stream.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Preguntas desde un vídeo</span>
+                <span class="guide-link-sub">Tipos de pregunta Moodle desde Stream</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section class="guide-topic" id="admin">
+        <h2 class="guide-topic-title">Administración</h2>
+        <p class="guide-topic-desc">Solo para administradores del sistema.</p>
+        <ul>
+          <li>
+            <a class="guide-link" href="admin-settings.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Configuración del sistema</span>
+                <span class="guide-link-sub">General, temas, grabación e integraciones</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="saml2-admin.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">SAML2 (SSO)</span>
+                <span class="guide-link-sub">Incluye Microsoft 365 / Entra ID</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="videos-admin.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Gestión de vídeos</span>
+                <span class="guide-link-sub">Administrar todos los vídeos del sistema</span>
+              </span>
+            </a>
+          </li>
+          <li>
+            <a class="guide-link" href="user-admin.html">
+              <span class="guide-link-text">
+                <span class="guide-link-title">Gestión de usuarios</span>
+                <span class="guide-link-sub">Usuarios, permisos y cuentas</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
     </div>
+
     <footer class="guide-footer">
       <p>Todas las guías y sus derechos de autor pertenecen a CentricApp LTD.</p>
       <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
