@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריכי מערכת Stream | CentricApp</title>
+  <style>
+    :root {
+      --brand: #0d9488;
+      --brand-dark: #0f766e;
+      --brand-light: #ccfbf1;
+      --bg: #f0fdfa;
+      --surface: #fff;
+      --text: #134e4a;
+      --text-muted: #115e59;
+      --border: #99f6e4;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(13, 148, 136, 0.08);
+      --shadow-hover: 0 4px 12px rgba(13, 148, 136, 0.15);
+      --font: 'Segoe UI', 'Heebo', system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .page-header {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+      color: #fff;
+      padding: 2rem 1.25rem 2.5rem;
+      text-align: center;
+    }
+    .page-header .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .guide-logo {
+      display: inline-block;
+      height: 2.5rem;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+    }
+    .page-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem 0;
+      letter-spacing: -0.02em;
+    }
+    .page-header .tagline {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      margin: 0;
+    }
+    .page-header a.company {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      display: inline-block;
+    }
+    .page-header a.company:hover {
+      text-decoration: underline;
+    }
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.25rem 2rem;
+      position: relative;
+      margin-top: -1.25rem;
+    }
+    .card-wrap {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+    }
+    .lead {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin: 0 0 1.25rem 0;
+      padding: 0 0.25rem;
+    }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { margin-bottom: 0.5rem; }
+    a.guide-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--surface);
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      color: var(--brand-dark);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    a.guide-link:hover {
+      background: var(--brand-light);
+      border-color: var(--brand);
+      box-shadow: var(--shadow-hover);
+      color: var(--brand-dark);
+    }
+    a.guide-link::before {
+      content: '';
+      width: 4px;
+      height: 1.25em;
+      background: var(--brand);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .guide-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text);
+      text-align: center;
+    }
+    .guide-footer p { margin: 0.35rem 0; }
+    .guide-footer a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .guide-footer a:hover { text-decoration: underline; }
+  </style>
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>מדריכי מערכת Stream</h1>
+      <p class="tagline">רשימת המדריכים הזמינים לשימוש במערכת.</p>
+      <a href="https://centricapp.co.il/" class="company" target="_blank" rel="noopener">מ.ר סנטריקאפ בע״מ – מומחים במערכות Moodle</a>
+      <div class="lang-switch-wrap">
+      <span class="lang-switch-label">שפה</span>
+      <nav class="lang-switch" aria-label="שפה">
+        <a href="index.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/index.html" hreflang="en">English</a>
+        <a href="es/index.html" hreflang="es">Español</a>
+      </nav>
+    </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card-wrap">
+      <p class="lead">בחרו מדריך מהרשימה להמשך קריאה.</p>
+      <ul>
+        <li><a class="guide-link" href="admin-settings.html">הגדרות המערכת – למנהלים (admin/settings)</a></li>
+        <li><a class="guide-link" href="saml2-admin.html">חיבור SAML2 (SSO) – מדריך מנהל, כולל Microsoft 365 / Entra ID</a></li>
+        <li><a class="guide-link" href="videos-admin.html">ניהול סרטונים – למנהלים (videos/admin)</a></li>
+        <li><a class="guide-link" href="videos-my.html">הסרטונים שלי – ניהול ההקלטות שלכם (videos/my)</a></li>
+        <li><a class="guide-link" href="user-admin.html">ניהול משתמשים – למנהלים (user/admin)</a></li>
+        <li><a class="guide-link" href="playlist.html">פלייליסטים – רשימה, יצירה ועריכה</a></li>
+        <li><a class="guide-link" href="moodle-integration.html">אינטגרציה עם Moodle – התקנה, הגדרות וסנכרון Zoom</a></li>
+        <li><a class="guide-link" href="moodle-stream-lecturer-quick-guide.html">מדריך שימוש מהיר למרצה – הטמעת סרטונים ב-Moodle דרך STREAM</a></li>
+        <li><a class="guide-link" href="moodle-stream-embed.html">הטמעת סרטון ב-Moodle – בחירת סרטון קיים בפעילות STREAM, כולל צילומי מסך</a></li>
+        <li><a class="guide-link" href="stream-voice.html">Stream Voice – מדריך למנהלים: פעילות ב-Moodle, הקלטה, ציון ודוח שימוש, כולל צילומי מסך</a></li>
+        <li><a class="guide-link" href="moodle-questions-from-stream.html">יצירת שאלות מסרטון Stream ב-Moodle – סוגי שאלה וממשק ה-Web Service</a></li>
+        <li><a class="guide-link" href="video-upload.html">העלאת סרטון – העלאת קבצים ומקורות</a></li>
+        <li><a class="guide-link" href="studio.html">שימוש בסטודיו – יצירת סרטון ממקטעים</a></li>
+        <li><a class="guide-link" href="video-settings.html">הגדרות הסרטון – כל האפשרויות</a></li>
+        <li><a class="guide-link" href="video-topics.html">נושאים (פרקים) בסרטון – הוספה ועריכה למרצה</a></li>
+        <li><a class="guide-link" href="ai-navigation-topics-and-caption-chat.html">נושאי ניווט אוטומטיים מכתוביות ושיחת AI על הסרטון</a></li>
+        <li><a class="guide-link" href="video-transcription.html">יצירת תמלול לסרטון – שלבים ותהליך עבודה</a></li>
+        <li><a class="guide-link" href="video-trim.html">חיתוך וידאו בודד – עורך ציר זמן בהגדרות הסרטון</a></li>
+        <li><a class="guide-link" href="videos-comments.html">ניהול הערות</a></li>
+        <li><a class="guide-link" href="video-watch.html">עמוד צפייה בסרטון – האפשרויות</a></li>
+      </ul>
+    </div>
+    <footer class="guide-footer">
+      <p>כל המדריכים וזכויות היוצרים בהם שייכים למ.ר סנטריקאפ בע״מ.</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+      <p>© CentricApp LTD. 2026</p>
+    </footer>
+  </main>
+</body>
+</html>

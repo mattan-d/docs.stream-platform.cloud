@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comments management guide – Video Q&amp;A</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Comments management</h1>
+      <p class="lead">The video comments management screen (questions and answers) – view, filter, sort, and edit. Accessible via <strong>videos/comments</strong> or from the "Comments" / "Support" menu.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../videos-comments.html" hreflang="he">עברית</a>
+        <a href="videos-comments.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/videos-comments.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>What is the comments management screen?</h2>
+            <p>On the <strong>comments management</strong> page, all comments (questions/replies) related to videos in the system are shown. Administrators see all comments; a regular user sees only their own. From this screen you can search, filter by status and dates, sort, and go to edit a comment or the related video.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-overview.png" alt="Comments management screen – overview">
+              <figcaption>Comments management screen – title, filter bar, and comments list.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Opening the screen</h2>
+            <p>You can open comments management in one of these ways:</p>
+            <ul>
+              <li>From the main menu – click <strong>Comments</strong> or <strong>Support</strong> (depending on system settings).</li>
+              <li>Direct navigation to: <strong>/videos/comments</strong> (e.g. <code>https://dev.video/videos/comments</code>).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Filtering comments (left side)</h2>
+            <p>On the left column appears <strong>filter comments</strong> with these fields:</p>
+            <ul>
+              <li><strong>Search</strong> – enter text to search by comment ID, comment content, or video ID.</li>
+              <li><strong>Status</strong> – choose from defined statuses (e.g. approved, pending, hidden) or "All".</li>
+              <li><strong>From date</strong> and <strong>To date</strong> – limit results to a date range.</li>
+              <li><strong>Filter</strong> button – apply filtering with the entered values.</li>
+              <li><strong>Reset</strong> button – clear filtering and return to the normal list.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-filters.png" alt="Comment filters">
+              <figcaption>Comment filter area – search, status, and dates.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Comments table</h2>
+            <p>In the center area a table is shown with these columns:</p>
+            <ul>
+              <li><strong>Select</strong> – checkbox per comment (for bulk actions, if available).</li>
+              <li><strong>Image</strong> – thumbnail of the related video.</li>
+              <li><strong>ID</strong> – comment ID (sortable).</li>
+              <li><strong>Comment</strong> – comment content or title; clicking the comment goes to the edit screen.</li>
+              <li><strong>Video</strong> – video title; link to watch on the video page.</li>
+              <li><strong>Status</strong> – comment status (sortable).</li>
+              <li><strong>User</strong> – user who wrote the comment.</li>
+              <li><strong>Updated</strong> – when the comment was last updated (sortable).</li>
+            </ul>
+            <p>Sorting: click a column header (ID, updated date, status, etc.) to sort the table by that column.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-table.png" alt="Comments table">
+              <figcaption>Comments table – columns and links to edit and video.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Editing a comment</h2>
+            <p>Clicking comment content (the "Comment" column) or the edit link goes to the <strong>edit comment</strong> screen, where you can update the question/answer and status. After saving you usually return to the comments list or the video page, depending on settings.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-edit.png" alt="Edit comment screen">
+              <figcaption>Edit comment screen – question, answer, and save actions.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Bulk selection and reset</h2>
+            <p>At the bottom of the table there may be an <strong>All</strong> link – to select all comments on the page (for bulk actions if configured). Using reset filter clears filters and shows all comments the user is allowed to see again.</p>
+            <div class="note">
+              <strong>Note:</strong> A non-admin user sees only comments assigned to them. An administrator sees all comments in the system.
+            </div>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

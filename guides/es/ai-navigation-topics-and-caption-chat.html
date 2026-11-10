@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temas de navegación automáticos y chat de IA sobre subtítulos – Guía</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Temas de navegación automáticos y chat de IA sobre subtítulos</h1>
+      <p class="lead">Guía para docentes y administradores: creación de capítulos de navegación con IA a partir de subtítulos, y conversación con un asistente de IA basado en el contenido de los subtítulos en la página de reproducción y en modo de inserción (embed).</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../ai-navigation-topics-and-caption-chat.html" hreflang="he">עברית</a>
+        <a href="../en/ai-navigation-topics-and-caption-chat.html" hreflang="en">English</a>
+        <a href="ai-navigation-topics-and-caption-chat.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Tabla de contenidos">
+            <h2 id="toc-title">Tabla de contenidos</h2>
+            <ul>
+              <li><a href="#topics-auto">Parte A – Temas de navegación automáticos a partir de subtítulos</a></li>
+              <li><a href="#chat-ai">Parte B – Chat de IA sobre el vídeo</a></li>
+              <li><a href="#related">Guías relacionadas</a></li>
+            </ul>
+          </nav>
+
+          <section id="topics-auto">
+            <h2>Parte A – Temas de navegación automáticos a partir de subtítulos</h2>
+            <p>Los <strong>temas de navegación</strong> (capítulos) son puntos temporales con un nombre que permiten a los espectadores saltar a partes del vídeo. Puede añadirlos manualmente (consulte la <a href="video-topics.html">guía de temas del vídeo</a>). Aquí explicamos el botón <strong>Crear temas de navegación automáticamente a partir de subtítulos</strong> en la pantalla de <strong>configuración del vídeo</strong> (editar vídeo).</p>
+
+            <h3>Dónde encontrar el botón</h3>
+            <ol>
+              <li>Abra la <strong>configuración del vídeo</strong> (edición) del vídeo deseado.</li>
+              <li>Desplácese hasta la sección <strong>Inteligencia artificial (IA)</strong> (debajo de los subtítulos).</li>
+              <li>Aparece un botón con icono de chispas: <strong>Crear temas de navegación automáticamente a partir de subtítulos</strong> – solo cuando se cumplen las condiciones indicadas abajo.</li>
+            </ol>
+
+            <h3>Condiciones para que el botón aparezca y funcione</h3>
+            <ul>
+              <li>El vídeo <strong>no</strong> es exclusivamente de YouTube (para vídeos subidos al sistema / fuentes compatibles).</li>
+              <li>La <strong>transcripción/subtítulos</strong> están en estado <strong>listo</strong> (igual que para editar subtítulos).</li>
+              <li>Existe texto de subtítulos lo suficientemente rico para construir capítulos.</li>
+              <li>En la configuración del sistema están definidos la <strong>clave API de OpenRouter</strong> y el modelo (área de subtítulos / IA en configuración del sistema – consulte la <a href="admin-settings.html">guía de configuración del sistema</a>).</li>
+            </ul>
+            <div class="note">
+              <strong>Permisos:</strong> Solo el <strong>propietario del vídeo</strong>, un <strong>administrador</strong> o un usuario con <strong>permiso de gestión sobre el vídeo</strong> puede ejecutar la generación.
+            </div>
+
+            <h3>Qué ocurre al hacer clic</h3>
+            <ol>
+              <li>Se abre un modal con una breve explicación y una casilla de verificación para <strong>reemplazar los temas de navegación existentes</strong>.</li>
+              <li>Si se marca – los temas existentes se eliminan y se sustituyen por otros nuevos. Si no se marca – los temas nuevos se <strong>añaden</strong> a la lista existente (sin eliminación manual).</li>
+              <li>Al pulsar <strong>Crear temas de navegación</strong> se envía una solicitud al servidor. El sistema envía a la IA una muestra de los subtítulos (incluidas marcas de tiempo) y tiene en cuenta la duración del vídeo.</li>
+              <li>El modelo devuelve una lista de capítulos (título + tiempo de inicio en segundos). El sistema comprueba que la estructura sea razonable (cobertura a lo largo del vídeo, número mínimo de capítulos según la duración, etc.). Si la respuesta no es válida – se muestra un mensaje de error; puede intentarlo de nuevo.</li>
+              <li>En caso de éxito – la página se recarga y verá los temas en la lista de temas / en el reproductor.</li>
+            </ol>
+
+            <h3>Cuántos capítulos se crean</h3>
+            <p>Normalmente entre <strong>2 y 10</strong> capítulos, según la duración del vídeo y el contenido de los subtítulos. El sistema exige capítulos que cubran la mayor parte de la línea de tiempo (no solo el inicio). En vídeos muy cortos – puede crearse un número menor.</p>
+
+            <h3>Navegación de contenido y lista de temas – ejemplo en inserción (embed)</h3>
+            <p>Tras crear los temas, los espectadores abren desde el reproductor la <strong>navegación de contenido dentro del vídeo</strong> – una lista de capítulos con tiempos y salto al punto temporal. Esto está disponible <strong>tanto en la página de reproducción como en modo embed</strong> (cuando el reproductor está incrustado en un sitio o en un LMS). A continuación, una captura de pantalla desde una vista de inserción.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/embed-content-navigation-topics.png" alt="Barra lateral oscura con lista de capítulos y tiempos – navegación de contenido en embed">
+              <figcaption>Ejemplo: lista de temas de navegación (número de capítulo, título y tiempo) en una barra lateral sobre un reproductor incrustado.</figcaption>
+            </figure>
+
+            <h3>Marcadores de temas en la barra de progreso y tooltip</h3>
+            <p>Cuando hay temas de navegación, aparecen <strong>marcadores</strong> (barras amarillas) en la <strong>barra de progreso</strong> en el tiempo de cada capítulo. Al <strong>pasar el cursor</strong> sobre un marcador – se abre un <strong>tooltip</strong> con el nombre del tema y la hora de inicio, sin pausar la reproducción. Al hacer clic en el marcador o en el área de la barra se salta al tiempo correspondiente (en la página de reproducción y en embed, según la compatibilidad del dispositivo).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-progress-topic-tooltip.png" alt="Tooltip sobre la barra de progreso – título del tema y tiempo sobre un marcador amarillo en el reproductor">
+              <figcaption>Ejemplo: tooltip de un tema sobre un marcador en la barra de progreso (título del capítulo y tiempo).</figcaption>
+            </figure>
+
+            <h3>Generación automática en segundo plano (vídeos hermanos / grupo)</h3>
+            <p>Cuando la transcripción está lista, a veces el sistema intenta <strong>generar temas automáticamente para vídeos «hermanos»</strong> (mismo grupo de subida) que aún <strong>no tienen temas</strong> – para ahorrar trabajo al publicar una serie de lecciones. Si no hay clave API o la generación falla, la acción se omite y se registra en el log del servidor.</p>
+
+            <div class="warn">
+              <strong>Atención:</strong> Los resultados de la IA se basan en <strong>lo que aparece en los subtítulos</strong>. Si la transcripción no es precisa o está incompleta – los nombres de los capítulos también pueden ser menos precisos. Siempre puede editar los temas manualmente después de la generación.
+            </div>
+          </section>
+
+          <section id="chat-ai">
+            <h2>Parte B – Chat de IA sobre el vídeo</h2>
+            <p>En la página de <strong>reproducción</strong> del vídeo, debajo de la descripción, puede aparecer un bloque de <strong>Chat de IA sobre el vídeo</strong>. El asistente responde <strong>solo a partir de segmentos de subtítulos</strong> que se le envían – si no hay información en los subtítulos, debe indicarlo explícitamente.</p>
+
+            <h3>Cuándo aparece el bloque</h3>
+            <ul>
+              <li>La transcripción está en estado <strong>listo</strong> y existe una fuente de subtítulos adecuada para el chat de IA.</li>
+              <li>En la configuración del sistema está definida la <strong>clave API de OpenRouter</strong> (igual que para los temas de navegación automáticos).</li>
+            </ul>
+
+            <h3>Inicio de sesión</h3>
+            <p>Para enviar mensajes debe <strong>haber iniciado sesión</strong> en el sistema. Los visitantes ven una explicación y un enlace para iniciar sesión.</p>
+
+            <h3>Cómo usarlo</h3>
+            <ol>
+              <li>Escriba una pregunta en el campo de texto (Enter para enviar; Shift+Enter para una nueva línea).</li>
+              <li>Pulse <strong>Enviar</strong>. Aparece el estado «Pensando…» hasta que llega la respuesta.</li>
+              <li>En las respuestas del asistente, a veces aparecen rangos de tiempo entre paréntesis (según los subtítulos). Al hacer clic en un rango o en una línea numerada puede <strong>saltar el reproductor al tiempo correspondiente</strong> (en ordenador y dispositivos compatibles).</li>
+              <li><strong>Imprimir conversación</strong> – abre una ventana de impresión con el chat en formato legible (puede guardar como PDF desde el menú de impresión del navegador).</li>
+              <li><strong>Descargar conversación como PDF</strong> – descarga un PDF generado en el servidor (mismo contenido que la impresión, incluidos idiomas RTL).</li>
+            </ol>
+
+            <h3>Chat de IA en modo de inserción (embed)</h3>
+            <p>Si el administrador del sistema activó en la configuración avanzada la opción <strong>Mostrar botón de chat de IA sobre el reproductor en embed</strong>, aparece un botón flotante sobre el reproductor <strong>solo en modo embed normal</strong> (no en modo reels). Al hacer clic se abre un panel con el mismo chat que en la página de reproducción. Se requiere inicio de sesión (o JWT en embed desde Moodle – según su configuración).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/embed-ai-chat-embed-panel.png" alt="Ventana de chat de IA en embed – título y aviso, registro desplazable con burbujas de usuario y asistente, campo de envío, impresión y PDF">
+              <figcaption>Ejemplo: «Chat de IA sobre el vídeo» en modo embed – panel oscuro sobre el reproductor: mensajes en burbujas, solo el área del chat se desplaza, con campo de texto, impresión, PDF y envío en la parte inferior.</figcaption>
+            </figure>
+            <p class="small text-muted" style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem;">Si la <strong>impresión</strong> está bloqueada en el navegador dentro de un iframe (por ejemplo, un bloque de Moodle), intente permitir ventanas emergentes (pop-ups) para el sitio de vídeos, o pida al administrador de Moodle que permita pop-ups / <code>allow-popups</code> en la inserción (depende de la plantilla y del sandbox del iframe).</p>
+
+            <div class="note">
+              <strong>Límite de visualizaciones:</strong> Si el vídeo tiene un límite de visualizaciones y ha alcanzado la cuota, el chat de IA también puede bloquearse – igual que la reproducción normal.
+            </div>
+          </section>
+
+          <section id="related">
+            <h2>Guías relacionadas</h2>
+            <ul>
+              <li><a href="video-topics.html">Temas (capítulos) – añadir y editar manualmente</a></li>
+              <li><a href="video-watch.html">Página de reproducción del vídeo</a></li>
+              <li><a href="video-transcription.html">Transcripción y subtítulos</a></li>
+              <li><a href="video-settings.html">Configuración del vídeo – visión general</a></li>
+              <li><a href="admin-settings.html">Configuración del sistema (incluido OpenRouter e inserción)</a></li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

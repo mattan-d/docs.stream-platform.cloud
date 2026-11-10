@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Voice – administrator guide</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Stream Voice – administrator guide</h1>
+      <p class="lead">A Moodle activity that locks the submitted file, records an oral explanation in Stream, and writes a grade to the gradebook.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+          <a href="../stream-voice.html" hreflang="he">עברית</a>
+          <a href="stream-voice.html" hreflang="en" aria-current="page">English</a>
+          <a href="../es/stream-voice.html" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Contents">
+        <strong>In this guide</strong>
+        <ul>
+          <li><a href="#what">What Stream Voice is</a></li>
+          <li><a href="#before">Before you add an activity</a></li>
+          <li><a href="#settings">Adding the activity and its settings</a></li>
+          <li><a href="#teacher">What the teacher sees</a></li>
+          <li><a href="#grading">Submissions and the grade</a></li>
+          <li><a href="#student">What the student does</a></li>
+          <li><a href="#analytics">Usage report in Stream</a></li>
+          <li><a href="#faq">Common questions</a></li>
+        </ul>
+      </nav>
+
+      <section id="what">
+        <h2>What Stream Voice is</h2>
+        <p>Stream Voice is a course activity. The student submits a file of the work, the code, or the project. After submission the file is locked, and the student explains on camera how they thought and what they chose.</p>
+        <p>The aim is to see that the student understands the work and can justify it. The score checks understanding, reasoning, and consistency between the explanation and the locked file.</p>
+        <p>Moodle keeps the activity settings and the gradebook grade. Stream keeps the locked file, the questions, the recordings, the transcript, and the automatic score.</p>
+        <div class="note">The screenshots below are from a Hebrew Moodle site. Labels follow the language of the user who is signed in.</div>
+      </section>
+
+      <section id="before">
+        <h2>Before you add an activity</h2>
+        <ol>
+          <li>In Moodle, under Site administration → Plugins → Local plugins → Stream, the Stream URL and API key need to be set.</li>
+          <li>Stream needs an active language model. It calculates the score after the recording.</li>
+          <li>The student needs camera and microphone access in the browser while recording.</li>
+          <li>The student needs to be enrolled in the course with the student role in order to submit.</li>
+        </ol>
+        <div class="note">Without the Stream connection, the activity opens with a notice that Stream is not configured, and submission and recording stay unavailable.</div>
+      </section>
+
+      <section id="settings">
+        <h2>Adding the activity and its settings</h2>
+        <ol>
+          <li>Open the course and turn on edit mode.</li>
+          <li>Choose <strong>Add an activity or resource</strong>.</li>
+          <li>Choose <strong>Stream Voice</strong>.</li>
+          <li>Give it a name students will see in the course, and save.</li>
+        </ol>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-settings.png" alt="Stream Voice activity settings: name, language, timing, questions, rubric, and score weights">
+          <figcaption>Activity settings. The Stream Voice section sets preparation time, questions, the rubric, and the score weights.</figcaption>
+        </figure>
+        <h3>General settings and availability</h3>
+        <ul>
+          <li><strong>Name</strong> and the activity description are shown to students like any other Moodle activity.</li>
+          <li><strong>Stream Voice language</strong> sets the language of the questions, the instructions, and the score. The default is Hebrew.</li>
+          <li><strong>Availability</strong> is an open date and a due date, as in an assignment. Both can stay empty.</li>
+        </ul>
+        <h3>The Stream Voice section</h3>
+        <ul>
+          <li><strong>Preparation time</strong> is how long the student has to read the questions and write speaker notes before recording opens. The default is 180 seconds. The allowed range is 0 to 3600.</li>
+          <li><strong>Answer time per question</strong> is the maximum length of each recording. The default is 120 seconds. The allowed range is 30 to 900.</li>
+          <li><strong>Number of questions</strong> is between 1 and 8. The default is 3.</li>
+          <li><strong>Fixed questions</strong> are one question per line, asked as written. If they do not fill the question count, Stream writes the rest from the submitted file. An empty field means every question is built from the file.</li>
+          <li><strong>Rubric</strong> is sent to Stream and used for the oral score. If the field is empty, the default rubric is used: understanding, justification, consistency with the file, and independent reasoning.</li>
+          <li><strong>Weight of consistency with the file</strong> and <strong>weight of the oral explanation</strong> must add up to 100. The default is 40 for consistency and 60 for the explanation.</li>
+          <li><strong>Allow a new file before recording starts</strong> lets the student replace the file only before the first recording. After recording starts, the file stays locked.</li>
+          <li><strong>Maximum file size</strong> limits the file the student can submit.</li>
+        </ul>
+        <h3>Grade</h3>
+        <p>In the <strong>Grade</strong> section, set the maximum points as you would for an assignment. The gradebook grade is the automatic score out of 100, multiplied by that maximum. For example, a score of 80 with a maximum of 100 is stored as 80 points.</p>
+      </section>
+
+      <section id="teacher">
+        <h2>What the teacher sees</h2>
+        <p>Opening the activity shows the grading summary: how many participants there are, how many submitted, and how many still need a grade. The <strong>Grade</strong> button opens the submission list. <strong>Continue to Stream Voice</strong> appears once a submission exists.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-activity.png" alt="The activity page with the grading summary and the Continue to Stream Voice button">
+          <figcaption>The teacher view: submission summary, then the grade list or the recording.</figcaption>
+        </figure>
+      </section>
+
+      <section id="grading">
+        <h2>Submissions and the grade</h2>
+        <p>The submission list follows the assignment grading page. Filter by not submitted, submitted, or requiring a grade, and search by name.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-report.png" alt="The Stream Voice submission table: student, status, grade, file, and final grade">
+          <figcaption>Each row is a student. The name opens the recordings and the score detail.</figcaption>
+        </figure>
+        <p>The status column first shows whether a file was submitted, then where the recording stands:</p>
+        <ul>
+          <li><strong>Submitted for grading</strong> after the file is locked.</li>
+          <li><strong>Preparing</strong> or <strong>Recording</strong> while Stream Voice is open.</li>
+          <li><strong>Waiting for the transcript</strong> after the recording is saved and the transcript is not ready yet.</li>
+          <li><strong>Waiting for the automatic score</strong> when the transcript is ready and the model has not returned a score.</li>
+          <li><strong>Provisional score</strong> when the score comes from speaker notes, before the transcript is ready.</li>
+          <li><strong>Graded</strong> when there is a final score.</li>
+        </ul>
+        <p>The gradebook updates when Stream returns a numeric score. A student’s page shows the status, the score, the recordings, and the transcript.</p>
+      </section>
+
+      <section id="student">
+        <h2>What the student does</h2>
+        <ol>
+          <li>Opens the activity and chooses <strong>Add submission</strong>.</li>
+          <li>Uploads the file, and can add a note for the marker.</li>
+          <li>Clicks <strong>Submit and lock</strong>. The file is locked from here.</li>
+          <li>Clicks <strong>Continue to Stream Voice</strong>.</li>
+          <li>During preparation, reads the questions and writes speaker notes. The notes stay on screen while recording.</li>
+          <li>Records an answer to each question and stops when finished. Stream saves the video.</li>
+          <li>After every question, the score appears. <strong>Refresh score</strong> calculates it again once the transcript is ready.</li>
+        </ol>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-session.png" alt="The Stream Voice screen after recording: locked file, score, and refresh score">
+          <figcaption>After recording, the student sees that the file is locked, the score, and the recordings.</figcaption>
+        </figure>
+        <div class="note">A provisional score is calculated from the speaker notes when the transcript is not ready yet. When the transcript is ready, refresh replaces it with a final score based on what was said, the rubric, and consistency with the file.</div>
+      </section>
+
+      <section id="analytics">
+        <h2>Usage report in Stream</h2>
+        <p>A Stream administrator sees activity usage under <strong>Usage reports</strong>, at <code>admin/analytics</code>. The Stream Voice section uses the same date range as the rest of the report, and it is included in the Excel export on a sheet named Stream Voice.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-analytics.png" alt="The Stream Voice section of the usage report: activities, submissions, recordings, scores, and model calls">
+          <figcaption>Period totals, a table per activity, and the latest submissions.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Activities</strong> are activities created or used in the range.</li>
+          <li><strong>Locked submissions</strong> are files submitted and locked in the range.</li>
+          <li><strong>Students</strong> is the number of distinct submitters.</li>
+          <li><strong>Activities started</strong> are submissions where preparation time began.</li>
+          <li><strong>Questions created</strong> are questions saved for submissions in the range.</li>
+          <li><strong>Recordings</strong> are saved video answers.</li>
+          <li><strong>Automatic scores</strong> and <strong>average score</strong> come from scores saved in the range.</li>
+          <li><strong>Model calls</strong> and <strong>tokens</strong> are language-model use for Stream Voice.</li>
+        </ul>
+      </section>
+
+      <section id="faq">
+        <h2>Common questions</h2>
+        <div class="faq-item">
+          <h3>The student cannot submit</h3>
+          <p>Check that they are enrolled as a student, that the activity is inside its availability dates, and that the Stream connection is configured. The activity is registered in Stream the first time it is saved. If the message says the activity is not registered yet, open it again after saving.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Refreshing the score does not return a score</h3>
+          <p>The recording is kept even without a score. Refresh calls the language model configured in Stream. If that model is unavailable, or the account balance cannot cover the request, the screen stays without a new score. A Stream administrator updates the model or the balance, then the student clicks Refresh score again.</p>
+        </div>
+        <div class="faq-item">
+          <h3>The gradebook grade did not change</h3>
+          <p>The gradebook updates when there is a numeric score. A provisional score, or waiting for a transcript, does not write the final grade yet. After a final score, reload the submissions page.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Where the recordings are</h3>
+          <p>On the submissions page, click the student’s name. Under the summary are the questions, the player, and the transcript. Those recordings are also counted in the Stream usage report.</p>
+        </div>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

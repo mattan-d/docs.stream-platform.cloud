@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de gestión de comentarios – Preguntas y respuestas de vídeos</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Gestión de comentarios</h1>
+      <p class="lead">Pantalla de gestión de comentarios (preguntas y respuestas) de los vídeos – visualización, filtrado, ordenación y edición. Accesible mediante <strong>videos/comments</strong> o desde el menú «Comentarios» / «Soporte».</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../videos-comments.html" hreflang="he">עברית</a>
+        <a href="../en/videos-comments.html" hreflang="en">English</a>
+        <a href="videos-comments.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>¿Qué es la pantalla de gestión de comentarios?</h2>
+            <p>En la página de <strong>gestión de comentarios</strong> se muestran todos los comentarios (preguntas/respuestas) relacionados con vídeos del sistema. Los administradores ven todos los comentarios; un usuario normal ve solo los suyos. Desde esta pantalla puede buscar, filtrar por estado y fechas, ordenar e ir a editar un comentario o el vídeo relacionado.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-overview.png" alt="Pantalla de gestión de comentarios – vista general">
+              <figcaption>Pantalla de gestión de comentarios – título, barra de filtros y lista de comentarios.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Acceso a la pantalla</h2>
+            <p>Puede acceder a la gestión de comentarios de una de estas formas:</p>
+            <ul>
+              <li>Desde el menú principal – pulse <strong>Comentarios</strong> o <strong>Soporte</strong> (según la configuración del sistema).</li>
+              <li>Navegación directa a: <strong>/videos/comments</strong> (por ejemplo, <code>https://dev.video/videos/comments</code>).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Filtrado de comentarios (lado izquierdo)</h2>
+            <p>En la columna izquierda aparece <strong>filtrar comentarios</strong> con estos campos:</p>
+            <ul>
+              <li><strong>Búsqueda</strong> – introduzca texto para buscar por ID del comentario, contenido del comentario o ID del vídeo.</li>
+              <li><strong>Estado</strong> – elija entre estados definidos (por ejemplo, aprobado, pendiente, oculto) o «Todos».</li>
+              <li><strong>Desde fecha</strong> y <strong>Hasta fecha</strong> – limite los resultados a un rango de fechas.</li>
+              <li>Botón <strong>Filtrar</strong> – aplica el filtrado con los valores introducidos.</li>
+              <li>Botón <strong>Restablecer</strong> – cancela el filtrado y vuelve a la lista normal.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-filters.png" alt="Filtros de comentarios">
+              <figcaption>Área de filtrado de comentarios – búsqueda, estado y fechas.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Tabla de comentarios</h2>
+            <p>En el área central se muestra una tabla con estas columnas:</p>
+            <ul>
+              <li><strong>Selección</strong> – casilla de verificación por comentario (para acciones múltiples, si están disponibles).</li>
+              <li><strong>Imagen</strong> – miniatura del vídeo relacionado.</li>
+              <li><strong>ID</strong> – identificador del comentario (ordenable).</li>
+              <li><strong>Comentario</strong> – contenido del comentario o título; al hacer clic en el comentario se va a la pantalla de edición.</li>
+              <li><strong>Vídeo</strong> – título del vídeo; enlace para ver en la página del vídeo.</li>
+              <li><strong>Estado</strong> – estado del comentario (ordenable).</li>
+              <li><strong>Usuario</strong> – usuario que escribió el comentario.</li>
+              <li><strong>Fecha de actualización</strong> – cuándo se actualizó el comentario por última vez (ordenable).</li>
+            </ul>
+            <p>Ordenación: al hacer clic en el encabezado de una columna (ID, fecha de actualización, estado, etc.) se ordena la tabla por esa columna.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-table.png" alt="Tabla de comentarios">
+              <figcaption>Tabla de comentarios – columnas y enlaces a edición y vídeo.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Edición de un comentario</h2>
+            <p>Al hacer clic en el contenido del comentario (columna «Comentario») o en el enlace de edición se accede a la pantalla de <strong>editar comentario</strong>, donde puede actualizar la pregunta/respuesta y el estado. Tras guardar, normalmente se vuelve a la lista de comentarios o a la página del vídeo, según la configuración.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/comments-edit.png" alt="Pantalla de edición de comentario">
+              <figcaption>Pantalla de edición de comentario – pregunta, respuesta y acciones de guardado.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Selección múltiple y restablecer</h2>
+            <p>En la parte inferior de la tabla puede haber un enlace <strong>Todos</strong> – para seleccionar todos los comentarios de la página (para acciones múltiples si están configuradas). Al restablecer el filtro se limpian los filtros y se muestran de nuevo todos los comentarios que el usuario puede ver.</p>
+            <div class="note">
+              <strong>Nota:</strong> Un usuario que no sea administrador ve solo los comentarios asignados a él. Un administrador ve todos los comentarios del sistema.
+            </div>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

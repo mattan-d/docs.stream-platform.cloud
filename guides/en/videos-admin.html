@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Management Guide – for Administrators</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Video Management</h1>
+      <p class="lead">Administrators only – page for managing all videos in the system at <strong>/videos/admin</strong>.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../videos-admin.html" hreflang="he">עברית</a>
+        <a href="videos-admin.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/videos-admin.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Overview</h2>
+            <p>The <strong>Video Management</strong> page is accessible only to users with administrator permissions. Open it from the menu (for example <strong>Video Management</strong>) or at <strong>/videos/admin</strong> (for example <code>https://dev.video/videos/admin</code>). The page shows a card list of videos, advanced filtering (status, privacy, user, channel, dates, length), sorting, multi-select, and deletion.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-overview.png?v=1" alt="Video management page – list and filter bar">
+              <figcaption>Video management page – header, filters (search, status, privacy, user, channel, dates) and video card list.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Note:</strong> A non-admin user will see a 404 page or an access message. Sign in as an administrator.
+            </div>
+          </section>
+
+          <section>
+            <h2>Accessing the page</h2>
+            <p>In the top menu (user menu), choose <strong>Video Management</strong>. This option appears only for administrators.</p>
+          </section>
+
+          <section>
+            <h2>Filtering (sidebar)</h2>
+            <p>On the left:</p>
+            <ul>
+              <li><strong>Search</strong> – search by ID, title, description, path, course.</li>
+              <li><strong>Status</strong> – published, archive, error, processing, pending download (or all).</li>
+              <li><strong>Privacy</strong> – public, authenticated, link (or all).</li>
+              <li><strong>User</strong> – filter by user (autocomplete).</li>
+              <li><strong>Channel</strong> – filter by channel.</li>
+              <li><strong>From date / To date</strong> – upload date range.</li>
+              <li><strong>Minimum / maximum length (minutes)</strong> – video duration limits.</li>
+              <li><strong>Filter</strong> – apply the filter. <strong>Reset</strong> – clear and return to the full list.</li>
+              <li><strong>Actions</strong> – <strong>Export to Excel</strong> – download a report of videos matching the filter (ID, title, duration, date).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Sorting and multi-select</h2>
+            <p>Above the card list: video count, <strong>Select all</strong> (check/uncheck all cards), and <strong>Sort</strong> links – date, title, status. After selecting at least one video, an <strong>actions bar</strong> appears: "X videos selected", <strong>Download</strong> button (up to 5 videos – for published videos that are not from YouTube) and <strong>Delete</strong> button (opens a dialog to confirm deletion of selected items).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-actions-bar.png?v=1" alt="Actions bar after selecting videos">
+              <figcaption>After selecting one or more videos – "videos selected" bar with download and delete.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Video card</h2>
+            <p>Each video is shown in a card with:</p>
+            <ul>
+              <li><strong>Checkbox</strong> – for multi-delete or download selection.</li>
+              <li><strong>Thumbnail and duration</strong> – clicking the image or title goes to the watch/edit page.</li>
+              <li><strong>Title and status badge</strong> – published, archive, error, processing, etc.</li>
+              <li><strong>Metadata</strong> – ID, source, user, upload date, size, privacy, views, captions.</li>
+              <li><strong>Actions</strong> – <strong>Edit</strong> (video settings), <strong>Delete</strong> (confirmation dialog for deleting the single video).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-delete-modal.png?v=1" alt="Video deletion confirmation dialog">
+              <figcaption>After clicking the delete button next to a video – dialog to confirm deleting the video.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Deletion – single and bulk</h2>
+            <p>Clicking the delete icon on a card opens a dialog to confirm deleting that single video. Multi-select and clicking <strong>Delete</strong> in the actions bar opens the same dialog with a link to delete all selected items. On confirmation – videos are deleted and the page refreshes (or a list of deleted videos is shown). Deletion is usually irreversible.</p>
+          </section>
+
+          <section>
+            <h2>Edit and export</h2>
+            <p>Clicking <strong>Edit</strong> (gear icon) goes to the <strong>Video Settings</strong> page (<code>/videos/edit/{id}</code>) – edit title, description, privacy, trim, and more (see <a href="video-settings.html">Video settings</a>). <strong>Export to Excel</strong> in the sidebar downloads a file with videos matching the current filter.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

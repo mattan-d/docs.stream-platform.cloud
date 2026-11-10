@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>יצירת שאלות מסרטון Stream ב-Moodle – סוגי שאלה ו-Web Service</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>יצירת שאלות מסרטון Stream ב-Moodle</h1>
+      <p class="lead">מדריך למרצים ולמעצבי קורסים: מתי מופיע בלוק „יצירת שאלה מתוך סרטון Stream”, אילו סוגי שאלות נתמכים, ואיך הם מתחברים ל־Web Service של Stream (<code>video-subtitle-questions</code>) כולל סוג נכון/לא נכון (<code>true_false</code>).</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="moodle-questions-from-stream.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/moodle-questions-from-stream.html" hreflang="en">English</a>
+        <a href="es/moodle-questions-from-stream.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מתי נראה הפיצ’ר?</h2>
+            <p>הפיצ’ר מופיע בטופס יצירת שאלה חדשה רק כש<strong>סוג השאלה</strong> הוא אחד מהבאים:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>סוג השאלה במודל</th>
+                  <th>שם טכני</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>רב־ברירה</td>
+                  <td><code>multichoice</code></td>
+                </tr>
+                <tr>
+                  <td>תשובה קצרה</td>
+                  <td><code>shortanswer</code></td>
+                </tr>
+                <tr>
+                  <td>אמת / שקר</td>
+                  <td><code>truefalse</code></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>כשפותחים את אחד מסוגי השאלה האלה, מתווספת לטופס הקטע <strong>„יצירת שאלה מתוך סרטון Stream”</strong> (מזהה טכני בדף: <code>questionfromstreamheader</code>) – עם רשת סרטונים וכפתור ליצירה אוטומטית.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/moodle-question-from-stream.png" width="1024" height="682" loading="lazy" alt="טופס יצירת שאלה במודל: הקטע „יצירת שאלה מתוך סרטון STREAM” עם רשת סרטונים, הנחיה לבחור סרטון וכפתור יצירת שאלה אוטומטית">
+              <figcaption>דוגמה לממשק: רשת סרטונים (כותרת, משך, מזהה), הנחיה „בחר סרטון מהרשימה…” וכפתור <strong>יצירת שאלה אוטומטית</strong> מתחת לרשת.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>חשוב:</strong> סוגי שאלות אחרים (חיבור, מאמר, חישוב וכו’) <strong>לא</strong> יקבלו את הבלוק הזה.
+            </div>
+          </section>
+
+          <section>
+            <h2>תנאים מוקדמים</h2>
+            <ul>
+              <li><strong>הגדרות האתר:</strong> צריכות להיות מוגדרות <strong>כתובת Stream</strong> ו־<strong>מפתח API</strong>. אם חסר – תופיע התראה בהתאמה.</li>
+              <li><strong>פרופיל משתמש:</strong> לרוב נדרשת <strong>כתובת דוא״ל</strong> בפרופיל, כדי שהמערכת תטעין את רשימת הסרטונים מהשירות (כפי שמתואר בהודעות השגיאה המובנות).</li>
+              <li><strong>סרטונים עם כתוביות:</strong> ברשימה יופיעו סרטונים הרלוונטיים לחשבון / האימות שלך ב־Stream, ובתנאי שיש בסיס ליצירת שאלות מהכתוביות.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>שלבי שימוש (לכל סוג שאלה נתמך)</h2>
+            <ol>
+              <li>צרו שאלה חדשה ובחרו את <strong>סוג השאלה</strong> הרצוי מתוך שלושת הסוגים למעלה.</li>
+              <li>במקטע „יצירת שאלה מתוך סרטון Stream” – אם יש הרבה סרטונים, ניתן לעבור דפים. במעבר דפים משתמשים בפרמטר <code>ls_uvpage</code> בשורת הכתובת.</li>
+              <li>בחרו סרטון מהרשימה (לחיצה על כרטיס מסמנת את הסרטון הנבחר).</li>
+              <li>לחצו על <strong>„יצירת שאלה אוטומטית”</strong>.</li>
+              <li>המערכת קוראת לשרת Stream (עם סוג השאלה המתאים), ופותחת במעבר (<strong>redirect</strong>) את טופס השאלה עם השדות הממולאים מראש.</li>
+              <li>בדקו וערכו את הניסוח, התשובות והציונים, ואז שמרו את השאלה כרגיל.</li>
+            </ol>
+            <div class="warn">
+              <strong>אם לא נבחר סרטון</strong> לפני הלחיצה – תוצג הודעה על צורך לבחור מהרשימה (מזהה טכני: <code>questionfromstreamselectvideo</code>).
+            </div>
+          </section>
+
+          <section>
+            <h2>מה נשלח ל־API לפי סוג השאלה?</h2>
+            <p>קוד התוסף במודל ממפה את סוג טופס Moodle לפרמטר <code>question_type</code> בקריאה ל־Stream:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>טופס במודל</th>
+                  <th><code>question_type</code> ל־API</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>רב־ברירה</td>
+                  <td><code>multichoice</code></td>
+                </tr>
+                <tr>
+                  <td>תשובה קצרה</td>
+                  <td><code>short_answer</code></td>
+                </tr>
+                <tr>
+                  <td>אמת / שקר</td>
+                  <td><code>true_false</code></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>בנוסף נשלחים בדרך כלל <code>videoid</code>, <code>count</code> (כרגע <strong>2</strong> בעת הלחיצה מה־JavaScript), ופרמטרים של קטגוריה / קורס / מודול מהטופס – בהתאם להגדרות התוסף והטופס.</p>
+          </section>
+
+          <section>
+            <h2>מה כל סוג מצפה לקבל מה־API (בקצרה)</h2>
+            <p>שרת Stream מחזיר רשימת שאלות ב־JSON. התוסף בודק שהפריטים תואמים לסוג שנבחר במודל:</p>
+            <ul>
+              <li><strong>רב־ברירה:</strong> פריט עם <code>type</code> תואם לשאלת רב־ברירה (<code>multiple_choice</code>), כולל אפשרויות ותשובה נכונה – לפי המפרט של Stream.</li>
+              <li><strong>תשובה קצרה:</strong> פריט <code>short_answer</code> עם טקסט שאלה ו־<code>answer_key</code> (ומקורות תשובה נוספים נתמכים במיפוי בתוסף).</li>
+              <li><strong>אמת / שקר:</strong> פריט <code>true_false</code> עם <code>question</code> ו־<code>correct_answer</code> בוליאני (<code>true</code> או <code>false</code>).</li>
+            </ul>
+            <div class="note">
+              <strong>אימות:</strong> אם התשובה מה־API לא תואמת את סוג השאלה שנבחר במודל – תוצג אחת מהודעות השגיאה המתאימות (למשל אין שאלת רב־ברירה / תשובה קצרה / אמת־שקר תקינה).
+            </div>
+          </section>
+
+          <section>
+            <h2>הערות נוספות</h2>
+            <ul>
+              <li><strong>קישור למילוי מראש:</strong> הקישור הוא חד־פעמי וקצר בזמן (מבוסס טוקן ב־session). אם פג התוקף או ניסיתם לפתוח ידנית קישור לא תקף – חזרו לשלב בחירת הסרטון ויצרו שוב.</li>
+              <li><strong>טיוטה:</strong> לאחר המילוי האוטומטי השאלה נשמרת כטיוטה שכדאי לעבור עליה לפני שמירה סופית.</li>
+              <li><strong>כינויים ב־API:</strong> בקריאה ישירה ל־Web Service ניתן להשתמש גם בכינויים (למשל <code>mc</code>, <code>short</code>, <code>tf</code>) – בממשק Moodle נעשה שימוש בערכים הנורמליים למעלה.</li>
+            </ul>
+            <p>למבנה המלא של נקודת הקצה והשדות ראו בתיעוד המפתחים בקובץ <code>webservice/video_subtitle_questions.php</code> בפרויקט Stream.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

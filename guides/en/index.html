@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream System Guides | CentricApp</title>
+  <style>
+    :root {
+      --brand: #0d9488;
+      --brand-dark: #0f766e;
+      --brand-light: #ccfbf1;
+      --bg: #f0fdfa;
+      --surface: #fff;
+      --text: #134e4a;
+      --text-muted: #115e59;
+      --border: #99f6e4;
+      --radius: 12px;
+      --shadow: 0 1px 3px rgba(13, 148, 136, 0.08);
+      --shadow-hover: 0 4px 12px rgba(13, 148, 136, 0.15);
+      --font: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: var(--font);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    .page-header {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+      color: #fff;
+      padding: 2rem 1.25rem 2.5rem;
+      text-align: center;
+    }
+    .page-header .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    .guide-logo {
+      display: inline-block;
+      height: 2.5rem;
+      width: auto;
+      margin-bottom: 1rem;
+      filter: brightness(0) invert(1);
+    }
+    .page-header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 0.35rem 0;
+      letter-spacing: -0.02em;
+    }
+    .page-header .tagline {
+      font-size: 0.95rem;
+      opacity: 0.95;
+      margin: 0;
+    }
+    .page-header a.company {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      display: inline-block;
+    }
+    .page-header a.company:hover {
+      text-decoration: underline;
+    }
+    .wrap {
+      max-width: 640px;
+      margin: 0 auto;
+      padding: 0 1.25rem 2rem;
+      position: relative;
+      margin-top: -1.25rem;
+    }
+    .card-wrap {
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+    }
+    .lead {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin: 0 0 1.25rem 0;
+      padding: 0 0.25rem;
+    }
+    ul { list-style: none; margin: 0; padding: 0; }
+    li { margin-bottom: 0.5rem; }
+    a.guide-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--surface);
+      padding: 1rem 1.25rem;
+      border-radius: 10px;
+      color: var(--brand-dark);
+      text-decoration: none;
+      font-weight: 500;
+      border: 1px solid var(--border);
+      transition: background 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+    a.guide-link:hover {
+      background: var(--brand-light);
+      border-color: var(--brand);
+      box-shadow: var(--shadow-hover);
+      color: var(--brand-dark);
+    }
+    a.guide-link::before {
+      content: '';
+      width: 4px;
+      height: 1.25em;
+      background: var(--brand);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .guide-footer {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+      font-size: 0.9rem;
+      color: var(--text);
+      text-align: center;
+    }
+    .guide-footer p { margin: 0.35rem 0; }
+    .guide-footer a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .guide-footer a:hover { text-decoration: underline; }
+  </style>
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Stream System Guides</h1>
+      <p class="tagline">Available guides for using the Stream system.</p>
+      <a href="https://centricapp.co.il/" class="company" target="_blank" rel="noopener">CentricApp LTD – Moodle systems experts</a>
+      <div class="lang-switch-wrap">
+      <span class="lang-switch-label">Language</span>
+      <nav class="lang-switch" aria-label="Language">
+        <a href="../index.html" hreflang="he">עברית</a>
+        <a href="index.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/index.html" hreflang="es">Español</a>
+      </nav>
+    </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="card-wrap">
+      <p class="lead">Choose a guide from the list below to continue reading.</p>
+      <ul>
+        <li><a class="guide-link" href="admin-settings.html">System settings – for administrators (admin/settings)</a></li>
+        <li><a class="guide-link" href="saml2-admin.html">SAML2 (SSO) connection – administrator guide, including Microsoft 365 / Entra ID</a></li>
+        <li><a class="guide-link" href="videos-admin.html">Video management – for administrators (videos/admin)</a></li>
+        <li><a class="guide-link" href="videos-my.html">My videos – manage your uploads (videos/my)</a></li>
+        <li><a class="guide-link" href="user-admin.html">User management – for administrators (user/admin)</a></li>
+        <li><a class="guide-link" href="playlist.html">Playlists – list, create, and edit</a></li>
+        <li><a class="guide-link" href="moodle-integration.html">Moodle integration – installation, settings, and Zoom sync</a></li>
+        <li><a class="guide-link" href="moodle-stream-lecturer-quick-guide.html">Quick lecturer guide – embedding videos in Moodle via STREAM</a></li>
+        <li><a class="guide-link" href="moodle-stream-embed.html">Embed a video in Moodle – pick an existing video in a STREAM activity, with screenshots</a></li>
+        <li><a class="guide-link" href="stream-voice.html">Stream Voice – administrator guide: Moodle activity, recording, score, and usage report, with screenshots</a></li>
+        <li><a class="guide-link" href="moodle-questions-from-stream.html">Creating Moodle questions from a Stream video – question types and Web Service UI</a></li>
+        <li><a class="guide-link" href="video-upload.html">Video upload – uploading files and sources</a></li>
+        <li><a class="guide-link" href="studio.html">Using the studio – creating a video from segments</a></li>
+        <li><a class="guide-link" href="video-settings.html">Video settings – all options</a></li>
+        <li><a class="guide-link" href="video-topics.html">Video topics (chapters) – adding and editing for lecturers</a></li>
+        <li><a class="guide-link" href="ai-navigation-topics-and-caption-chat.html">Automatic navigation topics from captions and AI chat about the video</a></li>
+        <li><a class="guide-link" href="video-transcription.html">Creating a video transcription – steps and workflow</a></li>
+        <li><a class="guide-link" href="video-trim.html">Single video trim – timeline editor in video settings</a></li>
+        <li><a class="guide-link" href="videos-comments.html">Comment management</a></li>
+        <li><a class="guide-link" href="video-watch.html">Video watch page – options</a></li>
+      </ul>
+    </div>
+    <footer class="guide-footer">
+      <p>All guides and their copyrights belong to CentricApp LTD.</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+      <p>© CentricApp LTD. 2026</p>
+    </footer>
+  </main>
+</body>
+</html>

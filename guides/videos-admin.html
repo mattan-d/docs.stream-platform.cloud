@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך ניהול סרטונים – למנהלים</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>ניהול סרטונים</h1>
+      <p class="lead">מדריך למנהלים בלבד – דף ניהול כל הסרטונים במערכת ב־<strong>/videos/admin</strong>.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="videos-admin.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/videos-admin.html" hreflang="en">English</a>
+        <a href="es/videos-admin.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מבט כללי</h2>
+            <p>עמוד <strong>ניהול סרטונים</strong> נגיש רק למשתמשים עם הרשאות מנהל. נכנסים אליו מהתפריט (למשל <strong>ניהול סרטונים</strong>) או בכתובת <strong>/videos/admin</strong> (למשל <code>https://dev.video/videos/admin</code>). בעמוד מוצגת רשימת סרטונים בכרטיסים, סינון מתקדם (סטטוס, פרטיות, משתמש, ערוץ, תאריכים, אורך), מיון, בחירה מרובה ומחיקה.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/videos-admin-overview.png?v=1" alt="עמוד ניהול סרטונים – רשימה וסרגל סינון">
+              <figcaption>עמוד ניהול סרטונים – כותרת, סינון (חיפוש, סטטוס, פרטיות, משתמש, ערוץ, תאריכים) ורשימת כרטיסי הסרטונים.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>שימו לב:</strong> משתמש שאינו מנהל יקבל דף 404 או הודעת גישה. יש להתחבר כמנהל.
+            </div>
+          </section>
+
+          <section>
+            <h2>כניסה לעמוד</h2>
+            <p>בתפריט העליון (תפריט המשתמש) בחרו <strong>ניהול סרטונים</strong>. האפשרות מופיעה רק למנהלים.</p>
+          </section>
+
+          <section>
+            <h2>סינון (סרגל צד)</h2>
+            <p>בצד שמאל:</p>
+            <ul>
+              <li><strong>חיפוש</strong> – חיפוש לפי מזהה, כותרת, תיאור, נתיב, קורס.</li>
+              <li><strong>סטטוס</strong> – מפורסם, ארכיון, שגיאה, תהליך עיבוד, ממתין להורדה (או הכל).</li>
+              <li><strong>פרטיות</strong> – ציבורי, הזדהות, קישור (או הכל).</li>
+              <li><strong>משתמש</strong> – סינון לפי משתמש (אוטocomplete).</li>
+              <li><strong>ערוץ</strong> – סינון לפי ערוץ.</li>
+              <li><strong>מתאריך / עד תאריך</strong> – טווח תאריכים להעלאה.</li>
+              <li><strong>אורך מינימלי / מקסימלי (דקות)</strong> – מגבלת משך הסרטון.</li>
+              <li><strong>סנן</strong> – הפעלת הסינון. <strong>איפוס</strong> – ניקוי וחזרה לרשימה מלאה.</li>
+              <li><strong>פעולות</strong> – <strong>ייצוא ל־Excel</strong> – הורדת דוח של הסרטונים התואמים לסינון (מזהה, כותרת, משך, תאריך).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>מיון ובחירה מרובה</h2>
+            <p>מעל רשימת הכרטיסים: מספר הסרטונים, <strong>בחר הכל</strong> (סימון/ביטול לכל הכרטיסים), וקישורי <strong>מיון</strong> – תאריך, כותרת, סטטוס. לאחר סימון של לפחות סרטון אחד מופיעה <strong>סרגל פעולות</strong>: "X סרטונים נבחרו", כפתור <strong>הורדה</strong> (עד 5 סרטונים – לסרטונים מפורסמים שאינם מ־YouTube) וכפתור <strong>מחיקה</strong> (פותח חלון לאישור מחיקת הנבחרים).</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/videos-admin-actions-bar.png?v=1" alt="סרגל פעולות לאחר בחירת סרטונים">
+              <figcaption>לאחר סימון סרטון אחד או יותר – סרגל "סרטונים נבחרו" עם הורדה ומחיקה.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>כרטיס סרטון</h2>
+            <p>כל סרטון מוצג בכרטיס עם:</p>
+            <ul>
+              <li><strong>תיבת בחירה</strong> – לסימון למחיקה מרובה או להורדה.</li>
+              <li><strong>תמונה ומשך</strong> – לחיצה על התמונה או הכותרת מובילה לעמוד הצפייה/עריכה.</li>
+              <li><strong>כותרת ותג סטטוס</strong> – מפורסם, ארכיון, שגיאה, תהליך עיבוד וכו'.</li>
+              <li><strong>מטא־דאטה</strong> – מזהה, מקור, משתמש, תאריך העלאה, גודל, פרטיות, חשיפות, כתוביות.</li>
+              <li><strong>פעולות</strong> – <strong>עריכה</strong> (הגדרות הסרטון), <strong>מחיקה</strong> (חלון אישור למחיקת הסרטון הבודד).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/videos-admin-delete-modal.png?v=1" alt="חלון אישור מחיקת סרטון">
+              <figcaption>לאחר לחיצה על כפתור מחיקה ליד סרטון – חלון לאישור מחיקת הסרטון.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>מחיקה – בודדת ומרובה</h2>
+            <p>לחיצה על אייקון המחיקה בכרטיס פותחת חלון לאישור מחיקת הסרטון הבודד. בחירה מרובה ולחיצה על <strong>מחיקה</strong> בסרגל הפעולות פותחת את אותו חלון עם קישור למחיקת כל המסומנים. באישור – הסרטונים נמחקים והדף מתעדכן (או מוצגת רשימת הסרטונים שנמחקו). פעולת מחיקה בדרך כלל לא הפיכה.</p>
+          </section>
+
+          <section>
+            <h2>עריכה וייצוא</h2>
+            <p>לחיצה על <strong>עריכה</strong> (אייקון גלגל שיניים) מובילה לדף <strong>הגדרות הסרטון</strong> (<code>/videos/edit/{id}</code>) – עריכת כותרת, תיאור, פרטיות, חיתוך ועוד (ראו <a href="video-settings.html">הגדרות הסרטון</a>). <strong>ייצוא ל־Excel</strong> בסרגל הצד מוריד קובץ עם רשימת הסרטונים התואמים לסינון הנוכחי.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

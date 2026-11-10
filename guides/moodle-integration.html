@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך התקנה ואינטגרציית Stream עם Moodle</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>התקנה ואינטגרציית Stream עם Moodle</h1>
+      <p class="lead">מדריך מנהל מערכת: התקנת תוספי <strong>local_stream</strong> ו־<strong>mod_stream</strong>, חיבור לשרת Stream, סנכרון הקלטות Zoom והצגת סרטונים בקורס.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="moodle-integration.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/moodle-integration.html" hreflang="en">English</a>
+        <a href="es/moodle-integration.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="תוכן עניינים">
+            <strong>תוכן עניינים</strong>
+            <ul>
+              <li><a href="#overview">מבט כללי</a></li>
+              <li><a href="#plugins">תוספים נדרשים</a></li>
+              <li><a href="#prerequisites">דרישות מקדימות</a></li>
+              <li><a href="#install">התקנה</a></li>
+              <li><a href="#stream-server">הגדרות בשרת Stream</a></li>
+              <li><a href="#local-config">הגדרת local_stream</a></li>
+              <li><a href="#mod-config">הגדרת mod_stream</a></li>
+              <li><a href="#cron">משימות מתוזמנות (Cron)</a></li>
+              <li><a href="#how-it-works">איך זה עובד</a></li>
+              <li><a href="#teacher">שימוש למרצה</a></li>
+              <li><a href="#troubleshooting">פתרון בעיות</a></li>
+              <li><a href="#links">קישורים</a></li>
+            </ul>
+          </nav>
+
+          <section id="overview">
+            <h2>מבט כללי</h2>
+            <p>אינטגרציית Stream עם Moodle מאפשרת:</p>
+            <ul>
+              <li><strong>סנכרון אוטומטי</strong> של הקלטות מפגשים (Zoom, Teams, Unicko וכו') לשרת Stream.</li>
+              <li><strong>הטמעה אוטומטית</strong> של הקלטות בקורס Moodle הרלוונטי (תוסף <code>local_stream</code>).</li>
+              <li><strong>פעילות Stream בקורס</strong> — פלייליסט ונגן וידאו מתוך Moodle (תוסף <code>mod_stream</code>).</li>
+            </ul>
+            <p>שני התוספים עובדים יחד: <code>local_stream</code> מטפל בזרימת ההקלטות מהענן; <code>mod_stream</code> מציג לסטודנטים את הסרטונים מתוך Stream.</p>
+          </section>
+
+          <section id="plugins">
+            <h2>תוספים נדרשים</h2>
+            <ul class="plugin-list">
+              <li>
+                <strong>local_stream — אינטגרציה מרכזית (Local plugin)</strong>
+                מסנכרן מפגשים והקלטות, מעלה לשרת Stream ומטמיע בקורס.<br>
+                <a href="https://github.com/mattan-d/moodle-local_stream" target="_blank" rel="noopener" class="external">GitHub – moodle-local_stream</a>
+                · <a href="https://moodle.org/plugins/local_stream" target="_blank" rel="noopener" class="external">Moodle.org</a>
+              </li>
+              <li>
+                <strong>mod_stream — פעילות Stream (Activity module)</strong>
+                מוסיף פעילות «STREAM» לקורס: פלייליסט, נגן מוטמע, איסוף הקלטות לפי קורס.<br>
+                <a href="https://github.com/mattan-d/moodle-mod_stream" target="_blank" rel="noopener" class="external">GitHub – moodle-mod_stream</a>
+                · <a href="https://moodle.org/plugins/mod_stream" target="_blank" rel="noopener" class="external">Moodle.org</a>
+              </li>
+            </ul>
+            <div class="note">
+              <strong>אופציונלי:</strong> תוסף <strong>filter_stream</strong> להטמעת קישורי Stream בתוך תוכן Moodle (דפים, תוויות). ראו <a href="https://moodle.org/plugins/filter_stream" target="_blank" rel="noopener" class="external">filter_stream ב־Moodle.org</a>.
+            </div>
+          </section>
+
+          <section id="prerequisites">
+            <h2>דרישות מקדימות</h2>
+            <ul>
+              <li>מערכת Moodle מעודכנת עם הרשאות מנהל אתר (Site administrator).</li>
+              <li>שרת Stream פעיל (למשל <code>https://stream.example.ac.il</code>) עם מפתח API (Account ID).</li>
+              <li>גישה ל־SSH/FTP או deployment לתיקיית Moodle, או התקנה דרך ממשק «Install plugins».</li>
+              <li>לסנכרון Zoom: חשבון Zoom עם <strong>Cloud Recording</strong> ו־API credentials (OAuth / Server-to-Server, לפי הגדרת הארגון).</li>
+            </ul>
+            <h3>גרסאות Moodle וענפי Git</h3>
+            <p>ב־<a href="https://github.com/mattan-d/moodle-mod_stream" target="_blank" rel="noopener" class="external">moodle-mod_stream</a> מוגדרים הענפים:</p>
+            <table>
+              <thead>
+                <tr><th>גרסת Moodle</th><th>ענף Git מומלץ</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>Moodle 3.4 – 4.1</td><td><code>MOODLE_401</code></td></tr>
+                <tr><td>Moodle 4.2</td><td><code>MOODLE_402</code></td></tr>
+              </tbody>
+            </table>
+            <p>ל־<code>local_stream</code> השתמשו בענף <code>master</code> או בענף שמתאים לגרסת Moodle שלכם (בדקו ב־README של המאגר).</p>
+          </section>
+
+          <section id="install">
+            <h2>התקנה</h2>
+            <p>מומלץ להתקין קודם את <code>local_stream</code>, ואחריו את <code>mod_stream</code>.</p>
+
+            <h3>שלב 1 — הורדת הקבצים</h3>
+            <ol>
+              <li>הורידו ZIP מ־GitHub (Code → Download ZIP) או clone:
+                <pre>git clone https://github.com/mattan-d/moodle-local_stream.git
+      git clone https://github.com/mattan-d/moodle-mod_stream.git</pre>
+              </li>
+              <li>עבור <code>mod_stream</code> — עברו לענף המתאים לגרסת Moodle (למשל <code>MOODLE_402</code>).</li>
+            </ol>
+
+            <h3>שלב 2 — העתקה לתיקיות Moodle</h3>
+            <table>
+              <thead>
+                <tr><th>תוסף</th><th>נתיב בשרת Moodle</th></tr>
+              </thead>
+              <tbody>
+                <tr><td>local_stream</td><td><code>moodle/local/stream/</code></td></tr>
+                <tr><td>mod_stream</td><td><code>moodle/mod/stream/</code></td></tr>
+              </tbody>
+            </table>
+            <p>ודאו ששם התיקייה הוא <strong>stream</strong> (אותיות קטנות), ושכל קבצי התוסף נמצאים ישירות בתוכה (כולל <code>version.php</code>).</p>
+
+            <h3>שלב 3 — השלמת ההתקנה ב־Moodle</h3>
+            <ol>
+              <li>היכנסו כמנהל אתר.</li>
+              <li>עברו ל<strong>ניהול האתר → הודעות</strong> (Site administration → Notifications).</li>
+              <li>Moodle יזהה את התוספים החדשים — לחצו <strong>המשך</strong> והשלימו את עדכון מסד הנתונים.</li>
+              <li>חזרו על התהליך לכל תוסף (אם התקנתם אחד אחרי השני).</li>
+            </ol>
+
+            <div class="warn">
+              <strong>חשוב:</strong> אחרי העדכון, נקו cache של Moodle: <strong>ניהול האתר → פיתוח → ניקוי כל המטמונים</strong>.
+            </div>
+          </section>
+
+          <section id="stream-server">
+            <h2>הגדרות בשרת Stream (VideoTube)</h2>
+            <p>לפני הגדרת התוספים ב־Moodle, ודאו שב<strong>מערכת Stream</strong> מוגדר מפתח API שהתוספים ישתמשו בו:</p>
+            <ol>
+              <li>היכנסו ל<strong>הגדרות המערכת</strong> (<code>/admin/settings</code>) בשרת Stream.</li>
+              <li>מצאו את שדה <strong>Account ID / API Key</strong> (הערך ב־<code>$CONFIG->apikey</code>).</li>
+              <li>העתיקו את המפתח — הוא יוזן בשני תוספי Moodle כ־<strong>Account ID</strong>.</li>
+              <li>ודאו שכתובת שרת Stream (URL) נגישה מ־Moodle (HTTPS, ללא חסימת firewall).</li>
+            </ol>
+          </section>
+
+          <section id="local-config">
+            <h2>הגדרת local_stream</h2>
+            <p>נתיב: <strong>ניהול האתר → תוספים → תוספים מקומיים → Stream</strong></p>
+
+            <h3>הגדרות עיקריות</h3>
+            <ul>
+              <li><strong>Platform (פלטפורמה)</strong> — בחרו את מקור ההקלטות:
+                <ul>
+                  <li><code>Zoom</code> — סנכרון הקלטות ענן מ־Zoom.</li>
+                  <li><code>Microsoft Teams</code> — הקלטות Teams.</li>
+                  <li><code>Unicko</code> — דרך LTI (לפי הגדרת הארגון).</li>
+                </ul>
+              </li>
+              <li><strong>Stream server / API</strong> — כתובת שרת Stream ו־Account ID (מפתח API).</li>
+              <li><strong>Zoom API</strong> (כשהפלטפורמה היא Zoom):
+                <ul>
+                  <li>Client ID / Client Secret או JWT / Server-to-Server credentials — לפי סוג האפליקציה ב־Zoom Marketplace.</li>
+                  <li>Cloud Recording חייב להיות מופעל בחשבון Zoom.</li>
+                </ul>
+              </li>
+              <li><strong>Embed order</strong> — האם לשים את פעילות ההקלטה מתחת לפעילות המפגש המקורית (למשל מתחת ל־Zoom).</li>
+              <li><strong>Based grouping / duplicate handling</strong> — מניעת הטמעה כפולה של אותה הקלטה (לפי UUID של Zoom).</li>
+              <li><strong>Notifications</strong> (אופציונלי) — הודעה לנרשמים בקורס כשהקלטה חדשה הוטמעה.</li>
+            </ul>
+
+            <h3>בדיקת חיבור</h3>
+            <p>לאחר שמירת ההגדרות, השתמשו בבדיקת סטטוס החיבור (אם קיימת במסך) כדי לוודא ש־Moodle מתקשר עם Stream ועם Zoom.</p>
+
+            <h3>זרימת Zoom (תמצית)</h3>
+            <ol>
+              <li>מרצה יוצר פעילות Zoom בקורס Moodle.</li>
+              <li>המפגש מתקיים עם הקלטה לענן.</li>
+              <li>משימה מתוזמנת של <code>local_stream</code> מושכת רשימת הקלטות.</li>
+              <li>ההקלטה מועלית ל־Stream (דרך <code>webservice/api.php</code>) ו/או נוצרת פעילות בקורס עם קישור לצפייה.</li>
+            </ol>
+          </section>
+
+          <section id="mod-config">
+            <h2>הגדרת mod_stream</h2>
+            <p>נתיב: <strong>ניהול האתר → תוספים → מודולי פעילות → Stream</strong></p>
+
+            <h3>הגדרות ברמת האתר</h3>
+            <ul>
+              <li><strong>Stream API endpoint</strong> — כתובת בסיס של שרת Stream (למשל <code>https://stream.smkb.ac.il</code>).</li>
+              <li><strong>Account ID</strong> — אותו מפתח API כמו ב־<code>local_stream</code> ובהגדרות Stream.</li>
+              <li><strong>Connection status</strong> — בדיקה ש־Moodle מצליח לגשת ל־<code>api2.php</code> ולקבל רשימת סרטונים.</li>
+              <li><strong>ברירות מחדל</strong> (לפי גרסה):
+                <ul>
+                  <li>האם לכלול אודיו / נגן אודיו לקורסים מסוימים.</li>
+                  <li>מצב איסוף הקלטות אוטומטי לפעילות.</li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>מה mod_stream עושה בקורס</h3>
+            <ul>
+              <li>מוסיף פעילות <strong>STREAM</strong> לקורס.</li>
+              <li>מציג פלייליסט של סרטונים משרת Stream (לפי בחירה ידנית או איסוף אוטומטי).</li>
+              <li>שולח ל־Stream פרטי משתמש מוגבלים (שם, דוא״ל, מזהה) לצורך אבטחה, סטטיסטיקות והגבלות צפייה — בהתאם להגדרות Stream.</li>
+            </ul>
+          </section>
+
+          <section id="cron">
+            <h2>משימות מתוזמנות (Cron)</h2>
+            <p>ל־<code>local_stream</code> חובה להריץ Cron של Moodle:</p>
+            <ol>
+              <li>עברו ל<strong>ניהול האתר → שרת → משימות מתוזמנות</strong> (Scheduled tasks).</li>
+              <li>מצאו את המשימה <strong>Embedded recordings (local_stream)</strong> — מחלקה <code>local_stream\task\embed</code>.</li>
+              <li>ודאו שהיא <strong>מופעלת</strong> ורצה בתדירות מתאימה (למשל כל 5–15 דקות, או כל שעה).</li>
+              <li>ודאו ש־<strong>Cron של Moodle</strong> רץ בשרת (crontab):
+                <pre>* * * * * php /path/to/moodle/admin/cli/cron.php</pre>
+              </li>
+            </ol>
+            <p>אפשר להריץ ידנית לבדיקה:</p>
+            <pre>php /path/to/moodle/admin/cli/scheduled_task.php --execute='\local_stream\task\embed'</pre>
+            <p>בדקו בלוג Moodle אם יש שגיאות API (Zoom / Stream).</p>
+          </section>
+
+          <section id="how-it-works">
+            <h2>איך זה עובד</h2>
+            <h3>הורדת סרטונים מענן Zoom</h3>
+            <p>לאחר שהתוסף <strong>local_stream</strong> מוגדר, המערכת מתחברת לענן Zoom, מזהה הקלטות של מפגשים שקשורים לקורסי Moodle, ומעלה אותן לשרת Stream. ההקלטות מרוכזות במערכת אחת לניהול, עריכה ותמלול.</p>
+            <h3>הטמעה אוטומטית בקורס</h3>
+            <p>הסרטונים שמסונכרנים מוטמעים <strong>אוטומטית</strong> ב<strong>קורס הרלוונטי</strong> — זה שממנו נוצר מפגש ה־Zoom. המרצה לא חייב להעלות ידנית קבצים.</p>
+            <h3>פעילות Stream לסטודנטים</h3>
+            <p>באמצעות <strong>mod_stream</strong> ניתן להוסיף פעילות Stream עם כל סרטוני הקורס (כולל אלו שנאספו אוטומטית), לסדר פלייליסט ולשלוט בזמינות.</p>
+            <div class="note">
+              <strong>יתרון:</strong> חוסך זמן למרצים ומבטיח שהתוכן מרוכז, מנוהל ונגיש לסטודנטים בתוך Moodle.
+            </div>
+          </section>
+
+          <section id="teacher">
+            <h2>שימוש למרצה (תקציר)</h2>
+            <p>לאחר שהמנהל הגדיר את התוספים:</p>
+            <ol>
+              <li><strong>Zoom + הקלטה אוטומטית</strong> — צרו פעילות Zoom בקורס, הקליטו לענן; אחרי עיבוד Zoom ההקלטה תופיע בקורס (דרך local_stream).</li>
+              <li><strong>פעילות STREAM</strong> — בקורס: «הוספת פעילות או משאב» → <strong>STREAM</strong>:
+                <ul>
+                  <li>הגדירו כותרת ותיאור.</li>
+                  <li>הפעילו «איסוף הקלטות» או בחרו סרטונים ידנית משרת Stream.</li>
+                  <li>סדרו את הפלייליסט בגרירה.</li>
+                  <li>קבעו תאריכי פתיחה/סגירה אם נדרש.</li>
+                </ul>
+              </li>
+            </ol>
+            <p>מדריך מפורט למרצה: <a href="moodle-stream-lecturer-quick-guide.html">מדריך שימוש מהיר למרצה – STREAM ב־Moodle</a>.</p>
+            <p>יצירת שאלות מסרטון: <a href="moodle-questions-from-stream.html">יצירת שאלות מסרטון Stream ב־Moodle</a>.</p>
+          </section>
+
+          <section id="troubleshooting">
+            <h2>פתרון בעיות</h2>
+            <table>
+              <thead>
+                <tr><th>בעיה</th><th>מה לבדוק</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>הקלטה לא מופיעה בקורס</td>
+                  <td>Cloud Recording ב־Zoom; משימת <code>local_stream\task\embed</code> פעילה; Cron רץ; credentials של Zoom ו־Stream.</td>
+                </tr>
+                <tr>
+                  <td>«Account ID is missing» / שגיאת API</td>
+                  <td>Account ID ב־Moodle תואם ל־<code>apikey</code> בשרת Stream; HTTPS נגיש.</td>
+                </tr>
+                <tr>
+                  <td>כותרות / עברית מוצגות כ־????</td>
+                  <td>UTF-8 ב־Moodle ו־MySQL; עדכון אחרון של שרת Stream (תיקון charset ב־API).</td>
+                </tr>
+                <tr>
+                  <td>הקלטה בקורס הלא נכון</td>
+                  <td>מיפוי courseid / שם קורס בהגדרות; נושא המפגש ב־Zoom.</td>
+                </tr>
+                <tr>
+                  <td>כפילויות של אותה הקלטה</td>
+                  <td>הפעילו «based grouping» / dedup ב־local_stream.</td>
+                </tr>
+                <tr>
+                  <td>פעילות mod_stream ריקה</td>
+                  <td>חיבור ל־api2.php; המשתמש/מרצה בעל סרטונים ב־Stream; פרטיות הסרטונים (ציבורי/הזדהות).</td>
+                </tr>
+              </tbody>
+            </table>
+            <p>לאבחון מתקדם: הפעילו debug ב־Moodle, הריצו את המשימה המתוזמנת ידנית ובדקו את הלוג.</p>
+          </section>
+
+          <section id="links">
+            <h2>קישורים שימושיים</h2>
+            <ul>
+              <li><a href="https://github.com/mattan-d/moodle-local_stream" target="_blank" rel="noopener" class="external">moodle-local_stream (GitHub)</a></li>
+              <li><a href="https://github.com/mattan-d/moodle-mod_stream" target="_blank" rel="noopener" class="external">moodle-mod_stream (GitHub)</a></li>
+              <li><a href="https://moodle.org/plugins/local_stream" target="_blank" rel="noopener" class="external">local_stream – Moodle.org</a></li>
+              <li><a href="https://moodle.org/plugins/mod_stream" target="_blank" rel="noopener" class="external">mod_stream – Moodle.org</a></li>
+              <li><a href="https://stream-platform.cloud/" target="_blank" rel="noopener" class="external">Stream Platform</a></li>
+              <li><a href="moodle-stream-lecturer-quick-guide.html">מדריך מרצה – STREAM ב־Moodle</a></li>
+              <li><a href="moodle-questions-from-stream.html">יצירת שאלות מסרטון Stream</a></li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

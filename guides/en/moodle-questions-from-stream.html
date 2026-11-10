@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creating Questions from a Stream Video in Moodle – Question Types and Web Service</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Creating Questions from a Stream Video in Moodle</h1>
+      <p class="lead">Guide for lecturers and course designers: when the «Create question from Stream video» block appears, which question types are supported, and how they connect to the Stream Web Service (<code>video-subtitle-questions</code>), including true/false (<code>true_false</code>).</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../moodle-questions-from-stream.html" hreflang="he">עברית</a>
+        <a href="moodle-questions-from-stream.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/moodle-questions-from-stream.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>When does this feature appear?</h2>
+            <p>The feature appears on the new question form only when the <strong>question type</strong> is one of the following:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Question type in Moodle</th>
+                  <th>Technical name</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Multiple choice</td>
+                  <td><code>multichoice</code></td>
+                </tr>
+                <tr>
+                  <td>Short answer</td>
+                  <td><code>shortanswer</code></td>
+                </tr>
+                <tr>
+                  <td>True / False</td>
+                  <td><code>truefalse</code></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>When you open one of these question types, the form gains a section titled <strong>«Create question from Stream video»</strong> (technical page ID: <code>questionfromstreamheader</code>) — with a video grid and a button for automatic generation.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-question-from-stream.png" width="1024" height="682" loading="lazy" alt="Moodle question form: the «Create question from STREAM video» section with a video grid, instruction to select a video, and an automatic question creation button">
+              <figcaption>Example interface: video grid (title, duration, ID), instruction «Select a video from the list…», and an <strong>Create question automatically</strong> button below the grid.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Important:</strong> other question types (matching, essay, calculated, etc.) <strong>do not</strong> receive this block.
+            </div>
+          </section>
+
+          <section>
+            <h2>Prerequisites</h2>
+            <ul>
+              <li><strong>Site settings:</strong> <strong>Stream URL</strong> and <strong>API key</strong> must be configured. If missing, a matching alert will appear.</li>
+              <li><strong>User profile:</strong> an <strong>email address</strong> is usually required in the profile so the system can load the video list from the service (as described in built-in error messages).</li>
+              <li><strong>Videos with subtitles:</strong> the list shows videos relevant to your Stream account/authentication, provided there is a basis for generating questions from subtitles.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Usage steps (for each supported question type)</h2>
+            <ol>
+              <li>Create a new question and choose the desired <strong>question type</strong> from the three above.</li>
+              <li>In the «Create question from Stream video» section — if there are many videos, you can paginate. Pagination uses the <code>ls_uvpage</code> parameter in the URL.</li>
+              <li>Select a video from the list (clicking a card marks it as selected).</li>
+              <li>Click <strong>«Create question automatically»</strong>.</li>
+              <li>The system calls the Stream server (with the matching question type) and opens the question form via <strong>redirect</strong> with fields pre-filled.</li>
+              <li>Review and edit the wording, answers, and grades, then save the question as usual.</li>
+            </ol>
+            <div class="warn">
+              <strong>If no video was selected</strong> before clicking — a message will appear asking you to select one from the list (technical ID: <code>questionfromstreamselectvideo</code>).
+            </div>
+          </section>
+
+          <section>
+            <h2>What is sent to the API by question type?</h2>
+            <p>The Moodle plugin code maps the Moodle form type to the <code>question_type</code> parameter in the Stream call:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Moodle form</th>
+                  <th><code>question_type</code> for API</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Multiple choice</td>
+                  <td><code>multichoice</code></td>
+                </tr>
+                <tr>
+                  <td>Short answer</td>
+                  <td><code>short_answer</code></td>
+                </tr>
+                <tr>
+                  <td>True / False</td>
+                  <td><code>true_false</code></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Additionally, <code>videoid</code>, <code>count</code> (currently <strong>2</strong> when clicking from JavaScript), and category / course / module parameters from the form are usually sent — according to plugin and form settings.</p>
+          </section>
+
+          <section>
+            <h2>What each type expects from the API (briefly)</h2>
+            <p>The Stream server returns a list of questions in JSON. The plugin verifies that items match the type selected in Moodle:</p>
+            <ul>
+              <li><strong>Multiple choice:</strong> an item with <code>type</code> matching a multiple-choice question (<code>multiple_choice</code>), including options and a correct answer — per Stream specification.</li>
+              <li><strong>Short answer:</strong> a <code>short_answer</code> item with question text and <code>answer_key</code> (additional answer sources are supported in plugin mapping).</li>
+              <li><strong>True / False:</strong> a <code>true_false</code> item with <code>question</code> and boolean <code>correct_answer</code> (<code>true</code> or <code>false</code>).</li>
+            </ul>
+            <div class="note">
+              <strong>Validation:</strong> if the API response does not match the question type selected in Moodle — one of the matching error messages will appear (e.g. no valid multiple choice / short answer / true-false question).
+            </div>
+          </section>
+
+          <section>
+            <h2>Additional notes</h2>
+            <ul>
+              <li><strong>Pre-fill link:</strong> the link is one-time and short-lived (session token based). If it expired or you tried to open an invalid link manually — return to video selection and generate again.</li>
+              <li><strong>Draft:</strong> after automatic fill, the question is saved as a draft that should be reviewed before final save.</li>
+              <li><strong>API aliases:</strong> when calling the Web Service directly you can also use aliases (e.g. <code>mc</code>, <code>short</code>, <code>tf</code>) — the Moodle interface uses the normalized values above.</li>
+            </ul>
+            <p>For the full endpoint structure and fields, see the developer documentation in <code>webservice/video_subtitle_questions.php</code> in the Stream project.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

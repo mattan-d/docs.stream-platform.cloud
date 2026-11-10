@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך חיתוך וידאו בודד – הגדרות הסרטון</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>חיתוך וידאו בודד</h1>
+      <p class="lead">איך לחתוך סרטון אחד ישירות ממסך <strong>הגדרות הסרטון</strong> — בעזרת עורך ציר זמן רב-שכבתי (לא דרך הסטודיו).</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="video-trim.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/video-trim.html" hreflang="en">English</a>
+        <a href="es/video-trim.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מה זה חיתוך וידאו בודד?</h2>
+            <p>במקום ליצור סרטון חדש ממספר מקטעים ממקורות שונים (דרך <a href="studio.html">סטודיו</a>), אפשר לערוך <strong>סרטון אחד קיים</strong>: לסמן קטעים שיוסרו ממנו, והמערכת תייצר <strong>סרטון חדש</strong> שמכיל רק את מה שנשאר.</p>
+            <p>הסרטון המקורי <strong>נשאר ללא שינוי</strong>. הגרסה החתוכה היא רשומה נפרדת במערכת (כותרת מסוג <em>Trimmed - …</em> או שם דומה).</p>
+          </section>
+
+          <section>
+            <h2>מתי האזור זמין?</h2>
+            <ul>
+              <li>הסרטון במצב <strong>מוכן</strong> (לא בתהליך עיבוד).</li>
+              <li>מדיה מקומית / מועלה — לא סרטון YouTube חיצוני בלבד.</li>
+              <li>יש לכם הרשאת עריכה לסרטון (בעלים, מנהל או מנהל תוכן).</li>
+            </ul>
+            <p>אם האזור לא מופיע, בדקו סטטוס הסרטון או סוג המדיה.</p>
+          </section>
+
+          <section>
+            <h2>כניסה לעורך החיתוך</h2>
+            <ol>
+              <li>היכנסו ל־<strong>ניהול סרטונים</strong> מהתפריט.</li>
+              <li>מצאו את הסרטון ולחצו <strong>עריכה</strong>.</li>
+              <li>בדף <strong>הגדרות סרטון וידאו</strong>, גללו לאזור <strong>עריכת סרטון בציר זמן</strong> (מתחת לנגן, מעל «פרטים כללים»).</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>איך עובד החיתוך?</h2>
+            <p>הגישה היא <strong>«מה להסיר»</strong>: מסמנים קטעים שיוסרו, וכל השאר נשאר בגרסה החדשה.</p>
+            <div class="legend" aria-hidden="true">
+              <span class="legend-keep">נשאר בסרטון</span>
+              <span class="legend-cut">יוסר מהסרטון</span>
+              <span class="legend-captions">טווחי כתוביות</span>
+            </div>
+            <p>אפשר להסיר <strong>כמה קטעים</strong> מאותו סרטון — למשל פתיחה קצרה וקטע באמצע ההרצאה.</p>
+
+            <h3>רכיבי הממשק</h3>
+            <ul>
+              <li><strong>נגן</strong> — ניגון/עצירה ושעון נוכחי (זמן נוכחי / אורך מלא).</li>
+              <li><strong>ציר זמן</strong> — שלוש שכבות: וידאו, כתוביות (אם קיימות), נושאי ניווט.</li>
+              <li><strong>זום על ציר הזמן</strong> — התקרבות, התרחקות והתאמה לרוחב המסך.</li>
+              <li><strong>משך הסרטון החדש</strong> — מתעדכן לאחר שמסמנים לפחות קטע אחד להסרה.</li>
+              <li><strong>איפוס חיתוכים</strong> — מחיקת כל הסימונים להסרה בבת אחת.</li>
+            </ul>
+
+            <figure class="screenshot">
+              <img src="../docs/screenshot/video-trim-timeline.png" alt="עורך ציר זמן – מבט כללי עם שכבות וידאו, כתוביות ונושאים">
+              <figcaption>עורך ציר הזמן: שכבת וידאו, שכבת כתוביות (מספר הכתוביות מוצג ליד השם), ושכבת נושאי ניווט. מעל הציר — מקרא, זום ומשך הסרטון החדש.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>סימון קטע להסרה</h2>
+            <ol>
+              <li>בציר הזמן, <strong>גררו</strong> על טווח הזמן שברצונכם להסיר.</li>
+              <li>יופיע סרגל בחירה עם זמני התחלה וסוף, וסיכום של כמה כתוביות ונושאים נמצאים בטווח.</li>
+              <li>לחצו <strong>מחיקת קטע מהסרטון</strong> — הקטע יסומן כ«יוסר מהסרטון» (רקע משובץ על כל השכבות).</li>
+              <li>חזרו על הפעולה לכל קטע נוסף שצריך להסיר.</li>
+            </ol>
+            <p>קיצורי מקלדת (כשהפוקוס לא בשדה טקסט): <strong>Delete</strong> או <strong>Backspace</strong> מסירים את הטווח הנבחר.</p>
+
+            <figure class="screenshot">
+              <img src="../docs/screenshot/video-trim-cut-selection.png" alt="בחירת טווח להסרה וסרגל פעולות">
+              <figcaption>לאחר גרירה על הציר: סיכום «יוסר מהסרטון» עם זמני התחלה וסוף, כפתורי «מחיקת קטע מהסרטון», «ביטול חיתוך», ופעולות על כתוביות/נושאים בטווח.</figcaption>
+            </figure>
+
+            <h3>ביטול או שינוי חיתוך</h3>
+            <ul>
+              <li>לחיצה על <strong>קטע מסומן להסרה</strong> בציר הזמן — בחירתו; אז אפשר <strong>ביטול חיתוך</strong>.</li>
+              <li>ניתן לגרור את <strong>ידיות הקצה</strong> של הקטע המסומן כדי לשנות את גבולות ההסרה.</li>
+              <li><strong>איפוס חיתוכים</strong> — מוחק את כל הסימונים (לפני יצירת הסרטון החדש).</li>
+            </ul>
+
+            <div class="note">
+              <strong>טיוטה אוטומטית:</strong> הסימונים נשמרים זמנית בדפדפן בזמן העבודה. עדיין חובה ללחוץ <strong>יצירת סרטון חדש</strong> כדי שהמערכת תתחיל עיבוד.
+            </div>
+          </section>
+
+          <section>
+            <h2>פעולות נוספות בציר הזמן</h2>
+            <p>באותו עורך, בלי ליצור סרטון חדש:</p>
+            <ul>
+              <li><strong>נושאי ניווט</strong> — הוספה, עריכה או מחיקת פרקים (לחיצה על שכבת הנושאים או «+»).</li>
+              <li><strong>כתובית בטווח</strong> — הוספת כתובית חדשה בטווח שנבחר (כשיש כתוביות מוכנות).</li>
+              <li><strong>מחיקת נושאים בטווח</strong> — מוחקת פרקים שנופלים בתוך הבחירה.</li>
+            </ul>
+            <p>פעולות אלה נשמרות עם <strong>שמירה</strong> / <strong>שמירה וחזרה</strong> — לא עם «יצירת סרטון חדש».</p>
+
+            <h3>עריכת רשימת הכתוביות</h3>
+            <p>באזור התמלול/כתוביות (מתחת לציר הזמן או בלשונית ייעודית) ניתן לערוך כל משפט, לשנות זמני התחלה וסוף, או למחוק שורה — בנפרד מחיתוך הווידאו.</p>
+
+            <figure class="screenshot">
+              <img src="../docs/screenshot/video-trim-captions-list.png" alt="עריכת כתוביות – רשימת משפטים עם זמנים">
+              <figcaption>עריכת כתוביות: טקסט, זמני התחלה וסוף לכל שורה, ומחיקת שורה. שינויים נשמרים בשמירת הטופס — לא דורשים «יצירת סרטון חדש».</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>בינה מלאכותית (AI) באותו מסך</h2>
+            <p>בהגדרות הסרטון, כשיש כתוביות מוכנות, מופיע אזור <strong>בינה מלאכותית AI</strong> עם פעולות אופציונליות (לא חלק מחיתוך הווידאו עצמו):</p>
+            <ul>
+              <li><strong>יצירת נושאי ניווט אוטומטית מכתוביות</strong> — עד כ־10 פרקים על בסיס טקסט הכתוביות.</li>
+              <li><strong>יצירת סרטון קצר אוטומטי Reels</strong> — highlights עד כדקה מהכתוביות (סרטון חדש נפרד).</li>
+            </ul>
+            <p>מדריך מפורט: <a href="ai-navigation-topics-and-caption-chat.html">נושאי ניווט אוטומטיים ושיחת AI</a>.</p>
+
+            <figure class="screenshot">
+              <img src="../docs/screenshot/video-trim-ai.png" alt="אזור בינה מלאכותית AI בהגדרות הסרטון">
+              <figcaption>אזור AI: יצירת נושאי ניווט מכתוביות ויצירת Reels אוטומטי — זמין כשהתמלול/כתוביות מוכנים.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>יצירת הסרטון החתוך</h2>
+            <ol>
+              <li>לאחר שסימנתם את כל הקטעים להסרה, וודאו ש<strong>משך הסרטון החדש</strong> מתאים לציפייה.</li>
+              <li>בכותרת הדף יופיע כפתור <strong>יצירת סרטון חדש</strong> (במקום «שמירה») — רק כשיש לפחות חיתוך אחד.</li>
+              <li>לחצו <strong>יצירת סרטון חדש</strong>.</li>
+              <li>תופיע הודעה: <em>תהליך יצירת הסרטון החדש ממקטעים מתבצע כעת ברקע…</em></li>
+              <li>העיבוד רץ ברקע. לאחר מספר דקות הסרטון החדש יהיה מוכן; לעיתים תועברו לדף עריכת הסרטון החדש.</li>
+            </ol>
+
+            <div class="note">
+              <strong>חשוב:</strong> אין באפשרות זו להחליף את קובץ הסרטון המקורי — תמיד נוצרת <strong>רשומה חדשה</strong>. לעדכון כותרת, תגיות או פרטיות בלי חיתוך — השתמשו ב<strong>שמירה</strong> הרגילה.
+            </div>
+          </section>
+
+          <section>
+            <h2>הבדל מסטודיו</h2>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.95rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border); text-align: right;">
+                  <th style="padding: 0.5rem;">חיתוך בודד (הגדרות סרטון)</th>
+                  <th style="padding: 0.5rem;">סטודיו</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem;">מקור אחד — מסירים קטעים ממנו</td>
+                  <td style="padding: 0.5rem;">מקטעים ממספר סרטונים — מחברים לסרטון אחד</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem;">סרטון חדש; המקור נשאר</td>
+                  <td style="padding: 0.5rem;">סרטון חדש מהרכבת מקטעים</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem;">עורך ציר זמן + הסרת קטעים</td>
+                  <td style="padding: 0.5rem;">בחירת מקטעים «להכללה» מכל מקור</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>אימות התוצאה</h2>
+            <ol>
+              <li>חפשו ברשימת הסרטונים את הרשומה החדשה (לרוב כותרת עם קידומת חיתוך).</li>
+              <li>פתחו את <strong>דף הצפייה</strong> והפעילו — וודאו שהקטעים שהסרתם אינם מופיעים.</li>
+              <li>אם התוצאה לא נכונה, חזרו לעריכת <strong>הסרטון המקורי</strong>, תקנו את הסימונים ולחצו שוב «יצירת סרטון חדש».</li>
+            </ol>
+            <p>סרטונים ארוכים או עם הרבה קטעים להסרה עלולים לקחת יותר זמן — המתינו לסיום ההודעה ברקע.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

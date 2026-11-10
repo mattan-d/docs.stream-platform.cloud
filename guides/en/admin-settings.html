@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>System Settings Guide – for Administrators</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>System Settings</h1>
+      <p class="lead">Guide for users with administrator permissions – the system settings page at <strong>/admin/settings</strong>.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../admin-settings.html" hreflang="he">עברית</a>
+        <a href="admin-settings.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/admin-settings.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Table of contents">
+            <h2 id="toc-title">Table of contents</h2>
+            <ul>
+              <li><a href="#section-overview">Overview and access</a></li>
+              <li><a href="#section-general">General settings</a></li>
+              <li><a href="#section-messages">Outgoing messages</a></li>
+              <li><a href="#section-transcription">Video captions</a></li>
+              <li><a href="#section-youtube">YouTube upload</a></li>
+              <li><a href="#section-advanced">Advanced settings</a></li>
+              <li><a href="#section-saml2">SAML2 connection</a></li>
+              <li><a href="#section-channels">Channels</a></li>
+              <li><a href="#section-save">Saving</a></li>
+            </ul>
+          </nav>
+
+          <section id="section-overview">
+            <h2>Overview and access</h2>
+            <p>The <strong>System Settings</strong> page is accessible only to users with administrator permissions. Open it from the main menu (<strong>Settings</strong> button or dashboard) or at <strong>/admin/settings</strong> (for example <code>https://dev.video/admin/settings</code>).</p>
+            <p>On the left is <strong>navigation</strong> by section; in the center are all settings areas. After making changes, click <strong>Save</strong> at the bottom.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/admin-settings-overview.png" alt="System settings screen – overview">
+              <figcaption>System settings screen – navigation and general settings area.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Note:</strong> A non-admin user will see a 404 page or an access message. Sign in as an administrator.
+            </div>
+          </section>
+
+          <section id="section-general">
+            <h2>General settings</h2>
+            <p>In the <strong>General settings</strong> area, configure:</p>
+            <ul>
+              <li><strong>Organization name</strong> – appears in the system header.</li>
+              <li><strong>Stream URL</strong> – base URL of the system (sometimes locked).</li>
+              <li><strong>Organization logo</strong> – URL for the logo image.</li>
+              <li><strong>Upload date format</strong> – relative (X weeks ago) or date (31/01/26).</li>
+              <li><strong>Storage space</strong> – available and used space (in gigabytes and percentage).</li>
+              <li><strong>Available interface languages</strong> – select languages shown in the language switcher (for example Hebrew, English, العربية).</li>
+              <li><strong>Theme (colors)</strong> – choose a color template (Soft Coral, Emerald Tech, Ocean Breeze, and more).</li>
+            </ul>
+          </section>
+
+          <section id="section-messages">
+            <h2>Outgoing messages</h2>
+            <p>In the <strong>Outgoing messages</strong> area, configure:</p>
+            <ul>
+              <li><strong>Support email address</strong> – shown in support areas.</li>
+              <li><strong>Allow sending messages after a new video upload</strong> – enable/disable.</li>
+              <li><strong>Allow sending messages after caption upload</strong> – enable/disable.</li>
+              <li><strong>Allow sending messages after site registration</strong> – enable/disable.</li>
+            </ul>
+          </section>
+
+          <section id="section-transcription">
+            <h2>Video captions</h2>
+            <p>In the <strong>Video captions</strong> area, configure:</p>
+            <ul>
+              <li><strong>API ID</strong> – key for the automatic caption service (for example OpenAI).</li>
+              <li><strong>Enable automatic captions</strong> – turn on automatic caption generation for videos.</li>
+            </ul>
+          </section>
+
+          <section id="section-youtube">
+            <h2>YouTube upload</h2>
+            <p>In the <strong>Automatic YouTube upload</strong> area, configure Google and YouTube connection:</p>
+            <ul>
+              <li><strong>YouTube Client ID / Client Secret / Redirect URI</strong> – configured in Google Cloud Console.</li>
+              <li><strong>Enable automatic YouTube upload</strong> – processed videos are uploaded automatically to the channel.</li>
+              <li><strong>Upload to YouTube only (no cloud storage)</strong> – save only on YouTube, not in local cloud.</li>
+              <li><strong>Use regular player for YouTube videos</strong> – play via the system player (yt-dlp) or embedded YouTube player.</li>
+              <li><strong>YouTube account authentication</strong> – connection status (connected / not connected) and <strong>Connect to YouTube</strong> or <strong>Manage</strong> button for the authentication page.</li>
+            </ul>
+          </section>
+
+          <section id="section-advanced">
+            <h2>Advanced settings</h2>
+            <p>In the <strong>Advanced settings</strong> area, configure among other things:</p>
+            <ul>
+              <li><strong>Default slide URL</strong> – fixed image when there is no poster.</li>
+              <li><strong>Enable autoplay</strong> – whether the video starts playing automatically.</li>
+              <li><strong>Hide public embed button</strong> – hide the embed button.</li>
+              <li><strong>Enable timeline comments</strong> – questions/comments during playback.</li>
+              <li><strong>Enable comments system</strong> – comments/notes system.</li>
+              <li><strong>Allow new user registration</strong> – self-registration.</li>
+              <li><strong>Allow SSO authentication</strong> – single sign-on.</li>
+              <li><strong>Enable public mode</strong> – public access to content.</li>
+              <li><strong>Automatically activate users on registration</strong> – automatic activation without admin approval.</li>
+              <li><strong>Enable automatic poster image generation</strong> – automatic poster from the video.</li>
+              <li><strong>Single version per recording only</strong> – archive and replace duplicate versions of the same recording.</li>
+            </ul>
+          </section>
+
+          <section id="section-saml2">
+            <h2>SAML2 connection</h2>
+            <p>In the <strong>SAML2 connection</strong> area, configure single sign-on (SSO) with a SAML2-compatible IdP:</p>
+            <ul>
+              <li><strong>Generate certificate (SP)</strong> – create private key and certificate (saml.pem, saml.crt) and update authsources.php.</li>
+              <li><strong>Download metadata (SP)</strong> – download the SP XML file to provide to the IdP.</li>
+              <li><strong>Upload metadata (IdP)</strong> – upload the IdP metadata XML file.</li>
+            </ul>
+            <p>Connection status (certificate, IdP configured) is shown at the top of the area.</p>
+            <p>For the full process, SAML URLs, and Microsoft Entra ID (365) connection, see the <a href="saml2-admin.html">SAML2 connection guide for administrators</a>.</p>
+          </section>
+
+          <section id="section-channels">
+            <h2>Channels</h2>
+            <p>In the <strong>Channels</strong> area, manage the channel list shown on the home page and in filters. You can add channels and change order (drag). The <strong>Manage featured channels</strong> link leads to the featured channels management page.</p>
+          </section>
+
+          <section id="section-save">
+            <h2>Saving</h2>
+            <p>After updating settings, click the <strong>Save</strong> button at the bottom of the page. A "Data saved successfully" message appears if saving succeeded. SAML2 actions (generate certificate, upload metadata) are performed by clicking the relevant buttons and redirect with a status message.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

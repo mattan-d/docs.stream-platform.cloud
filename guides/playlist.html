@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך פלייליסטים – רשימה, יצירה ועריכה</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>פלייליסטים</h1>
+      <p class="lead">מדריך לניהול פלייליסטים – רשימת פלייליסטים, יצירת פלייליסט חדש, הוספת סרטונים, עריכה ומחיקה.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="playlist.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/playlist.html" hreflang="en">English</a>
+        <a href="es/playlist.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מבט כללי</h2>
+            <p>עמוד <strong>פלייליסטים</strong> נגיש מהתפריט הראשי (כפתור פלייליסט) או בכתובת <strong>/playlist</strong> (למשל <code>https://dev.video/playlist</code>). בעמוד מוצגת רשימת הפלייליסטים שלכם, סינון, יצירה חדשה ומחיקה מרובה.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/playlist-overview.png" alt="עמוד פלייליסטים – רשימה וסרגל צד">
+              <figcaption>עמוד פלייליסטים – כותרת, סינון, פעולות (יצירה חדשה, מחיקה מרובה) ורשימת הפלייליסטים.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>כניסה לעמוד</h2>
+            <p>בתפריט העליון לחצו על <strong>פלייליסט</strong> (או פלייליסטים). משתמשים רואים רק את הפלייליסטים שלהם.</p>
+          </section>
+
+          <section>
+            <h2>סינון ופעולות (סרגל צד)</h2>
+            <p>בצד שמאל:</p>
+            <ul>
+              <li><strong>חיפוש</strong> – הזנת טקסט לחיפוש פלייליסט (לפי שם), ולחיצה על <strong>סנן</strong>. <strong>איפוס</strong> – מנקה ומרענן.</li>
+              <li><strong>יצירת פלייליסט חדש</strong> – מעבר לטופס יצירת פלייליסט חדש (<code>/playlist/instance</code>).</li>
+              <li><strong>מחיקה מרובה</strong> – פותח חלון לאישור מחיקת הפלייליסטים המסומנים (סימון via תיבת הבחירה בכל שורה).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/playlist-delete-modal.png" alt="חלון אישור מחיקה מרובה">
+              <figcaption>לאחר לחיצה על "מחיקה מרובה" – חלון לאישור מחיקת הפלייליסטים הנבחרים.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>טבלת הפלייליסטים</h2>
+            <p>במרכז מוצגת טבלה עם: <strong>בחירה</strong> (checkbox), <strong>מזהה</strong>, <strong>שם</strong>, <strong>קישור ישיר</strong> (כתובת להעתקה), <strong>סרטונים</strong>, <strong>צפיות</strong>, <strong>משך ניגון</strong>, <strong>תאריך יצירה</strong>, <strong>פעולות</strong> (הגדרות, מחיקה).</p>
+            <ul>
+              <li>לחיצה על <strong>שם</strong> הפלייליסט – מעבר לצפייה בפלייליסט.</li>
+              <li><strong>הגדרות</strong> (אייקון גלגל שיניים) – מעבר לעריכת הפלייליסט (כותרת ורשימת סרטונים).</li>
+              <li><strong>מחיקה</strong> (אייקון פח) – פתיחת חלון לאישור מחיקת הפלייליסט הבודד.</li>
+            </ul>
+            <p>ניתן למיין לפי מזהה, שם, תאריך יצירה ועוד בלחיצה על כותרות העמודות. בתחתית הטבלה: <strong>הכל</strong> – סימון/ביטול סימון כל השורות.</p>
+          </section>
+
+          <section>
+            <h2>יצירת פלייליסט חדש ועריכת פלייליסט</h2>
+            <p>לאחר לחיצה על <strong>יצירת פלייליסט חדש</strong> או על <strong>הגדרות</strong> ליד פלייליסט קיים – נפתח טופס עם:</p>
+            <ul>
+              <li><strong>מידע כללי</strong> – שדה <strong>כותרת (חובה)</strong> לפלייליסט.</li>
+              <li><strong>סרטונים זמינים</strong> – טבלה של סרטונים במערכת; חיפוש לפי שם סרטון או לפי משתמש, וכפתור להוספת סרטון לפלייליסט.</li>
+              <li><strong>סרטונים בפלייליסט</strong> – רשימת הסרטונים שנוספו; סדר ופעולת הסרה.</li>
+            </ul>
+            <p>בעת עריכה: כפתור <strong>שמירה</strong> שומר שינויים; <strong>מחיקה</strong> מוחק את הפלייליסט (עם אישור).</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/playlist-instance.png" alt="טופס פלייליסט – כותרת, סרטונים זמינים ובפלייליסט">
+              <figcaption>טופס פלייליסט חדש או עריכת פלייליסט – כותרת, סרטונים זמינים ורשימת הסרטונים בפלייליסט.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>שימו לב:</strong> ניתן לערוך את רשימת הסרטונים בפלייליסט בלחיצה על <strong>הגדרות</strong> בעמוד הצפייה בפלייליסט.
+            </div>
+          </section>
+
+          <section>
+            <h2>צפייה בפלייליסט</h2>
+            <p>לחיצה על שם הפלייליסט או כניסה ל־<code>/playlist/{id}</code> – מעבר לעמוד צפייה: הסרטונים בפלייליסט מוצגים לפי הסדר, עם ניווט בין סרטונים. בהתאם להגדרות יופיעו כפתורים כמו "הגדרות" לעריכת רשימת הסרטונים.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

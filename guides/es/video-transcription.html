@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creación de transcripción de vídeo – guía rápida</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Creación de transcripción de vídeo – guía rápida</h1>
+      <p class="lead">Cómo crear una transcripción automática para un vídeo, comprobar el estado y pasar a la edición de subtítulos.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../video-transcription.html" hreflang="he">עברית</a>
+        <a href="../en/video-transcription.html" hreflang="en">English</a>
+        <a href="video-transcription.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Antes de empezar</h2>
+            <ul>
+              <li>Se necesita permiso de acceso para editar el vídeo.</li>
+              <li>El proveedor de transcripción debe estar configurado en la configuración de administrador del sistema.</li>
+              <li>El vídeo debe estar disponible para procesamiento (no eliminado/con error).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Paso 1 – Acceder a la configuración del vídeo</h2>
+            <ol>
+              <li>Acceda a <strong>Gestión de vídeos</strong>.</li>
+              <li>Abra el vídeo deseado en la página de <strong>Configuración del vídeo</strong>.</li>
+              <li>Desplácese hasta el área de <strong>Subtítulos</strong>.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>Paso 2 – Crear transcripción automática</h2>
+            <ol>
+              <li>Pulse el botón <strong>Crear transcripción de nuevo</strong>.</li>
+              <li>El sistema encola la solicitud en segundo plano (Queue).</li>
+              <li>El proceso continúa a través del mecanismo Cron del sistema.</li>
+            </ol>
+            <div class="note">
+              No es necesario esperar en la misma pantalla hasta que termine. Puede seguir trabajando en el sistema mientras se crea la transcripción en segundo plano.
+            </div>
+          </section>
+
+          <section>
+            <h2>Paso 3 – Comprobar el estado</h2>
+            <p>Tras crear la solicitud, aparecerá un mensaje indicando que el sistema está trabajando en la transcripción. Estados de proceso habituales:</p>
+            <ul>
+              <li><strong>UPLOADED</strong> – la solicitud se creó y está pendiente de procesamiento.</li>
+              <li><strong>INPROCESS</strong> – la transcripción está en proceso con el proveedor externo.</li>
+              <li><strong>READY</strong> – la transcripción está lista y disponible para edición/visualización.</li>
+              <li><strong>ERROR</strong> – hubo un error en el proceso; debe intentarse de nuevo.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Paso 4 – Edición manual de subtítulos</h2>
+            <ol>
+              <li>Pulse <strong>Interfaz para crear subtítulos</strong> o <strong>Interfaz para editar subtítulos</strong>.</li>
+              <li>Edite tiempos y texto según sea necesario.</li>
+              <li>Guarde los cambios.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>Preguntas frecuentes</h2>
+            <h3>Pulsé «Crear transcripción» y no hay resultado inmediato – ¿es normal?</h3>
+            <p>Sí. La creación de transcripción se realiza en segundo plano mediante Cron y puede tardar varios minutos.</p>
+
+            <h3>¿Qué hacer si el proceso se queda bloqueado?</h3>
+            <ul>
+              <li>Comprobar que el proveedor de transcripción esté configurado y que la clave API sea válida.</li>
+              <li>Comprobar que Cron esté activo en el entorno.</li>
+              <li>Volver a pulsar <strong>Crear transcripción de nuevo</strong>.</li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

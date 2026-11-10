@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Management Guide – for Administrators</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>User Management</h1>
+      <p class="lead">Administrators only – page for managing users in the system at <strong>/user/admin</strong>.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../user-admin.html" hreflang="he">עברית</a>
+        <a href="user-admin.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/user-admin.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Overview</h2>
+            <p>The <strong>User Management</strong> page is accessible only to users with administrator permissions. Open it from the menu (for example from the user menu – <strong>User Management</strong>) or at <strong>/user/admin</strong> (for example <code>https://dev.video/user/admin</code>). The page shows a card list of users, filtering by search and user type, and actions for each user.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/user-admin-overview.png" alt="User management page – list and filter bar">
+              <figcaption>User management page – header, filters (search, user type) and user card list.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Note:</strong> A non-admin user will see a 404 page or an access message. Sign in as an administrator.
+            </div>
+          </section>
+
+          <section>
+            <h2>Accessing the page</h2>
+            <p>In the top menu (user menu / profile), choose <strong>User Management</strong>. This option appears only for administrators.</p>
+          </section>
+
+          <section>
+            <h2>Filtering (sidebar)</h2>
+            <p>On the left:</p>
+            <ul>
+              <li><strong>Search</strong> – field to search users by ID, first name, last name, email, or username.</li>
+              <li><strong>User type</strong> – list: all, administrator, regular user.</li>
+              <li><strong>Filter</strong> – apply filtering by the fields above.</li>
+              <li><strong>Reset</strong> – clear the filter and return to the full list.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Sorting and results</h2>
+            <p>Above the card list, the result count and <strong>Sort</strong> links are shown: ID, first name, last name, email, last access, permission. Clicking a header sorts the list. Pagination is available at the top and bottom.</p>
+          </section>
+
+          <section>
+            <h2>User card</h2>
+            <p>Each user is shown in a card with:</p>
+            <ul>
+              <li><strong>Photo / avatar</strong> – click goes to the user profile.</li>
+              <li><strong>Name</strong> – first and last name; click goes to profile.</li>
+              <li><strong>Status badge</strong> – active or inactive.</li>
+              <li><strong>Metadata</strong> – ID, email, last access, authentication method, type (administrator / regular user).</li>
+              <li><strong>Actions</strong> – icons: delete, user settings, view metrics, log in as.</li>
+            </ul>
+            <ul>
+              <li><strong>Delete</strong> – opens a dialog to confirm deleting the user.</li>
+              <li><strong>User settings</strong> – goes to the user details edit page (profile, permissions, etc.).</li>
+              <li><strong>View metrics</strong> – goes to the user metrics page.</li>
+              <li><strong>Log in as</strong> – sign in to the system as that user (for support/testing).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/user-admin-delete-modal.png" alt="User deletion confirmation dialog">
+              <figcaption>After clicking the delete button next to a user – dialog to confirm deleting the user.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Deleting a user</h2>
+            <p>Clicking the delete icon on a card opens a confirmation dialog. On confirmation – the user is deleted from the system and the page refreshes (or a success message is shown). This action is usually irreversible.</p>
+          </section>
+
+          <section>
+            <h2>User settings and profile</h2>
+            <p>Clicking <strong>User settings</strong> (gear icon) goes to <strong>/user/settings/{id}</strong> – where you can edit details, activate or deactivate the user, and manage permissions.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

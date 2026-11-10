@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך הגדרות המערכת – למנהלים</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>הגדרות המערכת</h1>
+      <p class="lead">מדריך למשתמשים עם הרשאות מנהל – דף ההגדרות של המערכת ב־<strong>/admin/settings</strong>.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="admin-settings.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/admin-settings.html" hreflang="en">English</a>
+        <a href="es/admin-settings.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="תוכן עניינים">
+            <h2 id="toc-title">תוכן עניינים</h2>
+            <ul>
+              <li><a href="#section-overview">מבט כללי וכניסה</a></li>
+              <li><a href="#section-general">הגדרות כלליות</a></li>
+              <li><a href="#section-messages">הודעות יוצאות</a></li>
+              <li><a href="#section-transcription">כתוביות סרטונים</a></li>
+              <li><a href="#section-youtube">העלאה ל־YouTube</a></li>
+              <li><a href="#section-advanced">הגדרות מתקדמות</a></li>
+              <li><a href="#section-saml2">חיבור SAML2</a></li>
+              <li><a href="#section-channels">ערוצים</a></li>
+              <li><a href="#section-save">שמירה</a></li>
+            </ul>
+          </nav>
+
+          <section id="section-overview">
+            <h2>מבט כללי וכניסה</h2>
+            <p>דף <strong>הגדרות המערכת</strong> נגיש רק למשתמשים עם הרשאות מנהל. נכנסים אליו מהתפריט הראשי (כפתור <strong>הגדרות</strong> או לוח הבקרה) או בכתובת <strong>/admin/settings</strong> (למשל <code>https://dev.video/admin/settings</code>).</p>
+            <p>בצד שמאל מופיע <strong>ניווט</strong> לפי אזורים; במרכז – כל אזור ההגדרות. לאחר שינוי יש ללחוץ <strong>שמירה</strong> בתחתית.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/admin-settings-overview.png" alt="מסך הגדרות המערכת – מבט כללי">
+              <figcaption>מסך הגדרות המערכת – ניווט ואזור הגדרות כלליות.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>שימו לב:</strong> משתמש שאינו מנהל יקבל דף 404 או הודעת גישה. יש להתחבר כמנהל.
+            </div>
+          </section>
+
+          <section id="section-general">
+            <h2>הגדרות כלליות</h2>
+            <p>באזור <strong>הגדרות כלליות</strong> מגדירים:</p>
+            <ul>
+              <li><strong>שם הארגון</strong> – מופיע בכותרת המערכת.</li>
+              <li><strong>כתובת URL של Stream</strong> – כתובת הבסיס של המערכת (לעיתים נעולה).</li>
+              <li><strong>לוגו הארגון</strong> – כתובת URL לתמונת לוגו.</li>
+              <li><strong>פורמט תאריך העלאה</strong> – יחסי (לפני X שבועות) או תאריך (31/01/26).</li>
+              <li><strong>שטח אחסון</strong> – מוצגים השטח הזמין והמנוצל (בגיגה־בייט ואחוז).</li>
+              <li><strong>שפות זמינות בממשק</strong> – סימון השפות שיופיעו במתג השפה (למשל עברית, English, العربية).</li>
+              <li><strong>ערכת נושא (צבעים)</strong> – בחירת תבנית צבעים (Soft Coral, Emerald Tech, Ocean Breeze ועוד).</li>
+            </ul>
+          </section>
+
+          <section id="section-messages">
+            <h2>הודעות יוצאות</h2>
+            <p>באזור <strong>הודעות יוצאות</strong> מגדירים:</p>
+            <ul>
+              <li><strong>כתובת דואר־אלקטרוני לתמיכה</strong> – למופיע בתמיכה.</li>
+              <li><strong>אפשר שליחת הודעות לאחר העלאת סרטון חדש</strong> – הפעלה/כיבוי.</li>
+              <li><strong>אפשר שליחת הודעות לאחר העלאת כתוביות</strong> – הפעלה/כיבוי.</li>
+              <li><strong>אפשר שליחת הודעות לאחר רישום לאתר</strong> – הפעלה/כיבוי.</li>
+            </ul>
+          </section>
+
+          <section id="section-transcription">
+            <h2>כתוביות סרטונים</h2>
+            <p>באזור <strong>כתוביות סרטונים</strong> מגדירים:</p>
+            <ul>
+              <li><strong>מזהה API</strong> – מפתח לשירות כתוביות אוטומטי (למשל OpenAI).</li>
+              <li><strong>אפשר כתוביות אוטומטי</strong> – הפעלת יצירת כתוביות אוטומטית לסרטונים.</li>
+            </ul>
+          </section>
+
+          <section id="section-youtube">
+            <h2>העלאה ל־YouTube</h2>
+            <p>באזור <strong>העלאה אוטומטית ל־YouTube</strong> מגדירים חיבור ל־Google ו־YouTube:</p>
+            <ul>
+              <li><strong>YouTube Client ID / Client Secret / Redirect URI</strong> – מגדירים מ־Google Cloud Console.</li>
+              <li><strong>אפשר העלאה אוטומטית ל־YouTube</strong> – סרטונים שעובדו יועלו אוטומטית לערוץ.</li>
+              <li><strong>העלה רק ל־YouTube (ללא שמירה בענן)</strong> – שמירה רק ב־YouTube, לא בענן המקומי.</li>
+              <li><strong>השתמש בנגן רגיל לסרטוני YouTube</strong> – ניגון דרך הנגן של המערכת (yt-dlp) או נגן מוטמע של YouTube.</li>
+              <li><strong>אימות חשבון YouTube</strong> – מצב חיבור (מחובר / לא מחובר) וכפתור <strong>התחבר ל־YouTube</strong> או <strong>ניהול</strong> לדף האימות.</li>
+            </ul>
+          </section>
+
+          <section id="section-advanced">
+            <h2>הגדרות מתקדמות</h2>
+            <p>באזור <strong>הגדרות מתקדמות</strong> מגדירים בין השאר:</p>
+            <ul>
+              <li><strong>כתובת URL של שקופית קבועה</strong> – תמונה קבועה כשאין פוסטר.</li>
+              <li><strong>הפעלה ניגון אוטומטי</strong> – האם הסרטון יתחיל לנגן אוטומטית.</li>
+              <li><strong>הסתרת כפתור אמבד ציבורי</strong> – הסתרת כפתור ההטמעה.</li>
+              <li><strong>הפעלת הערות על הטיימליין</strong> – שאלות/הערות בזמן צפייה.</li>
+              <li><strong>הפעלת מנגנון תגובות</strong> – מערכת תגובות/הערות.</li>
+              <li><strong>אפשר הרשמת משתמשים חדשים</strong> – רישום עצמי.</li>
+              <li><strong>אפשר הזדהות באמצעות SSO</strong> – התחברות יחידנית.</li>
+              <li><strong>הפעלת מצב ציבורי</strong> – גישה ציבורית לתוכן.</li>
+              <li><strong>אפשר הפעלת משתמשים באופן אוטומטי בעת הרישום</strong> – הפעלה אוטומטית ללא אישור מנהל.</li>
+              <li><strong>הפעלת יצירת תמונת פוסטר אוטומטית</strong> – פוסטר אוטומטי מהסרטון.</li>
+              <li><strong>גרסה אחת להקלטה בלבד</strong> – ארכוב והחלפת גרסאות כפולות של אותה הקלטה.</li>
+            </ul>
+          </section>
+
+          <section id="section-saml2">
+            <h2>חיבור SAML2</h2>
+            <p>באזור <strong>חיבור SAML2</strong> מגדירים התחברות יחידנית (SSO) מול IdP תומך SAML2:</p>
+            <ul>
+              <li><strong>הפקת תעודה (SP)</strong> – יצירת מפתח פרטי ותעודה (saml.pem, saml.crt) ועדכון authsources.php.</li>
+              <li><strong>הורדת מטא־דאטה (SP)</strong> – הורדת קובץ XML של ה־SP להעברה ל־IdP.</li>
+              <li><strong>הטענת מטא־דאטה (IdP)</strong> – העלאת קובץ XML של מטא־דאטה של ה־IdP.</li>
+            </ul>
+            <p>סטטוס החיבור (תעודה, IdP מוגדר) מוצג בראש האזור.</p>
+            <p>לתהליך מלא, כתובות SAML וחיבור ל־Microsoft Entra ID (365), ראו את <a href="saml2-admin.html">מדריך חיבור SAML2 למנהלים</a>.</p>
+          </section>
+
+          <section id="section-channels">
+            <h2>ערוצים</h2>
+            <p>באזור <strong>ערוצים</strong> מנהלים את רשימת הערוצים שמופיעים בעמוד הבית ובסינון. ניתן להוסיף ערוצים ולשנות סדר (גרירה). קישור <strong>נהל ערוצים מובילים</strong> מוביל לדף ניהול ערוצים מובילים.</p>
+          </section>
+
+          <section id="section-save">
+            <h2>שמירה</h2>
+            <p>לאחר עדכון ההגדרות יש ללחוץ על כפתור <strong>שמירה</strong> בתחתית הדף. תופיע הודעה "הנתונים נשמרו בהצלחה" אם השמירה הצליחה. פעולות SAML2 (הפק תעודה, הטען מטא־דאטה) מתבצעות בלחיצה על הכפתורים הרלוונטיים ומפנות מחדש עם הודעת סטטוס.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

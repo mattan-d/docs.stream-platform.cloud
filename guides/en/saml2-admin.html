@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAML2 Connection – Administrator Guide</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>SAML2 (SSO) Connection</h1>
+      <p class="lead">Guide for system administrators: configuring single sign-on with a SAML&nbsp;2.0-compatible identity provider (IdP), including <strong>Microsoft Entra ID</strong> (Azure AD) and Microsoft&nbsp;365 licensing.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../saml2-admin.html" hreflang="he">עברית</a>
+        <a href="saml2-admin.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/saml2-admin.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Table of contents">
+            <h2 id="toc-title">Table of contents</h2>
+            <ul>
+              <li><a href="#section-overview">What it provides and what is required</a></li>
+              <li><a href="#section-prep">Before you start: HTTPS and site URL</a></li>
+              <li><a href="#section-admin-stream">Settings in the admin interface (Stream)</a></li>
+              <li><a href="#section-endpoints">Technical URLs (SP) for copy</a></li>
+              <li><a href="#section-entra">Connection in Microsoft Entra ID (365)</a></li>
+              <li><a href="#section-claims">Identifiers and claims – Microsoft 365</a></li>
+              <li><a href="#section-test">Testing and troubleshooting</a></li>
+            </ul>
+          </nav>
+
+          <section id="section-overview">
+            <h2>What it provides and what is required</h2>
+            <p><strong>SAML2</strong> lets users sign in to the Stream site with their organization account (for example Microsoft&nbsp;365), without a separate system password – according to organizational policy.</p>
+            <ul>
+              <li><strong>Administrator</strong> access to the <a href="admin-settings.html#section-saml2">System settings</a> page (<code>/admin/settings</code>) is required.</li>
+              <li>The system uses <strong>SimpleSAMLphp</strong> as the SAML service provider (SP) named <code>default-sp</code>.</li>
+              <li>You must generate an <strong>SP certificate</strong>, provide <strong>SP metadata</strong> to the identity provider (or fill fields manually), then upload <strong>IdP metadata</strong> here (XML file).</li>
+            </ul>
+          </section>
+
+          <section id="section-prep">
+            <h2>Before you start: HTTPS and site URL</h2>
+            <div class="warn">
+              <strong>Important:</strong> In production, access the site via <strong>HTTPS</strong> only. The SP certificate, entity ID, and ACS URLs are derived from the actual URL; if the server or proxy does not report HTTPS correctly, SAML metadata and connection may be inconsistent.
+            </div>
+            <p>In <strong>General settings</strong>, ensure <strong>Stream URL</strong> (the public base URL of the site) is set with <code>https://</code> and without a trailing slash (or according to organizational settings). This URL is also used for internal actions such as downloading metadata from the server.</p>
+          </section>
+
+          <section id="section-admin-stream">
+            <h2>Settings in the admin interface (Stream)</h2>
+            <p>Go to <strong>System Settings</strong> (<code>/admin/settings</code>) and follow these steps in order:</p>
+
+            <h3>1. Enable SSO</h3>
+            <p>In <strong>Advanced settings</strong>, check <strong>Allow SSO authentication</strong> (<code>allow_sso_auth</code>) to let users use the single sign-on path (depending on how the sign-in button is shown on the site).</p>
+
+            <h3>2. SAML2 connection area</h3>
+            <ol>
+              <li><strong>Generate certificate (SP)</strong> – creates a private key and certificate (<code>saml.pem</code>, <code>saml.crt</code>) in <code>saml2/cert/</code> and updates <code>authsources.php</code>. Without this step there will be no valid metadata to provide to the IdP.</li>
+              <li><strong>Download SP metadata</strong> – downloads the service provider (SP) XML file to enter in the identity provider (for example upload to an Entra ID app), or extract the Entity ID and ACS URL from it.</li>
+              <li><strong>Upload metadata (IdP)</strong> – after the identity provider is configured, download its metadata XML file and upload it here. The file is saved and the system updates the remote metadata file (<code>saml20-idp-remote.php</code>) and the IdP link in <code>authsources.php</code>.</li>
+            </ol>
+            <p>At the top of the area, <strong>status</strong> is shown (certificate, configuration, whether the IdP is connected). After uploading IdP metadata, status should indicate a full connection.</p>
+
+            <div class="note">
+              <strong>Tip:</strong> SAML actions (certificate generation and metadata upload) are performed by clicking the dedicated buttons; changes to other settings are saved by clicking <strong>Save</strong> at the bottom of the page.
+            </div>
+          </section>
+
+          <section id="section-endpoints">
+            <h2>Technical URLs (SP) for copy</h2>
+            <p>Replace <code>https://your-domain.example</code> with your production URL (with <code>https</code>).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Role</th>
+                  <th>Typical path</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>SP metadata (public XML)</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/metadata.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>ACS (Reply URL) – receiving SAML response</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/saml2-acs.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>Single logout (SLO), if required</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/saml2-logout.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>Site sign-in (SP-initiated)</td>
+                  <td><span class="mono">https://your-domain.example/sso.php</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p><strong>SP entity ID:</strong> usually in the form <code>https://your-domain.example/</code> (with trailing slash), according to the request to the server when metadata is created. Exact values appear in the XML file you downloaded.</p>
+
+            <p>Example full metadata URL:</p>
+            <pre class="endpoint"><code>https://your-domain.example/saml2/public/module.php/saml/sp/metadata.php/default-sp</code></pre>
+          </section>
+
+          <section id="section-entra">
+            <h2>Connection in Microsoft Entra ID (Microsoft 365)</h2>
+            <p>The following steps match the common Entra ID workflow for creating a SAML application and can be combined with your organization's internal Azure guide (including detailed screenshots there).</p>
+
+            <h3>1. Create an enterprise application</h3>
+            <ul>
+              <li>In the Azure portal: <strong>Microsoft Entra ID</strong> → <strong>Enterprise applications</strong> → <strong>New application</strong>.</li>
+              <li>Choose <strong>Create your own application</strong>, give it a name (for example Stream – SAML), and select a <strong>SAML / single sign-on</strong> integration – according to portal options.</li>
+            </ul>
+
+            <h3>2. SAML configuration – Entra side (basic)</h3>
+            <p>In the selected application: <strong>Single sign-on</strong> → <strong>SAML</strong>.</p>
+            <ul>
+              <li><strong>Upload SP metadata</strong> – if Entra allows file upload, use the XML file downloaded from Stream ("Download SP metadata"). This fills many fields automatically.</li>
+              <li><strong>Or manual entry (Basic SAML Configuration)</strong>:
+                <ul>
+                  <li><strong>Identifier (Entity ID)</strong> – as shown in SP metadata (usually <code>https://your-domain.example/</code>).</li>
+                  <li><strong>Reply URL (Assertion Consumer Service URL)</strong> – ACS URL from the table above.</li>
+                  <li><strong>Sign on URL</strong> – sometimes required for SP-initiated sign-in; try <code>https://your-domain.example/sso.php</code> if the interface requires a value.</li>
+                </ul>
+              </li>
+              <li>Save the settings.</li>
+            </ul>
+
+            <h3>3. Download IdP metadata for Stream</h3>
+            <p>On the same SAML screen, download <strong>Federation Metadata XML</strong> (sometimes labeled "Certificate" or "Download Federation Metadata").</p>
+            <p>Return to Stream → <strong>System Settings</strong> → <strong>SAML2 connection</strong> → <strong>Upload metadata (IdP)</strong> and upload the file.</p>
+
+            <h3>4. Assign users</h3>
+            <p>In Entra: in the application → <strong>Users and groups</strong> → add users or groups allowed to sign in through the application.</p>
+
+            <div class="note">
+              <strong>Microsoft documentation:</strong> menu and button names may change between portal versions; if something does not match, search the portal for "SAML-based SSO" or "Enterprise application" and compare with the fields in the table above.
+            </div>
+          </section>
+
+          <section id="section-claims">
+            <h2>Identifiers and claims – Microsoft 365</h2>
+            <p>When the identity provider is Microsoft Entra ID, the system can identify the response using typical claims (including tenant ID). To fill the user profile, the system uses among others:</p>
+            <ul>
+              <li>Email address</li>
+              <li>First and last name</li>
+              <li>Username / unique identifier</li>
+            </ul>
+            <p>In Entra ID, under <strong>User Attributes &amp; Claims</strong>, ensure claims sent in the SAML token include at least email and name – according to organizational policy. If a claim is missing, the user may not be identified or a partial account may be created.</p>
+            <p>An existing Stream user is matched by <strong>email address</strong>; if no user with the same email exists, the system may create a new user (according to registration and activation settings on the site).</p>
+          </section>
+
+          <section id="section-test">
+            <h2>Testing and troubleshooting</h2>
+            <ul>
+              <li>Open a private browsing window and go to <code>https://your-domain.example/sso.php</code> – you should be redirected to organizational sign-in and then back to the site.</li>
+              <li>If <strong>SP metadata download</strong> fails with an error, check that the site base URL is set to HTTPS and that the SimpleSAMLphp public file is accessible from the server.</li>
+              <li>If Entra returns a SAML error, verify the Reply URL and Entity ID exactly against the SP XML file.</li>
+              <li>Ensure the Entra application is assigned to the test user.</li>
+            </ul>
+            <p>For a quick link to general system settings: <a href="admin-settings.html">System settings guide</a>.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

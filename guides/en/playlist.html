@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Playlists Guide – List, Create, and Edit</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Playlists</h1>
+      <p class="lead">Guide to managing playlists – playlist list, creating a new playlist, adding videos, editing, and deleting.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../playlist.html" hreflang="he">עברית</a>
+        <a href="playlist.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/playlist.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Overview</h2>
+            <p>The <strong>Playlists</strong> page is accessible from the main menu (Playlist button) or at <strong>/playlist</strong> (for example <code>https://dev.video/playlist</code>). The page shows your playlist list, filtering, new creation, and bulk deletion.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/playlist-overview.png" alt="Playlists page – list and sidebar">
+              <figcaption>Playlists page – header, filters, actions (create new, bulk delete) and playlist list.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Accessing the page</h2>
+            <p>In the top menu, click <strong>Playlist</strong> (or Playlists). Users see only their own playlists.</p>
+          </section>
+
+          <section>
+            <h2>Filtering and actions (sidebar)</h2>
+            <p>On the left:</p>
+            <ul>
+              <li><strong>Search</strong> – enter text to search playlists (by name), and click <strong>Filter</strong>. <strong>Reset</strong> – clears and refreshes.</li>
+              <li><strong>Create new playlist</strong> – goes to the new playlist form (<code>/playlist/instance</code>).</li>
+              <li><strong>Bulk delete</strong> – opens a dialog to confirm deleting selected playlists (selection via checkbox on each row).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/playlist-delete-modal.png" alt="Bulk delete confirmation dialog">
+              <figcaption>After clicking "Bulk delete" – dialog to confirm deleting selected playlists.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Playlists table</h2>
+            <p>In the center, a table shows: <strong>Selection</strong> (checkbox), <strong>ID</strong>, <strong>Name</strong>, <strong>Direct link</strong> (URL to copy), <strong>Videos</strong>, <strong>Views</strong>, <strong>Play duration</strong>, <strong>Creation date</strong>, <strong>Actions</strong> (settings, delete).</p>
+            <ul>
+              <li>Clicking the playlist <strong>Name</strong> – goes to playlist view.</li>
+              <li><strong>Settings</strong> (gear icon) – goes to playlist edit (title and video list).</li>
+              <li><strong>Delete</strong> (trash icon) – opens a dialog to confirm deleting the single playlist.</li>
+            </ul>
+            <p>You can sort by ID, name, creation date, and more by clicking column headers. At the bottom of the table: <strong>All</strong> – check/uncheck all rows.</p>
+          </section>
+
+          <section>
+            <h2>Creating a new playlist and editing a playlist</h2>
+            <p>After clicking <strong>Create new playlist</strong> or <strong>Settings</strong> next to an existing playlist – a form opens with:</p>
+            <ul>
+              <li><strong>General information</strong> – <strong>Title (required)</strong> field for the playlist.</li>
+              <li><strong>Available videos</strong> – table of videos in the system; search by video name or by user, and button to add a video to the playlist.</li>
+              <li><strong>Videos in playlist</strong> – list of added videos; order and remove action.</li>
+            </ul>
+            <p>When editing: <strong>Save</strong> button saves changes; <strong>Delete</strong> deletes the playlist (with confirmation).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/playlist-instance.png" alt="Playlist form – title, available and in-playlist videos">
+              <figcaption>New playlist form or playlist edit – title, available videos and videos in the playlist.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Note:</strong> You can edit the video list in a playlist by clicking <strong>Settings</strong> on the playlist view page.
+            </div>
+          </section>
+
+          <section>
+            <h2>Viewing a playlist</h2>
+            <p>Clicking the playlist name or going to <code>/playlist/{id}</code> – goes to the view page: videos in the playlist are shown in order, with navigation between videos. Depending on settings, buttons such as "Settings" appear to edit the video list.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

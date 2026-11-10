@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Single video trim guide – Video settings</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Single video trim</h1>
+      <p class="lead">How to trim one video directly from the <strong>video settings</strong> screen — using a multi-layer timeline editor (not via Studio).</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../video-trim.html" hreflang="he">עברית</a>
+        <a href="video-trim.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/video-trim.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>What is single video trim?</h2>
+            <p>Instead of creating a new video from segments from different sources (via <a href="studio.html">Studio</a>), you can edit <strong>one existing video</strong>: mark segments to remove, and the system will produce a <strong>new video</strong> containing only what remains.</p>
+            <p>The original video <strong>stays unchanged</strong>. The trimmed version is a separate record in the system (title like <em>Trimmed - …</em> or similar).</p>
+          </section>
+
+          <section>
+            <h2>When is this area available?</h2>
+            <ul>
+              <li>The video is <strong>ready</strong> (not processing).</li>
+              <li>Local / uploaded media — not an external YouTube-only video.</li>
+              <li>You have edit permission on the video (owner, admin, or content manager).</li>
+            </ul>
+            <p>If the area does not appear, check the video status or media type.</p>
+          </section>
+
+          <section>
+            <h2>Opening the trim editor</h2>
+            <ol>
+              <li>Go to <strong>video management</strong> from the menu.</li>
+              <li>Find the video and click <strong>Edit</strong>.</li>
+              <li>On the <strong>video settings</strong> page, scroll to <strong>timeline video editing</strong> (below the player, above "General details").</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>How does trimming work?</h2>
+            <p>The approach is <strong>"what to remove"</strong>: you mark segments to remove, and everything else stays in the new version.</p>
+            <div class="legend" aria-hidden="true">
+              <span class="legend-keep">Stays in video</span>
+              <span class="legend-cut">Will be removed</span>
+              <span class="legend-captions">Caption ranges</span>
+            </div>
+            <p>You can remove <strong>multiple segments</strong> from the same video — for example a short intro and a section in the middle of the lecture.</p>
+
+            <h3>Interface components</h3>
+            <ul>
+              <li><strong>Player</strong> — play/pause and current time (current time / full length).</li>
+              <li><strong>Timeline</strong> — three layers: video, captions (if available), navigation topics.</li>
+              <li><strong>Timeline zoom</strong> — zoom in, zoom out, and fit to screen width.</li>
+              <li><strong>New video duration</strong> — updates after you mark at least one segment for removal.</li>
+              <li><strong>Reset trims</strong> — clears all removal markers at once.</li>
+            </ul>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-timeline.png" alt="Timeline editor – overview with video, captions, and topics layers">
+              <figcaption>Timeline editor: video layer, captions layer (caption count shown next to the name), and navigation topics layer. Above the timeline — legend, zoom, and new video duration.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Marking a segment for removal</h2>
+            <ol>
+              <li>On the timeline, <strong>drag</strong> over the time range you want to remove.</li>
+              <li>A selection bar appears with start and end times, and a summary of how many captions and topics fall in the range.</li>
+              <li>Click <strong>Remove segment from video</strong> — the segment is marked as "will be removed" (hatched background on all layers).</li>
+              <li>Repeat for each additional segment to remove.</li>
+            </ol>
+            <p>Keyboard shortcuts (when focus is not in a text field): <strong>Delete</strong> or <strong>Backspace</strong> removes the selected range.</p>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-cut-selection.png" alt="Range selection for removal and action bar">
+              <figcaption>After dragging on the timeline: "will be removed" summary with start and end times, buttons for "Remove segment from video", "Cancel trim", and actions on captions/topics in the range.</figcaption>
+            </figure>
+
+            <h3>Canceling or changing a trim</h3>
+            <ul>
+              <li>Click a <strong>marked segment</strong> on the timeline to select it; then you can <strong>cancel trim</strong>.</li>
+              <li>You can drag the <strong>end handles</strong> of a marked segment to change removal boundaries.</li>
+              <li><strong>Reset trims</strong> — clears all markers (before creating the new video).</li>
+            </ul>
+
+            <div class="note">
+              <strong>Auto draft:</strong> Markers are saved temporarily in the browser while you work. You must still click <strong>Create new video</strong> for the system to start processing.
+            </div>
+          </section>
+
+          <section>
+            <h2>Additional timeline actions</h2>
+            <p>In the same editor, without creating a new video:</p>
+            <ul>
+              <li><strong>Navigation topics</strong> — add, edit, or delete chapters (click the topics layer or "+").</li>
+              <li><strong>Caption in range</strong> — add a new caption in the selected range (when captions are ready).</li>
+              <li><strong>Delete topics in range</strong> — removes chapters that fall within the selection.</li>
+            </ul>
+            <p>These actions are saved with <strong>Save</strong> / <strong>Save and return</strong> — not with "Create new video".</p>
+
+            <h3>Editing the captions list</h3>
+            <p>In the transcription/captions area (below the timeline or in a dedicated tab) you can edit each sentence, change start and end times, or delete a row — separately from video trimming.</p>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-captions-list.png" alt="Caption editing – sentence list with times">
+              <figcaption>Caption editing: text, start and end times per row, and delete row. Changes are saved with the form — they do not require "Create new video".</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Artificial intelligence (AI) on the same screen</h2>
+            <p>In video settings, when captions are ready, an <strong>Artificial intelligence (AI)</strong> area appears with optional actions (not part of video trimming itself):</p>
+            <ul>
+              <li><strong>Create navigation topics automatically from captions</strong> — up to about 10 chapters based on caption text.</li>
+              <li><strong>Create automatic Reels short video</strong> — highlights up to about one minute from captions (separate new video).</li>
+            </ul>
+            <p>Detailed guide: <a href="ai-navigation-topics-and-caption-chat.html">Auto navigation topics and AI chat</a>.</p>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-ai.png" alt="AI area in video settings">
+              <figcaption>AI area: create navigation topics from captions and automatic Reels — available when transcription/captions are ready.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Creating the trimmed video</h2>
+            <ol>
+              <li>After marking all segments to remove, verify that <strong>new video duration</strong> matches your expectation.</li>
+              <li>A <strong>Create new video</strong> button appears in the page header (instead of "Save") — only when there is at least one trim.</li>
+              <li>Click <strong>Create new video</strong>.</li>
+              <li>A message appears: <em>The process of creating the new video from segments is now running in the background…</em></li>
+              <li>Processing runs in the background. After a few minutes the new video will be ready; you may be redirected to the new video's edit page.</li>
+            </ol>
+
+            <div class="note">
+              <strong>Important:</strong> This option cannot replace the original video file — a <strong>new record</strong> is always created. To update title, tags, or privacy without trimming — use regular <strong>Save</strong>.
+            </div>
+          </section>
+
+          <section>
+            <h2>Difference from Studio</h2>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.95rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <th style="padding: 0.5rem; text-align: left;">Single trim (video settings)</th>
+                  <th style="padding: 0.5rem; text-align: left;">Studio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem; text-align: left;">One source — remove segments from it</td>
+                  <td style="padding: 0.5rem; text-align: left;">Segments from multiple videos — combine into one</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem; text-align: left;">New video; original remains</td>
+                  <td style="padding: 0.5rem; text-align: left;">New video from assembling segments</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem; text-align: left;">Timeline editor + segment removal</td>
+                  <td style="padding: 0.5rem; text-align: left;">Select segments to include from each source</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>Verifying the result</h2>
+            <ol>
+              <li>Search the video list for the new record (usually a title with a trim prefix).</li>
+              <li>Open the <strong>watch page</strong> and play — verify that removed segments do not appear.</li>
+              <li>If the result is wrong, return to editing the <strong>original video</strong>, fix the markers, and click "Create new video" again.</li>
+            </ol>
+            <p>Long videos or many segments to remove may take longer — wait for the background message to complete.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

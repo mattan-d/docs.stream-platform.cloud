@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך הסרטונים שלי – ניהול ההקלטות שלכם</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>הסרטונים שלי</h1>
+      <p class="lead">מדריך לניהול ההקלטות והסרטונים שהעליתם – חיפוש, סינון, עריכה, מחיקה והורדה ב־<strong>/videos/my</strong>.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="videos-my.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/videos-my.html" hreflang="en">English</a>
+        <a href="es/videos-my.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מבט כללי</h2>
+            <p>עמוד <strong>הסרטונים שלי</strong> מאפשר לכל משתמש מחובר (שאינו במצב צפייה בלבד) לנהל את <strong>הסרטונים שהוא העלה</strong> – לא את כל הסרטונים במערכת. נכנסים אליו מהתפריט (<strong>הסרטונים שלי</strong>) או בכתובת <strong>/videos/my</strong> (למשל <code>https://dev.video/videos/my</code>).</p>
+            <p>בעמוד מוצגת רשימת כרטיסים עם כל הסרטונים שלכם (כולל סרטונים בעיבוד, ממתינים וכו'), סינון, מיון, עריכה, מחיקה והורדה.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/videos-my-overview.png?v=1" alt="עמוד הסרטונים שלי – רשימה וסרגל סינון">
+              <figcaption>עמוד הסרטונים שלי – כותרת, סינון ורשימת כרטיסי הסרטונים שלכם.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>הבדל מהספרייה:</strong> <strong>הערוץ שלי</strong> (<code>/library/my</code>) מציג רשת לצפייה בסרטונים מפורסמים בלבד. <strong>הסרטונים שלי</strong> מיועד ל<strong>ניהול</strong> – כולל סרטונים בתהליך עיבוד, עריכה ומחיקה.
+            </div>
+            <div class="note">
+              <strong>שימו לב:</strong> משתמש במצב <em>צפייה בלבד</em> (viewer) לא יראה את העמוד. מנהלי מערכת עם הרשאת ניהול מלא רואים גם את <a href="videos-admin.html">ניהול סרטונים</a> (<code>/videos/admin</code>) לכל המשתמשים.
+            </div>
+          </section>
+
+          <section>
+            <h2>כניסה לעמוד</h2>
+            <p>פתחו את <strong>תפריט המשתמש</strong> (לחיצה על שם המשתמש או האווטאר) ובחרו <strong>הסרטונים שלי</strong>. ניתן גם להגיע מהעמוד <a href="video-upload.html">העלאת סרטון</a> – בסרגל הצד מופיע קישור <strong>הסרטונים שלי</strong> לצד <strong>הספרייה שלי</strong>.</p>
+          </section>
+
+          <section>
+            <h2>סינון (סרגל צד)</h2>
+            <p>בצד שמאל ניתן לצמצם את הרשימה:</p>
+            <ul>
+              <li><strong>חיפוש</strong> – לפי מזהה, כותרת, תיאור או פרטי קורס.</li>
+              <li><strong>סטטוס</strong> – זמין לצפייה, בעיבוד, ממתין לעיבוד, שגיאה, ארכיון וכו' (ברירת מחדל: הכל).</li>
+              <li><strong>פרטיות</strong> – ציבורי, הזדהות, קישור (או הכל).</li>
+              <li><strong>ערוץ</strong> – סינון לפי ערוץ ששויך לסרטון.</li>
+              <li><strong>כתוביות</strong> – סימון "כולל כתוביות" להצגת סרטונים עם כתוביות בלבד.</li>
+              <li><strong>מתאריך / עד תאריך</strong> – טווח תאריכי העלאה, כולל קיצורי דרך ל־3 / 6 / 12 חודשים אחרונים.</li>
+              <li><strong>אורך מינימלי / מקסימלי (דקות)</strong> – מגבלת משך הסרטון.</li>
+              <li><strong>חשיפות</strong> – גדול מ / קטן מ כמות חשיפות.</li>
+              <li><strong>סנן</strong> – הפעלת הסינון. <strong>איפוס</strong> – ניקוי וחזרה לרשימה מלאה.</li>
+              <li><strong>ייצוא ל־Excel</strong> – הורדת דוח של הסרטונים התואמים לסינון (מזהה, כותרת, משך, תאריך, משקל, חשיפות).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>מיון ובחירה מרובה</h2>
+            <p>מעל רשימת הכרטיסים: מספר הסרטונים, <strong>בחר הכל</strong>, וקישורי <strong>מיון</strong> – תאריך, כותרת, סטטוס, משקל, חשיפות. לאחר סימון של לפחות סרטון אחד מופיע <strong>סרגל פעולות</strong> עם:</p>
+            <ul>
+              <li><strong>הורדה</strong> – עד 5 סרטונים מפורסמים שאינם מ־YouTube.</li>
+              <li><strong>מחיקה</strong> – מחיקת כל הסרטונים המסומנים (נדרש אישור).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/videos-admin-actions-bar.png?v=1" alt="סרגל פעולות לאחר בחירת סרטונים">
+              <figcaption>לאחר סימון סרטון אחד או יותר – סרגל "סרטונים נבחרו" עם הורדה ומחיקה.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>כרטיס סרטון</h2>
+            <p>כל סרטון מוצג בכרטיס עם:</p>
+            <ul>
+              <li><strong>תיבת בחירה</strong> – לסימון למחיקה מרובה או להורדה.</li>
+              <li><strong>תמונה ומשך</strong> – לחיצה מובילה לעמוד הצפייה.</li>
+              <li><strong>כותרת ותג סטטוס</strong> – למשל "זמין לצפייה", "בעיבוד", "שגיאה בעיבוד".</li>
+              <li><strong>פס התקדמות</strong> – לסרטונים במצב "ממתין לעיבוד" מוצג אחוז העיבוד.</li>
+              <li><strong>מטא־דאטה</strong> – מזהה, מקור, תאריך העלאה, גודל, פרטיות, חשיפות, כתוביות.</li>
+              <li><strong>פעולות</strong> – <strong>עריכה</strong> (הגדרות הסרטון), <strong>מחיקה</strong> (אישור בחלון).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/videos-admin-delete-modal.png?v=1" alt="חלון אישור מחיקת סרטון">
+              <figcaption>לאחר לחיצה על מחיקה – חלון לאישור מחיקת הסרטון.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>עריכה</h2>
+            <p>לחיצה על <strong>עריכה</strong> (אייקון גלגל שיניים) מובילה לדף <strong>הגדרות הסרטון</strong> (<code>/videos/edit/{id}</code>) – שם ניתן לשנות כותרת, תיאור, פרטיות, כתוביות, חיתוך ועוד. ראו <a href="video-settings.html">מדריך הגדרות הסרטון</a>.</p>
+            <p>ניתן לערוך רק סרטונים <strong>שלכם</strong>. אם אין לכם גישה לסרטון – תקבלו דף שגיאה.</p>
+          </section>
+
+          <section>
+            <h2>מחיקה</h2>
+            <p>מחיקת סרטון בודד: לחצו על אייקון המחיקה בכרטיס ואשרו בחלון. מחיקה מרובה: סמנו כרטיסים ולחצו <strong>מחיקה</strong> בסרגל הפעולות. לאחר המחיקה תוחזרו לעמוד <strong>הסרטונים שלי</strong> עם הודעה על הסרטונים שנמחקו. פעולת מחיקה בדרך כלל לא הפיכה.</p>
+          </section>
+
+          <section>
+            <h2>קישורים שימושיים</h2>
+            <ul>
+              <li><a href="video-upload.html">העלאת סרטון</a> – העלאת הקלטה חדשה.</li>
+              <li><a href="video-settings.html">הגדרות הסרטון</a> – עריכה מפורטת של סרטון בודד.</li>
+              <li><a href="studio.html">סטודיו</a> – יצירת סרטון חדש ממקטעים של הסרטונים שלכם.</li>
+              <li><a href="video-watch.html">עמוד צפייה</a> – מה הצופים רואים כשפותחים את הסרטון.</li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

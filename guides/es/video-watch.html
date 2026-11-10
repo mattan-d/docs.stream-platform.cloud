@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de la página de reproducción del vídeo</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Página de reproducción del vídeo</h1>
+      <p class="lead">Visión general de las opciones en la página de reproducción del vídeo (watch) – reproductor, botones de acción, descripción, comentarios, recomendados y más.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../video-watch.html" hreflang="he">עברית</a>
+        <a href="../en/video-watch.html" hreflang="en">English</a>
+        <a href="video-watch.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Visión general</h2>
+            <p>La página de reproducción se abre al hacer clic en un vídeo desde las listas o al acceder directamente a <strong>/watch/id_del_vídeo</strong> (por ejemplo, <code>https://dev.video/watch/1248</code>). La página se divide en un área principal (reproductor, título, menú de acciones, descripción, comentarios) y una columna lateral (temas, recomendados).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/watch-overview.png" alt="Página de reproducción – vista general">
+              <figcaption>Página de reproducción del vídeo – reproductor, título y menú de acciones.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Reproductor de vídeo</h2>
+            <p>En la parte superior de la página está el reproductor: reproducción/pausa, volumen, barra de progreso, pantalla completa. Para vídeos con temas (capítulos) – al hacer clic en un tema en la barra lateral se salta al tiempo correspondiente del vídeo.</p>
+          </section>
+
+          <section>
+            <h2>Barra de acciones debajo del reproductor</h2>
+            <p>Debajo del título del vídeo aparecen:</p>
+            <ul>
+              <li><strong>Avatar y canal</strong> – imagen del canal, nombre del canal y número de suscriptores; al hacer clic se va al perfil del canal. Para un usuario con sesión iniciada que no es el propietario – botón <strong>Suscribirse</strong> (si está activado).</li>
+              <li><strong>Configuración</strong> – para propietarios del vídeo o administradores: enlace a la configuración del vídeo (edición).</li>
+              <li><strong>Métricas</strong> – para administradores: enlace a las métricas del vídeo (analítica).</li>
+              <li><strong>Resumen</strong> – si existe un resumen de subtítulos: descarga del archivo de resumen.</li>
+              <li><strong>Descargar subtítulos</strong> – para propietarios del vídeo cuando existen subtítulos: descarga del archivo de subtítulos.</li>
+              <li><strong>Me gusta / No me gusta</strong> – recuento de likes y dislikes (para usuarios con sesión iniciada).</li>
+              <li><strong>Descarga</strong> – si el vídeo está configurado para permitir descarga: descarga del archivo de vídeo.</li>
+              <li><strong>Compartir</strong> – abre el diálogo de compartir (Facebook, WhatsApp, correo electrónico, enlace, código de inserción).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/watch-actions.png" alt="Barra de acciones – configuración, me gusta, compartir">
+              <figcaption>Barra de acciones – canal, configuración, métricas, me gusta, descarga, compartir.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Métricas (para propietarios/administradores)</h2>
+            <p>Si es propietario del vídeo o administrador – debajo de la barra de acciones aparecen <strong>visualizaciones</strong>, <strong>impresiones</strong> y <strong>ratio de visualización</strong>, con un enlace a la pantalla completa de métricas.</p>
+          </section>
+
+          <section>
+            <h2>Descripción e información</h2>
+            <p>Debajo de las acciones: número de <strong>visualizaciones</strong>, fecha de publicación (por ejemplo, «hace X») y <strong>descripción del vídeo</strong>. Al hacer clic en «…más» / «mostrar menos» se expande o contrae la descripción. Si se definieron palabras clave (etiquetas) – aparecen debajo.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/watch-description.png" alt="Descripción del vídeo y visualizaciones">
+              <figcaption>Descripción del vídeo, visualizaciones y fecha.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Comentarios del vídeo (preguntas y respuestas)</h2>
+            <p>Si el vídeo tiene comentarios/preguntas configurados (gestor de comentarios) – aparece un área de <strong>comentarios del vídeo</strong> con la lista de preguntas y respuestas, a veces con marcas de tiempo (al hacer clic se salta al tiempo del vídeo).</p>
+          </section>
+
+          <section>
+            <h2>Respuestas (si están activadas)</h2>
+            <p>Cuando las respuestas están activadas en la configuración del sistema y el vídeo no tiene privacidad «solo enlace» – aparece un área de <strong>respuestas</strong> debajo de los comentarios, con la opción de añadir una respuesta (para usuarios con sesión iniciada).</p>
+          </section>
+
+          <section>
+            <h2>Barra lateral – temas y recomendados</h2>
+            <p>En la columna derecha (en ordenador; en móvil debajo del contenido):</p>
+            <ul>
+              <li><strong>Resumen de temas</strong> – si hay temas (capítulos) definidos para el vídeo: lista de temas con tiempos de inicio; al hacer clic en un tema el reproductor salta al tiempo correspondiente.</li>
+              <li><strong>Recomendados</strong> – lista de vídeos recomendados para ver a continuación. Si llegó desde un vídeo dentro de una lista de reproducción – se muestra el nombre de la lista y la lista de vídeos.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/watch-sidebar.png" alt="Barra lateral – temas y recomendados">
+              <figcaption>Barra lateral – temas (si existen) y lista de recomendados.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Compartir</h2>
+            <p>Al pulsar <strong>Compartir</strong> se abre un diálogo con: compartir en Facebook, WhatsApp, correo electrónico, enlace directo para copiar y, según la configuración – código de <strong>inserción</strong> (iframe) para incrustar el vídeo en un sitio. El botón <strong>Copiar</strong> copia el enlace o el código de inserción al portapapeles.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

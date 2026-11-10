@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Videos guide – manage your uploads</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>My videos</h1>
+      <p class="lead">A guide to managing the recordings and videos you uploaded – search, filter, edit, delete, and download at <strong>/videos/my</strong>.</p>
+      <a class="back-link" href="index.html">← Back to guides</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../videos-my.html" hreflang="he">עברית</a>
+        <a href="videos-my.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/videos-my.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Overview</h2>
+            <p>The <strong>My videos</strong> page lets every logged-in user (who is not view-only) manage <strong>videos they uploaded</strong> – not the entire system library. Open it from the user menu (<strong>My videos</strong>) or at <strong>/videos/my</strong> (for example <code>https://dev.video/videos/my</code>).</p>
+            <p>The page shows a card list of your videos (including processing and pending items), with filtering, sorting, editing, deletion, and download.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-my-overview.png?v=1" alt="My videos page – list and filter sidebar">
+              <figcaption>My videos – title, filters, and your video cards.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Not the same as the library:</strong> <strong>My channel</strong> (<code>/library/my</code>) is a watch grid for published videos only. <strong>My videos</strong> is for <strong>management</strong> – including videos still processing, plus edit and delete actions.
+            </div>
+            <div class="note">
+              <strong>Note:</strong> View-only users cannot open this page. System administrators with full access also have <a href="videos-admin.html">Video management</a> (<code>/videos/admin</code>) for all users' videos.
+            </div>
+          </section>
+
+          <section>
+            <h2>Opening the page</h2>
+            <p>Open the <strong>user menu</strong> and choose <strong>My videos</strong>. You can also reach it from the <a href="video-upload.html">Upload video</a> page – the sidebar links to <strong>My videos</strong> next to <strong>My library</strong>.</p>
+          </section>
+
+          <section>
+            <h2>Filters (sidebar)</h2>
+            <p>On the left you can narrow the list:</p>
+            <ul>
+              <li><strong>Search</strong> – by ID, title, description, or course details.</li>
+              <li><strong>Status</strong> – ready, processing, pending, error, archive, etc. (default: all).</li>
+              <li><strong>Privacy</strong> – public, authenticated, link-only (or all).</li>
+              <li><strong>Channel</strong> – filter by assigned channel.</li>
+              <li><strong>Captions</strong> – checkbox to show only videos with captions.</li>
+              <li><strong>From date / To date</strong> – upload date range, with shortcuts for the last 3 / 6 / 12 months.</li>
+              <li><strong>Min / max length (minutes)</strong> – duration limits.</li>
+              <li><strong>Impressions</strong> – greater than or less than a count.</li>
+              <li><strong>Filter</strong> – apply. <strong>Reset</strong> – clear and show the full list.</li>
+              <li><strong>Export to Excel</strong> – download a report of matching videos (ID, title, duration, date, size, impressions).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Sorting and multi-select</h2>
+            <p>Above the cards: video count, <strong>Select all</strong>, and <strong>sort</strong> links – date, title, status, size, impressions. After selecting at least one video, an <strong>actions bar</strong> appears with:</p>
+            <ul>
+              <li><strong>Download</strong> – up to 5 published non-YouTube videos.</li>
+              <li><strong>Delete</strong> – remove all selected videos (confirmation required).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-actions-bar.png?v=1" alt="Actions bar after selecting videos">
+              <figcaption>After selecting one or more videos – actions bar with download and delete.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Video card</h2>
+            <p>Each video is shown as a card with:</p>
+            <ul>
+              <li><strong>Checkbox</strong> – for bulk delete or download.</li>
+              <li><strong>Thumbnail and duration</strong> – click opens the watch page.</li>
+              <li><strong>Title and status badge</strong> – e.g. ready, processing, error.</li>
+              <li><strong>Progress bar</strong> – for videos pending processing.</li>
+              <li><strong>Metadata</strong> – ID, source, upload date, size, privacy, impressions, captions.</li>
+              <li><strong>Actions</strong> – <strong>Edit</strong> (video settings), <strong>Delete</strong> (confirmation dialog).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-delete-modal.png?v=1" alt="Video deletion confirmation dialog">
+              <figcaption>After clicking delete – confirmation dialog.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Editing</h2>
+            <p>Click <strong>Edit</strong> (gear icon) to open <strong>Video settings</strong> (<code>/videos/edit/{id}</code>) – change title, description, privacy, captions, trim, and more. See the <a href="video-settings.html">video settings guide</a>.</p>
+            <p>You can only edit <strong>your own</strong> videos. If you lack access, you will get an error page.</p>
+          </section>
+
+          <section>
+            <h2>Deletion</h2>
+            <p>Single delete: click the trash icon on a card and confirm. Bulk delete: select cards and click <strong>Delete</strong> in the actions bar. After deletion you return to <strong>My videos</strong> with a message listing removed titles. Deletion is usually not reversible.</p>
+          </section>
+
+          <section>
+            <h2>Related guides</h2>
+            <ul>
+              <li><a href="video-upload.html">Upload video</a> – upload a new recording.</li>
+              <li><a href="video-settings.html">Video settings</a> – detailed edit for one video.</li>
+              <li><a href="studio.html">Studio</a> – build a new video from segments of your uploads.</li>
+              <li><a href="video-watch.html">Watch page</a> – what viewers see when opening a video.</li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

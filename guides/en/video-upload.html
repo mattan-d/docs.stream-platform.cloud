@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Upload Guide – Files and Sources</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Video Upload</h1>
+      <p class="lead">Guide to the upload page — choosing a source (computer, YouTube, Facebook), drag-and-drop or file selection, title, privacy, and save.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../video-upload.html" hreflang="he">עברית</a>
+        <a href="video-upload.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/video-upload.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Overview</h2>
+            <p>The <strong>Upload video</strong> page is available from the main menu (upload button) or at <strong>/videos/upload</strong> (e.g. <code>https://dev.video/videos/upload</code>). On this page you enter video details, choose files or a link, then click Save and upload.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-overview.png" alt="Upload video page – overview">
+              <figcaption>Upload video page – title, action bar, and upload area.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Opening the page</h2>
+            <p>In the top menu, click <strong>Upload video</strong> (or Upload). Users without upload permission will not see the option or will receive an access message.</p>
+          </section>
+
+          <section>
+            <h2>Actions (sidebar)</h2>
+            <p>On the left: links to <strong>My library</strong> and <strong>My videos</strong> (manage your uploads). Administrators also see <strong>Video management</strong>. Useful for returning to your list without leaving the upload form. See the <a href="videos-my.html">My videos guide</a>.</p>
+          </section>
+
+          <section>
+            <h2>Media type</h2>
+            <p>At the top of the form, <strong>source type</strong> options appear (according to system settings):</p>
+            <ul>
+              <li><strong>Video from computer</strong> – upload a video file from your computer (drag and drop or choose files).</li>
+              <li><strong>YouTube video</strong> – enter a YouTube video URL (if enabled).</li>
+              <li><strong>Facebook video</strong> – enter a Facebook video URL (if enabled).</li>
+            </ul>
+            <p>Choose one type; the relevant fields (drop zone or URL field) appear accordingly.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-source.png" alt="Choosing source type – computer, YouTube, Facebook">
+              <figcaption>Choosing source type – computer, YouTube, or Facebook.</figcaption>
+            </figure>
+            <p>After clicking <strong>YouTube video</strong>, a field appears for entering the video URL:</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-youtube.png" alt="Upload from YouTube – URL field">
+              <figcaption>YouTube source – URL input field.</figcaption>
+            </figure>
+            <p>After clicking <strong>Facebook video</strong>, a field appears for entering the video URL:</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-facebook.png" alt="Upload from Facebook – URL field">
+              <figcaption>Facebook source – URL input field.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Upload from computer</h2>
+            <p>When «Video from computer» is selected:</p>
+            <ul>
+              <li><strong>Drop zone</strong> – drag video files into the area or click «Choose files» to open the file picker.</li>
+              <li><strong>Supported formats</strong> – e.g. MP4, MOV, AVI, WEBM, MKV (depending on settings).</li>
+              <li><strong>Maximum size</strong> – usually up to 2GB per file (may vary by plan).</li>
+            </ul>
+            <p>After choosing files, a <strong>Selected files</strong> list appears with name, size, and status; you can remove a single file or click <strong>Clear all</strong>. A summary shows: number of files, total size, and estimated upload time.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-dropzone.png" alt="Drag-and-drop zone and file selection">
+              <figcaption>Drag-and-drop zone and file selection.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Title, description, and privacy</h2>
+            <p>Below the upload area:</p>
+            <ul>
+              <li><strong>Title (required)</strong> – the video title shown in lists and search.</li>
+              <li><strong>General description</strong> – free-text description (optional).</li>
+              <li><strong>Privacy</strong> – access level: public, private, link, password, etc. (depending on settings).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-form.png" alt="Title, description, and privacy fields">
+              <figcaption>Title, description, and privacy fields.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Save and upload</h2>
+            <p>After filling in the fields and choosing files (or entering a URL for YouTube/Facebook sources), click <strong>Save and upload</strong>. The button is active only when there are valid files (format and size).</p>
+            <p>During upload, a waiting dialog shows <strong>overall progress</strong> and progress per file. When finished — the system processes the videos; they will appear in <strong>My library</strong> and in <strong>My videos</strong> after processing completes.</p>
+            <div class="note">
+              <strong>Note:</strong> if an upload limit is set in your plan, a message appears when the limit is reached. Upload files in a supported format and within the allowed size.
+            </div>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

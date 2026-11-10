@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Incrustar un vídeo en Moodle – guía para docentes</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Incrustar un vídeo en Moodle</h1>
+      <p class="lead">Guía para docentes: añada un vídeo de Stream a un curso con la actividad <strong>STREAM</strong> (<code>mod_stream</code>), incluido un vídeo antiguo que ya está en su lista.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../moodle-stream-embed.html" hreflang="he">עברית</a>
+        <a href="../en/moodle-stream-embed.html" hreflang="en">English</a>
+        <a href="moodle-stream-embed.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Qué hace</h2>
+            <p>La incrustación se hace con la actividad <strong>STREAM</strong>. Después de guardar, los estudiantes ven el vídeo dentro del curso, sin salir de Moodle.</p>
+            <p>También se puede incrustar un vídeo antiguo que ya está en la lista del docente. No hace falta volver a subirlo.</p>
+          </section>
+
+          <section>
+            <h2>Añadir la actividad al curso</h2>
+            <ol>
+              <li>Entre al curso en Moodle.</li>
+              <li>Active el <strong>modo de edición</strong>.</li>
+              <li>En la sección donde debe aparecer el vídeo, pulse <strong>Añadir una actividad o un recurso</strong>.</li>
+              <li>Elija <strong>STREAM</strong>.</li>
+              <li>Ponga un nombre a la actividad. Los estudiantes ven ese nombre en el curso.</li>
+            </ol>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-course-activity.png" alt="Una actividad STREAM en una sección del curso y el botón de añadir actividad o recurso">
+              <figcaption>Una actividad STREAM en el curso, y debajo el botón para añadir una actividad o un recurso.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Elegir un vídeo que ya existe</h2>
+            <p>En la configuración de la actividad aparece la lista de sus vídeos en Stream. La lista se carga según el correo del usuario de Moodle e incluye vídeos <strong>listos para ver</strong> de la cuenta de Stream correspondiente, aunque se hayan subido o grabado antes.</p>
+            <p>Un vídeo aparece en la lista cuando:</p>
+            <ul>
+              <li>está en estado <strong>listo para ver</strong></li>
+              <li>su privacidad es <strong>público</strong>, <strong>autenticación</strong> o <strong>enlace</strong></li>
+            </ul>
+            <p>Un vídeo <strong>privado</strong>, o uno que todavía se está procesando, no se puede elegir.</p>
+            <ol>
+              <li>Busque el vídeo. Puede buscar por nombre en <strong>Buscar</strong> y ordenar por <strong>fecha</strong>, <strong>nombre</strong>, <strong>vistas</strong> o <strong>tamaño</strong>.</li>
+              <li>Pulse la tarjeta del vídeo. La tarjeta seleccionada se marca en azul.</li>
+              <li>Pulse otra vez la misma tarjeta para quitar la selección.</li>
+              <li>Puede elegir varios vídeos. El estudiante los ve como una lista de reproducción dentro de la misma actividad.</li>
+            </ol>
+            <p>La fecha de subida aparece en la miniatura, así que los vídeos antiguos siguen disponibles.</p>
+            <p>El botón <strong>Subir</strong> abre un formulario para un vídeo nuevo. No hace falta usarlo si el vídeo ya está en la lista.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-settings.png" alt="Configuración de la actividad y lista de vídeos">
+              <figcaption>Configuración: nombre, opciones, descripción y lista de vídeos.</figcaption>
+            </figure>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-picker.png" alt="Lista de vídeos con búsqueda, orden y un vídeo seleccionado">
+              <figcaption>Búsqueda y orden. El vídeo seleccionado está en azul y la tarjeta muestra la fecha de subida.</figcaption>
+            </figure>
+
+            <h3>Vídeos seleccionados</h3>
+            <p>Debajo de la lista está <strong>Vídeos seleccionados (arrastrar para reordenar)</strong>:</p>
+            <ul>
+              <li>Arrastre el control para fijar el orden de reproducción.</li>
+              <li>Puede editar el título que ven los estudiantes sin cambiar el título original en Stream.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-selected.png" alt="Un vídeo seleccionado con nombre para mostrar y control de arrastre">
+              <figcaption>El vídeo seleccionado, con nombre para mostrar y control para cambiar el orden.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Opciones</h2>
+            <table>
+              <thead>
+                <tr><th>Opción</th><th>Qué hace</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Modo de recopilación de grabaciones</strong></td>
+                  <td>Recoge automáticamente grabaciones nuevas. Puede dejarlo desactivado y elegir vídeos a mano. Si está activo, aún puede elegir vídeos concretos.</td>
+                </tr>
+                <tr>
+                  <td><strong>Incluir audio</strong></td>
+                  <td>Desactivado: el vídeo se reproduce sin sonido. Activado: el reproductor incluye audio.</td>
+                </tr>
+                <tr>
+                  <td><strong>Reproducir el siguiente vídeo</strong></td>
+                  <td>En una lista, el siguiente vídeo empieza al terminar el actual. El estudiante puede seguir eligiendo un vídeo de la lista.</td>
+                </tr>
+                <tr>
+                  <td><strong>Descripción de la actividad</strong></td>
+                  <td>Texto que ven los estudiantes encima del reproductor.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>Temporalización</h2>
+            <p>La sección <strong>Temporalización</strong> limita cuándo los estudiantes pueden abrir la actividad:</p>
+            <ul>
+              <li><strong>Hora de apertura</strong> — la actividad no está disponible antes de esa hora. Marque <strong>Habilitar</strong> para activar el límite.</li>
+              <li><strong>Hora de cierre</strong> — después de esa hora no se puede ver. Sin <strong>Habilitar</strong>, la actividad sigue abierta.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-timing.png" alt="Horas de apertura y cierre">
+              <figcaption>Hora de apertura y hora de cierre. El límite solo se aplica si se marca Habilitar.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Guardar</h2>
+            <ul>
+              <li><strong>Guardar cambios y mostrar</strong> — guarda y abre la página de visualización.</li>
+              <li><strong>Guardar cambios y volver al curso</strong> — guarda y vuelve a la lista de actividades.</li>
+              <li><strong>Cancelar</strong> — sale sin guardar.</li>
+            </ul>
+            <p>Sin elegir un vídeo (y con el modo de recopilación desactivado) no se puede guardar la actividad.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-save.png" alt="Botones de guardar">
+              <figcaption>Guardar y mostrar, guardar y volver al curso, o cancelar.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Qué ve el estudiante</h2>
+            <p>Después de guardar, la actividad aparece en el curso. Al abrirla se muestra el reproductor dentro de Moodle. Si se eligieron varios vídeos, el estudiante pasa de uno a otro dentro de la misma actividad.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-view.png" alt="Reproducción de un vídeo incrustado en una actividad STREAM">
+              <figcaption>El reproductor dentro de una actividad STREAM, tal como lo ve el estudiante.</figcaption>
+            </figure>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

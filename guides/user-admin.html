@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך ניהול משתמשים – למנהלים</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>ניהול משתמשים</h1>
+      <p class="lead">מדריך למנהלים בלבד – דף ניהול המשתמשים במערכת ב־<strong>/user/admin</strong>.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="user-admin.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/user-admin.html" hreflang="en">English</a>
+        <a href="es/user-admin.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מבט כללי</h2>
+            <p>עמוד <strong>ניהול משתמשים</strong> נגיש רק למשתמשים עם הרשאות מנהל. נכנסים אליו מהתפריט (למשל מתפריט המשתמש – <strong>ניהול משתמשים</strong>) או בכתובת <strong>/user/admin</strong> (למשל <code>https://dev.video/user/admin</code>). בעמוד מוצגת רשימת משתמשים בכרטיסים, סינון לפי חיפוש וסוג משתמש, ופעולות לכל משתמש.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/user-admin-overview.png" alt="עמוד ניהול משתמשים – רשימה וסרגל סינון">
+              <figcaption>עמוד ניהול משתמשים – כותרת, סינון (חיפוש, סוג משתמש) ורשימת כרטיסי המשתמשים.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>שימו לב:</strong> משתמש שאינו מנהל יקבל דף 404 או הודעת גישה. יש להתחבר כמנהל.
+            </div>
+          </section>
+
+          <section>
+            <h2>כניסה לעמוד</h2>
+            <p>בתפריט העליון (תפריט המשתמש / פרופיל) בחרו <strong>ניהול משתמשים</strong>. האפשרות מופיעה רק למנהלים.</p>
+          </section>
+
+          <section>
+            <h2>סינון (סרגל צד)</h2>
+            <p>בצד שמאל:</p>
+            <ul>
+              <li><strong>חיפוש</strong> – שדה לחיפוש משתמש לפי מזהה, שם פרטי, שם משפחה, דוא״ל או שם משתמש.</li>
+              <li><strong>סוג משתמש</strong> – רשימה: הכל, מנהלן, משתמש רגיל.</li>
+              <li><strong>סנן</strong> – הפעלת הסינון לפי השדות למעלה.</li>
+              <li><strong>איפוס</strong> – ניקוי הסינון וחזרה לרשימה המלאה.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>מיון ותוצאות</h2>
+            <p>מעל רשימת הכרטיסים מוצגים מספר התוצאות וקישורי <strong>מיון</strong>: מזהה, שם פרטי, שם משפחה, דוא״ל, גישה אחרונה, הרשאה. לחיצה על כותרת ממיינת את הרשימה. יש גם עימוד (פאגינציה) למעלה ולמטה.</p>
+          </section>
+
+          <section>
+            <h2>כרטיס משתמש</h2>
+            <p>כל משתמש מוצג בכרטיס עם:</p>
+            <ul>
+              <li><strong>תמונה / אווטר</strong> – לחיצה מובילה לפרופיל המשתמש.</li>
+              <li><strong>שם</strong> – שם פרטי ומשפחה; לחיצה לפרופיל.</li>
+              <li><strong>תג סטטוס</strong> – פעיל או לא פעיל.</li>
+              <li><strong>מטא־דאטה</strong> – מזהה, דוא״ל, גישה אחרונה, שיטת אימות, סוג (מנהלן / משתמש רגיל).</li>
+              <li><strong>פעולות</strong> – אייקונים: מחיקה, הגדרות משתמש, צפייה במדדים, התחבר כ.</li>
+            </ul>
+            <ul>
+              <li><strong>מחיקה</strong> – פותח חלון לאישור מחיקת המשתמש.</li>
+              <li><strong>הגדרות משתמש</strong> – מעבר לדף עריכת פרטי המשתמש (פרופיל, הרשאות וכו').</li>
+              <li><strong>צפייה במדדים</strong> – מעבר למדדי המשתמש.</li>
+              <li><strong>התחבר כ</strong> – התחברות למערכת כאותו משתמש (לצורכי תמיכה/בדיקה).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/user-admin-delete-modal.png" alt="חלון אישור מחיקת משתמש">
+              <figcaption>לאחר לחיצה על כפתור מחיקה ליד משתמש – חלון לאישור מחיקת המשתמש.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>מחיקת משתמש</h2>
+            <p>לחיצה על אייקון המחיקה בכרטיס פותחת חלון (מודל) לאישור. באישור – המשתמש נמחק מהמערכת והדף מתעדכן (או מוצגת הודעת הצלחה). פעולה זו בדרך כלל לא הפיכה.</p>
+          </section>
+
+          <section>
+            <h2>הגדרות משתמש ופרופיל</h2>
+            <p>לחיצה על <strong>הגדרות משתמש</strong> (אייקון גלגל שיניים) מובילה לדף <strong>/user/settings/{id}</strong> – שם ניתן לערוך פרטים, להפעיל או לבטל את המשתמש ולנהל הרשאות.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

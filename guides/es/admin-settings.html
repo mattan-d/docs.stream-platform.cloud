@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de configuración del sistema – para administradores</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Configuración del sistema</h1>
+      <p class="lead">Guía para usuarios con permisos de administrador – la página de configuración del sistema en <strong>/admin/settings</strong>.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../admin-settings.html" hreflang="he">עברית</a>
+        <a href="../en/admin-settings.html" hreflang="en">English</a>
+        <a href="admin-settings.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Tabla de contenidos">
+            <h2 id="toc-title">Tabla de contenidos</h2>
+            <ul>
+              <li><a href="#section-overview">Visión general y acceso</a></li>
+              <li><a href="#section-general">Configuración general</a></li>
+              <li><a href="#section-messages">Mensajes salientes</a></li>
+              <li><a href="#section-transcription">Subtítulos de vídeos</a></li>
+              <li><a href="#section-youtube">Carga a YouTube</a></li>
+              <li><a href="#section-advanced">Configuración avanzada</a></li>
+              <li><a href="#section-saml2">Conexión SAML2</a></li>
+              <li><a href="#section-channels">Canales</a></li>
+              <li><a href="#section-save">Guardar</a></li>
+            </ul>
+          </nav>
+
+          <section id="section-overview">
+            <h2>Visión general y acceso</h2>
+            <p>La página de <strong>configuración del sistema</strong> solo es accesible para usuarios con permisos de administrador. Se accede desde el menú principal (botón <strong>Configuración</strong> o panel de control) o en la dirección <strong>/admin/settings</strong> (por ejemplo, <code>https://dev.video/admin/settings</code>).</p>
+            <p>A la izquierda aparece la <strong>navegación</strong> por secciones; en el centro, cada área de configuración. Tras realizar cambios, pulse <strong>Guardar</strong> al final de la página.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/admin-settings-overview.png" alt="Pantalla de configuración del sistema – vista general">
+              <figcaption>Pantalla de configuración del sistema – navegación y área de configuración general.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Nota:</strong> Un usuario que no sea administrador recibirá un error 404 o un mensaje de acceso denegado. Debe iniciar sesión como administrador.
+            </div>
+          </section>
+
+          <section id="section-general">
+            <h2>Configuración general</h2>
+            <p>En el área de <strong>configuración general</strong> se define:</p>
+            <ul>
+              <li><strong>Nombre de la organización</strong> – aparece en el encabezado del sistema.</li>
+              <li><strong>URL de Stream</strong> – la dirección base del sistema (a veces bloqueada).</li>
+              <li><strong>Logotipo de la organización</strong> – URL de la imagen del logotipo.</li>
+              <li><strong>Formato de fecha de carga</strong> – relativo (hace X semanas) o fecha (31/01/26).</li>
+              <li><strong>Espacio de almacenamiento</strong> – se muestran el espacio disponible y el utilizado (en gigabytes y porcentaje).</li>
+              <li><strong>Idiomas disponibles en la interfaz</strong> – selección de los idiomas que aparecerán en el selector de idioma (por ejemplo, עברית, English, العربية).</li>
+              <li><strong>Tema (colores)</strong> – selección de la plantilla de colores (Soft Coral, Emerald Tech, Ocean Breeze, etc.).</li>
+            </ul>
+          </section>
+
+          <section id="section-messages">
+            <h2>Mensajes salientes</h2>
+            <p>En el área de <strong>mensajes salientes</strong> se define:</p>
+            <ul>
+              <li><strong>Dirección de correo electrónico de soporte</strong> – aparece en la sección de soporte.</li>
+              <li><strong>Permitir envío de mensajes tras cargar un vídeo nuevo</strong> – activar/desactivar.</li>
+              <li><strong>Permitir envío de mensajes tras cargar subtítulos</strong> – activar/desactivar.</li>
+              <li><strong>Permitir envío de mensajes tras el registro en el sitio</strong> – activar/desactivar.</li>
+            </ul>
+          </section>
+
+          <section id="section-transcription">
+            <h2>Subtítulos de vídeos</h2>
+            <p>En el área de <strong>subtítulos de vídeos</strong> se define:</p>
+            <ul>
+              <li><strong>ID de API</strong> – clave para el servicio de subtítulos automáticos (por ejemplo, OpenAI).</li>
+              <li><strong>Permitir subtítulos automáticos</strong> – activar la generación automática de subtítulos para los vídeos.</li>
+            </ul>
+          </section>
+
+          <section id="section-youtube">
+            <h2>Carga a YouTube</h2>
+            <p>En el área de <strong>carga automática a YouTube</strong> se configura la conexión con Google y YouTube:</p>
+            <ul>
+              <li><strong>YouTube Client ID / Client Secret / Redirect URI</strong> – se configuran desde Google Cloud Console.</li>
+              <li><strong>Permitir carga automática a YouTube</strong> – los vídeos procesados se cargarán automáticamente al canal.</li>
+              <li><strong>Cargar solo a YouTube (sin guardar en la nube)</strong> – guardar solo en YouTube, no en la nube local.</li>
+              <li><strong>Usar reproductor estándar para vídeos de YouTube</strong> – reproducción a través del reproductor del sistema (yt-dlp) o reproductor incrustado de YouTube.</li>
+              <li><strong>Autenticación de cuenta de YouTube</strong> – estado de conexión (conectado / no conectado) y botón <strong>Conectar a YouTube</strong> o <strong>Gestionar</strong> para la página de autenticación.</li>
+            </ul>
+          </section>
+
+          <section id="section-advanced">
+            <h2>Configuración avanzada</h2>
+            <p>En el área de <strong>configuración avanzada</strong> se define, entre otras cosas:</p>
+            <ul>
+              <li><strong>URL de diapositiva fija</strong> – imagen fija cuando no hay póster.</li>
+              <li><strong>Activar reproducción automática</strong> – si el vídeo comenzará a reproducirse automáticamente.</li>
+              <li><strong>Ocultar botón de incrustación pública</strong> – ocultar el botón de incrustación.</li>
+              <li><strong>Activar anotaciones en la línea de tiempo</strong> – preguntas/anotaciones durante la visualización.</li>
+              <li><strong>Activar sistema de comentarios</strong> – sistema de comentarios/anotaciones.</li>
+              <li><strong>Permitir registro de nuevos usuarios</strong> – registro autónomo.</li>
+              <li><strong>Permitir autenticación mediante SSO</strong> – inicio de sesión único.</li>
+              <li><strong>Activar modo público</strong> – acceso público al contenido.</li>
+              <li><strong>Permitir activación automática de usuarios al registrarse</strong> – activación automática sin aprobación del administrador.</li>
+              <li><strong>Activar generación automática de imagen de póster</strong> – póster automático a partir del vídeo.</li>
+              <li><strong>Una sola versión por grabación</strong> – archivar y reemplazar versiones duplicadas de la misma grabación.</li>
+            </ul>
+          </section>
+
+          <section id="section-saml2">
+            <h2>Conexión SAML2</h2>
+            <p>En el área de <strong>conexión SAML2</strong> se configura el inicio de sesión único (SSO) con un IdP compatible con SAML2:</p>
+            <ul>
+              <li><strong>Generar certificado (SP)</strong> – creación de clave privada y certificado (saml.pem, saml.crt) y actualización de authsources.php.</li>
+              <li><strong>Descargar metadatos (SP)</strong> – descarga del archivo XML del SP para enviarlo al IdP.</li>
+              <li><strong>Cargar metadatos (IdP)</strong> – carga del archivo XML de metadatos del IdP.</li>
+            </ul>
+            <p>El estado de la conexión (certificado, IdP configurado) se muestra en la parte superior del área.</p>
+            <p>Para el proceso completo, direcciones SAML y conexión con Microsoft Entra ID (365), consulte la <a href="saml2-admin.html">guía de conexión SAML2 para administradores</a>.</p>
+          </section>
+
+          <section id="section-channels">
+            <h2>Canales</h2>
+            <p>En el área de <strong>canales</strong> se gestiona la lista de canales que aparecen en la página de inicio y en los filtros. Se pueden añadir canales y cambiar el orden (arrastrando). El enlace <strong>Gestionar canales destacados</strong> lleva a la página de gestión de canales destacados.</p>
+          </section>
+
+          <section id="section-save">
+            <h2>Guardar</h2>
+            <p>Tras actualizar la configuración, pulse el botón <strong>Guardar</strong> al final de la página. Aparecerá el mensaje «Los datos se guardaron correctamente» si la operación fue exitosa. Las acciones SAML2 (generar certificado, cargar metadatos) se realizan pulsando los botones correspondientes y redirigen con un mensaje de estado.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

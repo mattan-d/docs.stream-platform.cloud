@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>חיבור SAML2 – מדריך למנהלים</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>חיבור SAML2 (SSO)</h1>
+      <p class="lead">מדריך למנהלי המערכת: הגדרת התחברות יחידנית מול ספק זהות (IdP) תומך SAML&nbsp;2.0, כולל <strong>Microsoft Entra ID</strong> (Azure AD) ורישוי Microsoft&nbsp;365.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="saml2-admin.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/saml2-admin.html" hreflang="en">English</a>
+        <a href="es/saml2-admin.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="תוכן עניינים">
+            <h2 id="toc-title">תוכן עניינים</h2>
+            <ul>
+              <li><a href="#section-overview">מה זה נותן ומה נדרש</a></li>
+              <li><a href="#section-prep">לפני שמתחילים: HTTPS וכתובת האתר</a></li>
+              <li><a href="#section-admin-stream">הגדרות בממשק המנהל (Stream)</a></li>
+              <li><a href="#section-endpoints">כתובות טכניות (SP) לעותק</a></li>
+              <li><a href="#section-entra">חיבור ב־Microsoft Entra ID (365)</a></li>
+              <li><a href="#section-claims">מזהים ותביעות (Claims) – Microsoft 365</a></li>
+              <li><a href="#section-test">בדיקה ופתרון בעיות</a></li>
+            </ul>
+          </nav>
+
+          <section id="section-overview">
+            <h2>מה זה נותן ומה נדרש</h2>
+            <p><strong>SAML2</strong> מאפשר למשתמשים להתחבר לאתר ה־Stream באמצעות חשבון הארגון (למשל Microsoft&nbsp;365), בלי סיסמה נפרדת של המערכת – בהתאם למדיניות הארגון.</p>
+            <ul>
+              <li>נדרשת גישת <strong>מנהל</strong> לדף <a href="admin-settings.html#section-saml2">הגדרות המערכת</a> (<code>/admin/settings</code>).</li>
+              <li>המערכת משתמשת ב־<strong>SimpleSAMLphp</strong> כשירות SAML (SP) בשם <code>default-sp</code>.</li>
+              <li>יש להפיק <strong>תעודת SP</strong>, להעביר את <strong>מטא־דאטה של ה־SP</strong> לספק הזהות (או למלא שדות ידנית), ואז לטעון לכאן את <strong>מטא־דאטה של ה־IdP</strong> (קובץ XML).</li>
+            </ul>
+          </section>
+
+          <section id="section-prep">
+            <h2>לפני שמתחילים: HTTPS וכתובת האתר</h2>
+            <div class="warn">
+              <strong>חשוב:</strong> בסביבת ייצור יש לגשת לאתר ב־<strong>HTTPS</strong> בלבד. תעודת ה־SP, מזהה הישות (Entity ID) וכתובות ה־ACS נגזרות מהכתובת בפועל; אם השרת או פרוקסי לא מדווחים נכון על HTTPS, ייתכן שמטא־דאטה וחיבור SAML לא יהיו עקביים.
+            </div>
+            <p>באזור <strong>הגדרות כלליות</strong> ודאו ש־<strong>כתובת URL של Stream</strong> (כתובת הבסיס הציבורית של האתר) מוגדרת עם <code>https://</code> ובלי סלאש מיותר בסוף (או בהתאם להגדרות הארגון). כתובת זו משמשת גם לפעולות פנימיות כמו הורדת מטא־דאטה מהשרת.</p>
+          </section>
+
+          <section id="section-admin-stream">
+            <h2>הגדרות בממשק המנהל (Stream)</h2>
+            <p>היכנסו ל־<strong>הגדרות המערכת</strong> (<code>/admin/settings</code>) ובצעו לפי הסדר:</p>
+
+            <h3>1. הפעלת SSO</h3>
+            <p>באזור <strong>הגדרות מתקדמות</strong>, סמנו <strong>אפשר הזדהות באמצעות SSO</strong> (<code>allow_sso_auth</code>) כדי לאפשר למשתמשים להשתמש בנתיב ההתחברות היחידנית (בהתאם לאופן הצגת כפתור ההתחברות באתר).</p>
+
+            <h3>2. אזור «חיבור SAML2»</h3>
+            <ol>
+              <li><strong>הפק תעודה (SP)</strong> – יוצר מפתח פרטי ותעודה (<code>saml.pem</code>, <code>saml.crt</code>) בתיקיית <code>saml2/cert/</code> ומעדכן את <code>authsources.php</code>. ללא שלב זה לא תהיה מטא־דאטה תקפית להעברה ל־IdP.</li>
+              <li><strong>הורד מטא־דאטה SP</strong> – מוריד קובץ XML של שירות הספק (SP) שיש להזין אצל ספק הזהות (למשל העלאה לאפליקציה ב־Entra ID), או לחלץ ממנו את כתובת ה־Entity ID ואת כתובת ה־ACS.</li>
+              <li><strong>הטען מטא־דאטה (IdP)</strong> – לאחר שספק הזהות מוגדר, הורידו ממנו את קובץ ה־XML של מטא־דאטה של ה־IdP והעלו אותו כאן. הקובץ נשמר והמערכת מעדכנת את קובץ המטא־דאטה המרוחק (<code>saml20-idp-remote.php</code>) ואת קישור ה־IdP ב־<code>authsources.php</code>.</li>
+            </ol>
+            <p>בראש האזור מוצג <strong>סטטוס</strong> (תעודה, קונפיגורציה, האם ה־IdP מחובר). לאחר טעינת מטא־דאטה של ה־IdP הסטטוס אמור להצביע על חיבור מלא.</p>
+
+            <div class="note">
+              <strong>טיפ:</strong> פעולות SAML (הפקת תעודה והטענת מטא־דאטה) מתבצעות בלחיצה על הכפתורים המיועדים; שינויים בשאר ההגדרות נשמרים בלחיצה על <strong>שמירה</strong> בתחתית הדף.
+            </div>
+          </section>
+
+          <section id="section-endpoints">
+            <h2>כתובות טכניות (SP) לעותק</h2>
+            <p>החליפו את <code>https://your-domain.example</code> בכתובת הייצור שלכם (עם <code>https</code>).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>תפקיד</th>
+                  <th>נתיב טיפוסי</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>מטא־דאטה של ה־SP (XML ציבורי)</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/metadata.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>ACS (Reply URL) – קבלת תשובת SAML</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/saml2-acs.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>יציאה יחידנית (SLO), אם נדרש</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/saml2-logout.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>כניסה באתר (אתחול SP)</td>
+                  <td><span class="mono">https://your-domain.example/sso.php</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p><strong>מזהה ישות (Entity ID) של ה־SP:</strong> בדרך כלל בצורה <code>https://your-domain.example/</code> (סלאש בסוף), בהתאם לבקשה לשרת בזמן יצירת המטא־דאטה. הערכים המדויקים מופיעים בקובץ ה־XML שהורדתם.</p>
+
+            <p>דוגמה לכתובת מלאה למטא־דאטה:</p>
+            <pre class="endpoint"><code>https://your-domain.example/saml2/public/module.php/saml/sp/metadata.php/default-sp</code></pre>
+          </section>
+
+          <section id="section-entra">
+            <h2>חיבור ב־Microsoft Entra ID (Microsoft 365)</h2>
+            <p>השלבים הבאים תואמים את זרימת העבודה הנפוצה בממשק Entra ID ליצירת אפליקציית SAML, וניתן לשלב אותם עם מדריך Azure הפנימי של הארגון (כולל צילומי מסך מפורטים שם).</p>
+
+            <h3>1. יצירת אפליקציית ארגון</h3>
+            <ul>
+              <li>בפורטל Azure: <strong>Microsoft Entra ID</strong> → <strong>אפליקציות ארגוניות</strong> (<strong>Enterprise applications</strong>) → <strong>אפליקציה חדשה</strong>.</li>
+              <li>בחרו <strong>יצירת אפליקציית משלכם</strong>, תנו שם (למשל Stream – SAML), ובחרו אינטגרציה מבוססת <strong>SAML / SSO יחיד</strong> – לפי האפשרויות בממשק.</li>
+            </ul>
+
+            <h3>2. הגדרת SAML – צד Entra (בסיסי)</h3>
+            <p>באפליקציה נבחרת: <strong>ניהול SSO יחיד</strong> → <strong>SAML</strong>.</p>
+            <ul>
+              <li><strong>העלאת מטא־דאטה של SP</strong> – אם Entra מאפשרת העלאת קובץ, השתמשו בקובץ ה־XML שהורדתם מ־Stream («הורד מטא־דאטה SP»). זה ממלא רבים מהשדות אוטומטית.</li>
+              <li><strong>או מילוי ידני (Basic SAML Configuration)</strong>:
+                <ul>
+                  <li><strong>Identifier (Entity ID)</strong> – כפי שמופיע במטא־דאטה של ה־SP (לרוב <code>https://your-domain.example/</code>).</li>
+                  <li><strong>Reply URL (Assertion Consumer Service URL)</strong> – כתובת ה־ACS מהטבלה למעלה.</li>
+                  <li><strong>Sign on URL</strong> – לעיתים נדרש לחוויית התחברות SP-initiated; נסו את <code>https://your-domain.example/sso.php</code> אם הממשק דורש ערך.</li>
+                </ul>
+              </li>
+              <li>שמרו את ההגדרות.</li>
+            </ul>
+
+            <h3>3. הורדת מטא־דאטה של ה־IdP ל־Stream</h3>
+            <p>באותו מסך SAML, הורידו את <strong>Federation Metadata XML</strong> (לפעמים מתואר כ־«Certificate» או «Download Federation Metadata»).</p>
+            <p>חזרו ל־Stream → <strong>הגדרות המערכת</strong> → <strong>חיבור SAML2</strong> → <strong>הטען מטא־דאטה (IdP)</strong> והעלו את הקובץ.</p>
+
+            <h3>4. הקצאת משתמשים</h3>
+            <p>ב־Entra: באפליקציה → <strong>משתמשים וקבוצות</strong> → הוסיפו את המשתמשים או הקבוצות שמורשים להתחבר דרך האפליקציה.</p>
+
+            <div class="note">
+              <strong>תיעוד מיקרוסופט:</strong> שמות התפריטים והכפתורים עשויים להשתנות בין גרסאות הפורטל; אם משהו לא תואם, השתמשו בחיפוש בפורטל אחרי «SAML-based SSO» או «Enterprise application» והשוו לשדות בטבלה למעלה.
+            </div>
+          </section>
+
+          <section id="section-claims">
+            <h2>מזהים ותביעות (Claims) – Microsoft 365</h2>
+            <p>כאשר ספק הזהות הוא Microsoft Entra ID, המערכת יכולה לזהות את התשובה לפי תביעות אופייניות (כולל מזהה דייר). למילוי פרופיל המשתמש משמשים בין השאר:</p>
+            <ul>
+              <li>כתובת דואר אלקטרוני</li>
+              <li>שם פרטי ושם משפחה</li>
+              <li>שם משתמש / מזהה ייחודי</li>
+            </ul>
+            <p>ב־Entra ID, תחת <strong>תכונות והצהרות משתמש</strong> (User Attributes &amp; Claims), ודאו שהתביעות הנשלחות ב־SAML token כוללות לפחות דוא"ל ושם – בהתאם למדיניות הארגון. אם תביעה חסרה, ייתכן שמשתמש לא יזוהה או ייווצר חשבון חלקי.</p>
+            <p>משתמש קיים ב־Stream מזוהה לפי <strong>כתובת האימייל</strong>; אם אין משתמש עם אותו אימייל, המערכת עשויה ליצור משתמש חדש (בהתאם להגדרות הרישום וההפעלה באתר).</p>
+          </section>
+
+          <section id="section-test">
+            <h2>בדיקה ופתרון בעיות</h2>
+            <ul>
+              <li>פתחו חלון גלישה פרטי וגלשו ל־<code>https://your-domain.example/sso.php</code> – אמור להתבצע ניתוב לכניסה בארגון ולאחר מכן חזרה לאתר.</li>
+              <li>אם <strong>הורדת מטא־דאטה SP</strong> נכשלת עם הודעת שגיאה, בדקו שכתובת הבסיס של האתר מוגדרת ב־HTTPS ושהקובץ הציבורי של SimpleSAMLphp נגיש מהשרת.</li>
+              <li>אם Entra מחזירה שגיאת SAML, בדקו בדיוק את ה־Reply URL וה־Entity ID מול קובץ ה־XML של ה־SP.</li>
+              <li>ודאו שהאפליקציה ב־Entra מוקצית למשתמש הבודק.</li>
+            </ul>
+            <p>לקישור מהיר להגדרות הכלליות של המערכת: <a href="admin-settings.html">מדריך הגדרות המערכת</a>.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

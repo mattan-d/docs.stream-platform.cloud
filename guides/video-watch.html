@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך עמוד צפייה בסרטון</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>עמוד צפייה בסרטון</h1>
+      <p class="lead">סקירת האפשרויות בעמוד הצפייה בסרטון (watch) – נגן, כפתורי פעולה, תיאור, הערות, מומלצים ועוד.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="video-watch.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/video-watch.html" hreflang="en">English</a>
+        <a href="es/video-watch.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מבט כללי</h2>
+            <p>עמוד הצפייה נפתח בלחיצה על סרטון מהרשימות או בכניסה ישירה לכתובת <strong>/watch/מזהה_סרטון</strong> (למשל <code>https://dev.video/watch/1248</code>). העמוד מחולק לאזור ראשי (נגן, כותרת, תפריט פעולות, תיאור, הערות) ולעמודה צדדית (נושאים, מומלצים).</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/watch-overview.png" alt="עמוד צפייה – מבט כללי">
+              <figcaption>עמוד צפייה בסרטון – נגן, כותרת ותפריט פעולות.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>נגן הווידאו</h2>
+            <p>בראש העמוד מוצג הנגן: הפעלה/השהה, עוצמת קול, התקדמות (פרוגרס בר), מסך מלא. לסרטונים עם נושאים (chapters) – לחיצה על נושא בצד עוברת לזמן המתאים בסרטון.</p>
+          </section>
+
+          <section>
+            <h2>שורת הפעולות מתחת לנגן</h2>
+            <p>מתחת לכותרת הסרטון מופיעים:</p>
+            <ul>
+              <li><strong>אבatar ו־ערוץ</strong> – תמונת הערוץ, שם הערוץ ומספר מינויים; לחיצה מעבירה לפרופיל הערוץ. למשתמש מחובר שאינו הבעלים – כפתור <strong>הרשמה למינוי</strong> (אם מופעל).</li>
+              <li><strong>הגדרות</strong> – לבעלי הסרטון או למנהלים: קישור להגדרות הסרטון (עריכה).</li>
+              <li><strong>מדדים</strong> – למנהלים: קישור למדדי הסרטון (אנליטיקס).</li>
+              <li><strong>סיכום</strong> – אם קיים סיכום כתוביות: הורדת קובץ סיכום.</li>
+              <li><strong>הורדת כתוביות</strong> – לבעלי הסרטון כשקיימות כתוביות: הורדת קובץ הכתוביות.</li>
+              <li><strong>אהבתי / דיסלייק</strong> – ספירת לייקים ודיסלייקים (למשתמשים מחוברים).</li>
+              <li><strong>הורדה</strong> – אם הסרטון מוגדר כהורדה מותרת: הורדת קובץ הווידאו.</li>
+              <li><strong>שיתוף</strong> – פתיחת חלון שיתוף (פייסבוק, וואטאפ, אימייל, קישור, קוד הטמעה).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/watch-actions.png" alt="שורת הפעולות – הגדרות, לייק, שיתוף">
+              <figcaption>שורת הפעולות – ערוץ, הגדרות, מדדים, לייק, הורדה, שיתוף.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>מדדים (לבעלים/מנהלים)</h2>
+            <p>אם אתם בעלי הסרטון או מנהל – מתחת לשורת הפעולות יופיעו <strong>צפיות</strong>, <strong>חשיפות</strong> ו־<strong>יחס צפייה</strong>, עם קישור למסך מדדים מלא.</p>
+          </section>
+
+          <section>
+            <h2>תיאור ומידע</h2>
+            <p>מתחת לפעולות: מספר <strong>צפיות</strong>, תאריך פרסום (למשל "לפני X"), ו־<strong>תיאור הסרטון</strong>. לחיצה על "…עוד" / "פחות פריטים" מרחיבה או מצמצמת את התיאור. אם הוגדרו מילות מפתח (תגיות) – הן מוצגות מתחת.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/watch-description.png" alt="תיאור הסרטון וצפיות">
+              <figcaption>תיאור הסרטון, צפיות ותאריך.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>הערות על הסרטון (שאלות ותשובות)</h2>
+            <p>אם לסרטון הוגדרו הערות/שאלות (מנהל הערות) – יופיע אזור <strong>הערות על הסרטון</strong> עם רשימת השאלות והתשובות, ולעיתים עם זמנים (לחיצה קופצת לזמן בסרטון).</p>
+          </section>
+
+          <section>
+            <h2>תגובות (אם מופעל)</h2>
+            <p>כאשר תגובות מופעלות בהגדרות המערכת והסרטון לא בפרטיות "קישור" – יופיע אזור <strong>תגובות</strong> מתחת להערות, עם אפשרות להוסיף תגובה (למשתמשים מחוברים).</p>
+          </section>
+
+          <section>
+            <h2>סרגל צד – נושאים ומומלצים</h2>
+            <p>בעמודה הימנית (במחשב; במובייל מתחת לתוכן):</p>
+            <ul>
+              <li><strong>סיכום נושאים</strong> – אם הוגדרו נושאים (chapters) לסרטון: רשימת נושאים עם זמני התחלה; לחיצה על נושא מקפיצה את הנגן לזמן המתאים.</li>
+              <li><strong>מומלצים</strong> – רשימת סרטונים מומלצים לצפייה בהמשך. אם נכנסתם מסרטון בתוך פלייליסט – יוצג שם הפלייליסט ורשימת הסרטונים בו.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/watch-sidebar.png" alt="סרגל צד – נושאים ומומלצים">
+              <figcaption>סרגל צד – נושאים (אם קיימים) ורשימת מומלצים.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>שיתוף</h2>
+            <p>לחיצה על <strong>שיתוף</strong> פותחת חלון עם: שיתוף ל־פייסבוק, וואטאפ, אימייל, קישור ישיר להעתקה, ובהתאם להגדרות – קוד <strong>אמבד</strong> (iframe) להטמעת הסרטון באתר. כפתור <strong>העתק</strong> מעתיק את הקישור או את קוד ההטמעה ללוח.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

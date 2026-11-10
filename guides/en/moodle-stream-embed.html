@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embed a video in Moodle – lecturer guide</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Embed a video in Moodle</h1>
+      <p class="lead">Lecturer guide: add a Stream video to a course with the <strong>STREAM</strong> activity (<code>mod_stream</code>), including an older video that is already in your list.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../moodle-stream-embed.html" hreflang="he">עברית</a>
+        <a href="moodle-stream-embed.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/moodle-stream-embed.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>What this does</h2>
+            <p>Embedding is done through the <strong>STREAM</strong> activity. After you save, students watch the video inside the course, without leaving Moodle.</p>
+            <p>You can embed an older video that is already in the lecturer’s video list. You do not need to upload it again.</p>
+          </section>
+
+          <section>
+            <h2>Add the activity to the course</h2>
+            <ol>
+              <li>Open the course in Moodle.</li>
+              <li>Turn on <strong>Edit mode</strong>.</li>
+              <li>In the section where the video should appear, click <strong>Add an activity or resource</strong>.</li>
+              <li>Choose <strong>STREAM</strong>.</li>
+              <li>Give the activity a name. Students see this name in the course.</li>
+            </ol>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-course-activity.png" alt="A STREAM activity in a course section, and the Add an activity or resource button">
+              <figcaption>A STREAM activity in the course, with the button to add an activity or resource below it.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Choose a video that already exists</h2>
+            <p>The activity settings page lists your videos in Stream. The list is loaded from the Moodle user’s email address and includes videos that are <strong>ready to watch</strong> on the matching Stream account, including ones uploaded or recorded earlier.</p>
+            <p>A video appears in the list when it is:</p>
+            <ul>
+              <li>In status <strong>ready to watch</strong></li>
+              <li>Set to privacy <strong>public</strong>, <strong>authentication</strong>, or <strong>link</strong></li>
+            </ul>
+            <p>A <strong>private</strong> video, or a video that is still processing, is not available to select.</p>
+            <ol>
+              <li>Find the video. Search by name in the <strong>Search</strong> field, and sort by <strong>date</strong>, <strong>name</strong>, <strong>views</strong>, or <strong>size</strong>.</li>
+              <li>Click the video card. A selected card is highlighted in blue.</li>
+              <li>Click the same card again to remove the selection.</li>
+              <li>You can select several videos. Students see them as a playlist inside the same activity.</li>
+            </ol>
+            <p>The upload date is shown on the thumbnail, so older videos stay available to pick.</p>
+            <p>The <strong>Upload</strong> button opens a form for a new video. You do not need it when the video is already in the list.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-settings.png" alt="Activity settings and the video list">
+              <figcaption>Activity settings: name, options, description, and the video list.</figcaption>
+            </figure>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-picker.png" alt="Video list with search, sort, and a selected video">
+              <figcaption>Search and sort. The selected video is highlighted in blue, and the card shows the upload date.</figcaption>
+            </figure>
+
+            <h3>Selected videos</h3>
+            <p>Below the list is <strong>Selected videos (drag to reorder)</strong>:</p>
+            <ul>
+              <li>Drag the handle to set the playback order.</li>
+              <li>You can edit the title shown to students without changing the original title in Stream.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-selected.png" alt="A selected video with a display name and a drag handle">
+              <figcaption>The selected video, with a display name and a handle to change the order.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Settings</h2>
+            <table>
+              <thead>
+                <tr><th>Option</th><th>What it does</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Video recordings collection mode</strong></td>
+                  <td>Automatically collect new recordings. Leave it off and pick videos manually. When it is on, you can still choose specific videos.</td>
+                </tr>
+                <tr>
+                  <td><strong>Include audio</strong></td>
+                  <td>Off: the video plays without sound. On: the player includes audio.</td>
+                </tr>
+                <tr>
+                  <td><strong>Autoplay next video</strong></td>
+                  <td>In a playlist, the next video starts when the current one ends. Students can still pick a video from the list.</td>
+                </tr>
+                <tr>
+                  <td><strong>Activity description</strong></td>
+                  <td>Text shown to students above the player.</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>Timing</h2>
+            <p>The <strong>Timing</strong> section limits when students can open the activity:</p>
+            <ul>
+              <li><strong>Open time</strong> — the activity is unavailable before this time. Check <strong>Enable</strong> to turn the limit on.</li>
+              <li><strong>Close time</strong> — after this time, viewing is blocked. Without <strong>Enable</strong>, the activity stays open.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-timing.png" alt="Open and close times">
+              <figcaption>Open time and close time. The limit applies only after Enable is checked.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Save</h2>
+            <ul>
+              <li><strong>Save and display</strong> — saves and opens the view page.</li>
+              <li><strong>Save and return to course</strong> — saves and returns to the activity list.</li>
+              <li><strong>Cancel</strong> — leaves without saving.</li>
+            </ul>
+            <p>You cannot save the activity without selecting a video, unless collection mode is on.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-save.png" alt="Save buttons">
+              <figcaption>Save and display, save and return to the course, or cancel.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>What the student sees</h2>
+            <p>After saving, the activity appears in the course. Opening it shows the player inside Moodle. If several videos were selected, the student moves between them inside the same activity.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-stream-view.png" alt="Watching a video embedded in a STREAM activity">
+              <figcaption>The player inside a STREAM activity, as the student sees it.</figcaption>
+            </figure>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

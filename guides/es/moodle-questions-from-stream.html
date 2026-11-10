@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Creación de preguntas desde un vídeo Stream en Moodle – Tipos de pregunta y Web Service</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Creación de preguntas desde un vídeo Stream en Moodle</h1>
+      <p class="lead">Guía para docentes y diseñadores de cursos: cuándo aparece el bloque «Crear pregunta desde vídeo Stream», qué tipos de pregunta se admiten y cómo se conectan al Web Service de Stream (<code>video-subtitle-questions</code>), incluido verdadero/falso (<code>true_false</code>).</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../moodle-questions-from-stream.html" hreflang="he">עברית</a>
+        <a href="../en/moodle-questions-from-stream.html" hreflang="en">English</a>
+        <a href="moodle-questions-from-stream.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>¿Cuándo aparece esta función?</h2>
+            <p>La función aparece en el formulario de nueva pregunta solo cuando el <strong>tipo de pregunta</strong> es uno de los siguientes:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Tipo de pregunta en Moodle</th>
+                  <th>Nombre técnico</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Opción múltiple</td>
+                  <td><code>multichoice</code></td>
+                </tr>
+                <tr>
+                  <td>Respuesta corta</td>
+                  <td><code>shortanswer</code></td>
+                </tr>
+                <tr>
+                  <td>Verdadero / Falso</td>
+                  <td><code>truefalse</code></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Al abrir uno de estos tipos de pregunta, el formulario incluye la sección <strong>«Crear pregunta desde vídeo Stream»</strong> (ID técnico en la página: <code>questionfromstreamheader</code>) — con una cuadrícula de vídeos y un botón para generación automática.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/moodle-question-from-stream.png" width="1024" height="682" loading="lazy" alt="Formulario de creación de pregunta en Moodle: la sección «Crear pregunta desde vídeo STREAM» con cuadrícula de vídeos, instrucción para seleccionar un vídeo y botón de creación automática de pregunta">
+              <figcaption>Ejemplo de interfaz: cuadrícula de vídeos (título, duración, ID), instrucción «Seleccione un vídeo de la lista…» y botón <strong>Crear pregunta automáticamente</strong> debajo de la cuadrícula.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Importante:</strong> otros tipos de pregunta (emparejamiento, ensayo, calculada, etc.) <strong>no</strong> reciben este bloque.
+            </div>
+          </section>
+
+          <section>
+            <h2>Requisitos previos</h2>
+            <ul>
+              <li><strong>Configuración del sitio:</strong> deben estar configurados la <strong>URL de Stream</strong> y la <strong>clave API</strong>. Si faltan, aparecerá una alerta correspondiente.</li>
+              <li><strong>Perfil de usuario:</strong> normalmente se requiere una <strong>dirección de correo electrónico</strong> en el perfil para que el sistema cargue la lista de vídeos del servicio (como se describe en los mensajes de error integrados).</li>
+              <li><strong>Vídeos con subtítulos:</strong> la lista muestra vídeos relevantes para su cuenta/autenticación en Stream, siempre que exista base para generar preguntas a partir de los subtítulos.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Pasos de uso (para cada tipo de pregunta admitido)</h2>
+            <ol>
+              <li>Cree una pregunta nueva y elija el <strong>tipo de pregunta</strong> deseado entre los tres anteriores.</li>
+              <li>En la sección «Crear pregunta desde vídeo Stream» — si hay muchos vídeos, puede paginar. La paginación usa el parámetro <code>ls_uvpage</code> en la URL.</li>
+              <li>Seleccione un vídeo de la lista (al hacer clic en una tarjeta se marca como seleccionado).</li>
+              <li>Haga clic en <strong>«Crear pregunta automáticamente»</strong>.</li>
+              <li>El sistema llama al servidor Stream (con el tipo de pregunta correspondiente) y abre el formulario de pregunta mediante <strong>redirección</strong> con los campos rellenados previamente.</li>
+              <li>Revise y edite el enunciado, las respuestas y las calificaciones, y guarde la pregunta como de costumbre.</li>
+            </ol>
+            <div class="warn">
+              <strong>Si no se seleccionó ningún vídeo</strong> antes de hacer clic — aparecerá un mensaje indicando que debe seleccionar uno de la lista (ID técnico: <code>questionfromstreamselectvideo</code>).
+            </div>
+          </section>
+
+          <section>
+            <h2>¿Qué se envía a la API según el tipo de pregunta?</h2>
+            <p>El código del complemento en Moodle mapea el tipo de formulario de Moodle al parámetro <code>question_type</code> en la llamada a Stream:</p>
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Formulario en Moodle</th>
+                  <th><code>question_type</code> para la API</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Opción múltiple</td>
+                  <td><code>multichoice</code></td>
+                </tr>
+                <tr>
+                  <td>Respuesta corta</td>
+                  <td><code>short_answer</code></td>
+                </tr>
+                <tr>
+                  <td>Verdadero / Falso</td>
+                  <td><code>true_false</code></td>
+                </tr>
+              </tbody>
+            </table>
+            <p>Además, normalmente se envían <code>videoid</code>, <code>count</code> (actualmente <strong>2</strong> al hacer clic desde JavaScript) y parámetros de categoría / curso / módulo del formulario — según la configuración del complemento y del formulario.</p>
+          </section>
+
+          <section>
+            <h2>Qué espera recibir cada tipo de la API (brevemente)</h2>
+            <p>El servidor Stream devuelve una lista de preguntas en JSON. El complemento verifica que los elementos coincidan con el tipo seleccionado en Moodle:</p>
+            <ul>
+              <li><strong>Opción múltiple:</strong> un elemento con <code>type</code> correspondiente a pregunta de opción múltiple (<code>multiple_choice</code>), incluidas opciones y respuesta correcta — según la especificación de Stream.</li>
+              <li><strong>Respuesta corta:</strong> un elemento <code>short_answer</code> con texto de pregunta y <code>answer_key</code> (se admiten fuentes de respuesta adicionales en el mapeo del complemento).</li>
+              <li><strong>Verdadero / Falso:</strong> un elemento <code>true_false</code> con <code>question</code> y <code>correct_answer</code> booleano (<code>true</code> o <code>false</code>).</li>
+            </ul>
+            <div class="note">
+              <strong>Validación:</strong> si la respuesta de la API no coincide con el tipo de pregunta seleccionado en Moodle — aparecerá uno de los mensajes de error correspondientes (p. ej. no hay pregunta de opción múltiple / respuesta corta / verdadero-falso válida).
+            </div>
+          </section>
+
+          <section>
+            <h2>Notas adicionales</h2>
+            <ul>
+              <li><strong>Enlace de relleno previo:</strong> el enlace es de un solo uso y de corta duración (basado en token de sesión). Si expiró o intentó abrir manualmente un enlace no válido — vuelva a la selección de vídeo y genere de nuevo.</li>
+              <li><strong>Borrador:</strong> tras el relleno automático, la pregunta se guarda como borrador que conviene revisar antes del guardado final.</li>
+              <li><strong>Alias en la API:</strong> al llamar directamente al Web Service también puede usar alias (p. ej. <code>mc</code>, <code>short</code>, <code>tf</code>) — la interfaz de Moodle usa los valores normalizados indicados arriba.</li>
+            </ul>
+            <p>Para la estructura completa del endpoint y los campos, consulte la documentación para desarrolladores en el archivo <code>webservice/video_subtitle_questions.php</code> del proyecto Stream.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

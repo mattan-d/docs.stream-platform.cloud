@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Auto navigation topics and caption AI chat – Guide</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Auto navigation topics and AI caption chat</h1>
+      <p class="lead">A guide for lecturers and administrators: creating navigation chapters with AI from captions, and chatting with an AI assistant based on caption content on the watch page and in embed mode.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+        <a href="../ai-navigation-topics-and-caption-chat.html" hreflang="he">עברית</a>
+        <a href="ai-navigation-topics-and-caption-chat.html" hreflang="en" aria-current="page">English</a>
+        <a href="../es/ai-navigation-topics-and-caption-chat.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Table of contents">
+            <h2 id="toc-title">Table of contents</h2>
+            <ul>
+              <li><a href="#topics-auto">Part A – Auto navigation topics from captions</a></li>
+              <li><a href="#chat-ai">Part B – AI chat about the video</a></li>
+              <li><a href="#related">Related guides</a></li>
+            </ul>
+          </nav>
+
+          <section id="topics-auto">
+            <h2>Part A – Auto navigation topics from captions</h2>
+            <p><strong>Navigation topics</strong> (chapters) are time points with a name that let viewers jump to parts of the video. You can add them manually (see the <a href="video-topics.html">video topics guide</a>). Here we explain the <strong>Create navigation topics automatically from captions</strong> button on the <strong>video settings</strong> screen (edit video).</p>
+
+            <h3>Where to find the button</h3>
+            <ol>
+              <li>Open <strong>video settings</strong> (edit) for the desired video.</li>
+              <li>Scroll to the <strong>Artificial intelligence (AI)</strong> section (below captions).</li>
+              <li>A button with a sparkles icon appears: <strong>Create navigation topics automatically from captions</strong> – only when the conditions below are met.</li>
+            </ol>
+
+            <h3>Conditions for the button to appear and work</h3>
+            <ul>
+              <li>The video is <strong>not</strong> YouTube-only (for videos uploaded to the system / supported sources).</li>
+              <li><strong>Transcription/captions</strong> are in <strong>ready</strong> status (same as for editing captions).</li>
+              <li>Caption text exists that is rich enough to build chapters from.</li>
+              <li><strong>OpenRouter API key</strong> and model are configured in system settings (captions / AI area in system settings – see the <a href="admin-settings.html">system settings guide</a>).</li>
+            </ul>
+            <div class="note">
+              <strong>Permissions:</strong> Only the <strong>video owner</strong>, an <strong>administrator</strong>, or a user with <strong>manage access on the video</strong> can run the generation.
+            </div>
+
+            <h3>What happens when you click</h3>
+            <ol>
+              <li>A modal opens with a short explanation and a checkbox for <strong>replace existing navigation topics</strong>.</li>
+              <li>When checked – existing topics are deleted and replaced with new ones. When unchecked – new topics are <strong>added</strong> to the existing list (without manual deletion).</li>
+              <li>Clicking <strong>Create navigation topics</strong> sends a request to the server. The system sends a sample of the captions (including timestamps) to the AI and considers the video length.</li>
+              <li>The model returns a list of chapters (title + start time in seconds). The system validates that the structure is reasonable (coverage along the video, minimum number of chapters by length, etc.). If the response is invalid – an error message is shown; you can try again.</li>
+              <li>On success – the page reloads and you will see the topics in the topics list / in the player.</li>
+            </ol>
+
+            <h3>How many chapters are created</h3>
+            <p>Usually between <strong>2 and 10</strong> chapters, depending on video length and caption content. The system requires chapters that cover most of the timeline (not just the beginning). For very short videos – a smaller number may be created.</p>
+
+            <h3>Content navigation and topics list – embed example</h3>
+            <p>After topics are created, viewers open <strong>in-video content navigation</strong> from the player – a list of chapters with times and jump-to-time. This is available <strong>on the watch page and in embed mode</strong> (when the player is embedded on a site or in an LMS). Below is a screenshot from an embed view.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/embed-content-navigation-topics.png" alt="Dark sidebar with chapter list and times – in-video content navigation in embed">
+              <figcaption>Example: navigation topics list (chapter number, title, and time) in a sidebar over an embedded player.</figcaption>
+            </figure>
+
+            <h3>Topic markers on the progress bar and tooltip</h3>
+            <p>When navigation topics exist, <strong>markers</strong> (yellow bars) appear on the <strong>progress bar</strong> at each chapter's time. <strong>Hover</strong> over a marker – a <strong>tooltip</strong> opens with the topic name and start time, without pausing playback. Clicking the marker or the bar area jumps to the matching time (on the watch page and in embed, depending on device support).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-progress-topic-tooltip.png" alt="Tooltip over progress bar – topic title and time above a yellow marker in the player">
+              <figcaption>Example: topic tooltip over a marker on the progress bar (chapter title and time).</figcaption>
+            </figure>
+
+            <h3>Automatic background generation (sibling / video group)</h3>
+            <p>When transcription is ready, the system sometimes tries to <strong>generate topics automatically for sibling videos</strong> (same upload group) that still <strong>have no topics</strong> – to save work when publishing a series of lessons. If there is no API key or generation fails, the action is skipped and logged on the server.</p>
+
+            <div class="warn">
+              <strong>Note:</strong> AI results are based on <strong>what appears in the captions</strong>. If transcription is inaccurate or incomplete – chapter names may also be less accurate. You can always edit topics manually after generation.
+            </div>
+          </section>
+
+          <section id="chat-ai">
+            <h2>Part B – AI chat about the video</h2>
+            <p>On the video <strong>watch</strong> page, below the description, a <strong>AI chat about the video</strong> block may appear. The assistant answers <strong>only from caption segments</strong> passed to it – if there is no information in the captions it should say so explicitly.</p>
+
+            <h3>When the block appears</h3>
+            <ul>
+              <li>Transcription is <strong>ready</strong> and a caption source suitable for AI chat exists.</li>
+              <li><strong>OpenRouter API key</strong> is configured in system settings (same as for auto navigation topics).</li>
+            </ul>
+
+            <h3>Sign-in</h3>
+            <p>To send messages you must be <strong>signed in</strong> to the system. Guests see an explanation and a link to sign in.</p>
+
+            <h3>How to use it</h3>
+            <ol>
+              <li>Type a question in the text field (Enter to send; Shift+Enter for a new line).</li>
+              <li>Click <strong>Send</strong>. A "thinking…" state appears until the answer arrives.</li>
+              <li>In assistant replies, time ranges in parentheses may appear (from captions). Clicking a range or a numbered line can <strong>jump the player to the matching time</strong> (on desktop and supported devices).</li>
+              <li><strong>Print conversation</strong> – opens a print window with the chat in a readable format (you can save as PDF from the browser print menu).</li>
+              <li><strong>Download conversation as PDF</strong> – downloads a PDF generated on the server (same content as print, including RTL languages).</li>
+            </ol>
+
+            <h3>AI chat in embed mode</h3>
+            <p>If the system administrator enabled <strong>Show AI chat button above the player in embed</strong> in advanced settings, a floating button appears on the player <strong>only in regular embed mode</strong> (not in reels mode). Clicking opens a panel with the same chat as on the watch page. Sign-in is required (or JWT in embed from Moodle – depending on your setup).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/embed-ai-chat-embed-panel.png" alt="AI chat window in embed – title and notice, scrollable log with user and assistant bubbles, send field, print and PDF">
+              <figcaption>Example: "AI chat about the video" in embed mode – dark panel over the player: messages in bubbles, only the chat area scrolls, with text field, print, PDF, and send at the bottom.</figcaption>
+            </figure>
+            <p class="small text-muted" style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem;">If <strong>print</strong> is blocked in the browser inside an iframe (e.g. Moodle block), try allowing pop-ups for the video site, or ask the Moodle administrator to allow pop-ups / <code>allow-popups</code> in the embed (depends on template and iframe sandbox).</p>
+
+            <div class="note">
+              <strong>View limit:</strong> If the video has a view limit and you have reached the quota, AI chat may also be blocked – same as normal viewing.
+            </div>
+          </section>
+
+          <section id="related">
+            <h2>Related guides</h2>
+            <ul>
+              <li><a href="video-topics.html">Topics (chapters) – manual add and edit</a></li>
+              <li><a href="video-watch.html">Video watch page</a></li>
+              <li><a href="video-transcription.html">Transcription and captions</a></li>
+              <li><a href="video-settings.html">Video settings – overview</a></li>
+              <li><a href="admin-settings.html">System settings (including OpenRouter and embed)</a></li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

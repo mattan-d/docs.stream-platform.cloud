@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>יצירת תמלול לסרטון – מדריך מהיר</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>יצירת תמלול לסרטון – מדריך מהיר</h1>
+      <p class="lead">כך יוצרים תמלול אוטומטי לסרטון, בודקים סטטוס, ועוברים לעריכת כתוביות.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="video-transcription.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/video-transcription.html" hreflang="en">English</a>
+        <a href="es/video-transcription.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>לפני שמתחילים</h2>
+            <ul>
+              <li>צריך הרשאת גישה לעריכת סרטון.</li>
+              <li>צריך שספק התמלול יהיה מוגדר בהגדרות מנהל המערכת.</li>
+              <li>הסרטון צריך להיות זמין לעיבוד (לא מחוק/שגוי).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>שלב 1 - כניסה להגדרות הסרטון</h2>
+            <ol>
+              <li>היכנס/י ל־<strong>ניהול סרטונים</strong>.</li>
+              <li>פתח/י את הסרטון הרצוי בעמוד <strong>הגדרות סרטון</strong>.</li>
+              <li>גלול/י לאזור <strong>כתוביות</strong>.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>שלב 2 - יצירת תמלול אוטומטי</h2>
+            <ol>
+              <li>לחץ/י על הכפתור <strong>יצירת תמלול מחדש</strong>.</li>
+              <li>המערכת מכניסה את הבקשה לתור ברקע (Queue).</li>
+              <li>התהליך עצמו ממשיך דרך מנגנון ה־Cron של המערכת.</li>
+            </ol>
+            <div class="note">
+              אין צורך להמתין באותו מסך עד הסיום. אפשר להמשיך לעבוד במערכת בזמן שהתמלול נוצר ברקע.
+            </div>
+          </section>
+
+          <section>
+            <h2>שלב 3 - בדיקת סטטוס</h2>
+            <p>לאחר יצירת הבקשה, יופיע מסר שהמערכת עובדת על התמלול. מצבי תהליך נפוצים:</p>
+            <ul>
+              <li><strong>UPLOADED</strong> - הבקשה נוצרה ומחכה לעיבוד.</li>
+              <li><strong>INPROCESS</strong> - התמלול בתהליך מול הספק החיצוני.</li>
+              <li><strong>READY</strong> - התמלול מוכן וזמין לעריכה/צפייה.</li>
+              <li><strong>ERROR</strong> - הייתה שגיאה בתהליך, ויש להפעיל ניסיון נוסף.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>שלב 4 - עריכה ידנית של הכתוביות</h2>
+            <ol>
+              <li>לחץ/י על <strong>ממשק ליצירת כתוביות</strong> או <strong>ממשק לעריכת כתוביות</strong>.</li>
+              <li>ערוך/י זמנים וטקסט לפי הצורך.</li>
+              <li>שמור/י את השינויים.</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>שאלות נפוצות</h2>
+            <h3>לחצתי על יצירת תמלול ואין תוצאה מיידית - זה תקין?</h3>
+            <p>כן. יצירת תמלול מתבצעת ברקע דרך Cron ולכן עשוי לקחת כמה דקות.</p>
+
+            <h3>מה לעשות אם התהליך נתקע?</h3>
+            <ul>
+              <li>לוודא שספק תמלול מוגדר וש־API Key תקין.</li>
+              <li>לוודא ש־Cron פעיל בסביבה.</li>
+              <li>להפעיל שוב <strong>יצירת תמלול מחדש</strong>.</li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

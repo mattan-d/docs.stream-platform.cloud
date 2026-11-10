@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de listas de reproducción – listado, creación y edición</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Listas de reproducción</h1>
+      <p class="lead">Guía para gestionar listas de reproducción – listado, creación de una lista nueva, añadir vídeos, edición y eliminación.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../playlist.html" hreflang="he">עברית</a>
+        <a href="../en/playlist.html" hreflang="en">English</a>
+        <a href="playlist.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Visión general</h2>
+            <p>La página de <strong>listas de reproducción</strong> es accesible desde el menú principal (botón Lista de reproducción) o en la dirección <strong>/playlist</strong> (por ejemplo, <code>https://dev.video/playlist</code>). En la página se muestra la lista de sus listas de reproducción, filtros, creación nueva y eliminación múltiple.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/playlist-overview.png" alt="Página de listas de reproducción – lista y barra lateral">
+              <figcaption>Página de listas de reproducción – encabezado, filtros, acciones (crear nueva, eliminación múltiple) y lista de listas de reproducción.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Acceso a la página</h2>
+            <p>En el menú superior, pulse <strong>Lista de reproducción</strong> (o Listas de reproducción). Los usuarios solo ven sus propias listas de reproducción.</p>
+          </section>
+
+          <section>
+            <h2>Filtros y acciones (barra lateral)</h2>
+            <p>A la izquierda:</p>
+            <ul>
+              <li><strong>Búsqueda</strong> – introducir texto para buscar una lista de reproducción (por nombre) y pulsar <strong>Filtrar</strong>. <strong>Restablecer</strong> – limpia y actualiza.</li>
+              <li><strong>Crear lista de reproducción nueva</strong> – accede al formulario de creación de una lista nueva (<code>/playlist/instance</code>).</li>
+              <li><strong>Eliminación múltiple</strong> – abre un diálogo para confirmar la eliminación de las listas marcadas (marcado mediante la casilla de cada fila).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/playlist-delete-modal.png" alt="Diálogo de confirmación de eliminación múltiple">
+              <figcaption>Tras pulsar «Eliminación múltiple» – diálogo para confirmar la eliminación de las listas seleccionadas.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Tabla de listas de reproducción</h2>
+            <p>En el centro se muestra una tabla con: <strong>Selección</strong> (casilla), <strong>ID</strong>, <strong>Nombre</strong>, <strong>Enlace directo</strong> (dirección para copiar), <strong>Vídeos</strong>, <strong>Visualizaciones</strong>, <strong>Duración de reproducción</strong>, <strong>Fecha de creación</strong>, <strong>Acciones</strong> (configuración, eliminar).</p>
+            <ul>
+              <li>Al pulsar el <strong>nombre</strong> de la lista de reproducción – accede a la visualización de la lista.</li>
+              <li><strong>Configuración</strong> (icono de engranaje) – accede a la edición de la lista (título y lista de vídeos).</li>
+              <li><strong>Eliminar</strong> (icono de papelera) – abre un diálogo para confirmar la eliminación de la lista individual.</li>
+            </ul>
+            <p>Se puede ordenar por ID, nombre, fecha de creación y más pulsando los encabezados de columna. Al final de la tabla: <strong>Todos</strong> – marcar/desmarcar todas las filas.</p>
+          </section>
+
+          <section>
+            <h2>Crear una lista de reproducción nueva y editar una lista</h2>
+            <p>Tras pulsar <strong>Crear lista de reproducción nueva</strong> o <strong>Configuración</strong> junto a una lista existente, se abre un formulario con:</p>
+            <ul>
+              <li><strong>Información general</strong> – campo <strong>Título (obligatorio)</strong> para la lista de reproducción.</li>
+              <li><strong>Vídeos disponibles</strong> – tabla de vídeos en el sistema; búsqueda por nombre de vídeo o por usuario, y botón para añadir un vídeo a la lista.</li>
+              <li><strong>Vídeos en la lista de reproducción</strong> – lista de vídeos añadidos; orden y acción de eliminación.</li>
+            </ul>
+            <p>Al editar: el botón <strong>Guardar</strong> guarda los cambios; <strong>Eliminar</strong> elimina la lista de reproducción (con confirmación).</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/playlist-instance.png" alt="Formulario de lista de reproducción – título, vídeos disponibles y en la lista">
+              <figcaption>Formulario de lista de reproducción nueva o edición – título, vídeos disponibles y lista de vídeos en la lista de reproducción.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>Nota:</strong> También puede editar la lista de vídeos de una lista de reproducción pulsando <strong>Configuración</strong> en la página de visualización de la lista.
+            </div>
+          </section>
+
+          <section>
+            <h2>Visualización de la lista de reproducción</h2>
+            <p>Al pulsar el nombre de la lista de reproducción o acceder a <code>/playlist/{id}</code> – se accede a la página de visualización: los vídeos de la lista se muestran en orden, con navegación entre vídeos. Según la configuración, aparecerán botones como «Configuración» para editar la lista de vídeos.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

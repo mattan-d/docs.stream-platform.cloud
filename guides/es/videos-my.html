@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía Mis vídeos – gestionar tus subidas</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Mis vídeos</h1>
+      <p class="lead">Guía para gestionar las grabaciones y vídeos que subiste: búsqueda, filtros, edición, eliminación y descarga en <strong>/videos/my</strong>.</p>
+      <a class="back-link" href="index.html">← Volver a las guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../videos-my.html" hreflang="he">עברית</a>
+        <a href="../en/videos-my.html" hreflang="en">English</a>
+        <a href="videos-my.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Visión general</h2>
+            <p>La página <strong>Mis vídeos</strong> permite a cada usuario conectado (que no sea solo lectura) gestionar los <strong>vídeos que subió</strong>, no toda la biblioteca del sistema. Accede desde el menú de usuario (<strong>Mis vídeos</strong>) o en <strong>/videos/my</strong> (por ejemplo <code>https://dev.video/videos/my</code>).</p>
+            <p>Muestra una lista en tarjetas con todos tus vídeos (incluidos los en procesamiento o pendientes), con filtros, ordenación, edición, eliminación y descarga.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-my-overview.png?v=1" alt="Página Mis vídeos – lista y barra de filtros">
+              <figcaption>Mis vídeos – título, filtros y tarjetas de tus vídeos.</figcaption>
+            </figure>
+            <div class="note">
+              <strong>No es la biblioteca:</strong> <strong>Mi canal</strong> (<code>/library/my</code>) es una cuadrícula para ver vídeos publicados. <strong>Mis vídeos</strong> es para <strong>gestión</strong>: incluye vídeos en proceso, edición y eliminación.
+            </div>
+            <div class="note">
+              <strong>Nota:</strong> Los usuarios de solo lectura no pueden abrir esta página. Los administradores con acceso completo también tienen <a href="videos-admin.html">Gestión de vídeos</a> (<code>/videos/admin</code>) para todos los usuarios.
+            </div>
+          </section>
+
+          <section>
+            <h2>Acceso a la página</h2>
+            <p>Abre el <strong>menú de usuario</strong> y elige <strong>Mis vídeos</strong>. También puedes llegar desde <a href="video-upload.html">Subir vídeo</a> – en la barra lateral hay un enlace a <strong>Mis vídeos</strong> junto a <strong>Mi biblioteca</strong>.</p>
+          </section>
+
+          <section>
+            <h2>Filtros (barra lateral)</h2>
+            <p>A la izquierda puedes acotar la lista:</p>
+            <ul>
+              <li><strong>Búsqueda</strong> – por ID, título, descripción o datos del curso.</li>
+              <li><strong>Estado</strong> – listo, en proceso, pendiente, error, archivo, etc. (por defecto: todos).</li>
+              <li><strong>Privacidad</strong> – público, autenticado, solo enlace (o todos).</li>
+              <li><strong>Canal</strong> – filtrar por canal asignado.</li>
+              <li><strong>Subtítulos</strong> – casilla para mostrar solo vídeos con subtítulos.</li>
+              <li><strong>Desde / Hasta fecha</strong> – rango de subida, con atajos de 3 / 6 / 12 meses.</li>
+              <li><strong>Duración mín. / máx. (minutos)</strong> – límites de duración.</li>
+              <li><strong>Impresiones</strong> – mayor o menor que un valor.</li>
+              <li><strong>Filtrar</strong> – aplicar. <strong>Restablecer</strong> – limpiar y ver la lista completa.</li>
+              <li><strong>Exportar a Excel</strong> – informe de vídeos coincidentes (ID, título, duración, fecha, tamaño, impresiones).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>Ordenación y selección múltiple</h2>
+            <p>Sobre las tarjetas: recuento, <strong>Seleccionar todo</strong> y enlaces de <strong>ordenación</strong> – fecha, título, estado, tamaño, impresiones. Tras seleccionar al menos un vídeo aparece la <strong>barra de acciones</strong> con:</p>
+            <ul>
+              <li><strong>Descargar</strong> – hasta 5 vídeos publicados que no sean de YouTube.</li>
+              <li><strong>Eliminar</strong> – borrar los seleccionados (requiere confirmación).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-actions-bar.png?v=1" alt="Barra de acciones tras seleccionar vídeos">
+              <figcaption>Tras seleccionar uno o más vídeos – barra con descarga y eliminación.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Tarjeta de vídeo</h2>
+            <p>Cada vídeo se muestra en una tarjeta con:</p>
+            <ul>
+              <li><strong>Casilla</strong> – para eliminación o descarga múltiple.</li>
+              <li><strong>Miniatura y duración</strong> – clic abre la página de reproducción.</li>
+              <li><strong>Título y etiqueta de estado</strong> – p. ej. listo, en proceso, error.</li>
+              <li><strong>Barra de progreso</strong> – para vídeos pendientes de procesamiento.</li>
+              <li><strong>Metadatos</strong> – ID, origen, fecha de subida, tamaño, privacidad, impresiones, subtítulos.</li>
+              <li><strong>Acciones</strong> – <strong>Editar</strong> (ajustes del vídeo), <strong>Eliminar</strong> (diálogo de confirmación).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-delete-modal.png?v=1" alt="Diálogo de confirmación de eliminación">
+              <figcaption>Tras pulsar eliminar – diálogo de confirmación.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Edición</h2>
+            <p>Pulsa <strong>Editar</strong> (icono de engranaje) para abrir <strong>Ajustes del vídeo</strong> (<code>/videos/edit/{id}</code>) – título, descripción, privacidad, subtítulos, recorte y más. Ver la <a href="video-settings.html">guía de ajustes del vídeo</a>.</p>
+            <p>Solo puedes editar <strong>tus propios</strong> vídeos. Sin acceso verás una página de error.</p>
+          </section>
+
+          <section>
+            <h2>Eliminación</h2>
+            <p>Eliminación individual: icono de papelera en la tarjeta y confirmar. Múltiple: selecciona tarjetas y pulsa <strong>Eliminar</strong> en la barra. Después vuelves a <strong>Mis vídeos</strong> con un mensaje de los títulos eliminados. La eliminación suele ser irreversible.</p>
+          </section>
+
+          <section>
+            <h2>Guías relacionadas</h2>
+            <ul>
+              <li><a href="video-upload.html">Subir vídeo</a> – subir una nueva grabación.</li>
+              <li><a href="video-settings.html">Ajustes del vídeo</a> – edición detallada de un vídeo.</li>
+              <li><a href="studio.html">Estudio</a> – crear un vídeo nuevo a partir de segmentos.</li>
+              <li><a href="video-watch.html">Página de reproducción</a> – lo que ven los espectadores.</li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

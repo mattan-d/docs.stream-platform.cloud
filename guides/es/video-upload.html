@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de subida de vídeo – Archivos y fuentes</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Subida de vídeo</h1>
+      <p class="lead">Guía para usar la página de subida: elegir fuente (ordenador, YouTube, Facebook), arrastrar o seleccionar archivos, título, privacidad y guardar.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../video-upload.html" hreflang="he">עברית</a>
+        <a href="../en/video-upload.html" hreflang="en">English</a>
+        <a href="video-upload.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>Visión general</h2>
+            <p>La página <strong>Subir vídeo</strong> está disponible desde el menú principal (botón de subida) o en la ruta <strong>/videos/upload</strong> (p. ej. <code>https://dev.video/videos/upload</code>). En esta página se introducen los datos del vídeo, se eligen archivos o un enlace y, a continuación, se hace clic en Guardar y subir.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-overview.png" alt="Página de subida de vídeo – vista general">
+              <figcaption>Página de subida de vídeo – título, barra de acciones y zona de subida.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Acceder a la página</h2>
+            <p>En el menú superior, haga clic en <strong>Subir vídeo</strong> (o Subida). Los usuarios sin permiso de subida no verán la opción o recibirán un mensaje de acceso denegado.</p>
+          </section>
+
+          <section>
+            <h2>Acciones (barra lateral)</h2>
+            <p>A la izquierda: enlaces a <strong>Mi biblioteca</strong> y <strong>Mis vídeos</strong> (gestionar tus subidas). Los administradores también ven <strong>Gestión de vídeos</strong>. Útil para volver a tu lista sin abandonar el formulario. Ver la <a href="videos-my.html">guía Mis vídeos</a>.</p>
+          </section>
+
+          <section>
+            <h2>Tipo de medio</h2>
+            <p>En la parte superior del formulario aparecen las opciones de <strong>tipo de fuente</strong> (según la configuración del sistema):</p>
+            <ul>
+              <li><strong>Vídeo del ordenador</strong> – subir un archivo de vídeo desde el ordenador (arrastrar y soltar o elegir archivos).</li>
+              <li><strong>Vídeo de YouTube</strong> – introducir la URL de un vídeo de YouTube (si está activado).</li>
+              <li><strong>Vídeo de Facebook</strong> – introducir la URL de un vídeo de Facebook (si está activado).</li>
+            </ul>
+            <p>Elija un tipo; los campos relevantes (zona de arrastre o campo URL) se muestran en consecuencia.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-source.png" alt="Elección del tipo de fuente – ordenador, YouTube, Facebook">
+              <figcaption>Elección del tipo de fuente – ordenador, YouTube o Facebook.</figcaption>
+            </figure>
+            <p>Tras hacer clic en <strong>Vídeo de YouTube</strong>, aparece un campo para introducir la URL del vídeo:</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-youtube.png" alt="Subida desde YouTube – campo URL">
+              <figcaption>Fuente YouTube – campo de entrada de URL.</figcaption>
+            </figure>
+            <p>Tras hacer clic en <strong>Vídeo de Facebook</strong>, aparece un campo para introducir la URL del vídeo:</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-facebook.png" alt="Subida desde Facebook – campo URL">
+              <figcaption>Fuente Facebook – campo de entrada de URL.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Subida desde el ordenador</h2>
+            <p>Cuando se selecciona «Vídeo del ordenador»:</p>
+            <ul>
+              <li><strong>Zona de arrastre</strong> – arrastre archivos de vídeo al área o haga clic en «Elegir archivos» para abrir el selector.</li>
+              <li><strong>Formatos admitidos</strong> – p. ej. MP4, MOV, AVI, WEBM, MKV (según la configuración).</li>
+              <li><strong>Tamaño máximo</strong> – normalmente hasta 2 GB por archivo (puede variar según el plan).</li>
+            </ul>
+            <p>Tras elegir archivos, aparece una lista de <strong>archivos seleccionados</strong> con nombre, tamaño y estado; puede eliminar un archivo individual o hacer clic en <strong>Borrar todo</strong>. Se muestra un resumen: número de archivos, tamaño total y tiempo estimado de subida.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-dropzone.png" alt="Zona de arrastre y selección de archivos">
+              <figcaption>Zona de arrastre y selección de archivos.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Título, descripción y privacidad</h2>
+            <p>Debajo del área de subida:</p>
+            <ul>
+              <li><strong>Título (obligatorio)</strong> – el título del vídeo que aparece en listas y búsquedas.</li>
+              <li><strong>Descripción general</strong> – descripción de texto libre (opcional).</li>
+              <li><strong>Privacidad</strong> – nivel de acceso: público, privado, enlace, contraseña, etc. (según la configuración).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/upload-form.png" alt="Campos de título, descripción y privacidad">
+              <figcaption>Campos de título, descripción y privacidad.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Guardar y subir</h2>
+            <p>Tras rellenar los campos y elegir archivos (o introducir una URL para fuentes YouTube/Facebook), haga clic en <strong>Guardar y subir</strong>. El botón está activo solo cuando hay archivos válidos (formato y tamaño).</p>
+            <p>Durante la subida, aparece un diálogo de espera con el <strong>progreso general</strong> y el progreso por archivo. Al finalizar, el sistema procesa los vídeos; aparecerán en <strong>Mi biblioteca</strong> y en <strong>Mis vídeos</strong> cuando termine el procesamiento.</p>
+            <div class="note">
+              <strong>Nota:</strong> si hay un límite de subida definido en su plan, aparecerá un mensaje cuando se alcance. Suba archivos en un formato admitido y dentro del tamaño permitido.
+            </div>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

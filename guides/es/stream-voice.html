@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Voice – guía para administradores</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Stream Voice – guía para administradores</h1>
+      <p class="lead">Una actividad de Moodle que bloquea el archivo entregado, graba una explicación oral en Stream y escribe la calificación en el libro de calificaciones.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+          <a href="../stream-voice.html" hreflang="he">עברית</a>
+          <a href="../en/stream-voice.html" hreflang="en">English</a>
+          <a href="stream-voice.html" hreflang="es" aria-current="page">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Contenido">
+        <strong>En esta guía</strong>
+        <ul>
+          <li><a href="#what">Qué es Stream Voice</a></li>
+          <li><a href="#before">Antes de crear la actividad</a></li>
+          <li><a href="#settings">Añadir la actividad y su configuración</a></li>
+          <li><a href="#teacher">Qué ve el docente</a></li>
+          <li><a href="#grading">Entregas y calificación</a></li>
+          <li><a href="#student">Qué hace el estudiante</a></li>
+          <li><a href="#analytics">Informe de uso en Stream</a></li>
+          <li><a href="#faq">Preguntas frecuentes</a></li>
+        </ul>
+      </nav>
+
+      <section id="what">
+        <h2>Qué es Stream Voice</h2>
+        <p>Stream Voice es una actividad del curso. El estudiante entrega un archivo del trabajo, del código o del proyecto. Después de la entrega el archivo queda bloqueado, y el estudiante explica ante la cámara cómo pensó y qué eligió.</p>
+        <p>El objetivo es comprobar que el estudiante entiende el trabajo y puede justificarlo. La puntuación revisa la comprensión, el razonamiento y la coherencia entre la explicación y el archivo bloqueado.</p>
+        <p>Moodle guarda la configuración de la actividad y la calificación del libro de calificaciones. Stream guarda el archivo bloqueado, las preguntas, las grabaciones, la transcripción y la puntuación automática.</p>
+        <div class="note">Las capturas de esta guía son de un sitio Moodle en hebreo. Las etiquetas siguen el idioma del usuario que ha iniciado sesión.</div>
+      </section>
+
+      <section id="before">
+        <h2>Antes de crear la actividad</h2>
+        <ol>
+          <li>En Moodle, en Administración del sitio → Extensiones → Extensiones locales → Stream, deben estar configuradas la dirección de Stream y la clave de API.</li>
+          <li>En Stream debe haber un modelo de lenguaje activo. Calcula la puntuación después de la grabación.</li>
+          <li>El estudiante necesita acceso a la cámara y al micrófono en el navegador durante la grabación.</li>
+          <li>El estudiante debe estar matriculado en el curso con el rol de estudiante para poder entregar.</li>
+        </ol>
+        <div class="note">Sin la conexión con Stream, la actividad se abre con un aviso de que Stream no está configurado, y no se puede entregar ni grabar.</div>
+      </section>
+
+      <section id="settings">
+        <h2>Añadir la actividad y su configuración</h2>
+        <ol>
+          <li>Entre en el curso y active el modo de edición.</li>
+          <li>Elija <strong>Añadir una actividad o un recurso</strong>.</li>
+          <li>Elija <strong>Stream Voice</strong>.</li>
+          <li>Ponga un nombre que los estudiantes verán en el curso, y guarde.</li>
+        </ol>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-settings.png" alt="Configuración de la actividad Stream Voice: nombre, idioma, tiempos, preguntas, rúbrica y pesos de la puntuación">
+          <figcaption>Configuración de la actividad. La sección Stream Voice fija el tiempo de preparación, las preguntas, la rúbrica y el peso de la puntuación.</figcaption>
+        </figure>
+        <h3>Ajustes generales y disponibilidad</h3>
+        <ul>
+          <li>El <strong>nombre</strong> y la descripción se muestran a los estudiantes como en cualquier actividad de Moodle.</li>
+          <li>El <strong>idioma de Stream Voice</strong> fija el idioma de las preguntas, las instrucciones y la puntuación. El valor predeterminado es hebreo.</li>
+          <li>La <strong>disponibilidad</strong> es una fecha de apertura y una fecha de entrega, como en una tarea. Ambas pueden quedar vacías.</li>
+        </ul>
+        <h3>La sección Stream Voice</h3>
+        <ul>
+          <li>El <strong>tiempo de preparación</strong> es el tiempo para leer las preguntas y escribir notas del orador antes de que se abra la grabación. El valor predeterminado es 180 segundos. El rango permitido es de 0 a 3600.</li>
+          <li>El <strong>tiempo de respuesta por pregunta</strong> es la duración máxima de cada grabación. El valor predeterminado es 120 segundos. El rango permitido es de 30 a 900.</li>
+          <li>El <strong>número de preguntas</strong> está entre 1 y 8. El valor predeterminado es 3.</li>
+          <li>Las <strong>preguntas fijas</strong> van una por línea y se formulan tal como están escritas. Si no completan el número de preguntas, Stream escribe el resto a partir del archivo entregado. Un campo vacío significa que todas las preguntas se construyen desde el archivo.</li>
+          <li>La <strong>rúbrica</strong> se envía a Stream y se usa para la puntuación oral. Si el campo está vacío, se usa la rúbrica predeterminada: comprensión, justificación, coherencia con el archivo y razonamiento independiente.</li>
+          <li>El <strong>peso de la coherencia con el archivo</strong> y el <strong>peso de la explicación oral</strong> deben sumar 100. El valor predeterminado es 40 para la coherencia y 60 para la explicación.</li>
+          <li><strong>Permitir un archivo nuevo antes de empezar a grabar</strong> deja sustituir el archivo solo antes de la primera grabación. Después de empezar, el archivo permanece bloqueado.</li>
+          <li>El <strong>tamaño máximo del archivo</strong> limita el archivo que el estudiante puede entregar.</li>
+        </ul>
+        <h3>Calificación</h3>
+        <p>En la sección <strong>Calificación</strong> se fija la puntuación máxima, como en una tarea. La nota del libro de calificaciones es la puntuación automática sobre 100, multiplicada por ese máximo. Por ejemplo, una puntuación de 80 con un máximo de 100 se guarda como 80 puntos.</p>
+      </section>
+
+      <section id="teacher">
+        <h2>Qué ve el docente</h2>
+        <p>Al abrir la actividad aparece el resumen de calificación: cuántos participantes hay, cuántos entregaron y cuántos aún necesitan calificación. El botón <strong>Calificación</strong> abre la lista de entregas. <strong>Continuar a Stream Voice</strong> aparece cuando ya existe una entrega.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-activity.png" alt="Página de la actividad con el resumen de calificación y el botón Continuar a Stream Voice">
+          <figcaption>Vista del docente: resumen de entregas, y paso a la lista de calificaciones o a la grabación.</figcaption>
+        </figure>
+      </section>
+
+      <section id="grading">
+        <h2>Entregas y calificación</h2>
+        <p>La lista de entregas sigue la página de calificación de una tarea. Se puede filtrar por no entregado, entregado o pendiente de calificar, y buscar por nombre.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-report.png" alt="Tabla de entregas de Stream Voice: estudiante, estado, calificación, archivo y calificación final">
+          <figcaption>Cada fila es un estudiante. El nombre abre las grabaciones y el detalle de la puntuación.</figcaption>
+        </figure>
+        <p>La columna de estado muestra primero si se entregó un archivo y, debajo, en qué punto está la grabación:</p>
+        <ul>
+          <li><strong>Entregado para calificar</strong> después de bloquear el archivo.</li>
+          <li><strong>En preparación</strong> o <strong>Grabando</strong> mientras Stream Voice está abierto.</li>
+          <li><strong>Esperando la transcripción</strong> cuando la grabación ya está guardada y la transcripción aún no está lista.</li>
+          <li><strong>Esperando la puntuación automática</strong> cuando la transcripción está lista y el modelo aún no devolvió una puntuación.</li>
+          <li><strong>Puntuación provisional</strong> cuando la puntuación sale de las notas del orador, antes de que la transcripción esté lista.</li>
+          <li><strong>Calificado</strong> cuando hay una puntuación final.</li>
+        </ul>
+        <p>El libro de calificaciones se actualiza cuando Stream devuelve una puntuación numérica. La página de un estudiante muestra el estado, la puntuación, las grabaciones y la transcripción.</p>
+      </section>
+
+      <section id="student">
+        <h2>Qué hace el estudiante</h2>
+        <ol>
+          <li>Abre la actividad y elige <strong>Agregar entrega</strong>.</li>
+          <li>Sube el archivo y puede añadir una nota para quien califica.</li>
+          <li>Pulsa <strong>Enviar y bloquear</strong>. A partir de ahí el archivo queda bloqueado.</li>
+          <li>Pulsa <strong>Continuar a Stream Voice</strong>.</li>
+          <li>Durante la preparación lee las preguntas y escribe notas del orador. Las notas siguen en pantalla mientras graba.</li>
+          <li>Graba una respuesta a cada pregunta y se detiene al terminar. Stream guarda el vídeo.</li>
+          <li>Después de todas las preguntas aparece la puntuación. <strong>Actualizar puntuación</strong> la calcula de nuevo cuando la transcripción está lista.</li>
+        </ol>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-session.png" alt="Pantalla de Stream Voice después de grabar: archivo bloqueado, puntuación y actualización de la puntuación">
+          <figcaption>Después de grabar, el estudiante ve que el archivo está bloqueado, la puntuación y las grabaciones.</figcaption>
+        </figure>
+        <div class="note">La puntuación provisional se calcula a partir de las notas del orador si la transcripción aún no está lista. Cuando la transcripción está lista, la actualización la sustituye por una puntuación final basada en lo dicho, la rúbrica y la coherencia con el archivo.</div>
+      </section>
+
+      <section id="analytics">
+        <h2>Informe de uso en Stream</h2>
+        <p>Un administrador de Stream ve el uso de la actividad en <strong>Informes de uso</strong>, en <code>admin/analytics</code>. La sección Stream Voice usa el mismo rango de fechas que el resto del informe, y también entra en la exportación a Excel, en una hoja llamada Stream Voice.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/stream-voice-analytics.png" alt="Sección Stream Voice del informe de uso: actividades, entregas, grabaciones, puntuaciones y llamadas al modelo">
+          <figcaption>Totales del periodo, una tabla por actividad y las entregas recientes.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>Actividades</strong> son actividades creadas o usadas en el rango.</li>
+          <li><strong>Entregas bloqueadas</strong> son archivos entregados y bloqueados en el rango.</li>
+          <li><strong>Estudiantes</strong> es el número de personas distintas que entregaron.</li>
+          <li><strong>Actividades iniciadas</strong> son entregas en las que empezó el tiempo de preparación.</li>
+          <li><strong>Preguntas creadas</strong> son preguntas guardadas para entregas en el rango.</li>
+          <li><strong>Grabaciones</strong> son respuestas en vídeo guardadas.</li>
+          <li><strong>Puntuaciones automáticas</strong> y <strong>puntuación media</strong> salen de las puntuaciones guardadas en el rango.</li>
+          <li><strong>Llamadas al modelo</strong> y <strong>tokens</strong> son el uso del modelo de lenguaje para Stream Voice.</li>
+        </ul>
+      </section>
+
+      <section id="faq">
+        <h2>Preguntas frecuentes</h2>
+        <div class="faq-item">
+          <h3>El estudiante no puede entregar</h3>
+          <p>Compruebe que está matriculado como estudiante, que la actividad está dentro de las fechas de disponibilidad y que la conexión con Stream está configurada. La actividad se registra en Stream la primera vez que se guarda. Si el mensaje dice que la actividad aún no está registrada, ábrala de nuevo después de guardar.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Actualizar la puntuación no devuelve una puntuación</h3>
+          <p>La grabación se conserva aunque no haya puntuación. La actualización llama al modelo de lenguaje configurado en Stream. Si ese modelo no está disponible, o el saldo de la cuenta no cubre la solicitud, la pantalla sigue sin una puntuación nueva. Un administrador de Stream actualiza el modelo o el saldo, y el estudiante pulsa de nuevo Actualizar puntuación.</p>
+        </div>
+        <div class="faq-item">
+          <h3>La calificación del libro no cambió</h3>
+          <p>El libro de calificaciones se actualiza cuando hay una puntuación numérica. Una puntuación provisional, o la espera de la transcripción, todavía no escribe la calificación final. Después de una puntuación final, vuelva a cargar la página de entregas.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Dónde están las grabaciones</h3>
+          <p>En la página de entregas, pulse el nombre del estudiante. Debajo del resumen están las preguntas, el reproductor y la transcripción. Esas grabaciones también se cuentan en el informe de uso de Stream.</p>
+        </div>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

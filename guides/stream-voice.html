@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stream Voice – מדריך למנהלים</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Stream Voice – מדריך למנהלים</h1>
+      <p class="lead">פעילות Moodle שנועלת את קובץ העבודה, מקליטה הסבר בעל פה ב-Stream, ורושמת ציון בגליון הציונים.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+          <a href="stream-voice.html" hreflang="he" aria-current="page">עברית</a>
+          <a href="en/stream-voice.html" hreflang="en">English</a>
+          <a href="es/stream-voice.html" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="תוכן העניינים">
+        <strong>במדריך</strong>
+        <ul>
+          <li><a href="#what">מה זה Stream Voice</a></li>
+          <li><a href="#before">לפני שפותחים פעילות</a></li>
+          <li><a href="#settings">הוספת הפעילות וההגדרות</a></li>
+          <li><a href="#teacher">מה המרצה רואה</a></li>
+          <li><a href="#grading">הגשות וציון</a></li>
+          <li><a href="#student">מה הסטודנט עושה</a></li>
+          <li><a href="#analytics">דוח שימוש ב-Stream</a></li>
+          <li><a href="#faq">שאלות נפוצות</a></li>
+        </ul>
+      </nav>
+
+      <section id="what">
+        <h2>מה זה Stream Voice</h2>
+        <p>Stream Voice היא פעילות בקורס. הסטודנט מגיש קובץ של העבודה, הקוד או הפרויקט. אחרי ההגשה הקובץ ננעל, והסטודנט מסביר בעל פה, מול המצלמה, איך חשב ומה בחר.</p>
+        <p>המטרה לוודא שהסטודנט מבין את העבודה ומסוגל לנמק אותה. הציון בודק הבנה, נימוק, ועקביות בין ההסבר לבין הקובץ שננעל.</p>
+        <p>Moodle שומר את הגדרות הפעילות ואת הציון בגליון הציונים. Stream שומר את הקובץ הנעול, את השאלות, את ההקלטות, את התמלול ואת הציון האוטומטי.</p>
+      </section>
+
+      <section id="before">
+        <h2>לפני שפותחים פעילות</h2>
+        <ol>
+          <li>ב-Moodle, תחת ניהול האתר ← תוספים ← תוספים מקומיים ← Stream, צריכים להיות מוגדרים כתובת Stream ומפתח ה-API.</li>
+          <li>ב-Stream צריך להיות מוגדר מודל שפה פעיל. הוא מחשב את הציון אחרי ההקלטה.</li>
+          <li>לסטודנט צריכה להיות גישה למצלמה ולמיקרופון בדפדפן, בזמן ההקלטה.</li>
+          <li>הסטודנט צריך להיות רשום לקורס בתפקיד סטודנט כדי שיוכל להגיש.</li>
+        </ol>
+        <div class="note">בלי החיבור ל-Stream הפעילות נפתחת עם הודעה ש-Stream לא מוגדר, ואי אפשר להגיש או להקליט.</div>
+      </section>
+
+      <section id="settings">
+        <h2>הוספת הפעילות וההגדרות</h2>
+        <ol>
+          <li>היכנסו לקורס והפעילו מצב עריכה.</li>
+          <li>בחרו <strong>הוספת פעילות או משאב</strong>.</li>
+          <li>בחרו <strong>Stream Voice</strong>.</li>
+          <li>תנו שם שהסטודנטים יראו בקורס, ושמרו.</li>
+        </ol>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/stream-voice-settings.png" alt="מסך ההגדרות של פעילות Stream Voice: שם, שפה, זמנים, שאלות, מחוון ומשקלי ציון">
+          <figcaption>הגדרות הפעילות. המקטע Stream Voice קובע את זמן ההכנה, את השאלות, את המחוון ואת משקל הציון.</figcaption>
+        </figure>
+        <h3>הגדרות כלליות וזמינות</h3>
+        <ul>
+          <li><strong>שם</strong> ו<strong>הנחיה לפעילות</strong> מוצגים לסטודנטים כמו בכל פעילות Moodle.</li>
+          <li><strong>שפת Stream Voice</strong> קובעת את שפת השאלות, ההנחיות והציון. ברירת המחדל היא עברית.</li>
+          <li><strong>זמינות</strong> היא תאריך פתיחה להגשה ותאריך יעד, כמו במטלה. אפשר להשאיר אותם ריקים.</li>
+        </ul>
+        <h3>מקטע Stream Voice</h3>
+        <ul>
+          <li><strong>זמן הכנה</strong> הוא הזמן לקרוא את השאלות ולרשום הערות לדובר לפני שההקלטה נפתחת. ברירת המחדל היא 180 שניות. הטווח המותר הוא 0 עד 3600.</li>
+          <li><strong>זמן תשובה לכל שאלה</strong> הוא האורך המרבי של כל הקלטה. ברירת המחדל היא 120 שניות. הטווח המותר הוא 30 עד 900.</li>
+          <li><strong>מספר שאלות</strong> הוא בין 1 ל-8. ברירת המחדל היא 3.</li>
+          <li><strong>שאלות קבועות</strong> הן שאלה בכל שורה. הן נשאלות כלשונן. אם הן לא ממלאות את מספר השאלות, Stream משלים שאלות מתוך הקובץ שהוגש. שדה ריק אומר שכל השאלות נבנות מהקובץ.</li>
+          <li><strong>מחוון</strong> נשלח ל-Stream ומשמש לציון ההסבר. אם השדה ריק, נעשה שימוש במחוון ברירת מחדל: הבנה, נימוק, עקביות מול הקובץ, וחשיבה עצמאית.</li>
+          <li><strong>משקל העקביות מול הקובץ</strong> ו<strong>משקל ההסבר בעל פה</strong> חייבים להסתכם ב-100. ברירת המחדל היא 40 לעקביות ו-60 להסבר.</li>
+          <li><strong>לאפשר קובץ חדש לפני תחילת ההקלטה</strong> מאפשר להחליף את הקובץ רק לפני ההקלטה הראשונה. אחרי שההקלטה מתחילה הקובץ נשאר נעול.</li>
+          <li><strong>גודל קובץ מרבי</strong> מגביל את הקובץ שהסטודנט יכול להגיש.</li>
+        </ul>
+        <h3>ציון</h3>
+        <p>במקטע <strong>ציונים</strong> קובעים את הניקוד המרבי, כמו במטלה. הציון בגליון הוא הציון האוטומטי מתוך 100, מוכפל בניקוד המרבי. לדוגמה, ציון 80 בניקוד מרבי 100 נרשם כ-80 נקודות.</p>
+      </section>
+
+      <section id="teacher">
+        <h2>מה המרצה רואה</h2>
+        <p>פתיחת הפעילות מציגה את סיכום בדיקת הציונים: מספר המשתתפים, כמה הגישו, וכמה עדיין דורשים מתן ציון. כפתור <strong>ציונים</strong> פותח את רשימת ההגשות. כפתור <strong>המשך ל-Stream Voice</strong> מופיע אחרי שכבר קיימת הגשה.</p>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/stream-voice-activity.png" alt="עמוד הפעילות עם סיכום בדיקת הציונים וכפתור המשך ל-Stream Voice">
+          <figcaption>עמוד הפעילות למרצה: סיכום הגשות, ומעבר לרשימת הציונים או להקלטה.</figcaption>
+        </figure>
+      </section>
+
+      <section id="grading">
+        <h2>הגשות וציון</h2>
+        <p>רשימת ההגשות בנויה כמו עמוד הציונים של מטלה. אפשר לסנן לפי מי שלא הגיש, מי שהגיש, ומי שעדיין דורש ציון, ואפשר לחפש לפי שם.</p>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/stream-voice-report.png" alt="טבלת ההגשות של Stream Voice: סטודנט, מצב, ציון, קובץ וציון סופי">
+          <figcaption>כל שורה היא סטודנט. לחיצה על השם פותחת את ההקלטות ואת פירוט הציון.</figcaption>
+        </figure>
+        <p>עמודת המצב מציגה קודם אם הוגש קובץ, ומתחת לזה איפה עומדת ההקלטה:</p>
+        <ul>
+          <li><strong>הוגש למתן ציון</strong> אחרי שהקובץ ננעל.</li>
+          <li><strong>בזמן הכנה</strong> או <strong>בהקלטה</strong> בזמן ש-Stream Voice פתוח.</li>
+          <li><strong>ממתין לתמלול</strong> אחרי שההקלטה נשמרה והתמלול עדיין לא מוכן.</li>
+          <li><strong>ממתין לציון אוטומטי</strong> כשהתמלול מוכן והמודל עדיין לא החזיר ציון.</li>
+          <li><strong>ציון זמני</strong> כשיש ציון מהערות הדובר, לפני שהתמלול מוכן.</li>
+          <li><strong>ניתן ציון</strong> כשיש ציון סופי.</li>
+        </ul>
+        <p>הציון הסופי בגליון הציונים מתעדכן כש-Stream מחזיר ציון. בעמוד של סטודנט מסוים מופיעים הסטטוס, הציון, ההקלטות והתמלול.</p>
+      </section>
+
+      <section id="student">
+        <h2>מה הסטודנט עושה</h2>
+        <ol>
+          <li>פותח את הפעילות ובוחר <strong>הוספת הגשה</strong>.</li>
+          <li>מעלה את הקובץ, ואפשר להוסיף הערה לבודק.</li>
+          <li>לוחץ <strong>הגשה ונעילה</strong>. מכאן הקובץ נעול.</li>
+          <li>לוחץ <strong>המשך ל-Stream Voice</strong>.</li>
+          <li>בזמן ההכנה קורא את השאלות ורושם הערות לדובר. ההערות נשארות על המסך בזמן ההקלטה.</li>
+          <li>מקליט תשובה לכל שאלה ועוצר כשסיים. Stream שומר את הווידאו.</li>
+          <li>אחרי כל השאלות מופיע הציון. <strong>רענן ציון</strong> מחשב אותו שוב אחרי שהתמלול מוכן.</li>
+        </ol>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/stream-voice-session.png" alt="מסך Stream Voice אחרי ההקלטה: הקובץ נעול, ציון, ורענון ציון">
+          <figcaption>אחרי ההקלטה הסטודנט רואה שהקובץ נעול, את הציון, ואת ההקלטות.</figcaption>
+        </figure>
+        <div class="note">הציון הזמני מחושב מהערות הדובר אם התמלול עדיין לא מוכן. כשהתמלול מוכן, רענון מחליף אותו בציון סופי שמבוסס על מה שנאמר, על המחוון, ועל ההתאמה לקובץ.</div>
+      </section>
+
+      <section id="analytics">
+        <h2>דוח שימוש ב-Stream</h2>
+        <p>מנהל Stream רואה את השימוש בפעילות תחת <strong>דוחות שימוש</strong>, בכתובת <code>admin/analytics</code>. המקטע Stream Voice מכבד את אותו טווח תאריכים כמו שאר הדוח, ונכלל גם בייצוא ל-Excel בגיליון בשם Stream Voice.</p>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/stream-voice-analytics.png" alt="מקטע Stream Voice בדוחות השימוש: פעילויות, הגשות, הקלטות, ציונים וקריאות למודל">
+          <figcaption>סיכום התקופה, טבלה לפי פעילות, וההגשות האחרונות.</figcaption>
+        </figure>
+        <ul>
+          <li><strong>פעילויות</strong> הן פעילויות שנוצרו או שהייתה בהן פעילות בטווח.</li>
+          <li><strong>הגשות שננעלו</strong> הן קבצים שהוגשו וננעלו בטווח.</li>
+          <li><strong>סטודנטים</strong> הוא מספר המגישים השונים.</li>
+          <li><strong>פעילויות שהחלו</strong> הן הגשות שבהן התחיל זמן ההכנה.</li>
+          <li><strong>שאלות שנוצרו</strong> הן שאלות שנשמרו להגשות בטווח.</li>
+          <li><strong>הקלטות</strong> הן תשובות וידאו שנשמרו.</li>
+          <li><strong>ציונים אוטומטיים</strong> ו<strong>ציון ממוצע</strong> מחושבים מהציונים שנשמרו בטווח.</li>
+          <li><strong>קריאות למודל</strong> ו<strong>טוקנים</strong> הם השימוש במודל השפה עבור Stream Voice.</li>
+        </ul>
+      </section>
+
+      <section id="faq">
+        <h2>שאלות נפוצות</h2>
+        <div class="faq-item">
+          <h3>הסטודנט לא מצליח להגיש</h3>
+          <p>בדקו שהוא רשום לקורס כסטודנט, שהפעילות בתוך תאריכי הזמינות, ושחיבור Stream מוגדר. אחרי השמירה הראשונה של הפעילות היא נרשמת ב-Stream. אם ההודעה אומרת שהפעילות עדיין לא רשומה, פותחים אותה שוב אחרי השמירה.</p>
+        </div>
+        <div class="faq-item">
+          <h3>רענון הציון לא מחזיר ציון</h3>
+          <p>ההקלטה נשמרת גם בלי ציון. הרענון פונה למודל השפה שמוגדר ב-Stream. אם המודל לא זמין, או שאין יתרה שמצליחה לכסות את הבקשה, המסך נשאר בלי ציון חדש. מנהל Stream מעדכן את המודל או את היתרה, ואז לוחצים שוב על רענון ציון.</p>
+        </div>
+        <div class="faq-item">
+          <h3>הציון בגליון לא השתנה</h3>
+          <p>הגליון מתעדכן כשיש ציון מספרי. ציון זמני או המתנה לתמלול עדיין לא כותבים ציון סופי. אחרי ציון סופי מרעננים את עמוד ההגשות.</p>
+        </div>
+        <div class="faq-item">
+          <h3>איפה רואים את ההקלטות</h3>
+          <p>בעמוד ההגשות לוחצים על שם הסטודנט. מתחת לסיכום מופיעות השאלות, הנגן, והתמלול. אותן הקלטות נספרות גם בדוח השימוש של Stream.</p>
+        </div>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

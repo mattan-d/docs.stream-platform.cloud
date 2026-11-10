@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך ניהול הערות – שאלות ותשובות לסרטונים</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>ניהול הערות</h1>
+      <p class="lead">מסך ניהול ההערות (שאלות ותשובות) של הסרטונים – צפייה, סינון, מיון ועריכה. נגיש דרך <strong>videos/comments</strong> או מתפריט "הערות" / "תמיכה".</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="videos-comments.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/videos-comments.html" hreflang="en">English</a>
+        <a href="es/videos-comments.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מה זה מסך ניהול ההערות?</h2>
+            <p>בדף <strong>ניהול הערות</strong> מוצגות כל ההערות (שאלות/תגובות) שקשורות לסרטונים במערכת. מנהלים רואים את כל ההערות; משתמש רגיל רואה רק את ההערות שלו. מהמסך אפשר לחפש, לסנן לפי סטטוס ותאריכים, למיין, ולעבור לעריכת הערה או לסרטון הקשור.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/comments-overview.png" alt="מסך ניהול הערות – מבט כללי">
+              <figcaption>מסך ניהול הערות – כותרת, סרגל סינון ורשימת ההערות.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>כניסה למסך</h2>
+            <p>ניתן להיכנס לניהול הערות באחת הדרכים הבאות:</p>
+            <ul>
+              <li>בתפריט הראשי – לחיצה על <strong>הערות</strong> או <strong>תמיכה</strong> (לפי ההגדרות במערכת).</li>
+              <li>ניווט ישיר לכתובת: <strong>/videos/comments</strong> (למשל <code>https://dev.video/videos/comments</code>).</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>סינון הערות (צד שמאל)</h2>
+            <p>בעמודה השמאלית מופיע <strong>סינון הערות</strong> עם השדות הבאים:</p>
+            <ul>
+              <li><strong>חיפוש</strong> – הזנת טקסט לחיפוש לפי מזהה הערה, תוכן ההערה או מזהה סרטון.</li>
+              <li><strong>סטטוס</strong> – בחירה מסטטוסים מוגדרים (למשל מאושר, בהמתנה, מוסתר) או "הכל".</li>
+              <li><strong>מתאריך</strong> ו־<strong>עד תאריך</strong> – הגבלת התוצאות לטווח תאריכים.</li>
+              <li>כפתור <strong>סנן</strong> – הפעלת הסינון לפי הערכים שהוזנו.</li>
+              <li>כפתור <strong>איפוס</strong> – ביטול הסינון וחזרה לרשימה הרגילה.</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/comments-filters.png" alt="סינון הערות">
+              <figcaption>אזור סינון ההערות – חיפוש, סטטוס ותאריכים.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>טבלת ההערות</h2>
+            <p>באזור המרכזי מוצגת טבלה עם העמודות:</p>
+            <ul>
+              <li><strong>בחירה</strong> – תיבת סימון להערה (לפעולות מרובות, אם קיימות).</li>
+              <li><strong>תמונה</strong> – תמונת הסרטון הקשור.</li>
+              <li><strong>מזהה</strong> – מזהה ההערה (ניתן למיין).</li>
+              <li><strong>הערה</strong> – תוכן ההערה או כותרת; לחיצה על ההערה מעבירה למסך עריכת ההערה.</li>
+              <li><strong>סרטון</strong> – כותרת הסרטון; קישור לצפייה בעמוד הסרטון.</li>
+              <li><strong>סטטוס</strong> – סטטוס ההערה (ניתן למיין).</li>
+              <li><strong>משתמש</strong> – המשתמש שכתב את ההערה.</li>
+              <li><strong>תאריך עדכון</strong> – מתי ההערה עודכנה לאחרונה (ניתן למיין).</li>
+            </ul>
+            <p>מיון: לחיצה על כותרת עמודה (מזהה, תאריך עדכון, סטטוס וכו') ממיינת את הטבלה לפי העמודה הנבחרת.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/comments-table.png" alt="טבלת ההערות">
+              <figcaption>טבלת ההערות – עמודות וקישורים לעריכה ולסרטון.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>עריכת הערה</h2>
+            <p>לחיצה על תוכן ההערה (עמודת "הערה") או על הקישור לעריכה – מעבירה למסך <strong>עריכת הערה</strong>, שם ניתן לעדכן את השאלה/תשובה ואת הסטטוס. לאחר שמירה חוזרים בדרך כלל לרשימת ההערות או לדף הסרטון, בהתאם להגדרות.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/comments-edit.png" alt="מסך עריכת הערה">
+              <figcaption>מסך עריכת הערה – שאלה, תשובה ופעולות שמירה.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>בחירה מרובה ואיפוס</h2>
+            <p>בתחתית הטבלה ייתכן קישור <strong>הכל</strong> – לבחירת כל ההערות בעמוד (לפעולות מרובות אם מוגדרות במערכת). שימוש באיפוס הסינון מנקה את המסננים ומציג שוב את כל ההערות שהמשתמש רשאי לראות.</p>
+            <div class="note">
+              <strong>הערה:</strong> משתמש שאינו מנהל רואה רק הערות ששויכו אליו. מנהל רואה את כל ההערות במערכת.
+            </div>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

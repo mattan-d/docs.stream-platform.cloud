@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך העלאת סרטון – העלאת קבצים ומקורות</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>העלאת סרטון</h1>
+      <p class="lead">מדריך לשימוש בעמוד ההעלאה – בחירת מקור (מחשב, YouTube, Facebook), גרירה או בחירת קבצים, כותרת, פרטיות ושמירה.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="video-upload.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/video-upload.html" hreflang="en">English</a>
+        <a href="es/video-upload.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>מבט כללי</h2>
+            <p>עמוד <strong>העלאת וידאו</strong> נגיש מהתפריט הראשי (כפתור העלאה) או בכתובת <strong>/videos/upload</strong> (למשל <code>https://dev.video/videos/upload</code>). בעמוד מוזנים פרטי הסרטון, בוחרים קבצים או קישור, ולאחר מכן לוחצים על שמירה והעלאה.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/upload-overview.png" alt="עמוד העלאת וידאו – מבט כללי">
+              <figcaption>עמוד העלאת וידאו – כותרת, סרגל פעולות ואזור ההעלאה.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>כניסה לעמוד</h2>
+            <p>בתפריט העליון לחצו על <strong>העלאת סרטון</strong> (או העלאה). משתמשים שאין להם הרשאת העלאה לא יראו את האפשרות או יקבלו הודעת גישה.</p>
+          </section>
+
+          <section>
+            <h2>פעולות (סרגל צד)</h2>
+            <p>בצד שמאל: קישורים ל־<strong>הספרייה שלי</strong> ול־<strong>הסרטונים שלי</strong> (ניהול ההקלטות שלכם). למנהלים מופיע גם <strong>ניהול סרטונים</strong>. שימושי לחזור לרשימה או לניהול בלי לנטוש את טופס ההעלאה. ראו <a href="videos-my.html">מדריך הסרטונים שלי</a>.</p>
+          </section>
+
+          <section>
+            <h2>סוג המדיה</h2>
+            <p>בראש הטופס מופיעות אפשרויות <strong>סוג המקור</strong> (לפי ההגדרות במערכת):</p>
+            <ul>
+              <li><strong>סרטון מהמחשב</strong> – העלאת קובץ וידאו מהמחשב (גרירה ושחרור או בחירת קבצים).</li>
+              <li><strong>סרטון YouTube</strong> – הזנת כתובת URL של סרטון YouTube (אם מופעל).</li>
+              <li><strong>סרטון Facebook</strong> – הזנת כתובת URL של סרטון מפייסבוק (אם מופעל).</li>
+            </ul>
+            <p>בוחרים סוג אחד; השדות הרלוונטיים (אזור גרירה או שדה URL) מוצגים בהתאם.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/upload-source.png" alt="בחירת סוג מקור – מחשב, YouTube, Facebook">
+              <figcaption>בחירת סוג המקור – מחשב, YouTube או Facebook.</figcaption>
+            </figure>
+            <p>לאחר לחיצה על <strong>סרטון YouTube</strong> מופיע שדה להזנת כתובת ה־URL של הסרטון:</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/upload-youtube.png" alt="העלאה מ־YouTube – שדה URL">
+              <figcaption>סוג מקור YouTube – שדה הזנת כתובת URL.</figcaption>
+            </figure>
+            <p>לאחר לחיצה על <strong>סרטון Facebook</strong> מופיע שדה להזנת כתובת ה־URL של הסרטון:</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/upload-facebook.png" alt="העלאה מפייסבוק – שדה URL">
+              <figcaption>סוג מקור Facebook – שדה הזנת כתובת URL.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>העלאה מהמחשב</h2>
+            <p>כשנבחר "סרטון מהמחשב":</p>
+            <ul>
+              <li><strong>אזור גרירה</strong> – גררו קבצי וידאו לאזור או לחצו על "בחר קבצים" לפתיחת חלון בחירה.</li>
+              <li><strong>פורמטים נתמכים</strong> – למשל MP4, MOV, AVI, WEBM, MKV (לפי ההגדרות).</li>
+              <li><strong>גודל מקסימלי</strong> – בדרך כלל עד 2GB לקובץ (יכול להשתנות בהתאם לתוכנית).</li>
+            </ul>
+            <p>אחרי בחירת קבצים תופיע רשימת <strong>קבצים נבחרים</strong> עם שם, גודל וסטטוס; אפשר להסיר קובץ בודד או ללחוץ <strong>נקה הכל</strong>. מוצגים סיכום: מספר קבצים, גודל כולל וזמן העלאה משוער.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/upload-dropzone.png" alt="אזור גרירה ובחירת קבצים">
+              <figcaption>אזור גרירה ושחרור ובחירת קבצים.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>כותרת, תיאור ופרטיות</h2>
+            <p>מתחת לאזור ההעלאה:</p>
+            <ul>
+              <li><strong>כותרת (חובה)</strong> – כותרת הסרטון שמופיעה ברשימות ובחיפוש.</li>
+              <li><strong>תיאור כללי</strong> – תיאור חופשי (אופציונלי).</li>
+              <li><strong>פרטיות</strong> – רמת גישה: ציבורי, פרטי, קישור, סיסמה וכו' (לפי ההגדרות).</li>
+            </ul>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/upload-form.png" alt="שדות כותרת, תיאור ופרטיות">
+              <figcaption>שדות כותרת, תיאור ופרטיות.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>שמירה והעלאה</h2>
+            <p>לאחר מילוי השדות ובחירת קבצים (או הזנת URL כשמקור מ־YouTube/Facebook), לחצו על <strong>שמירה והעלאה</strong>. הכפתור פעיל רק כאשר יש קבצים תקינים (פורמט וגודל).</p>
+            <p>בעת ההעלאה יופיע חלון המתנה עם <strong>התקדמות כללית</strong> והתקדמות לכל קובץ. בסיום – המערכת מעבדת את הסרטונים; הם יופיעו ב<strong>הספרייה שלי</strong> וב<strong>הסרטונים שלי</strong> לאחר סיום העיבוד.</p>
+            <div class="note">
+              <strong>שימו לב:</strong> אם הוגדרה מגבלת העלאה בתוכנית – תופיע הודעה כשהמגבלה מושגת. יש להעלות קבצים בפורמט נתמך ובגודל המותר.
+            </div>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>נושאי ניווט אוטומטיים ושיחת AI על כתוביות – מדריך</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>נושאי ניווט אוטומטיים ושיחת AI על הכתוביות</h1>
+      <p class="lead">מדריך למרצים ולמנהלים: יצירת פרקי ניווט (chapters) בעזרת AI מתוך הכתוביות, ושיחה עם עוזר AI שמבוססת על תוכן הכתוביות בעמוד צפייה ובהטמעה (embed).</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+        <a href="ai-navigation-topics-and-caption-chat.html" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/ai-navigation-topics-and-caption-chat.html" hreflang="en">English</a>
+        <a href="es/ai-navigation-topics-and-caption-chat.html" hreflang="es">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="תוכן עניינים">
+            <h2 id="toc-title">תוכן עניינים</h2>
+            <ul>
+              <li><a href="#topics-auto">חלק א׳ – נושאי ניווט אוטומטיים מכתוביות</a></li>
+              <li><a href="#chat-ai">חלק ב׳ – שיחה עם AI על הסרטון</a></li>
+              <li><a href="#related">מדריכים קשורים</a></li>
+            </ul>
+          </nav>
+
+          <section id="topics-auto">
+            <h2>חלק א׳ – נושאי ניווט אוטומטיים מכתוביות</h2>
+            <p><strong>נושאי ניווט</strong> (פרקים) הם נקודות זמן עם שם, שמאפשרות לצופים לקפוץ לחלקים בווידאו. ניתן להוסיף אותם ידנית (ראו <a href="video-topics.html">מדריך נושאים בסרטון</a>). כאן נסביר את הכפתור <strong>יצירת נושאי ניווט אוטומטית מכתוביות</strong> במסך <strong>הגדרות הסרטון</strong> (עריכת סרטון).</p>
+
+            <h3>איפה נמצא הכפתור</h3>
+            <ol>
+              <li>פתחו את <strong>הגדרות הסרטון</strong> (עריכה) לסרטון הרצוי.</li>
+              <li>גללו לקטע <strong>בינה מלאכותית AI</strong> (מתחת לכתוביות).</li>
+              <li>יופיע כפתור עם אייקון ניצוצות: <strong>יצירת נושאי ניווט אוטומטית מכתוביות</strong> – רק כשהתנאים למטה מתקיימים.</li>
+            </ol>
+
+            <h3>תנאים כדי שהכפתור יופיע ויעבוד</h3>
+            <ul>
+              <li>הסרטון <strong>לא</strong> מסוג YouTube בלבד (לסרטונים שהועלו למערכת / מקורות נתמכים).</li>
+              <li><strong>תמלול/כתוביות</strong> במצב <strong>מוכן</strong> (כמו לעריכת כתוביות).</li>
+              <li>קיים טקסט כתוביות שמספיק עשיר כדי לבנות ממנו פרקים.</li>
+              <li>בהגדרות המערכת הוגדרו <strong>מפתח OpenRouter</strong> ומודל (אזור כתוביות / בינה מלאכותית בהגדרות המערכת – ראו <a href="admin-settings.html">מדריך הגדרות מערכת</a>).</li>
+            </ul>
+            <div class="note">
+              <strong>הרשאות:</strong> רק <strong>בעל הסרטון</strong>, <strong>מנהל</strong> או משתמש עם <strong>ניהול על הסרטון</strong> יכולים להפעיל את היצירה.
+            </div>
+
+            <h3>מה קורה בלחיצה</h3>
+            <ol>
+              <li>נפתח חלון (מודאל) עם הסבר קצר ועם תיבת סימון <strong>להחליף נושאי ניווט קיימים</strong>.</li>
+              <li>כשמסמנים «להחליף» – הנושאים הקיימים יימחקו ויוחלפו בחדשים. כשמבטלים – הנושאים החדשים <strong>יתווספו</strong> לרשימה הקיימת (בלי למחוק ידנית).</li>
+              <li>לחיצה על <strong>צור נושאי ניווט</strong> שולחת בקשה לשרת. המערכת שולחת ל־AI דגימה מהכתוביות (כולל חותמות זמן) ובוחנת את אורך הסרטון.</li>
+              <li>המודל מחזיר רשימת פרקים (כותרת + זמן התחלה בשניות). המערכת בודקת שהמבנה הגיוני (כיסוי לאורך הסרטון, מספר פרקים מינימלי לפי אורך, וכו׳). אם התשובה לא תקינה – תוצג הודעת שגיאה; אפשר לנסות שוב.</li>
+              <li>בהצלחה – הדף נטען מחדש ותראו את הנושאים ברשימת הנושאים / בנגן.</li>
+            </ol>
+
+            <h3>כמה פרקים נוצרים</h3>
+            <p>בדרך כלל בין <strong>2 ל־10</strong> פרקים, לפי אורך הסרטון ותוכן הכתוביות. המערכת דורשת פרקים שמכסים את רוב ציר הזמן (לא רק תחילת הסרטון). אם הסרטון קצר מאוד – ייתכן מספר קטן יותר.</p>
+
+            <h3>ניווט תוכן ורשימת נושאים – דוגמה מתוך הטמעה (embed)</h3>
+            <p>אחרי שנוצרו נושאים, הצופים פותחים מהנגן את <strong>ניווט התוכן בתוך הווידאו</strong> – רשימת פרקים עם זמנים וקפיצה לנקודת הזמן. זה זמין <strong>גם בעמוד צפייה וגם במצב embed</strong> (כאשר הנגן מוטמע באתר או ב־LMS). להלן צילום מסך מתוך תצוגת הטמעה.</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/embed-content-navigation-topics.png" alt="סרגל צד כהה עם רשימת פרקים וזמנים – ניווט תוכן בתוך הווידאו בהטמעה">
+              <figcaption>דוגמה: רשימת נושאי ניווט (מספר פרק, כותרת וזמן) בסרגל צד על גבי נגן מוטמע.</figcaption>
+            </figure>
+
+            <h3>סימוני נושאים בבר ההתקדמות ו־tooltip</h3>
+            <p>כשיש נושאי ניווט, מופיעים על <strong>בר ההתקדמות</strong> סימונים (סרגלים צהובים) בנקודות הזמן של כל פרק. <strong>מרחפים עם העכבר</strong> מעל סימון – נפתח <strong>tooltip</strong> עם שם הנושא וזמן ההתחלה, בלי לעצור את הצפייה. לחיצה על הסימון או על אזור הסרגל קופצת לזמן המתאים (כמו בעמוד צפייה ובהטמעה, לפי התמיכה במכשיר).</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/video-progress-topic-tooltip.png" alt="Tooltip מעל בר התקדמות – כותרת נושא בעברית וזמן, מעל סימון צהוב בנגן">
+              <figcaption>דוגמה: tooltip של נושא מעל סימון בבר ההתקדמות (כותרת הפרק וזמן).</figcaption>
+            </figure>
+
+            <h3>יצירה אוטומטית ברקע (אחים / קבוצת סרטונים)</h3>
+            <p>כאשר תמלול מוכן, לעיתים המערכת מנסה <strong>לייצר נושאים אוטומטית גם לסרטונים «אחים»</strong> (אותה קבוצת העלאה) שעדיין <strong>אין להם נושאים</strong> – כדי לחסוך עבודה כשמפרסמים סדרת שיעורים. אם אין מפתח API או שהיצירה נכשלת, הפעולה מדולגת ונרשמת ביומן השרת.</p>
+
+            <div class="warn">
+              <strong>שימו לב:</strong> תוצאות ה־AI מבוססות על <strong>מה שנאמר בכתוביות</strong>. אם התמלול לא מדויק או חסר – גם שמות הפרקים עלולים להיות פחות מדויקים. תמיד אפשר לערוך נושאים ידנית אחרי היצירה.
+            </div>
+          </section>
+
+          <section id="chat-ai">
+            <h2>חלק ב׳ – שיחה עם AI על הסרטון</h2>
+            <p>בעמוד <strong>צפייה</strong> בסרטון, מתחת לתיאור, ייתכן שיופיע בלוק <strong>שיחה עם AI על הסרטון</strong>. העוזר משיב <strong>רק לפי קטעי כתוביות</strong> שהועברו אליו – אם אין מידע בכתוביות הוא אמור להגיד זאת במפורש.</p>
+
+            <h3>מתי הבלוק מופיע</h3>
+            <ul>
+              <li>תמלול במצב <strong>מוכן</strong> ויש מקור כתוביות שמתאים לשיחת AI.</li>
+              <li>בהגדרות המערכת מוגדר <strong>מפתח OpenRouter</strong> (כמו לנושאי הניווט האוטומטיים).</li>
+            </ul>
+
+            <h3>התחברות</h3>
+            <p>כדי לשלוח הודעות צריך להיות <strong>מחוברים</strong> למערכת. אורחים רואים הסבר והפניה להתחברות.</p>
+
+            <h3>איך משתמשים</h3>
+            <ol>
+              <li>כתבו שאלה בשדה הטקסט (אפשר Enter לשליחה; Shift+Enter לשורה חדשה).</li>
+              <li>לחצו <strong>שלח</strong>. מופיע מצב «חושב…» עד שהתשובה מגיעה.</li>
+              <li>בתשובות של העוזר, לעיתים מופיעים טווחי זמן בסוגריים (למשל לפי כתוביות). לחיצה על טווח או על שורה ממוספרת יכולה <strong>לקפוץ לזמן המתאים בנגן</strong> (במחשב ובמכשירים נתמכים).</li>
+              <li><strong>הדפסת השיחה</strong> – פותחת חלון הדפסה עם תוכן השיחה בפורמט קריא (אפשר לשמור כ־PDF מתפריט המדפסת של הדפדפן).</li>
+              <li><strong>הורדת השיחה כ־PDF</strong> – מוריד קובץ PDF שנוצר בשרת (אותו תוכן כמו בהדפסה, כולל עברית).</li>
+            </ol>
+
+            <h3>שיחת AI בהטמעה (embed)</h3>
+            <p>אם מנהל המערכת הפעיל בהגדרות המתקדמות את האפשרות <strong>הצג כפתור שיחת AI מעל הנגן בהטמעה (embed)</strong>, יופיע כפתור צף על גבי הנגן <strong>רק במצב embed רגיל</strong> (לא במצב reels). לחיצה פותחת פאנל עם אותה שיחה כמו בעמוד הצפייה. נדרשת התחברות (או JWT בהטמעה ממודל – לפי ההגדרה אצלכם).</p>
+            <figure class="screenshot">
+              <img src="../docs/screenshot/embed-ai-chat-embed-panel.png" alt="חלון שיחת AI בהטמעה – כותרת והבהרה, לוג גלילה עם בועות משתמש ועוזר, שדה שליחה והדפסה ו־PDF">
+              <figcaption>דוגמה: חלון «שיחה עם AI על הסרטון» במצב embed – פאנל כהה מעל הנגן: הודעות בבועות, רק אזור השיחה נגלל, למטה שדה כתיבה, הדפסה, PDF ושליחה.</figcaption>
+            </figure>
+            <p class="small text-muted" style="font-size:0.9rem;color:var(--text-muted);margin-top:0.5rem;">אם <strong>הדפסה</strong> נחסמת בדפדפן בתוך iframe (למשל בלוק Moodle), נסו לאפשר חלונות קופצים (pop-ups) לאתר הסרטונים, או לבקש ממנהל Moodle להרשות pop-ups / <code>allow-popups</code> בהטמעה (תלוי בתבנית וב־sandbox של ה־iframe).</p>
+
+            <div class="note">
+              <strong>מגבלת צפיות:</strong> אם לסרטון יש מגבלת צפיות והגעתם למכסה, גם השיחה עם ה־AI עלולה להיחסם – כמו צפייה רגילה.
+            </div>
+          </section>
+
+          <section id="related">
+            <h2>מדריכים קשורים</h2>
+            <ul>
+              <li><a href="video-topics.html">נושאים (פרקים) – הוספה ועריכה ידנית</a></li>
+              <li><a href="video-watch.html">עמוד צפייה בסרטון</a></li>
+              <li><a href="video-transcription.html">תמלול וכתוביות</a></li>
+              <li><a href="video-settings.html">הגדרות הסרטון – סקירה כללית</a></li>
+              <li><a href="admin-settings.html">הגדרות מערכת (כולל OpenRouter ואמבד)</a></li>
+            </ul>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

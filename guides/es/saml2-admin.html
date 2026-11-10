@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conexión SAML2 – guía para administradores</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Conexión SAML2 (SSO)</h1>
+      <p class="lead">Guía para administradores del sistema: configuración del inicio de sesión único con un proveedor de identidad (IdP) compatible con SAML&nbsp;2.0, incluido <strong>Microsoft Entra ID</strong> (Azure AD) y licencias de Microsoft&nbsp;365.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../saml2-admin.html" hreflang="he">עברית</a>
+        <a href="../en/saml2-admin.html" hreflang="en">English</a>
+        <a href="saml2-admin.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="toc" aria-label="Tabla de contenidos">
+            <h2 id="toc-title">Tabla de contenidos</h2>
+            <ul>
+              <li><a href="#section-overview">Qué ofrece y qué se necesita</a></li>
+              <li><a href="#section-prep">Antes de empezar: HTTPS y dirección del sitio</a></li>
+              <li><a href="#section-admin-stream">Configuración en la interfaz de administrador (Stream)</a></li>
+              <li><a href="#section-endpoints">Direcciones técnicas (SP) para copiar</a></li>
+              <li><a href="#section-entra">Conexión en Microsoft Entra ID (365)</a></li>
+              <li><a href="#section-claims">Identificadores y claims – Microsoft 365</a></li>
+              <li><a href="#section-test">Prueba y resolución de problemas</a></li>
+            </ul>
+          </nav>
+
+          <section id="section-overview">
+            <h2>Qué ofrece y qué se necesita</h2>
+            <p><strong>SAML2</strong> permite a los usuarios iniciar sesión en el sitio Stream con su cuenta organizativa (por ejemplo, Microsoft&nbsp;365), sin una contraseña separada del sistema, según la política de la organización.</p>
+            <ul>
+              <li>Se requiere acceso de <strong>administrador</strong> a la página de <a href="admin-settings.html#section-saml2">configuración del sistema</a> (<code>/admin/settings</code>).</li>
+              <li>El sistema utiliza <strong>SimpleSAMLphp</strong> como servicio SAML (SP) con el nombre <code>default-sp</code>.</li>
+              <li>Debe generar el <strong>certificado SP</strong>, enviar los <strong>metadatos del SP</strong> al proveedor de identidad (o completar los campos manualmente) y luego cargar aquí los <strong>metadatos del IdP</strong> (archivo XML).</li>
+            </ul>
+          </section>
+
+          <section id="section-prep">
+            <h2>Antes de empezar: HTTPS y dirección del sitio</h2>
+            <div class="warn">
+              <strong>Importante:</strong> En el entorno de producción, el sitio debe accederse solo mediante <strong>HTTPS</strong>. El certificado SP, el identificador de entidad (Entity ID) y las direcciones ACS se derivan de la URL real; si el servidor o el proxy no informan correctamente sobre HTTPS, los metadatos y la conexión SAML pueden ser inconsistentes.
+            </div>
+            <p>En el área de <strong>configuración general</strong>, asegúrese de que la <strong>URL de Stream</strong> (la dirección base pública del sitio) esté configurada con <code>https://</code> y sin barra final innecesaria (o según la configuración de la organización). Esta dirección también se utiliza para operaciones internas como la descarga de metadatos desde el servidor.</p>
+          </section>
+
+          <section id="section-admin-stream">
+            <h2>Configuración en la interfaz de administrador (Stream)</h2>
+            <p>Acceda a <strong>configuración del sistema</strong> (<code>/admin/settings</code>) y siga este orden:</p>
+
+            <h3>1. Activar SSO</h3>
+            <p>En el área de <strong>configuración avanzada</strong>, marque <strong>Permitir autenticación mediante SSO</strong> (<code>allow_sso_auth</code>) para permitir que los usuarios utilicen la ruta de inicio de sesión único (según cómo se muestre el botón de inicio de sesión en el sitio).</p>
+
+            <h3>2. Área «Conexión SAML2»</h3>
+            <ol>
+              <li><strong>Generar certificado (SP)</strong> – crea una clave privada y un certificado (<code>saml.pem</code>, <code>saml.crt</code>) en la carpeta <code>saml2/cert/</code> y actualiza <code>authsources.php</code>. Sin este paso no habrá metadatos válidos para enviar al IdP.</li>
+              <li><strong>Descargar metadatos SP</strong> – descarga un archivo XML del proveedor de servicios (SP) que debe introducirse en el proveedor de identidad (por ejemplo, cargándolo en una aplicación en Entra ID), o extraer de él la dirección Entity ID y la dirección ACS.</li>
+              <li><strong>Cargar metadatos (IdP)</strong> – una vez configurado el proveedor de identidad, descargue de él el archivo XML de metadatos del IdP y cárguelo aquí. El archivo se guarda y el sistema actualiza el archivo de metadatos remoto (<code>saml20-idp-remote.php</code>) y el enlace del IdP en <code>authsources.php</code>.</li>
+            </ol>
+            <p>En la parte superior del área se muestra el <strong>estado</strong> (certificado, configuración, si el IdP está conectado). Tras cargar los metadatos del IdP, el estado debería indicar una conexión completa.</p>
+
+            <div class="note">
+              <strong>Consejo:</strong> Las acciones SAML (generar certificado y cargar metadatos) se realizan pulsando los botones correspondientes; los cambios en el resto de la configuración se guardan pulsando <strong>Guardar</strong> al final de la página.
+            </div>
+          </section>
+
+          <section id="section-endpoints">
+            <h2>Direcciones técnicas (SP) para copiar</h2>
+            <p>Reemplace <code>https://your-domain.example</code> con su dirección de producción (con <code>https</code>).</p>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Función</th>
+                  <th>Ruta típica</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Metadatos del SP (XML público)</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/metadata.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>ACS (Reply URL) – recepción de respuesta SAML</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/saml2-acs.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>Cierre de sesión único (SLO), si es necesario</td>
+                  <td><span class="mono">…/saml2/public/module.php/saml/sp/saml2-logout.php/default-sp</span></td>
+                </tr>
+                <tr>
+                  <td>Acceso al sitio (inicio SP)</td>
+                  <td><span class="mono">https://your-domain.example/sso.php</span></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p><strong>Identificador de entidad (Entity ID) del SP:</strong> normalmente en la forma <code>https://your-domain.example/</code> (con barra final), según la solicitud al servidor al crear los metadatos. Los valores exactos aparecen en el archivo XML descargado.</p>
+
+            <p>Ejemplo de dirección completa para metadatos:</p>
+            <pre class="endpoint"><code>https://your-domain.example/saml2/public/module.php/saml/sp/metadata.php/default-sp</code></pre>
+          </section>
+
+          <section id="section-entra">
+            <h2>Conexión en Microsoft Entra ID (Microsoft 365)</h2>
+            <p>Los siguientes pasos siguen el flujo de trabajo habitual en la interfaz de Entra ID para crear una aplicación SAML, y pueden combinarse con la guía interna de Azure de la organización (incluidas las capturas de pantalla detalladas allí).</p>
+
+            <h3>1. Crear una aplicación empresarial</h3>
+            <ul>
+              <li>En el portal de Azure: <strong>Microsoft Entra ID</strong> → <strong>Aplicaciones empresariales</strong> (<strong>Enterprise applications</strong>) → <strong>Nueva aplicación</strong>.</li>
+              <li>Seleccione <strong>Crear su propia aplicación</strong>, asigne un nombre (por ejemplo, Stream – SAML) y elija la integración basada en <strong>SAML / SSO único</strong>, según las opciones de la interfaz.</li>
+            </ul>
+
+            <h3>2. Configuración SAML – lado Entra (básico)</h3>
+            <p>En la aplicación seleccionada: <strong>Administrar SSO único</strong> → <strong>SAML</strong>.</p>
+            <ul>
+              <li><strong>Cargar metadatos del SP</strong> – si Entra permite cargar un archivo, use el archivo XML descargado de Stream («Descargar metadatos SP»). Esto completa automáticamente muchos de los campos.</li>
+              <li><strong>O completar manualmente (Basic SAML Configuration)</strong>:
+                <ul>
+                  <li><strong>Identifier (Entity ID)</strong> – según aparece en los metadatos del SP (normalmente <code>https://your-domain.example/</code>).</li>
+                  <li><strong>Reply URL (Assertion Consumer Service URL)</strong> – la dirección ACS de la tabla anterior.</li>
+                  <li><strong>Sign on URL</strong> – a veces necesaria para la experiencia de inicio de sesión iniciada por el SP; pruebe <code>https://your-domain.example/sso.php</code> si la interfaz requiere un valor.</li>
+                </ul>
+              </li>
+              <li>Guarde la configuración.</li>
+            </ul>
+
+            <h3>3. Descargar metadatos del IdP para Stream</h3>
+            <p>En la misma pantalla SAML, descargue el <strong>Federation Metadata XML</strong> (a veces descrito como «Certificate» o «Download Federation Metadata»).</p>
+            <p>Vuelva a Stream → <strong>Configuración del sistema</strong> → <strong>Conexión SAML2</strong> → <strong>Cargar metadatos (IdP)</strong> y cargue el archivo.</p>
+
+            <h3>4. Asignar usuarios</h3>
+            <p>En Entra: en la aplicación → <strong>Usuarios y grupos</strong> → añada los usuarios o grupos autorizados a conectarse a través de la aplicación.</p>
+
+            <div class="note">
+              <strong>Documentación de Microsoft:</strong> Los nombres de menús y botones pueden variar entre versiones del portal; si algo no coincide, use la búsqueda del portal con «SAML-based SSO» o «Enterprise application» y compare con los campos de la tabla anterior.
+            </div>
+          </section>
+
+          <section id="section-claims">
+            <h2>Identificadores y claims – Microsoft 365</h2>
+            <p>Cuando el proveedor de identidad es Microsoft Entra ID, el sistema puede identificar la respuesta según claims habituales (incluido el identificador de inquilino). Para completar el perfil del usuario se utilizan, entre otros:</p>
+            <ul>
+              <li>Dirección de correo electrónico</li>
+              <li>Nombre y apellidos</li>
+              <li>Nombre de usuario / identificador único</li>
+            </ul>
+            <p>En Entra ID, en <strong>Atributos y claims de usuario</strong> (User Attributes &amp; Claims), asegúrese de que los claims enviados en el token SAML incluyan al menos el correo electrónico y el nombre, según la política de la organización. Si falta un claim, es posible que el usuario no se identifique o se cree una cuenta parcial.</p>
+            <p>Un usuario existente en Stream se identifica por su <strong>dirección de correo electrónico</strong>; si no hay un usuario con el mismo correo, el sistema puede crear un usuario nuevo (según la configuración de registro y activación del sitio).</p>
+          </section>
+
+          <section id="section-test">
+            <h2>Prueba y resolución de problemas</h2>
+            <ul>
+              <li>Abra una ventana de navegación privada y acceda a <code>https://your-domain.example/sso.php</code> – debería redirigir al inicio de sesión organizativo y luego volver al sitio.</li>
+              <li>Si la <strong>descarga de metadatos SP</strong> falla con un mensaje de error, compruebe que la dirección base del sitio esté configurada con HTTPS y que el archivo público de SimpleSAMLphp sea accesible desde el servidor.</li>
+              <li>Si Entra devuelve un error SAML, compruebe exactamente el Reply URL y el Entity ID frente al archivo XML del SP.</li>
+              <li>Asegúrese de que la aplicación en Entra esté asignada al usuario de prueba.</li>
+            </ul>
+            <p>Enlace rápido a la configuración general del sistema: <a href="admin-settings.html">guía de configuración del sistema</a>.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

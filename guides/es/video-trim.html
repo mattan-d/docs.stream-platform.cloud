@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de recorte de un solo vídeo – Configuración del vídeo</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Recorte de un solo vídeo</h1>
+      <p class="lead">Cómo recortar un vídeo directamente desde la pantalla de <strong>configuración del vídeo</strong> — con un editor de línea de tiempo multicapa (no a través del Estudio).</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+        <a href="../video-trim.html" hreflang="he">עברית</a>
+        <a href="../en/video-trim.html" hreflang="en">English</a>
+        <a href="video-trim.html" hreflang="es" aria-current="page">Español</a>
+      </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+            <h2>¿Qué es el recorte de un solo vídeo?</h2>
+            <p>En lugar de crear un vídeo nuevo a partir de segmentos de distintas fuentes (mediante el <a href="studio.html">Estudio</a>), puede editar <strong>un vídeo existente</strong>: marcar segmentos para eliminar, y el sistema generará un <strong>vídeo nuevo</strong> que contiene solo lo que queda.</p>
+            <p>El vídeo original <strong>permanece sin cambios</strong>. La versión recortada es un registro separado en el sistema (título del tipo <em>Trimmed - …</em> o similar).</p>
+          </section>
+
+          <section>
+            <h2>¿Cuándo está disponible esta área?</h2>
+            <ul>
+              <li>El vídeo está en estado <strong>listo</strong> (no en procesamiento).</li>
+              <li>Medios locales / subidos — no un vídeo externo exclusivamente de YouTube.</li>
+              <li>Tiene permiso de edición sobre el vídeo (propietario, administrador o gestor de contenido).</li>
+            </ul>
+            <p>Si el área no aparece, compruebe el estado del vídeo o el tipo de medio.</p>
+          </section>
+
+          <section>
+            <h2>Acceso al editor de recorte</h2>
+            <ol>
+              <li>Acceda a la <strong>gestión de vídeos</strong> desde el menú.</li>
+              <li>Encuentre el vídeo y pulse <strong>Editar</strong>.</li>
+              <li>En la página de <strong>configuración del vídeo</strong>, desplácese hasta <strong>edición de vídeo en línea de tiempo</strong> (debajo del reproductor, encima de «Detalles generales»).</li>
+            </ol>
+          </section>
+
+          <section>
+            <h2>¿Cómo funciona el recorte?</h2>
+            <p>El enfoque es <strong>«qué eliminar»</strong>: marca segmentos para eliminar, y todo lo demás permanece en la nueva versión.</p>
+            <div class="legend" aria-hidden="true">
+              <span class="legend-keep">Permanece en el vídeo</span>
+              <span class="legend-cut">Se eliminará del vídeo</span>
+              <span class="legend-captions">Rangos de subtítulos</span>
+            </div>
+            <p>Puede eliminar <strong>varios segmentos</strong> del mismo vídeo — por ejemplo, una breve introducción y un tramo en medio de la clase.</p>
+
+            <h3>Componentes de la interfaz</h3>
+            <ul>
+              <li><strong>Reproductor</strong> — reproducción/pausa y tiempo actual (tiempo actual / duración total).</li>
+              <li><strong>Línea de tiempo</strong> — tres capas: vídeo, subtítulos (si existen), temas de navegación.</li>
+              <li><strong>Zoom de la línea de tiempo</strong> — acercar, alejar y ajustar al ancho de la pantalla.</li>
+              <li><strong>Duración del vídeo nuevo</strong> — se actualiza tras marcar al menos un segmento para eliminar.</li>
+              <li><strong>Restablecer recortes</strong> — elimina todos los marcadores de eliminación de una vez.</li>
+            </ul>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-timeline.png" alt="Editor de línea de tiempo – vista general con capas de vídeo, subtítulos y temas">
+              <figcaption>Editor de línea de tiempo: capa de vídeo, capa de subtítulos (el número de subtítulos se muestra junto al nombre) y capa de temas de navegación. Encima de la línea de tiempo — leyenda, zoom y duración del vídeo nuevo.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Marcar un segmento para eliminar</h2>
+            <ol>
+              <li>En la línea de tiempo, <strong>arrastre</strong> sobre el rango de tiempo que desea eliminar.</li>
+              <li>Aparece una barra de selección con tiempos de inicio y fin, y un resumen de cuántos subtítulos y temas caen en el rango.</li>
+              <li>Pulse <strong>Eliminar segmento del vídeo</strong> — el segmento se marca como «se eliminará del vídeo» (fondo rayado en todas las capas).</li>
+              <li>Repita la operación para cada segmento adicional que deba eliminar.</li>
+            </ol>
+            <p>Atajos de teclado (cuando el foco no está en un campo de texto): <strong>Delete</strong> o <strong>Backspace</strong> eliminan el rango seleccionado.</p>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-cut-selection.png" alt="Selección de rango para eliminar y barra de acciones">
+              <figcaption>Tras arrastrar en la línea de tiempo: resumen «se eliminará del vídeo» con tiempos de inicio y fin, botones «Eliminar segmento del vídeo», «Cancelar recorte» y acciones sobre subtítulos/temas en el rango.</figcaption>
+            </figure>
+
+            <h3>Cancelar o modificar un recorte</h3>
+            <ul>
+              <li>Al hacer clic en un <strong>segmento marcado para eliminar</strong> en la línea de tiempo — se selecciona; entonces puede <strong>cancelar recorte</strong>.</li>
+              <li>Puede arrastrar los <strong>extremos</strong> del segmento marcado para cambiar los límites de eliminación.</li>
+              <li><strong>Restablecer recortes</strong> — elimina todos los marcadores (antes de crear el vídeo nuevo).</li>
+            </ul>
+
+            <div class="note">
+              <strong>Borrador automático:</strong> Los marcadores se guardan temporalmente en el navegador mientras trabaja. Aun así debe pulsar <strong>Crear vídeo nuevo</strong> para que el sistema inicie el procesamiento.
+            </div>
+          </section>
+
+          <section>
+            <h2>Acciones adicionales en la línea de tiempo</h2>
+            <p>En el mismo editor, sin crear un vídeo nuevo:</p>
+            <ul>
+              <li><strong>Temas de navegación</strong> — añadir, editar o eliminar capítulos (clic en la capa de temas o «+»).</li>
+              <li><strong>Subtítulo en el rango</strong> — añadir un subtítulo nuevo en el rango seleccionado (cuando los subtítulos están listos).</li>
+              <li><strong>Eliminar temas en el rango</strong> — elimina los capítulos que caen dentro de la selección.</li>
+            </ul>
+            <p>Estas acciones se guardan con <strong>Guardar</strong> / <strong>Guardar y volver</strong> — no con «Crear vídeo nuevo».</p>
+
+            <h3>Edición de la lista de subtítulos</h3>
+            <p>En el área de transcripción/subtítulos (debajo de la línea de tiempo o en una pestaña dedicada) puede editar cada frase, cambiar tiempos de inicio y fin, o eliminar una fila — por separado del recorte del vídeo.</p>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-captions-list.png" alt="Edición de subtítulos – lista de frases con tiempos">
+              <figcaption>Edición de subtítulos: texto, tiempos de inicio y fin por fila, y eliminar fila. Los cambios se guardan con el formulario — no requieren «Crear vídeo nuevo».</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Inteligencia artificial (IA) en la misma pantalla</h2>
+            <p>En la configuración del vídeo, cuando los subtítulos están listos, aparece un área de <strong>Inteligencia artificial (IA)</strong> con acciones opcionales (no forman parte del recorte del vídeo en sí):</p>
+            <ul>
+              <li><strong>Crear temas de navegación automáticamente a partir de subtítulos</strong> — hasta unos 10 capítulos basados en el texto de los subtítulos.</li>
+              <li><strong>Crear vídeo corto Reels automático</strong> — destacados de hasta aproximadamente un minuto a partir de los subtítulos (vídeo nuevo separado).</li>
+            </ul>
+            <p>Guía detallada: <a href="ai-navigation-topics-and-caption-chat.html">Temas de navegación automáticos y chat de IA</a>.</p>
+
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/video-trim-ai.png" alt="Área de IA en la configuración del vídeo">
+              <figcaption>Área de IA: crear temas de navegación a partir de subtítulos y Reels automático — disponible cuando la transcripción/subtítulos están listos.</figcaption>
+            </figure>
+          </section>
+
+          <section>
+            <h2>Crear el vídeo recortado</h2>
+            <ol>
+              <li>Tras marcar todos los segmentos para eliminar, verifique que la <strong>duración del vídeo nuevo</strong> coincide con lo esperado.</li>
+              <li>En el encabezado de la página aparece el botón <strong>Crear vídeo nuevo</strong> (en lugar de «Guardar») — solo cuando hay al menos un recorte.</li>
+              <li>Pulse <strong>Crear vídeo nuevo</strong>.</li>
+              <li>Aparece un mensaje: <em>El proceso de creación del vídeo nuevo a partir de segmentos se está ejecutando en segundo plano…</em></li>
+              <li>El procesamiento se ejecuta en segundo plano. Tras unos minutos el vídeo nuevo estará listo; a veces se le redirige a la página de edición del vídeo nuevo.</li>
+            </ol>
+
+            <div class="note">
+              <strong>Importante:</strong> Esta opción no puede reemplazar el archivo del vídeo original — siempre se crea un <strong>registro nuevo</strong>. Para actualizar título, etiquetas o privacidad sin recortar — use el <strong>Guardar</strong> habitual.
+            </div>
+          </section>
+
+          <section>
+            <h2>Diferencia con el Estudio</h2>
+            <table style="width:100%; border-collapse: collapse; font-size: 0.95rem;">
+              <thead>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <th style="padding: 0.5rem; text-align: left;">Recorte individual (configuración del vídeo)</th>
+                  <th style="padding: 0.5rem; text-align: left;">Estudio</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem; text-align: left;">Una fuente — se eliminan segmentos de ella</td>
+                  <td style="padding: 0.5rem; text-align: left;">Segmentos de varios vídeos — se combinan en uno</td>
+                </tr>
+                <tr style="border-bottom: 1px solid var(--border);">
+                  <td style="padding: 0.5rem; text-align: left;">Vídeo nuevo; el original permanece</td>
+                  <td style="padding: 0.5rem; text-align: left;">Vídeo nuevo a partir de ensamblar segmentos</td>
+                </tr>
+                <tr>
+                  <td style="padding: 0.5rem; text-align: left;">Editor de línea de tiempo + eliminación de segmentos</td>
+                  <td style="padding: 0.5rem; text-align: left;">Selección de segmentos «para incluir» de cada fuente</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+
+          <section>
+            <h2>Verificar el resultado</h2>
+            <ol>
+              <li>Busque en la lista de vídeos el registro nuevo (normalmente un título con prefijo de recorte).</li>
+              <li>Abra la <strong>página de reproducción</strong> y reproduzca — verifique que los segmentos eliminados no aparecen.</li>
+              <li>Si el resultado no es correcto, vuelva a editar el <strong>vídeo original</strong>, corrija los marcadores y pulse de nuevo «Crear vídeo nuevo».</li>
+            </ol>
+            <p>Los vídeos largos o con muchos segmentos para eliminar pueden tardar más — espere a que finalice el mensaje en segundo plano.</p>
+          </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>
