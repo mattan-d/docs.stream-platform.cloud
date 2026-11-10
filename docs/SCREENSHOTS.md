@@ -161,3 +161,21 @@ node docs/screenshot.js "https://dev.video/videos/upload" docs/screenshot/upload
 
 - `media_1` = מחשב (ברירת מחדל), `media_2` = YouTube, `media_3` = Facebook (see `Core::media()` / VIDEO_MEDIA_*).
 - After running, refresh the guide at `guides/video-upload.html` to see the updated images.
+
+## Personal recording guide (guides/video-record.html)
+
+Base URL: `https://dev.video`. Page: `/videos/record` (הקלטה אישית). Also captures the header Create menu from `/welcome`.
+
+```bash
+node docs/screenshot.js "https://dev.video/videos/record" docs/screenshot/record-overview.png
+node docs/screenshot.js "https://dev.video/videos/record" docs/screenshot/record-annotate.png "#enable-annotate"
+node docs/screenshot.js "https://dev.video/welcome" docs/screenshot/record-create-menu.png ".top-nav-create-btn"
+```
+
+| File | Content |
+|------|---------|
+| `record-overview.png` | Personal recording page – preview and dock |
+| `record-annotate.png` | Annotation mode with color picker open |
+| `record-create-menu.png` | Header **+ Create** menu including Personal recording |
+
+After running, refresh `guides/video-record.html` (and `en/` / `es/` versions).

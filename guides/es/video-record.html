@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guía de grabación personal – Cámara, pantalla y anotación</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Grabación personal</h1>
+      <p class="lead">Guía para grabar cámara y compartir pantalla en una interfaz tipo Meet — incluye micrófono, desenfoque de fondo, anotación en pantalla y guardado automático.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+          <a href="../video-record.html" hreflang="he">עברית</a>
+          <a href="../en/video-record.html" hreflang="en">English</a>
+          <a href="video-record.html" hreflang="es" aria-current="page">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+        <h2>Descripción general</h2>
+        <p>La página de <strong>Grabación personal</strong> permite grabar la cámara, la pantalla o ambas. Al finalizar, el vídeo se guarda automáticamente y aparece en <strong>Mis vídeos</strong>. URL: <strong>/videos/record</strong> (por ejemplo <code>https://dev.video/videos/record</code>).</p>
+        <p>La función solo está disponible si la grabación está habilitada en la configuración del sistema, y para usuarios que no sean solo espectadores.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/record-overview.png" alt="Página de grabación personal – vista general">
+          <figcaption>Página de grabación personal – vista previa y barra de controles inferior.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Abrir la página</h2>
+        <p>En el encabezado, pulse <strong>+ Crear</strong> y elija <strong>Grabación personal</strong>. También puede abrir <code>/videos/record</code> directamente.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/record-create-menu.png" alt="Menú Crear con Grabación personal">
+          <figcaption>Menú <strong>+ Crear</strong> – elegir Grabación personal.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Barra de controles</h2>
+        <p>En la parte inferior hay una barra tipo Meet con estos controles:</p>
+        <ul>
+          <li><strong>Micrófono</strong> – activar/silenciar, con medidor de volumen.</li>
+          <li><strong>Cámara</strong> – encender o apagar la cámara.</li>
+          <li><strong>Desenfoque de fondo</strong> – difuminar el fondo detrás de la cámara.</li>
+          <li><strong>Compartir pantalla</strong> – elegir una ventana o pantalla para grabar.</li>
+          <li><strong>Anotar pantalla</strong> – dibujar sobre la vista previa (ver más abajo).</li>
+          <li><strong>Ajustes</strong> – elegir cámara y micrófono, y la esquina PiP de la cámara.</li>
+          <li><strong>Iniciar grabación / Detener grabación</strong> – iniciar, pausar/reanudar y detener con guardado.</li>
+          <li><strong>Salir</strong> – volver a Mis vídeos sin guardar una grabación nueva.</li>
+        </ul>
+        <div class="note">
+          <strong>Nota:</strong> Debe permitir el acceso a cámara y micrófono en el navegador. Sin permiso verá un error y no habrá vista previa.
+        </div>
+      </section>
+
+      <section>
+        <h2>Cámara y pantalla juntas</h2>
+        <p>Puede activar cámara y pantalla a la vez. Suele mostrarse la pantalla grande y la cámara en un PiP redondo. En Ajustes puede elegir la esquina de la cámara. Al detener, el sistema combina ambos flujos en un solo vídeo.</p>
+      </section>
+
+      <section>
+        <h2>Anotación en pantalla (lápiz)</h2>
+        <p>Pulse <strong>Anotar pantalla</strong> (icono de dibujo). Cuando está activo, el botón muestra un anillo del color elegido y aparece la paleta de colores.</p>
+        <ul>
+          <li>Dibuje sobre la vista previa con el ratón o el tacto.</li>
+          <li>Elija un color en la franja (rojo, naranja, amarillo, verde, azul, blanco, negro).</li>
+          <li>Pulse <strong>Borrar anotaciones</strong> (borrador) para limpiar todas las marcas.</li>
+        </ul>
+        <p>Las anotaciones también se incluyen en el vídeo final: se componen en los fotogramas durante la grabación.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/record-annotate.png" alt="Modo de anotación con selector de color">
+          <figcaption>Modo de anotación activo – selector de color del lápiz encima de la barra.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Grabar y guardar</h2>
+        <ol>
+          <li>Active la cámara y/o la pantalla hasta ver la vista previa.</li>
+          <li>Pulse <strong>Iniciar grabación</strong>. Puede pausar y reanudar durante la toma.</li>
+          <li>Pulse <strong>Detener grabación</strong>. Aparecerá una pantalla de guardado.</li>
+          <li>Tras guardar, irá a <strong>Mis vídeos</strong>, donde podrá editar título, privacidad y más.</li>
+        </ol>
+        <p>Véase también: <a href="videos-my.html">Mis vídeos</a>, <a href="video-settings.html">Configuración del vídeo</a>, <a href="video-upload.html">Subida de vídeo</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

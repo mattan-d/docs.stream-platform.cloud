@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>מדריך הקלטה אישית – מצלמה, שיתוף מסך וסימון</title>
+  <link rel="stylesheet" href="guide-page.css">
+  <link rel="stylesheet" href="lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>הקלטה אישית</h1>
+      <p class="lead">מדריך להקלטת מצלמה ושיתוף מסך בממשק דמוי Meet – כולל מיקרופון, טשטוש רקע, סימון על המסך ושמירה אוטומטית.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+          <a href="video-record.html" hreflang="he" aria-current="page">עברית</a>
+          <a href="en/video-record.html" hreflang="en">English</a>
+          <a href="es/video-record.html" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+        <h2>מבט כללי</h2>
+        <p>עמוד <strong>הקלטה אישית</strong> מאפשר להקליט מצלמה, שיתוף מסך או שניהם יחד. בסיום ההקלטה הסרטון נשמר אוטומטית ומופיע ב<strong>הסרטונים שלי</strong>. הכתובת: <strong>/videos/record</strong> (למשל <code>https://dev.video/videos/record</code>).</p>
+        <p>האפשרות זמינה רק אם הופעלה הקלטה בהגדרות המערכת, ולמשתמשים שאינם צופים בלבד.</p>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/record-overview.png" alt="עמוד הקלטה אישית – מבט כללי">
+          <figcaption>עמוד ההקלטה האישית – תצוגה מקדימה וסרגל בקרה תחתון.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>כניסה לעמוד</h2>
+        <p>בהאדר לחצו על <strong>+ יצירה</strong>, ואז בחרו <strong>הקלטה אישית</strong>. אפשר גם לפתוח ישירות את <code>/videos/record</code>.</p>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/record-create-menu.png" alt="תפריט יצירה עם האפשרות הקלטה אישית">
+          <figcaption>תפריט <strong>+ יצירה</strong> – בחירת הקלטה אישית.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>סרגל הבקרה</h2>
+        <p>בתחתית העמוד מופיע סרגל Meet עם הפקדים הבאים:</p>
+        <ul>
+          <li><strong>מיקרופון</strong> – הפעלה/השתקה, עם חיווי עוצמת קול.</li>
+          <li><strong>מצלמה</strong> – הפעלה או כיבוי של המצלמה.</li>
+          <li><strong>טשטוש רקע</strong> – טשטוש הרקע מאחורי המצלמה (כשהמצלמה פעילה).</li>
+          <li><strong>שיתוף מסך</strong> – בחירת חלון או מסך להקלטה.</li>
+          <li><strong>סימון על המסך</strong> – ציור/סימון מעל התצוגה (ראו בהמשך).</li>
+          <li><strong>הגדרות</strong> – בחירת מצלמה ומיקרופון, ומיקום מצלמת ה־PiP כששני המקורות פעילים.</li>
+          <li><strong>התחלת הקלטה / סיום הקלטה</strong> – התחלה, השהיה והמשך, וסיום עם שמירה.</li>
+          <li><strong>יציאה</strong> – חזרה לסרטונים שלי בלי לשמור הקלטה חדשה.</li>
+        </ul>
+        <div class="note">
+          <strong>שימו לב:</strong> יש לאשר הרשאות מצלמה ומיקרופון בדפדפן. בלי הרשאה תופיע הודעת שגיאה, ולא תוצג תצוגה מקדימה.
+        </div>
+      </section>
+
+      <section>
+        <h2>מצלמה ושיתוף מסך יחד</h2>
+        <p>אפשר להפעיל מצלמה ושיתוף מסך במקביל. בדרך כלל המסך מוצג בגדול והמצלמה בפינה עגולה (PiP). בהגדרות אפשר לבחור את פינת המצלמה (עליונה/תחתונה, ימין/שמאל). בסיום, המערכת מאחדת את שני הזרמים לסרטון אחד.</p>
+      </section>
+
+      <section>
+        <h2>סימון על המסך (עיפרון)</h2>
+        <p>לחצו על כפתור <strong>סימון על המסך</strong> (אייקון ציור). כשהכפתור פעיל מופיעה מסגרת בצבע הנבחר ונפתחת שורת בחירת צבעים.</p>
+        <ul>
+          <li>ציירו על התצוגה המקדימה עם העכבר או המגע.</li>
+          <li>בחרו צבע מהרצועה (אדום, כתום, צהוב, ירוק, כחול, לבן, שחור).</li>
+          <li>לחצו על <strong>מחיקת סימונים</strong> (מחק) כדי לנקות את כל הסימונים.</li>
+        </ul>
+        <p>הסימונים נשמרים גם בסרטון הסופי – הם מורכבים על פריימי ההקלטה בזמן הצילום.</p>
+        <figure class="screenshot">
+          <img src="../docs/screenshot/record-annotate.png" alt="מצב סימון פעיל עם בחירת צבעים">
+          <figcaption>מצב סימון פעיל – בחירת צבע עיפרון מעל סרגל הבקרה.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>הקלטה ושמירה</h2>
+        <ol>
+          <li>הפעילו מצלמה ו/או שיתוף מסך עד שמופיעה תצוגה מקדימה.</li>
+          <li>לחצו <strong>התחלת הקלטה</strong>. במהלך ההקלטה אפשר להשהות ולהמשיך.</li>
+          <li>לחצו <strong>סיום הקלטה</strong>. יופיע מסך המתנה בזמן שמירת הסרטון.</li>
+          <li>לאחר השמירה תועברו ל<strong>הסרטונים שלי</strong>. משם אפשר לערוך כותרת, פרטיות והגדרות נוספות.</li>
+        </ol>
+        <p>ראו גם: <a href="videos-my.html">הסרטונים שלי</a>, <a href="video-settings.html">הגדרות הסרטון</a>, <a href="video-upload.html">העלאת סרטון</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Recording Guide – Camera, Screen Share, and Annotation</title>
+  <link rel="stylesheet" href="../guide-page.css">
+  <link rel="stylesheet" href="../lang-switch.css">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Personal Recording</h1>
+      <p class="lead">Guide to recording camera and screen share in a Meet-style interface — including microphone, background blur, on-screen annotation, and automatic save.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+          <a href="../video-record.html" hreflang="he">עברית</a>
+          <a href="video-record.html" hreflang="en" aria-current="page">English</a>
+          <a href="../es/video-record.html" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <section>
+        <h2>Overview</h2>
+        <p>The <strong>Personal recording</strong> page lets you record the camera, screen share, or both together. When you stop, the video is saved automatically and appears under <strong>My videos</strong>. URL: <strong>/videos/record</strong> (for example <code>https://dev.video/videos/record</code>).</p>
+        <p>The feature is available only when recording is enabled in system settings, and only for users who are not viewers-only.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/record-overview.png" alt="Personal recording page – overview">
+          <figcaption>Personal recording page – preview area and bottom control dock.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Opening the page</h2>
+        <p>In the header, click <strong>+ Create</strong>, then choose <strong>Personal recording</strong>. You can also open <code>/videos/record</code> directly.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/record-create-menu.png" alt="Create menu with Personal recording">
+          <figcaption><strong>+ Create</strong> menu – choose Personal recording.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Control dock</h2>
+        <p>At the bottom of the page is a Meet-style dock with these controls:</p>
+        <ul>
+          <li><strong>Microphone</strong> – mute/unmute, with a volume meter.</li>
+          <li><strong>Camera</strong> – turn the camera on or off.</li>
+          <li><strong>Background blur</strong> – blur the background behind the camera (when the camera is on).</li>
+          <li><strong>Screen share</strong> – choose a window or screen to record.</li>
+          <li><strong>Annotate screen</strong> – draw over the preview (see below).</li>
+          <li><strong>Settings</strong> – pick camera and microphone devices, and PiP camera corner when both sources are active.</li>
+          <li><strong>Start recording / Stop recording</strong> – start, pause/resume, and stop with save.</li>
+          <li><strong>Exit</strong> – return to My videos without saving a new recording.</li>
+        </ul>
+        <div class="note">
+          <strong>Note:</strong> Allow camera and microphone permissions in the browser. Without permission you will see an error and no preview.
+        </div>
+      </section>
+
+      <section>
+        <h2>Camera and screen share together</h2>
+        <p>You can enable camera and screen share at the same time. Usually the screen is large and the camera appears as a round PiP. In Settings you can choose the camera corner. When you stop, the system combines both streams into one video.</p>
+      </section>
+
+      <section>
+        <h2>On-screen annotation (pen)</h2>
+        <p>Click <strong>Annotate screen</strong> (drawing icon). When active, the button shows a colored ring and a color palette appears.</p>
+        <ul>
+          <li>Draw on the preview with the mouse or touch.</li>
+          <li>Pick a color from the strip (red, orange, yellow, green, blue, white, black).</li>
+          <li>Click <strong>Clear annotations</strong> (eraser) to remove all marks.</li>
+        </ul>
+        <p>Annotations are included in the final video — they are composited into the recorded frames while you record.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/record-annotate.png" alt="Annotation mode with color picker">
+          <figcaption>Annotation mode on – pen color picker above the dock.</figcaption>
+        </figure>
+      </section>
+
+      <section>
+        <h2>Recording and saving</h2>
+        <ol>
+          <li>Turn on camera and/or screen share until a preview appears.</li>
+          <li>Click <strong>Start recording</strong>. You can pause and resume during the take.</li>
+          <li>Click <strong>Stop recording</strong>. A saving screen appears while the video is stored.</li>
+          <li>After save you are redirected to <strong>My videos</strong>, where you can edit title, privacy, and more.</li>
+        </ol>
+        <p>See also: <a href="videos-my.html">My videos</a>, <a href="video-settings.html">Video settings</a>, <a href="video-upload.html">Video upload</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>
