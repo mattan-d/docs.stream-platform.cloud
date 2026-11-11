@@ -109,9 +109,9 @@
 
           <section id="section-7">
             <h2>Eliminación permanente desde Excel</h2>
-            <p>Para eliminar de forma inmediata y permanente una lista de vídeos según un archivo de exportación, use <strong>Eliminar desde Excel</strong> (<code>/videos/excel_delete</code>). Solo administradores.</p>
+            <p>Para eliminar de forma permanente una lista de vídeos según un archivo de exportación, use <strong>Eliminar desde Excel</strong> (<code>/videos/excel_delete</code>). Solo administradores.</p>
             <div class="note">
-              <strong>Importante:</strong> la eliminación desde Excel es <strong>permanente</strong>. Tras la confirmación no se pueden recuperar los vídeos y los archivos se eliminan de inmediato (sin período de gracia).
+              <strong>Importante:</strong> la eliminación desde Excel es <strong>permanente</strong>. Tras la confirmación los vídeos se marcan como eliminados de inmediato y los archivos se eliminan en segundo plano en la siguiente ejecución del cron (sin período de gracia), para no bloquear la página.
             </div>
             <ol>
               <li>En Gestión de vídeos, filtre la lista deseada y pulse <strong>Exportar a Excel</strong>.</li>

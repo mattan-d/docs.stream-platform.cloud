@@ -111,7 +111,7 @@
             <h2>Permanent deletion from Excel</h2>
             <p>To permanently delete a list of videos from an export file, use <strong>Delete from Excel</strong> (<code>/videos/excel_delete</code>). Admins only.</p>
             <div class="note">
-              <strong>Important:</strong> Excel deletion is <strong>permanent</strong>. After confirmation, videos cannot be restored and files are removed immediately (no grace period).
+              <strong>Important:</strong> Excel deletion is <strong>permanent</strong>. After confirmation, videos are marked deleted immediately and files are removed in the background on the next cron run (no grace period), so the page does not block.
             </div>
             <ol>
               <li>In Video management, filter the list you want and click <strong>Export to Excel</strong>.</li>
