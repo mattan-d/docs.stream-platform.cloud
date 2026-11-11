@@ -29,7 +29,17 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#section-1">Overview</a>
+        <a href="#section-2">Accessing the page</a>
+        <a href="#section-3">Filtering (sidebar)</a>
+        <a href="#section-4">Sorting and results</a>
+        <a href="#section-5">User card</a>
+        <a href="#section-6">Deleting a user</a>
+        <a href="#section-7">User settings and profile</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Overview</h2>
             <p>The <strong>User Management</strong> page is accessible only to users with administrator permissions. Open it from the menu (for example from the user menu – <strong>User Management</strong>) or at <strong>/user/admin</strong> (for example <code>https://dev.video/user/admin</code>). The page shows a card list of users, filtering by search and user type, and actions for each user.</p>
             <figure class="screenshot">
@@ -41,12 +51,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Accessing the page</h2>
             <p>In the top menu (user menu / profile), choose <strong>User Management</strong>. This option appears only for administrators.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Filtering (sidebar)</h2>
             <p>On the left:</p>
             <ul>
@@ -57,12 +67,12 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Sorting and results</h2>
             <p>Above the card list, the result count and <strong>Sort</strong> links are shown: ID, first name, last name, email, last access, permission. Clicking a header sorts the list. Pagination is available at the top and bottom.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>User card</h2>
             <p>Each user is shown in a card with:</p>
             <ul>
@@ -84,12 +94,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Deleting a user</h2>
             <p>Clicking the delete icon on a card opens a confirmation dialog. On confirmation – the user is deleted from the system and the page refreshes (or a success message is shown). This action is usually irreversible.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>User settings and profile</h2>
             <p>Clicking <strong>User settings</strong> (gear icon) goes to <strong>/user/settings/{id}</strong> – where you can edit details, activate or deactivate the user, and manage permissions.</p>
           </section>

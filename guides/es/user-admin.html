@@ -29,7 +29,17 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#section-1">Visión general</a>
+        <a href="#section-2">Acceso a la página</a>
+        <a href="#section-3">Filtros (barra lateral)</a>
+        <a href="#section-4">Ordenación y resultados</a>
+        <a href="#section-5">Tarjeta de usuario</a>
+        <a href="#section-6">Eliminación de usuario</a>
+        <a href="#section-7">Configuración de usuario y perfil</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Visión general</h2>
             <p>La página de <strong>gestión de usuarios</strong> solo es accesible para usuarios con permisos de administrador. Se accede desde el menú (por ejemplo, desde el menú de usuario – <strong>Gestión de usuarios</strong>) o en la dirección <strong>/user/admin</strong> (por ejemplo, <code>https://dev.video/user/admin</code>). En la página se muestra una lista de usuarios en tarjetas, filtrado por búsqueda y tipo de usuario, y acciones para cada usuario.</p>
             <figure class="screenshot">
@@ -41,12 +51,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Acceso a la página</h2>
             <p>En el menú superior (menú de usuario / perfil), seleccione <strong>Gestión de usuarios</strong>. La opción solo aparece para administradores.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Filtros (barra lateral)</h2>
             <p>A la izquierda:</p>
             <ul>
@@ -57,12 +67,12 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Ordenación y resultados</h2>
             <p>Sobre la lista de tarjetas se muestra el número de resultados y enlaces de <strong>ordenación</strong>: ID, nombre, apellidos, correo electrónico, último acceso, permiso. Al pulsar un encabezado se ordena la lista. También hay paginación arriba y abajo.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Tarjeta de usuario</h2>
             <p>Cada usuario se muestra en una tarjeta con:</p>
             <ul>
@@ -84,12 +94,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Eliminación de usuario</h2>
             <p>Al pulsar el icono de eliminar en la tarjeta se abre un diálogo (modal) de confirmación. Tras confirmar, el usuario se elimina del sistema y la página se actualiza (o se muestra un mensaje de éxito). Esta acción suele ser irreversible.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Configuración de usuario y perfil</h2>
             <p>Al pulsar <strong>Configuración de usuario</strong> (icono de engranaje) se accede a la página <strong>/user/settings/{id}</strong>, donde se pueden editar los datos, activar o desactivar al usuario y gestionar permisos.</p>
           </section>

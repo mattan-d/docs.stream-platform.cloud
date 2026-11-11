@@ -29,7 +29,19 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#section-1">Overview</a>
+        <a href="#section-2">Video player</a>
+        <a href="#section-3">Action bar below the player</a>
+        <a href="#section-4">Metrics (for owners/administrators)</a>
+        <a href="#section-5">Description and info</a>
+        <a href="#section-6">Video comments (Q&amp;A)</a>
+        <a href="#section-7">Replies (if enabled)</a>
+        <a href="#section-8">Sidebar – topics and recommendations</a>
+        <a href="#section-9">Share</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Overview</h2>
             <p>The watch page opens when you click a video from lists or go directly to <strong>/watch/video_id</strong> (e.g. <code>https://dev.video/watch/1248</code>). The page is divided into a main area (player, title, action menu, description, comments) and a sidebar (topics, recommendations).</p>
             <figure class="screenshot">
@@ -38,12 +50,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Video player</h2>
             <p>At the top of the page is the player: play/pause, volume, progress bar, fullscreen. For videos with topics (chapters) – clicking a topic in the sidebar jumps to the matching time in the video.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Action bar below the player</h2>
             <p>Below the video title you will see:</p>
             <ul>
@@ -62,12 +74,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Metrics (for owners/administrators)</h2>
             <p>If you are the video owner or an administrator – below the action bar you will see <strong>views</strong>, <strong>impressions</strong>, and <strong>view ratio</strong>, with a link to the full metrics screen.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Description and info</h2>
             <p>Below the actions: <strong>view count</strong>, publish date (e.g. "X ago"), and <strong>video description</strong>. Clicking "…more" / "show less" expands or collapses the description. If keywords (tags) are set – they appear below.</p>
             <figure class="screenshot">
@@ -76,17 +88,17 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Video comments (Q&amp;A)</h2>
             <p>If comments/questions are configured for the video (comments manager) – a <strong>video comments</strong> area appears with the list of questions and answers, sometimes with timestamps (click jumps to time in the video).</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Replies (if enabled)</h2>
             <p>When replies are enabled in system settings and the video is not "link-only" private – a <strong>replies</strong> area appears below comments, with the option to add a reply (for signed-in users).</p>
           </section>
 
-          <section>
+          <section id="section-8">
             <h2>Sidebar – topics and recommendations</h2>
             <p>In the right column (on desktop; on mobile below the content):</p>
             <ul>
@@ -99,7 +111,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-9">
             <h2>Share</h2>
             <p>Clicking <strong>Share</strong> opens a dialog with: share to Facebook, WhatsApp, email, direct link to copy, and depending on settings – <strong>embed</strong> code (iframe) to embed the video on a site. The <strong>Copy</strong> button copies the link or embed code to the clipboard.</p>
           </section>

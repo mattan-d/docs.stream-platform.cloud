@@ -29,7 +29,18 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="נושאים">
+        <a href="#section-1">מבט כללי</a>
+        <a href="#section-2">כניסה לעמוד</a>
+        <a href="#section-3">סינון (סרגל צד)</a>
+        <a href="#section-4">מיון ובחירה מרובה</a>
+        <a href="#section-5">כרטיס סרטון</a>
+        <a href="#section-6">מחיקה – בודדת ומרובה</a>
+        <a href="#section-7">מחיקה סופית לפי Excel</a>
+        <a href="#section-8">עריכה וייצוא</a>
+      </nav>
+
+      <section id="section-1">
             <h2>מבט כללי</h2>
             <p>עמוד <strong>ניהול סרטונים</strong> נגיש רק למשתמשים עם הרשאות מנהל. נכנסים אליו מהתפריט (למשל <strong>ניהול סרטונים</strong>) או בכתובת <strong>/videos/admin</strong> (למשל <code>https://dev.video/videos/admin</code>). בעמוד מוצגת רשימת סרטונים בכרטיסים, סינון מתקדם (סטטוס, פרטיות, משתמש, ערוץ, תאריכים, אורך), מיון, בחירה מרובה ומחיקה.</p>
             <figure class="screenshot">
@@ -41,12 +52,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>כניסה לעמוד</h2>
             <p>בתפריט העליון (תפריט המשתמש) בחרו <strong>ניהול סרטונים</strong>. האפשרות מופיעה רק למנהלים.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>סינון (סרגל צד)</h2>
             <p>בצד שמאל:</p>
             <ul>
@@ -66,7 +77,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>מיון ובחירה מרובה</h2>
             <p>מעל רשימת הכרטיסים: מספר הסרטונים, <strong>בחר הכל</strong> (סימון/ביטול לכל הכרטיסים), וקישורי <strong>מיון</strong> – תאריך, כותרת, סטטוס. לאחר סימון של לפחות סרטון אחד מופיעה <strong>סרגל פעולות</strong>: "X סרטונים נבחרו", כפתור <strong>הורדה</strong> (עד 5 סרטונים – לסרטונים מפורסמים שאינם מ־YouTube) וכפתור <strong>מחיקה</strong> (פותח חלון לאישור מחיקת הנבחרים).</p>
             <figure class="screenshot">
@@ -75,7 +86,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>כרטיס סרטון</h2>
             <p>כל סרטון מוצג בכרטיס עם:</p>
             <ul>
@@ -91,12 +102,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>מחיקה – בודדת ומרובה</h2>
             <p>לחיצה על אייקון המחיקה בכרטיס פותחת חלון לאישור מחיקת הסרטון הבודד. בחירה מרובה ולחיצה על <strong>מחיקה</strong> בסרגל הפעולות פותחת את אותו חלון עם קישור למחיקת כל המסומנים. באישור – הסרטונים עוברים לסטטוס <strong>נמחק מהמערכת</strong> (מחיקה רכה). הקבצים נמחקים לצמיתות רק אחרי תקופת ההמתנה שמוגדרת בהגדרות המערכת.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>מחיקה סופית לפי Excel</h2>
             <p>למחיקה מיידית וסופית של רשימת סרטונים לפי קובץ ייצוא, השתמשו ב־<strong>מחיקה מאקסל</strong> (<code>/videos/excel_delete</code>). הפעולה זמינה למנהלים בלבד.</p>
             <div class="note">
@@ -120,7 +131,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-8">
             <h2>עריכה וייצוא</h2>
             <p>לחיצה על <strong>עריכה</strong> (אייקון גלגל שיניים) מובילה לדף <strong>הגדרות הסרטון</strong> (<code>/videos/edit/{id}</code>) – עריכת כותרת, תיאור, פרטיות, חיתוך ועוד (ראו <a href="video-settings.html">הגדרות הסרטון</a>). <strong>ייצוא ל־Excel</strong> בסרגל הצד מוריד קובץ עם רשימת הסרטונים התואמים לסינון הנוכחי — אותו פורמט משמש גם למחיקה מאקסל.</p>
           </section>

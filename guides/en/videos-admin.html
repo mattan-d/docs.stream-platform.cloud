@@ -29,7 +29,18 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#section-1">Overview</a>
+        <a href="#section-2">Accessing the page</a>
+        <a href="#section-3">Filtering (sidebar)</a>
+        <a href="#section-4">Sorting and multi-select</a>
+        <a href="#section-5">Video card</a>
+        <a href="#section-6">Deletion – single and bulk</a>
+        <a href="#section-7">Permanent deletion from Excel</a>
+        <a href="#section-8">Edit and export</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Overview</h2>
             <p>The <strong>Video Management</strong> page is accessible only to users with administrator permissions. Open it from the menu (for example <strong>Video Management</strong>) or at <strong>/videos/admin</strong> (for example <code>https://dev.video/videos/admin</code>). The page shows a card list of videos, advanced filtering (status, privacy, user, channel, dates, length), sorting, multi-select, and deletion.</p>
             <figure class="screenshot">
@@ -41,12 +52,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Accessing the page</h2>
             <p>In the top menu (user menu), choose <strong>Video Management</strong>. This option appears only for administrators.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Filtering (sidebar)</h2>
             <p>On the left:</p>
             <ul>
@@ -66,7 +77,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Sorting and multi-select</h2>
             <p>Above the card list: video count, <strong>Select all</strong> (check/uncheck all cards), and <strong>Sort</strong> links – date, title, status. After selecting at least one video, an <strong>actions bar</strong> appears: "X videos selected", <strong>Download</strong> button (up to 5 videos – for published videos that are not from YouTube) and <strong>Delete</strong> button (opens a dialog to confirm deletion of selected items).</p>
             <figure class="screenshot">
@@ -75,7 +86,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Video card</h2>
             <p>Each video is shown in a card with:</p>
             <ul>
@@ -91,12 +102,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Deletion – single and bulk</h2>
             <p>Clicking the delete icon on a card opens a dialog to confirm deleting that single video. Multi-select and clicking <strong>Delete</strong> in the actions bar opens the same dialog with a link to delete all selected items. On confirmation – videos move to the <strong>Deleted</strong> status (soft delete). Files are permanently purged only after the grace period configured in system settings.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Permanent deletion from Excel</h2>
             <p>To permanently delete a list of videos from an export file, use <strong>Delete from Excel</strong> (<code>/videos/excel_delete</code>). Admins only.</p>
             <div class="note">
@@ -120,7 +131,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-8">
             <h2>Edit and export</h2>
             <p>Clicking <strong>Edit</strong> (gear icon) goes to the <strong>Video Settings</strong> page (<code>/videos/edit/{id}</code>) – edit title, description, privacy, trim, and more (see <a href="video-settings.html">Video settings</a>). <strong>Export to Excel</strong> in the sidebar downloads a file with videos matching the current filter — the same format is used for Delete from Excel.</p>
           </section>

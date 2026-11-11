@@ -29,7 +29,17 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="נושאים">
+        <a href="#section-1">מבט כללי</a>
+        <a href="#section-2">כניסה לעמוד</a>
+        <a href="#section-3">סינון (סרגל צד)</a>
+        <a href="#section-4">מיון ותוצאות</a>
+        <a href="#section-5">כרטיס משתמש</a>
+        <a href="#section-6">מחיקת משתמש</a>
+        <a href="#section-7">הגדרות משתמש ופרופיל</a>
+      </nav>
+
+      <section id="section-1">
             <h2>מבט כללי</h2>
             <p>עמוד <strong>ניהול משתמשים</strong> נגיש רק למשתמשים עם הרשאות מנהל. נכנסים אליו מהתפריט (למשל מתפריט המשתמש – <strong>ניהול משתמשים</strong>) או בכתובת <strong>/user/admin</strong> (למשל <code>https://dev.video/user/admin</code>). בעמוד מוצגת רשימת משתמשים בכרטיסים, סינון לפי חיפוש וסוג משתמש, ופעולות לכל משתמש.</p>
             <figure class="screenshot">
@@ -41,12 +51,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>כניסה לעמוד</h2>
             <p>בתפריט העליון (תפריט המשתמש / פרופיל) בחרו <strong>ניהול משתמשים</strong>. האפשרות מופיעה רק למנהלים.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>סינון (סרגל צד)</h2>
             <p>בצד שמאל:</p>
             <ul>
@@ -57,12 +67,12 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>מיון ותוצאות</h2>
             <p>מעל רשימת הכרטיסים מוצגים מספר התוצאות וקישורי <strong>מיון</strong>: מזהה, שם פרטי, שם משפחה, דוא״ל, גישה אחרונה, הרשאה. לחיצה על כותרת ממיינת את הרשימה. יש גם עימוד (פאגינציה) למעלה ולמטה.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>כרטיס משתמש</h2>
             <p>כל משתמש מוצג בכרטיס עם:</p>
             <ul>
@@ -84,12 +94,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>מחיקת משתמש</h2>
             <p>לחיצה על אייקון המחיקה בכרטיס פותחת חלון (מודל) לאישור. באישור – המשתמש נמחק מהמערכת והדף מתעדכן (או מוצגת הודעת הצלחה). פעולה זו בדרך כלל לא הפיכה.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>הגדרות משתמש ופרופיל</h2>
             <p>לחיצה על <strong>הגדרות משתמש</strong> (אייקון גלגל שיניים) מובילה לדף <strong>/user/settings/{id}</strong> – שם ניתן לערוך פרטים, להפעיל או לבטל את המשתמש ולנהל הרשאות.</p>
           </section>

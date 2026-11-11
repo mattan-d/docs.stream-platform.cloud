@@ -29,7 +29,19 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#section-1">Visión general</a>
+        <a href="#section-2">Reproductor de vídeo</a>
+        <a href="#section-3">Barra de acciones debajo del reproductor</a>
+        <a href="#section-4">Métricas (para propietarios/administradores)</a>
+        <a href="#section-5">Descripción e información</a>
+        <a href="#section-6">Comentarios del vídeo (preguntas y respuestas)</a>
+        <a href="#section-7">Respuestas (si están activadas)</a>
+        <a href="#section-8">Barra lateral – temas y recomendados</a>
+        <a href="#section-9">Compartir</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Visión general</h2>
             <p>La página de reproducción se abre al hacer clic en un vídeo desde las listas o al acceder directamente a <strong>/watch/id_del_vídeo</strong> (por ejemplo, <code>https://dev.video/watch/1248</code>). La página se divide en un área principal (reproductor, título, menú de acciones, descripción, comentarios) y una columna lateral (temas, recomendados).</p>
             <figure class="screenshot">
@@ -38,12 +50,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Reproductor de vídeo</h2>
             <p>En la parte superior de la página está el reproductor: reproducción/pausa, volumen, barra de progreso, pantalla completa. Para vídeos con temas (capítulos) – al hacer clic en un tema en la barra lateral se salta al tiempo correspondiente del vídeo.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Barra de acciones debajo del reproductor</h2>
             <p>Debajo del título del vídeo aparecen:</p>
             <ul>
@@ -62,12 +74,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Métricas (para propietarios/administradores)</h2>
             <p>Si es propietario del vídeo o administrador – debajo de la barra de acciones aparecen <strong>visualizaciones</strong>, <strong>impresiones</strong> y <strong>ratio de visualización</strong>, con un enlace a la pantalla completa de métricas.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Descripción e información</h2>
             <p>Debajo de las acciones: número de <strong>visualizaciones</strong>, fecha de publicación (por ejemplo, «hace X») y <strong>descripción del vídeo</strong>. Al hacer clic en «…más» / «mostrar menos» se expande o contrae la descripción. Si se definieron palabras clave (etiquetas) – aparecen debajo.</p>
             <figure class="screenshot">
@@ -76,17 +88,17 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Comentarios del vídeo (preguntas y respuestas)</h2>
             <p>Si el vídeo tiene comentarios/preguntas configurados (gestor de comentarios) – aparece un área de <strong>comentarios del vídeo</strong> con la lista de preguntas y respuestas, a veces con marcas de tiempo (al hacer clic se salta al tiempo del vídeo).</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Respuestas (si están activadas)</h2>
             <p>Cuando las respuestas están activadas en la configuración del sistema y el vídeo no tiene privacidad «solo enlace» – aparece un área de <strong>respuestas</strong> debajo de los comentarios, con la opción de añadir una respuesta (para usuarios con sesión iniciada).</p>
           </section>
 
-          <section>
+          <section id="section-8">
             <h2>Barra lateral – temas y recomendados</h2>
             <p>En la columna derecha (en ordenador; en móvil debajo del contenido):</p>
             <ul>
@@ -99,7 +111,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-9">
             <h2>Compartir</h2>
             <p>Al pulsar <strong>Compartir</strong> se abre un diálogo con: compartir en Facebook, WhatsApp, correo electrónico, enlace directo para copiar y, según la configuración – código de <strong>inserción</strong> (iframe) para incrustar el vídeo en un sitio. El botón <strong>Copiar</strong> copia el enlace o el código de inserción al portapapeles.</p>
           </section>

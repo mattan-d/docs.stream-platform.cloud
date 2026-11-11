@@ -29,7 +29,18 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#section-1">Overview</a>
+        <a href="#section-2">Opening the page</a>
+        <a href="#section-3">Filters (sidebar)</a>
+        <a href="#section-4">Sorting and multi-select</a>
+        <a href="#section-5">Video card</a>
+        <a href="#section-6">Editing</a>
+        <a href="#section-7">Deletion</a>
+        <a href="#section-8">Related guides</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Overview</h2>
             <p>The <strong>My videos</strong> page lets every logged-in user (who is not view-only) manage <strong>videos they uploaded</strong> – not the entire system library. Open it from the user menu (<strong>My videos</strong>) or at <strong>/videos/my</strong> (for example <code>https://dev.video/videos/my</code>).</p>
             <p>The page shows a card list of your videos (including processing and pending items), with filtering, sorting, editing, deletion, and download.</p>
@@ -45,12 +56,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Opening the page</h2>
             <p>Open the <strong>user menu</strong> and choose <strong>My videos</strong>. You can also reach it from the <a href="video-upload.html">Upload video</a> page – the sidebar links to <strong>My videos</strong> next to <strong>My library</strong>.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Filters (sidebar)</h2>
             <p>On the left you can narrow the list:</p>
             <ul>
@@ -67,7 +78,7 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Sorting and multi-select</h2>
             <p>Above the cards: video count, <strong>Select all</strong>, and <strong>sort</strong> links – date, title, status, size, impressions. After selecting at least one video, an <strong>actions bar</strong> appears with:</p>
             <ul>
@@ -80,7 +91,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Video card</h2>
             <p>Each video is shown as a card with:</p>
             <ul>
@@ -97,18 +108,18 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Editing</h2>
             <p>Click <strong>Edit</strong> (gear icon) to open <strong>Video settings</strong> (<code>/videos/edit/{id}</code>) – change title, description, privacy, captions, trim, and more. See the <a href="video-settings.html">video settings guide</a>.</p>
             <p>You can only edit <strong>your own</strong> videos. If you lack access, you will get an error page.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Deletion</h2>
             <p>Single delete: click the trash icon on a card and confirm. Bulk delete: select cards and click <strong>Delete</strong> in the actions bar. After deletion you return to <strong>My videos</strong> with a message listing removed titles. Deletion is usually not reversible.</p>
           </section>
 
-          <section>
+          <section id="section-8">
             <h2>Related guides</h2>
             <ul>
               <li><a href="video-upload.html">Upload video</a> – upload a new recording.</li>

@@ -29,7 +29,16 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#section-1">¿Cuándo aparece esta función?</a>
+        <a href="#section-2">Requisitos previos</a>
+        <a href="#section-3">Pasos de uso (para cada tipo de pregunta admitido)</a>
+        <a href="#section-4">¿Qué se envía a la API según el tipo de pregunta?</a>
+        <a href="#section-5">Qué espera recibir cada tipo de la API (brevemente)</a>
+        <a href="#section-6">Notas adicionales</a>
+      </nav>
+
+      <section id="section-1">
             <h2>¿Cuándo aparece esta función?</h2>
             <p>La función aparece en el formulario de nueva pregunta solo cuando el <strong>tipo de pregunta</strong> es uno de los siguientes:</p>
             <table class="data-table">
@@ -64,7 +73,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Requisitos previos</h2>
             <ul>
               <li><strong>Configuración del sitio:</strong> deben estar configurados la <strong>URL de Stream</strong> y la <strong>clave API</strong>. Si faltan, aparecerá una alerta correspondiente.</li>
@@ -73,7 +82,7 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Pasos de uso (para cada tipo de pregunta admitido)</h2>
             <ol>
               <li>Cree una pregunta nueva y elija el <strong>tipo de pregunta</strong> deseado entre los tres anteriores.</li>
@@ -88,7 +97,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>¿Qué se envía a la API según el tipo de pregunta?</h2>
             <p>El código del complemento en Moodle mapea el tipo de formulario de Moodle al parámetro <code>question_type</code> en la llamada a Stream:</p>
             <table class="data-table">
@@ -116,7 +125,7 @@
             <p>Además, normalmente se envían <code>videoid</code>, <code>count</code> (actualmente <strong>2</strong> al hacer clic desde JavaScript) y parámetros de categoría / curso / módulo del formulario — según la configuración del complemento y del formulario.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Qué espera recibir cada tipo de la API (brevemente)</h2>
             <p>El servidor Stream devuelve una lista de preguntas en JSON. El complemento verifica que los elementos coincidan con el tipo seleccionado en Moodle:</p>
             <ul>
@@ -129,7 +138,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Notas adicionales</h2>
             <ul>
               <li><strong>Enlace de relleno previo:</strong> el enlace es de un solo uso y de corta duración (basado en token de sesión). Si expiró o intentó abrir manualmente un enlace no válido — vuelva a la selección de vídeo y genere de nuevo.</li>

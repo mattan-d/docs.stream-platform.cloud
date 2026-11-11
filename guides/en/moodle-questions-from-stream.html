@@ -29,7 +29,16 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#section-1">When does this feature appear?</a>
+        <a href="#section-2">Prerequisites</a>
+        <a href="#section-3">Usage steps (for each supported question type)</a>
+        <a href="#section-4">What is sent to the API by question type?</a>
+        <a href="#section-5">What each type expects from the API (briefly)</a>
+        <a href="#section-6">Additional notes</a>
+      </nav>
+
+      <section id="section-1">
             <h2>When does this feature appear?</h2>
             <p>The feature appears on the new question form only when the <strong>question type</strong> is one of the following:</p>
             <table class="data-table">
@@ -64,7 +73,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Prerequisites</h2>
             <ul>
               <li><strong>Site settings:</strong> <strong>Stream URL</strong> and <strong>API key</strong> must be configured. If missing, a matching alert will appear.</li>
@@ -73,7 +82,7 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Usage steps (for each supported question type)</h2>
             <ol>
               <li>Create a new question and choose the desired <strong>question type</strong> from the three above.</li>
@@ -88,7 +97,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>What is sent to the API by question type?</h2>
             <p>The Moodle plugin code maps the Moodle form type to the <code>question_type</code> parameter in the Stream call:</p>
             <table class="data-table">
@@ -116,7 +125,7 @@
             <p>Additionally, <code>videoid</code>, <code>count</code> (currently <strong>2</strong> when clicking from JavaScript), and category / course / module parameters from the form are usually sent — according to plugin and form settings.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>What each type expects from the API (briefly)</h2>
             <p>The Stream server returns a list of questions in JSON. The plugin verifies that items match the type selected in Moodle:</p>
             <ul>
@@ -129,7 +138,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Additional notes</h2>
             <ul>
               <li><strong>Pre-fill link:</strong> the link is one-time and short-lived (session token based). If it expired or you tried to open an invalid link manually — return to video selection and generate again.</li>

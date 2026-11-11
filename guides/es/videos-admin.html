@@ -29,7 +29,18 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#section-1">Visión general</a>
+        <a href="#section-2">Acceso a la página</a>
+        <a href="#section-3">Filtros (barra lateral)</a>
+        <a href="#section-4">Ordenación y selección múltiple</a>
+        <a href="#section-5">Tarjeta de vídeo</a>
+        <a href="#section-6">Eliminación – individual y múltiple</a>
+        <a href="#section-7">Eliminación permanente desde Excel</a>
+        <a href="#section-8">Edición y exportación</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Visión general</h2>
             <p>La página de <strong>gestión de vídeos</strong> solo es accesible para usuarios con permisos de administrador. Se accede desde el menú (por ejemplo, <strong>Gestión de vídeos</strong>) o en la dirección <strong>/videos/admin</strong> (por ejemplo, <code>https://dev.video/videos/admin</code>). En la página se muestra una lista de vídeos en tarjetas, filtrado avanzado (estado, privacidad, usuario, canal, fechas, duración), ordenación, selección múltiple y eliminación.</p>
             <figure class="screenshot">
@@ -41,12 +52,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Acceso a la página</h2>
             <p>En el menú superior (menú de usuario), seleccione <strong>Gestión de vídeos</strong>. La opción solo aparece para administradores.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Filtros (barra lateral)</h2>
             <p>A la izquierda:</p>
             <ul>
@@ -66,7 +77,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Ordenación y selección múltiple</h2>
             <p>Sobre la lista de tarjetas: número de vídeos, <strong>Seleccionar todo</strong> (marcar/desmarcar todas las tarjetas) y enlaces de <strong>ordenación</strong> – fecha, título, estado. Tras marcar al menos un vídeo, aparece una <strong>barra de acciones</strong>: «X vídeos seleccionados», botón <strong>Descargar</strong> (hasta 5 vídeos – para vídeos publicados que no sean de YouTube) y botón <strong>Eliminar</strong> (abre un diálogo para confirmar la eliminación de los seleccionados).</p>
             <figure class="screenshot">
@@ -75,7 +86,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Tarjeta de vídeo</h2>
             <p>Cada vídeo se muestra en una tarjeta con:</p>
             <ul>
@@ -91,12 +102,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Eliminación – individual y múltiple</h2>
             <p>Al pulsar el icono de eliminar en la tarjeta se abre un diálogo para confirmar la eliminación del vídeo individual. Con selección múltiple y pulsando <strong>Eliminar</strong> en la barra de acciones se abre el mismo diálogo con un enlace para eliminar todos los marcados. Tras confirmar, los vídeos pasan al estado <strong>Eliminado</strong> (eliminación suave). Los archivos se purgan de forma permanente solo después del período de gracia configurado en ajustes del sistema.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Eliminación permanente desde Excel</h2>
             <p>Para eliminar de forma inmediata y permanente una lista de vídeos según un archivo de exportación, use <strong>Eliminar desde Excel</strong> (<code>/videos/excel_delete</code>). Solo administradores.</p>
             <div class="note">
@@ -120,7 +131,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-8">
             <h2>Edición y exportación</h2>
             <p>Al pulsar <strong>Editar</strong> (icono de engranaje) se accede a la página de <strong>configuración del vídeo</strong> (<code>/videos/edit/{id}</code>) – edición de título, descripción, privacidad, recorte y más (consulte <a href="video-settings.html">configuración del vídeo</a>). <strong>Exportar a Excel</strong> en la barra lateral descarga un archivo con la lista de vídeos que coinciden con el filtro actual — el mismo formato se usa para Eliminar desde Excel.</p>
           </section>

@@ -29,7 +29,17 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#section-1">Overview</a>
+        <a href="#section-2">Opening the page</a>
+        <a href="#section-3">Actions (sidebar)</a>
+        <a href="#section-4">Media type</a>
+        <a href="#section-5">Upload from computer</a>
+        <a href="#section-6">Title, description, and privacy</a>
+        <a href="#section-7">Save and upload</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Overview</h2>
             <p>The <strong>Upload video</strong> page is available from the main menu (upload button) or at <strong>/videos/upload</strong> (e.g. <code>https://dev.video/videos/upload</code>). On this page you enter video details, choose files or a link, then click Save and upload.</p>
             <figure class="screenshot">
@@ -38,17 +48,17 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Opening the page</h2>
             <p>In the top menu, click <strong>Upload video</strong> (or Upload). Users without upload permission will not see the option or will receive an access message.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Actions (sidebar)</h2>
             <p>On the left: links to <strong>My library</strong> and <strong>My videos</strong> (manage your uploads). Administrators also see <strong>Video management</strong>. Useful for returning to your list without leaving the upload form. See the <a href="videos-my.html">My videos guide</a>.</p>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Media type</h2>
             <p>At the top of the form, <strong>source type</strong> options appear (according to system settings):</p>
             <ul>
@@ -73,7 +83,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Upload from computer</h2>
             <p>When «Video from computer» is selected:</p>
             <ul>
@@ -88,7 +98,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Title, description, and privacy</h2>
             <p>Below the upload area:</p>
             <ul>
@@ -102,7 +112,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Save and upload</h2>
             <p>After filling in the fields and choosing files (or entering a URL for YouTube/Facebook sources), click <strong>Save and upload</strong>. The button is active only when there are valid files (format and size).</p>
             <p>During upload, a waiting dialog shows <strong>overall progress</strong> and progress per file. When finished — the system processes the videos; they will appear in <strong>My library</strong> and in <strong>My videos</strong> after processing completes.</p>

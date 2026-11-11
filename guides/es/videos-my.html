@@ -29,7 +29,18 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#section-1">Visión general</a>
+        <a href="#section-2">Acceso a la página</a>
+        <a href="#section-3">Filtros (barra lateral)</a>
+        <a href="#section-4">Ordenación y selección múltiple</a>
+        <a href="#section-5">Tarjeta de vídeo</a>
+        <a href="#section-6">Edición</a>
+        <a href="#section-7">Eliminación</a>
+        <a href="#section-8">Guías relacionadas</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Visión general</h2>
             <p>La página <strong>Mis vídeos</strong> permite a cada usuario conectado (que no sea solo lectura) gestionar los <strong>vídeos que subió</strong>, no toda la biblioteca del sistema. Accede desde el menú de usuario (<strong>Mis vídeos</strong>) o en <strong>/videos/my</strong> (por ejemplo <code>https://dev.video/videos/my</code>).</p>
             <p>Muestra una lista en tarjetas con todos tus vídeos (incluidos los en procesamiento o pendientes), con filtros, ordenación, edición, eliminación y descarga.</p>
@@ -45,12 +56,12 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Acceso a la página</h2>
             <p>Abre el <strong>menú de usuario</strong> y elige <strong>Mis vídeos</strong>. También puedes llegar desde <a href="video-upload.html">Subir vídeo</a> – en la barra lateral hay un enlace a <strong>Mis vídeos</strong> junto a <strong>Mi biblioteca</strong>.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Filtros (barra lateral)</h2>
             <p>A la izquierda puedes acotar la lista:</p>
             <ul>
@@ -67,7 +78,7 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Ordenación y selección múltiple</h2>
             <p>Sobre las tarjetas: recuento, <strong>Seleccionar todo</strong> y enlaces de <strong>ordenación</strong> – fecha, título, estado, tamaño, impresiones. Tras seleccionar al menos un vídeo aparece la <strong>barra de acciones</strong> con:</p>
             <ul>
@@ -80,7 +91,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Tarjeta de vídeo</h2>
             <p>Cada vídeo se muestra en una tarjeta con:</p>
             <ul>
@@ -97,18 +108,18 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Edición</h2>
             <p>Pulsa <strong>Editar</strong> (icono de engranaje) para abrir <strong>Ajustes del vídeo</strong> (<code>/videos/edit/{id}</code>) – título, descripción, privacidad, subtítulos, recorte y más. Ver la <a href="video-settings.html">guía de ajustes del vídeo</a>.</p>
             <p>Solo puedes editar <strong>tus propios</strong> vídeos. Sin acceso verás una página de error.</p>
           </section>
 
-          <section>
+          <section id="section-7">
             <h2>Eliminación</h2>
             <p>Eliminación individual: icono de papelera en la tarjeta y confirmar. Múltiple: selecciona tarjetas y pulsa <strong>Eliminar</strong> en la barra. Después vuelves a <strong>Mis vídeos</strong> con un mensaje de los títulos eliminados. La eliminación suele ser irreversible.</p>
           </section>
 
-          <section>
+          <section id="section-8">
             <h2>Guías relacionadas</h2>
             <ul>
               <li><a href="video-upload.html">Subir vídeo</a> – subir una nueva grabación.</li>

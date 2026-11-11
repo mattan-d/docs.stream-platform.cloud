@@ -29,7 +29,16 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#section-1">Descripción general</a>
+        <a href="#section-2">Abrir la página</a>
+        <a href="#section-3">Barra de controles</a>
+        <a href="#section-4">Cámara y pantalla juntas</a>
+        <a href="#section-5">Anotación en pantalla (lápiz)</a>
+        <a href="#section-6">Grabar y guardar</a>
+      </nav>
+
+      <section id="section-1">
         <h2>Descripción general</h2>
         <p>La página de <strong>Grabación personal</strong> permite grabar la cámara, la pantalla o ambas. Al finalizar, el vídeo se guarda automáticamente y aparece en <strong>Mis vídeos</strong>. URL: <strong>/videos/record</strong> (por ejemplo <code>https://dev.video/videos/record</code>).</p>
         <p>La función solo está disponible si la grabación está habilitada en la configuración del sistema, y para usuarios que no sean solo espectadores.</p>
@@ -39,7 +48,7 @@
         </figure>
       </section>
 
-      <section>
+      <section id="section-2">
         <h2>Abrir la página</h2>
         <p>En el encabezado, pulse <strong>+ Crear</strong> y elija <strong>Grabación personal</strong>. También puede abrir <code>/videos/record</code> directamente.</p>
         <figure class="screenshot">
@@ -48,7 +57,7 @@
         </figure>
       </section>
 
-      <section>
+      <section id="section-3">
         <h2>Barra de controles</h2>
         <p>En la parte inferior hay una barra tipo Meet con estos controles:</p>
         <ul>
@@ -66,12 +75,12 @@
         </div>
       </section>
 
-      <section>
+      <section id="section-4">
         <h2>Cámara y pantalla juntas</h2>
         <p>Puede activar cámara y pantalla a la vez. Suele mostrarse la pantalla grande y la cámara en un PiP redondo. En Ajustes puede elegir la esquina de la cámara. Al detener, el sistema combina ambos flujos en un solo vídeo.</p>
       </section>
 
-      <section>
+      <section id="section-5">
         <h2>Anotación en pantalla (lápiz)</h2>
         <p>Pulse <strong>Anotar pantalla</strong> (icono de dibujo). Cuando está activo, el botón muestra un anillo del color elegido y aparece la paleta de colores.</p>
         <ul>
@@ -86,7 +95,7 @@
         </figure>
       </section>
 
-      <section>
+      <section id="section-6">
         <h2>Grabar y guardar</h2>
         <ol>
           <li>Active la cámara y/o la pantalla hasta ver la vista previa.</li>

@@ -29,7 +29,16 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="נושאים">
+        <a href="#section-1">מתי נראה הפיצ’ר?</a>
+        <a href="#section-2">תנאים מוקדמים</a>
+        <a href="#section-3">שלבי שימוש (לכל סוג שאלה נתמך)</a>
+        <a href="#section-4">מה נשלח ל־API לפי סוג השאלה?</a>
+        <a href="#section-5">מה כל סוג מצפה לקבל מה־API (בקצרה)</a>
+        <a href="#section-6">הערות נוספות</a>
+      </nav>
+
+      <section id="section-1">
             <h2>מתי נראה הפיצ’ר?</h2>
             <p>הפיצ’ר מופיע בטופס יצירת שאלה חדשה רק כש<strong>סוג השאלה</strong> הוא אחד מהבאים:</p>
             <table class="data-table">
@@ -64,7 +73,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>תנאים מוקדמים</h2>
             <ul>
               <li><strong>הגדרות האתר:</strong> צריכות להיות מוגדרות <strong>כתובת Stream</strong> ו־<strong>מפתח API</strong>. אם חסר – תופיע התראה בהתאמה.</li>
@@ -73,7 +82,7 @@
             </ul>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>שלבי שימוש (לכל סוג שאלה נתמך)</h2>
             <ol>
               <li>צרו שאלה חדשה ובחרו את <strong>סוג השאלה</strong> הרצוי מתוך שלושת הסוגים למעלה.</li>
@@ -88,7 +97,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>מה נשלח ל־API לפי סוג השאלה?</h2>
             <p>קוד התוסף במודל ממפה את סוג טופס Moodle לפרמטר <code>question_type</code> בקריאה ל־Stream:</p>
             <table class="data-table">
@@ -116,7 +125,7 @@
             <p>בנוסף נשלחים בדרך כלל <code>videoid</code>, <code>count</code> (כרגע <strong>2</strong> בעת הלחיצה מה־JavaScript), ופרמטרים של קטגוריה / קורס / מודול מהטופס – בהתאם להגדרות התוסף והטופס.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>מה כל סוג מצפה לקבל מה־API (בקצרה)</h2>
             <p>שרת Stream מחזיר רשימת שאלות ב־JSON. התוסף בודק שהפריטים תואמים לסוג שנבחר במודל:</p>
             <ul>
@@ -129,7 +138,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>הערות נוספות</h2>
             <ul>
               <li><strong>קישור למילוי מראש:</strong> הקישור הוא חד־פעמי וקצר בזמן (מבוסס טוקן ב־session). אם פג התוקף או ניסיתם לפתוח ידנית קישור לא תקף – חזרו לשלב בחירת הסרטון ויצרו שוב.</li>

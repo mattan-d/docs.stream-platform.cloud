@@ -29,7 +29,16 @@
 
   <main class="wrap">
     <div class="guide-content">
-      <section>
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#section-1">Visión general</a>
+        <a href="#section-2">Acceso a la página</a>
+        <a href="#section-3">Filtros y acciones (barra lateral)</a>
+        <a href="#section-4">Tabla de listas de reproducción</a>
+        <a href="#section-5">Crear una lista de reproducción nueva y editar una lista</a>
+        <a href="#section-6">Visualización de la lista de reproducción</a>
+      </nav>
+
+      <section id="section-1">
             <h2>Visión general</h2>
             <p>La página de <strong>listas de reproducción</strong> es accesible desde el menú principal (botón Lista de reproducción) o en la dirección <strong>/playlist</strong> (por ejemplo, <code>https://dev.video/playlist</code>). En la página se muestra la lista de sus listas de reproducción, filtros, creación nueva y eliminación múltiple.</p>
             <figure class="screenshot">
@@ -38,12 +47,12 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-2">
             <h2>Acceso a la página</h2>
             <p>En el menú superior, pulse <strong>Lista de reproducción</strong> (o Listas de reproducción). Los usuarios solo ven sus propias listas de reproducción.</p>
           </section>
 
-          <section>
+          <section id="section-3">
             <h2>Filtros y acciones (barra lateral)</h2>
             <p>A la izquierda:</p>
             <ul>
@@ -57,7 +66,7 @@
             </figure>
           </section>
 
-          <section>
+          <section id="section-4">
             <h2>Tabla de listas de reproducción</h2>
             <p>En el centro se muestra una tabla con: <strong>Selección</strong> (casilla), <strong>ID</strong>, <strong>Nombre</strong>, <strong>Enlace directo</strong> (dirección para copiar), <strong>Vídeos</strong>, <strong>Visualizaciones</strong>, <strong>Duración de reproducción</strong>, <strong>Fecha de creación</strong>, <strong>Acciones</strong> (configuración, eliminar).</p>
             <ul>
@@ -68,7 +77,7 @@
             <p>Se puede ordenar por ID, nombre, fecha de creación y más pulsando los encabezados de columna. Al final de la tabla: <strong>Todos</strong> – marcar/desmarcar todas las filas.</p>
           </section>
 
-          <section>
+          <section id="section-5">
             <h2>Crear una lista de reproducción nueva y editar una lista</h2>
             <p>Tras pulsar <strong>Crear lista de reproducción nueva</strong> o <strong>Configuración</strong> junto a una lista existente, se abre un formulario con:</p>
             <ul>
@@ -86,7 +95,7 @@
             </div>
           </section>
 
-          <section>
+          <section id="section-6">
             <h2>Visualización de la lista de reproducción</h2>
             <p>Al pulsar el nombre de la lista de reproducción o acceder a <code>/playlist/{id}</code> – se accede a la página de visualización: los vídeos de la lista se muestran en orden, con navegación entre vídeos. Según la configuración, aparecerán botones como «Configuración» para editar la lista de vídeos.</p>
           </section>
