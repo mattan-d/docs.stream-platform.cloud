@@ -134,11 +134,16 @@ node docs/screenshot.js "https://dev.video/videos/admin" docs/screenshot/videos-
 node docs/screenshot.js "https://dev.video/videos/admin" docs/screenshot/videos-admin-actions-bar.png ".video-select-check"
 # לחיצה על כפתור מחיקה בכרטיס – פתיחת חלון אישור מחיקה
 node docs/screenshot.js "https://dev.video/videos/admin" docs/screenshot/videos-admin-delete-modal.png ".videos-admin-card-actions a.modal-item-delete"
+# מסך העלאה למחיקה סופית מאקסל
+node docs/screenshot.js "https://dev.video/videos/excel_delete" docs/screenshot/videos-excel-delete-upload.png
 ```
 
 - `videos-admin-overview.png`: full page of /videos/admin (sidebar filters + video cards).
 - `videos-admin-actions-bar.png`: click first video checkbox so the "סרטונים נבחרו" bar with הורדה/מחיקה appears, then capture.
 - `videos-admin-delete-modal.png`: click first delete button in a card, then capture modal.
+- `videos-admin-excel-delete-action.png`: crop/capture of the filters Actions block showing **ייצוא ל־Excel** and **מחיקה מאקסל**.
+- `videos-excel-delete-upload.png`: upload step at `/videos/excel_delete`.
+- `videos-excel-delete-preview.png`: after uploading a `video_report_*.xlsx` export (column `Video #`), capture the preview card (summary + table + confirm). Requires a short Playwright upload script; `docs/screenshot.js` alone cannot attach a file.
 - After running, refresh the guide at `guides/videos-admin.html` to see the updated images.
 
 ## Upload guide (guides/video-upload.html)

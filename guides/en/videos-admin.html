@@ -58,8 +58,12 @@
               <li><strong>From date / To date</strong> – upload date range.</li>
               <li><strong>Minimum / maximum length (minutes)</strong> – video duration limits.</li>
               <li><strong>Filter</strong> – apply the filter. <strong>Reset</strong> – clear and return to the full list.</li>
-              <li><strong>Actions</strong> – <strong>Export to Excel</strong> – download a report of videos matching the filter (ID, title, duration, date).</li>
+              <li><strong>Actions</strong> – <strong>Export to Excel</strong> downloads a report for the current filter, and <strong>Delete from Excel</strong> permanently deletes videos from that export file (see below).</li>
             </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-excel-delete-action.png?v=1" alt="Filter panel with Export and Delete from Excel">
+              <figcaption>In the Actions section: Export to Excel and Delete from Excel.</figcaption>
+            </figure>
           </section>
 
           <section>
@@ -89,12 +93,36 @@
 
           <section>
             <h2>Deletion – single and bulk</h2>
-            <p>Clicking the delete icon on a card opens a dialog to confirm deleting that single video. Multi-select and clicking <strong>Delete</strong> in the actions bar opens the same dialog with a link to delete all selected items. On confirmation – videos are deleted and the page refreshes (or a list of deleted videos is shown). Deletion is usually irreversible.</p>
+            <p>Clicking the delete icon on a card opens a dialog to confirm deleting that single video. Multi-select and clicking <strong>Delete</strong> in the actions bar opens the same dialog with a link to delete all selected items. On confirmation – videos move to the <strong>Deleted</strong> status (soft delete). Files are permanently purged only after the grace period configured in system settings.</p>
+          </section>
+
+          <section>
+            <h2>Permanent deletion from Excel</h2>
+            <p>To permanently delete a list of videos from an export file, use <strong>Delete from Excel</strong> (<code>/videos/excel_delete</code>). Admins only.</p>
+            <div class="note">
+              <strong>Important:</strong> Excel deletion is <strong>permanent</strong>. After confirmation, videos cannot be restored and files are removed immediately (no grace period).
+            </div>
+            <ol>
+              <li>In Video management, filter the list you want and click <strong>Export to Excel</strong>.</li>
+              <li>In Actions, click <strong>Delete from Excel</strong>.</li>
+              <li>Upload the export file (format with a <strong>Video #</strong> column).</li>
+              <li>Review the preview: counts in file, will delete, locked, missing, and estimated size.</li>
+              <li>Check the confirmation box and click <strong>Delete permanently</strong>.</li>
+            </ol>
+            <p><strong>Locked</strong> videos are skipped. Summary rows at the end of the Excel file (for example Total Videos) are ignored automatically.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-excel-delete-upload.png?v=1" alt="Upload Excel file for permanent deletion">
+              <figcaption>Upload screen with permanent-deletion warning and file picker.</figcaption>
+            </figure>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-excel-delete-preview.png?v=1" alt="Preview before permanent Excel deletion">
+              <figcaption>Preview: summary, video table, required confirmation, and permanent delete button.</figcaption>
+            </figure>
           </section>
 
           <section>
             <h2>Edit and export</h2>
-            <p>Clicking <strong>Edit</strong> (gear icon) goes to the <strong>Video Settings</strong> page (<code>/videos/edit/{id}</code>) – edit title, description, privacy, trim, and more (see <a href="video-settings.html">Video settings</a>). <strong>Export to Excel</strong> in the sidebar downloads a file with videos matching the current filter.</p>
+            <p>Clicking <strong>Edit</strong> (gear icon) goes to the <strong>Video Settings</strong> page (<code>/videos/edit/{id}</code>) – edit title, description, privacy, trim, and more (see <a href="video-settings.html">Video settings</a>). <strong>Export to Excel</strong> in the sidebar downloads a file with videos matching the current filter — the same format is used for Delete from Excel.</p>
           </section>
     </div>
     <footer class="guide-footer">

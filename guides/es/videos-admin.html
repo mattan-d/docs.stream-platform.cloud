@@ -58,8 +58,12 @@
               <li><strong>Desde fecha / Hasta fecha</strong> – rango de fechas de carga.</li>
               <li><strong>Duración mínima / máxima (minutos)</strong> – límite de duración del vídeo.</li>
               <li><strong>Filtrar</strong> – aplicar el filtro. <strong>Restablecer</strong> – limpiar y volver a la lista completa.</li>
-              <li><strong>Acciones</strong> – <strong>Exportar a Excel</strong> – descargar un informe de los vídeos que coinciden con el filtro (ID, título, duración, fecha).</li>
+              <li><strong>Acciones</strong> – <strong>Exportar a Excel</strong> descarga un informe según el filtro actual, y <strong>Eliminar desde Excel</strong> elimina de forma permanente vídeos según ese archivo de exportación (véase más abajo).</li>
             </ul>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-admin-excel-delete-action.png?v=1" alt="Panel de filtros con exportar y eliminar desde Excel">
+              <figcaption>En Acciones: Exportar a Excel y Eliminar desde Excel.</figcaption>
+            </figure>
           </section>
 
           <section>
@@ -89,12 +93,36 @@
 
           <section>
             <h2>Eliminación – individual y múltiple</h2>
-            <p>Al pulsar el icono de eliminar en la tarjeta se abre un diálogo para confirmar la eliminación del vídeo individual. Con selección múltiple y pulsando <strong>Eliminar</strong> en la barra de acciones se abre el mismo diálogo con un enlace para eliminar todos los marcados. Tras confirmar, los vídeos se eliminan y la página se actualiza (o se muestra la lista de vídeos eliminados). La eliminación suele ser irreversible.</p>
+            <p>Al pulsar el icono de eliminar en la tarjeta se abre un diálogo para confirmar la eliminación del vídeo individual. Con selección múltiple y pulsando <strong>Eliminar</strong> en la barra de acciones se abre el mismo diálogo con un enlace para eliminar todos los marcados. Tras confirmar, los vídeos pasan al estado <strong>Eliminado</strong> (eliminación suave). Los archivos se purgan de forma permanente solo después del período de gracia configurado en ajustes del sistema.</p>
+          </section>
+
+          <section>
+            <h2>Eliminación permanente desde Excel</h2>
+            <p>Para eliminar de forma inmediata y permanente una lista de vídeos según un archivo de exportación, use <strong>Eliminar desde Excel</strong> (<code>/videos/excel_delete</code>). Solo administradores.</p>
+            <div class="note">
+              <strong>Importante:</strong> la eliminación desde Excel es <strong>permanente</strong>. Tras la confirmación no se pueden recuperar los vídeos y los archivos se eliminan de inmediato (sin período de gracia).
+            </div>
+            <ol>
+              <li>En Gestión de vídeos, filtre la lista deseada y pulse <strong>Exportar a Excel</strong>.</li>
+              <li>En Acciones, pulse <strong>Eliminar desde Excel</strong>.</li>
+              <li>Suba el archivo de exportación (formato con la columna <strong>Video #</strong>).</li>
+              <li>Revise la vista previa: cantidad en el archivo, se eliminarán, bloqueados, no encontrados y tamaño estimado.</li>
+              <li>Marque la casilla de confirmación y pulse <strong>Eliminar permanentemente</strong>.</li>
+            </ol>
+            <p>Los vídeos <strong>bloqueados</strong> no se eliminan. Las filas de totales al final del Excel (por ejemplo Total Videos) se ignoran automáticamente.</p>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-excel-delete-upload.png?v=1" alt="Subida de Excel para eliminación permanente">
+              <figcaption>Pantalla de subida con advertencia de eliminación permanente y selector de archivo.</figcaption>
+            </figure>
+            <figure class="screenshot">
+              <img src="../../docs/screenshot/videos-excel-delete-preview.png?v=1" alt="Vista previa antes de la eliminación permanente desde Excel">
+              <figcaption>Vista previa: resumen, tabla de vídeos, confirmación obligatoria y botón de eliminación permanente.</figcaption>
+            </figure>
           </section>
 
           <section>
             <h2>Edición y exportación</h2>
-            <p>Al pulsar <strong>Editar</strong> (icono de engranaje) se accede a la página de <strong>configuración del vídeo</strong> (<code>/videos/edit/{id}</code>) – edición de título, descripción, privacidad, recorte y más (consulte <a href="video-settings.html">configuración del vídeo</a>). <strong>Exportar a Excel</strong> en la barra lateral descarga un archivo con la lista de vídeos que coinciden con el filtro actual.</p>
+            <p>Al pulsar <strong>Editar</strong> (icono de engranaje) se accede a la página de <strong>configuración del vídeo</strong> (<code>/videos/edit/{id}</code>) – edición de título, descripción, privacidad, recorte y más (consulte <a href="video-settings.html">configuración del vídeo</a>). <strong>Exportar a Excel</strong> en la barra lateral descarga un archivo con la lista de vídeos que coinciden con el filtro actual — el mismo formato se usa para Eliminar desde Excel.</p>
           </section>
     </div>
     <footer class="guide-footer">
