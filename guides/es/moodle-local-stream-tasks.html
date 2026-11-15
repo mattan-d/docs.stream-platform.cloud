@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tareas programadas de local_stream</title>
+  <link rel="stylesheet" href="../guide-page.css?v=1">
+  <link rel="stylesheet" href="../lang-switch.css?v=1">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Tareas programadas de local_stream</h1>
+      <p class="lead">Cómo comprobar cada tarea Cron del plugin de Moodle <code>local_stream</code>: qué hace, cómo ejecutarla a mano y cómo cambiar la hora de ejecución.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+          <a href="../moodle-local-stream-tasks.html" hreflang="he">עברית</a>
+          <a href="../en/moodle-local-stream-tasks.html" hreflang="en">English</a>
+          <a href="moodle-local-stream-tasks.html" hreflang="es" aria-current="page">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#where">Dónde mirar</a>
+        <a href="#cron">Requisito: Cron de Moodle</a>
+        <a href="#order">Orden de las tareas</a>
+        <a href="#listing">Index recordings</a>
+        <a href="#upload">Upload recordings</a>
+        <a href="#embed">Embedded recordings</a>
+        <a href="#delete">Delete recordings</a>
+        <a href="#refresh">Refresh token</a>
+        <a href="#revoke">Revocar licencia de Zoom</a>
+        <a href="#manual">Ejecución manual</a>
+        <a href="#schedule">Cambiar la hora</a>
+        <a href="#check">Qué comprobar después</a>
+      </nav>
+
+      <section id="where">
+        <h2>Dónde mirar</h2>
+        <p>Las tareas están en la administración del sitio, no dentro de un curso:</p>
+        <ol>
+          <li>Entre como administrador del sitio.</li>
+          <li>Abra <strong>Administración del sitio → Servidor → Tareas programadas</strong> (<code>/admin/tool/task/scheduledtasks.php</code>).</li>
+          <li>Busque <code>local_stream</code>. Deben aparecer seis tareas del componente <strong>local_stream</strong>.</li>
+        </ol>
+        <p>Cada fila muestra el nombre, la última ejecución y la siguiente. Una fila desactivada no la ejecuta el Cron.</p>
+        <div class="note">
+          <strong>Nota:</strong> los nombres de la interfaz dependen del idioma del sitio. En inglés son Index recordings, Upload recordings, Embedded recordings, Delete recordings, Refresh token y Revoke Zoom license from inactive users.
+        </div>
+      </section>
+
+      <section id="cron">
+        <h2>Requisito: Cron de Moodle</h2>
+        <p>Cambiar el horario no ejecuta nada por sí solo. El servidor de Moodle debe lanzar el Cron, normalmente cada minuto:</p>
+        <pre>* * * * * php /path/to/moodle/admin/cli/cron.php</pre>
+        <p>Sustituya <code>/path/to/moodle</code> por la ruta real del sitio. Sin esa línea, la hora de «próxima ejecución» pasa y la tarea no arranca.</p>
+      </section>
+
+      <section id="order">
+        <h2>Orden de las tareas</h2>
+        <p>Una grabación de clase pasa por tres pasos y después hay tareas de mantenimiento aparte. El plugin define los valores por defecto; se pueden cambiar sin tocar el código.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Nombre en la interfaz</th>
+              <th>Clase</th>
+              <th>Valor por defecto</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Index recordings</td>
+              <td><code>local_stream\task\listing</code></td>
+              <td>Cada 5 minutos</td>
+            </tr>
+            <tr>
+              <td>Upload recordings</td>
+              <td><code>local_stream\task\upload</code></td>
+              <td>Cada 5 minutos</td>
+            </tr>
+            <tr>
+              <td>Embedded recordings</td>
+              <td><code>local_stream\task\embed</code></td>
+              <td>Cada 5 minutos</td>
+            </tr>
+            <tr>
+              <td>Delete recordings</td>
+              <td><code>local_stream\task\delete</code></td>
+              <td>Cada minuto en las horas 0, 6, 12 y 18</td>
+            </tr>
+            <tr>
+              <td>Refresh token</td>
+              <td><code>local_stream\task\refresh_token</code></td>
+              <td>A las 00:00, cada 5 días</td>
+            </tr>
+            <tr>
+              <td>Revoke Zoom license from inactive users</td>
+              <td><code>local_stream\task\revoke_zoom_license</code></td>
+              <td>En el minuto 30, cada 2 horas</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="listing">
+        <h2>Index recordings</h2>
+        <p>La tarea llama a la plataforma configurada en el plugin — Zoom, Teams, Webex o Unicko — y guarda la lista de grabaciones en <code>local_stream_rec</code>. Todavía no sube el archivo a Stream ni coloca el vídeo en el curso.</p>
+        <p>En Zoom y Unicko el intervalo es el número de días de <strong>Days to listing</strong>. Webex recorre ese mismo intervalo día a día. Teams obtiene la lista por la conexión configurada.</p>
+        <p>Una ejecución correcta en Zoom o Webex imprime una línea JSON con <code>from</code> y <code>to</code>. Sin salida y sin error significa que no hay nada nuevo en el intervalo, o que la plataforma no es Zoom ni Webex.</p>
+      </section>
+
+      <section id="upload">
+        <h2>Upload recordings</h2>
+        <p>La tarea toma los registros en cola o en proceso, descarga el archivo y lo sube al almacenamiento de Stream.</p>
+        <ul>
+          <li>Si la cola está vacía, la salida es <code>Task: No meetings were found.</code></li>
+          <li>Si hay registros, cuenta: <code>Task: Found N meetings</code> y luego una línea por grabación.</li>
+          <li>Tras más de dos intentos fallidos durante el proceso, el registro se marca como no válido y no se reintenta.</li>
+          <li>Si el almacenamiento es Stream y está activa la opción de subir solo grabaciones con curso, una grabación sin curso de Moodle se omite.</li>
+        </ul>
+        <p>Al terminar una subida correcta se encola un aviso al docente. No es una tarea programada: aparece en <strong>Tareas ad hoc</strong> y se ejecuta en el siguiente Cron. No tiene horario propio.</p>
+      </section>
+
+      <section id="embed">
+        <h2>Embedded recordings</h2>
+        <p>La tarea toma hasta 100 grabaciones listas y aún no incrustadas, y las añade a la actividad STREAM del curso vinculado a la reunión. Respeta las preferencias de incrustación del anfitrión.</p>
+        <p>Si el agrupamiento por reunión está activo, se conserva una grabación por reunión y el resto se marca para no procesarse de nuevo.</p>
+        <p>Si no hay nada que incrustar, la salida es <code>There are no recordings to be embedded.</code> Si <code>mod_stream</code> no está instalado, la tarea se detiene con <code>mod_stream module type not found</code>.</p>
+      </section>
+
+      <section id="delete">
+        <h2>Delete recordings</h2>
+        <p>Esta tarea limpia. No forma parte de la sincronización habitual:</p>
+        <ul>
+          <li>Los registros marcados para borrar pasan al archivo.</li>
+          <li>En Zoom, si está definido <strong>Delete Zoom recording after embedding</strong>, la copia en la nube se borra tantas horas después de la incrustación. La reproducción en Moodle sigue desde la copia de Stream.</li>
+          <li>En Unicko, si hay días de limpieza, se borran las grabaciones más antiguas en Unicko.</li>
+        </ul>
+        <p>El valor por defecto es minuto <code>*</code> y hora <code>*/6</code>: la tarea puede ejecutarse cada minuto durante 00:00–00:59, 06:00–06:59, 12:00–12:59 y 18:00–18:59. Si es demasiado, ponga el minuto en <code>0</code> para que se ejecute una vez en cada una de esas horas.</p>
+      </section>
+
+      <section id="refresh">
+        <h2>Refresh token</h2>
+        <p>Solo importa cuando la plataforma es <strong>Webex</strong>. La tarea renueva el token de acceso con el refresh token guardado en los ajustes. En Zoom, Teams y Unicko no hace nada.</p>
+        <p>Por defecto: minuto <code>0</code>, hora <code>0</code>, día <code>*/5</code> — a medianoche, cada cinco días. El acierto se ve como <code>Task: refresh token expires in: ...</code>. El fallo se ve como <code>Task:</code> seguido del error de Webex.</p>
+      </section>
+
+      <section id="revoke">
+        <h2>Revocar licencia de Zoom</h2>
+        <p>Solo se ejecuta si la plataforma es Zoom y está activada la opción de quitar la licencia a usuarios inactivos. Omite a los miembros de los grupos de Zoom excluidos, a quien está ahora en una reunión y a quien inició sesión hace poco.</p>
+        <p>Por defecto: minuto <code>30</code> y hora <code>*/2</code> — a las 00:30, 02:30, 04:30, y así sucesivamente. Si se quitaron licencias, la salida incluye <code>Revoked Zoom license for N user(s).</code> Si no se puede leer Zoom, la tarea imprime el motivo y sale sin revocar nada.</p>
+      </section>
+
+      <section id="manual">
+        <h2>Ejecución manual</h2>
+        <p>La ejecución manual lanza la tarea al momento, sin esperar al horario. Sirve después de una clase, después de cambiar ajustes, o cuando la última ejecución falló.</p>
+        <h3>Desde la interfaz</h3>
+        <ol>
+          <li>En Tareas programadas, localice la fila.</li>
+          <li>Pulse <strong>Ejecutar ahora</strong>.</li>
+          <li>Espere a que termine. Moodle muestra la misma salida que vería en el servidor.</li>
+        </ol>
+        <p>Si no hay botón, la tarea está desactivada o no tiene permiso de administrador. Actívela, guarde y vuelva a intentarlo.</p>
+        <h3>Desde la línea de comandos</h3>
+        <p>Ejecútelo en el servidor, con el mismo usuario que sirve el sitio. Cambie la ruta y el nombre de la clase:</p>
+        <pre>php /path/to/moodle/admin/cli/scheduled_task.php --execute='\local_stream\task\listing'</pre>
+        <p>El mismo comando vale para el resto. Cambie solo la última parte:</p>
+        <ul>
+          <li><code>\local_stream\task\listing</code></li>
+          <li><code>\local_stream\task\upload</code></li>
+          <li><code>\local_stream\task\embed</code></li>
+          <li><code>\local_stream\task\delete</code></li>
+          <li><code>\local_stream\task\refresh_token</code></li>
+          <li><code>\local_stream\task\revoke_zoom_license</code></li>
+        </ul>
+        <p>Para ver todas las tareas y el horario guardado:</p>
+        <pre>php /path/to/moodle/admin/cli/scheduled_task.php --list</pre>
+        <p>Para probar una grabación nueva, ejecute en este orden: listing, luego upload, luego embed. El borrado, el token y la licencia no forman parte de esa prueba.</p>
+      </section>
+
+      <section id="schedule">
+        <h2>Cambiar la hora</h2>
+        <ol>
+          <li>En Tareas programadas, abra el icono de edición de la fila.</li>
+          <li>Edite los cinco campos: <strong>Minuto</strong>, <strong>Hora</strong>, <strong>Día</strong>, <strong>Mes</strong>, <strong>Día de la semana</strong>.</li>
+          <li>Guarde. «Próxima ejecución» se actualiza al momento. El siguiente Cron usa el horario nuevo.</li>
+        </ol>
+        <p>La sintaxis es la de Cron:</p>
+        <ul>
+          <li><code>*</code> — cualquier valor.</li>
+          <li><code>*/15</code> — cada 15 unidades.</li>
+          <li><code>30</code> — solo en el valor 30.</li>
+          <li><code>1-5</code> — un rango. En el día de la semana: 0 es domingo, 1 es lunes, hasta 6 sábado.</li>
+        </ul>
+        <p>Ejemplos para copiar. En los campos que no aparecen, deje <code>*</code>.</p>
+        <table>
+          <thead>
+            <tr><th>Cuándo</th><th>Minuto</th><th>Hora</th><th>Día de la semana</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Cada 15 minutos, todo el día</td><td><code>*/15</code></td><td><code>*</code></td><td><code>*</code></td></tr>
+            <tr><td>Cada hora en punto</td><td><code>0</code></td><td><code>*</code></td><td><code>*</code></td></tr>
+            <tr><td>Una vez por la noche, a las 02:30</td><td><code>30</code></td><td><code>2</code></td><td><code>*</code></td></tr>
+            <tr><td>Días laborables a las 08:00</td><td><code>0</code></td><td><code>8</code></td><td><code>1-5</code></td></tr>
+            <tr><td>Limpieza una vez al día, a las 03:00</td><td><code>0</code></td><td><code>3</code></td><td><code>*</code></td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <strong>Nota:</strong> listing, upload y embed dependen unas de otras. Si el índice se ejecuta una vez por la noche y la subida cada 5 minutos, una grabación nueva espera al siguiente índice. Conviene que las tres usen un ritmo parecido, por ejemplo cada 15 minutos.
+        </div>
+        <p>Para volver al valor por defecto del plugin, restaure los cinco campos de la tabla de arriba. Si la página de edición ofrece restablecer el valor por defecto, puede usarlo.</p>
+      </section>
+
+      <section id="check">
+        <h2>Qué comprobar después</h2>
+        <ul>
+          <li>En la fila, «Última ejecución» es la hora de esta prueba y no hay marca de fallo.</li>
+          <li>La salida no tiene <code>Task Error</code>, ni error de API, ni un aviso de campos de base de datos que faltan. Ese aviso en la tarea de borrado significa que hay que actualizar el plugin.</li>
+          <li>Después de listing hay un registro nuevo. Después de upload el estado avanza. Después de embed el vídeo aparece en la actividad STREAM del curso.</li>
+          <li>Si la tarea falla una y otra vez, Moodle retrasa la siguiente ejecución. Una ejecución manual correcta quita ese retraso.</li>
+        </ul>
+        <p>La configuración del plugin, incluidos los días de listado y la conexión con Zoom, está en la <a href="moodle-integration.html">guía de integración con Moodle</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

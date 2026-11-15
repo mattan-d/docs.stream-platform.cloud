@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>local_stream scheduled tasks</title>
+  <link rel="stylesheet" href="../guide-page.css?v=1">
+  <link rel="stylesheet" href="../lang-switch.css?v=1">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>local_stream scheduled tasks</h1>
+      <p class="lead">How to check each Cron task in the Moodle <code>local_stream</code> plugin: what it does, how to run it by hand, and how to change when it runs.</p>
+      <a class="back-link" href="index.html">← Back to guides list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+          <a href="../moodle-local-stream-tasks.html" hreflang="he">עברית</a>
+          <a href="moodle-local-stream-tasks.html" hreflang="en" aria-current="page">English</a>
+          <a href="../es/moodle-local-stream-tasks.html" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#where">Where to look</a>
+        <a href="#cron">Requirement: Moodle Cron</a>
+        <a href="#order">Task order</a>
+        <a href="#listing">Index recordings</a>
+        <a href="#upload">Upload recordings</a>
+        <a href="#embed">Embedded recordings</a>
+        <a href="#delete">Delete recordings</a>
+        <a href="#refresh">Refresh token</a>
+        <a href="#revoke">Revoke Zoom license</a>
+        <a href="#manual">Run by hand</a>
+        <a href="#schedule">Change the schedule</a>
+        <a href="#check">What to check afterwards</a>
+      </nav>
+
+      <section id="where">
+        <h2>Where to look</h2>
+        <p>The tasks are in site administration, not inside a course:</p>
+        <ol>
+          <li>Sign in as a site administrator.</li>
+          <li>Open <strong>Site administration → Server → Scheduled tasks</strong> (<code>/admin/tool/task/scheduledtasks.php</code>).</li>
+          <li>Search for <code>local_stream</code>. You should see six tasks for the <strong>local_stream</strong> component.</li>
+        </ol>
+        <p>Each row shows the task name, the last run, and the next run. A disabled row is skipped by Cron.</p>
+      </section>
+
+      <section id="cron">
+        <h2>Requirement: Moodle Cron</h2>
+        <p>Changing the schedule does not run anything by itself. The Moodle server must run Cron, usually every minute:</p>
+        <pre>* * * * * php /path/to/moodle/admin/cli/cron.php</pre>
+        <p>Replace <code>/path/to/moodle</code> with the real site path. Without that line, the “next run” time passes and the task never starts.</p>
+      </section>
+
+      <section id="order">
+        <h2>Task order</h2>
+        <p>A class recording passes through three steps, then separate maintenance tasks. The plugin sets the defaults; you can change them without editing code.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Name in the admin UI</th>
+              <th>Class</th>
+              <th>Default</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Index recordings</td>
+              <td><code>local_stream\task\listing</code></td>
+              <td>Every 5 minutes</td>
+            </tr>
+            <tr>
+              <td>Upload recordings</td>
+              <td><code>local_stream\task\upload</code></td>
+              <td>Every 5 minutes</td>
+            </tr>
+            <tr>
+              <td>Embedded recordings</td>
+              <td><code>local_stream\task\embed</code></td>
+              <td>Every 5 minutes</td>
+            </tr>
+            <tr>
+              <td>Delete recordings</td>
+              <td><code>local_stream\task\delete</code></td>
+              <td>Every minute during hours 0, 6, 12, and 18</td>
+            </tr>
+            <tr>
+              <td>Refresh token</td>
+              <td><code>local_stream\task\refresh_token</code></td>
+              <td>At 00:00, every 5 days</td>
+            </tr>
+            <tr>
+              <td>Revoke Zoom license from inactive users</td>
+              <td><code>local_stream\task\revoke_zoom_license</code></td>
+              <td>At minute 30, every 2 hours</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="listing">
+        <h2>Index recordings</h2>
+        <p>The task calls the platform selected in the plugin — Zoom, Teams, Webex, or Unicko — and stores the recording list in <code>local_stream_rec</code>. It does not upload a file to Stream and it does not place a video in a course.</p>
+        <p>For Zoom and Unicko the window is the number of days in <strong>Days to listing</strong>. Webex walks that same window one day at a time. Teams pulls the list through the configured connection.</p>
+        <p>A healthy Zoom or Webex run prints a JSON line with <code>from</code> and <code>to</code>. No output and no error means there is nothing new in the window, or the platform is not Zoom or Webex.</p>
+      </section>
+
+      <section id="upload">
+        <h2>Upload recordings</h2>
+        <p>The task takes rows that are queued or still processing, downloads the recording file, and uploads it to Stream storage.</p>
+        <ul>
+          <li>If the queue is empty, the output is <code>Task: No meetings were found.</code></li>
+          <li>If there are rows, the output counts them: <code>Task: Found N meetings</code>, then one line per recording.</li>
+          <li>After more than two failed attempts while processing, the row is marked invalid and is not tried again.</li>
+          <li>When storage is Stream and “upload only with a course” is on, a recording with no Moodle course is skipped.</li>
+        </ul>
+        <p>A successful upload queues a message to the lecturer. That message is not a scheduled task: it appears under <strong>Ad hoc tasks</strong> and runs on the next Cron. It has no schedule of its own.</p>
+      </section>
+
+      <section id="embed">
+        <h2>Embedded recordings</h2>
+        <p>The task takes up to 100 recordings that are ready and not yet embedded, and adds them to the STREAM activity in the course linked to the meeting. It follows the meeting host’s embed preferences.</p>
+        <p>If grouping by meeting is on, one recording is kept per meeting and the rest are marked so they are not processed again.</p>
+        <p>If there is nothing to embed, the output is <code>There are no recordings to be embedded.</code> If <code>mod_stream</code> is not installed, the task stops with <code>mod_stream module type not found</code>.</p>
+      </section>
+
+      <section id="delete">
+        <h2>Delete recordings</h2>
+        <p>This task cleans up. It is not part of the regular sync:</p>
+        <ul>
+          <li>Rows marked for deletion are moved to the archive.</li>
+          <li>On Zoom, if <strong>Delete Zoom recording after embedding</strong> is set, the cloud copy is removed that many hours after embedding. Playback in Moodle continues from the Stream copy.</li>
+          <li>On Unicko, if cleanup days are set, older recordings are deleted from Unicko.</li>
+        </ul>
+        <p>The default is minute <code>*</code> and hour <code>*/6</code>: the task may run every minute during 00:00–00:59, 06:00–06:59, 12:00–12:59, and 18:00–18:59. If that is too often, set the minute to <code>0</code> so it runs once in each of those hours.</p>
+      </section>
+
+      <section id="refresh">
+        <h2>Refresh token</h2>
+        <p>This matters only when the platform is <strong>Webex</strong>. The task replaces the access token using the refresh token stored in the plugin settings. On Zoom, Teams, and Unicko it has nothing to do.</p>
+        <p>Default: minute <code>0</code>, hour <code>0</code>, day <code>*/5</code> — at midnight, every five days. Success looks like <code>Task: refresh token expires in: ...</code>. Failure looks like <code>Task:</code> followed by the Webex error.</p>
+      </section>
+
+      <section id="revoke">
+        <h2>Revoke Zoom license</h2>
+        <p>Runs only when the platform is Zoom and revoking licenses from inactive users is enabled. It skips members of the Zoom groups you excluded, anyone currently in a meeting, and anyone who signed in recently.</p>
+        <p>Default: minute <code>30</code> and hour <code>*/2</code> — at 00:30, 02:30, 04:30, and so on. If licenses were removed, the output includes <code>Revoked Zoom license for N user(s).</code> If Zoom cannot be read, the task prints the reason and exits without revoking anything.</p>
+      </section>
+
+      <section id="manual">
+        <h2>Run by hand</h2>
+        <p>A manual run starts the task immediately, without waiting for the schedule. Use it after a class, after a settings change, or when the last run failed.</p>
+        <h3>From the admin page</h3>
+        <ol>
+          <li>On Scheduled tasks, find the row.</li>
+          <li>Click <strong>Run now</strong>.</li>
+          <li>Wait until it finishes. Moodle shows the same output the server would print.</li>
+        </ol>
+        <p>If there is no button, the task is disabled or you are not a site admin. Enable it, save, and try again.</p>
+        <h3>From the command line</h3>
+        <p>Run this on the server, as the same user that serves the site. Replace the path and the class name:</p>
+        <pre>php /path/to/moodle/admin/cli/scheduled_task.php --execute='\local_stream\task\listing'</pre>
+        <p>Use the same command for the other tasks. Change only the last part:</p>
+        <ul>
+          <li><code>\local_stream\task\listing</code></li>
+          <li><code>\local_stream\task\upload</code></li>
+          <li><code>\local_stream\task\embed</code></li>
+          <li><code>\local_stream\task\delete</code></li>
+          <li><code>\local_stream\task\refresh_token</code></li>
+          <li><code>\local_stream\task\revoke_zoom_license</code></li>
+        </ul>
+        <p>To list every task and the saved schedule:</p>
+        <pre>php /path/to/moodle/admin/cli/scheduled_task.php --list</pre>
+        <p>To test one new recording, run them in order: listing, then upload, then embed. Delete, token refresh, and license revoke are not part of that check.</p>
+      </section>
+
+      <section id="schedule">
+        <h2>Change the schedule</h2>
+        <ol>
+          <li>On Scheduled tasks, open the edit icon on the task row.</li>
+          <li>Edit the five fields: <strong>Minute</strong>, <strong>Hour</strong>, <strong>Day</strong>, <strong>Month</strong>, <strong>Day of week</strong>.</li>
+          <li>Save. “Next run” updates immediately. The next Cron honours the new schedule.</li>
+        </ol>
+        <p>The syntax is Cron syntax:</p>
+        <ul>
+          <li><code>*</code> — every value.</li>
+          <li><code>*/15</code> — every 15 units.</li>
+          <li><code>30</code> — only at 30.</li>
+          <li><code>1-5</code> — a range. For day of week: 0 is Sunday, 1 is Monday, through 6 Saturday.</li>
+        </ul>
+        <p>Examples you can copy. Leave any field that is not listed as <code>*</code>.</p>
+        <table>
+          <thead>
+            <tr><th>When</th><th>Minute</th><th>Hour</th><th>Day of week</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Every 15 minutes, all day</td><td><code>*/15</code></td><td><code>*</code></td><td><code>*</code></td></tr>
+            <tr><td>Every hour, on the hour</td><td><code>0</code></td><td><code>*</code></td><td><code>*</code></td></tr>
+            <tr><td>Once a night, at 02:30</td><td><code>30</code></td><td><code>2</code></td><td><code>*</code></td></tr>
+            <tr><td>Weekdays at 08:00</td><td><code>0</code></td><td><code>8</code></td><td><code>1-5</code></td></tr>
+            <tr><td>Cleanup once a day, at 03:00</td><td><code>0</code></td><td><code>3</code></td><td><code>*</code></td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <strong>Note:</strong> listing, upload, and embed depend on each other. If indexing runs once a night and upload runs every 5 minutes, a new recording waits until the next index. Keep those three on a similar cadence, for example every 15 minutes.
+        </div>
+        <p>To restore the plugin default, put the five fields back to the values in the table above. If the edit page offers a reset to default, you can use that instead.</p>
+      </section>
+
+      <section id="check">
+        <h2>What to check afterwards</h2>
+        <ul>
+          <li>On the task row, “Last run” is the time of this check, and there is no failure mark.</li>
+          <li>The output has no <code>Task Error</code>, no API error, and no message about missing database fields. A missing-field message on delete means the plugin needs an upgrade.</li>
+          <li>After listing, a new row exists. After upload, the status moves forward. After embed, the video appears in the course STREAM activity.</li>
+          <li>If a task keeps failing, Moodle delays the next run. A successful manual run clears that delay.</li>
+        </ul>
+        <p>Plugin setup, including days to listing and the Zoom connection, is in the <a href="moodle-integration.html">Moodle integration guide</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

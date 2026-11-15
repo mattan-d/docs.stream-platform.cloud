@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>משימות מתוזמנות של local_stream</title>
+  <link rel="stylesheet" href="guide-page.css?v=1">
+  <link rel="stylesheet" href="lang-switch.css?v=1">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>משימות מתוזמנות של local_stream</h1>
+      <p class="lead">בדיקה של כל משימת Cron בתוסף Moodle <code>local_stream</code>: מה היא עושה, איך מריצים אותה ידנית, ואיך משנים את שעת הריצה.</p>
+      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">שפה</span>
+        <nav class="lang-switch" aria-label="שפה">
+          <a href="moodle-local-stream-tasks.html" hreflang="he" aria-current="page">עברית</a>
+          <a href="en/moodle-local-stream-tasks.html" hreflang="en">English</a>
+          <a href="es/moodle-local-stream-tasks.html" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="topic-nav" aria-label="נושאים">
+        <a href="#where">איפה בודקים</a>
+        <a href="#cron">תנאי: Cron של Moodle</a>
+        <a href="#order">סדר המשימות</a>
+        <a href="#listing">יומן הקלטות</a>
+        <a href="#upload">הורדת הקלטות</a>
+        <a href="#embed">שיבוץ הקלטות</a>
+        <a href="#delete">מחיקת הקלטות</a>
+        <a href="#refresh">יצירת אסימון חדש</a>
+        <a href="#revoke">הורדת רישיון Zoom</a>
+        <a href="#manual">הרצה ידנית</a>
+        <a href="#schedule">שינוי שעת הריצה</a>
+        <a href="#check">מה לבדוק אחרי ההרצה</a>
+      </nav>
+
+      <section id="where">
+        <h2>איפה בודקים</h2>
+        <p>כל המשימות מופיעות בניהול האתר, לא בתוך הקורס:</p>
+        <ol>
+          <li>היכנסו כמנהל מערכת.</li>
+          <li>עברו ל<strong>ניהול האתר → שרת → משימות מתוזמנות</strong> (<code>/admin/tool/task/scheduledtasks.php</code>).</li>
+          <li>חפשו <code>local_stream</code>. אמורות להופיע שש משימות של הרכיב <strong>local_stream</strong>.</li>
+        </ol>
+        <p>בכל שורה רואים את שם המשימה, מתי היא רצה לאחרונה, ומתי היא אמורה לרוץ שוב. אם השורה מסומנת כמושבתת, Cron לא יריץ אותה.</p>
+        <div class="note">
+          <strong>שימו לב:</strong> השמות בממשק תלויים בשפת האתר. באנגלית הם Index recordings, Upload recordings, Embedded recordings, Delete recordings, Refresh token ו-Revoke Zoom license from inactive users.
+        </div>
+      </section>
+
+      <section id="cron">
+        <h2>תנאי: Cron של Moodle</h2>
+        <p>שינוי לוח הזמנים לא מריץ כלום לבד. שרת Moodle חייב להפעיל את Cron, בדרך כלל כל דקה:</p>
+        <pre>* * * * * php /path/to/moodle/admin/cli/cron.php</pre>
+        <p>החליפו את <code>/path/to/moodle</code> בנתיב האמיתי של האתר. בלי השורה הזו, «הריצה הבאה» במסך המשימות תעבור והמשימה לא תרוץ.</p>
+      </section>
+
+      <section id="order">
+        <h2>סדר המשימות</h2>
+        <p>הקלטת שיעור עוברת שלושה שלבים, ואז משימות תחזוקה נפרדות. ברירת המחדל נקבעת בתוסף; אפשר לשנות אותה בלי לגעת בקוד.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>שם בממשק</th>
+              <th>מחלקה</th>
+              <th>ברירת מחדל</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>יומן הקלטות</td>
+              <td><code>local_stream\task\listing</code></td>
+              <td>כל 5 דקות</td>
+            </tr>
+            <tr>
+              <td>הורדת הקלטות</td>
+              <td><code>local_stream\task\upload</code></td>
+              <td>כל 5 דקות</td>
+            </tr>
+            <tr>
+              <td>שיבוץ הקלטות</td>
+              <td><code>local_stream\task\embed</code></td>
+              <td>כל 5 דקות</td>
+            </tr>
+            <tr>
+              <td>מחיקת הקלטות</td>
+              <td><code>local_stream\task\delete</code></td>
+              <td>כל דקה בשעות 0, 6, 12 ו-18</td>
+            </tr>
+            <tr>
+              <td>יצירת אסימון חדש</td>
+              <td><code>local_stream\task\refresh_token</code></td>
+              <td>ב-00:00, כל 5 ימים</td>
+            </tr>
+            <tr>
+              <td>הורדת רישיון Zoom ממשתמשים לא פעילים</td>
+              <td><code>local_stream\task\revoke_zoom_license</code></td>
+              <td>בדקה 30, כל שעתיים</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="listing">
+        <h2>יומן הקלטות</h2>
+        <p>המשימה פונה לפלטפורמה שמוגדרת בתוסף — Zoom, Teams, Webex או Unicko — ומכניסה את רשימת ההקלטות לטבלת <code>local_stream_rec</code>. היא עדיין לא מעלה קובץ ל-Stream ולא שותלת סרטון בקורס.</p>
+        <p>ב-Zoom וב-Unicko הטווח הוא מספר הימים שבשדה <strong>ימים לסנכרון</strong> בהגדרות התוסף. ב-Webex היא עוברת יום־יום באותו טווח. ב-Teams היא מושכת את הרשימה לפי החיבור שהוגדר.</p>
+        <p>בהרצה תקינה ב-Zoom או ב-Webex מופיע בפלט שורת JSON עם <code>from</code> ו-<code>to</code>. אם אין פלט ואין שגיאה, אין הקלטות חדשות בטווח, או שהפלטפורמה לא Zoom/Webex.</p>
+      </section>
+
+      <section id="upload">
+        <h2>הורדת הקלטות</h2>
+        <p>המשימה לוקחת רשומות שנמצאות בתור או בעיבוד, מורידה את קובץ ההקלטה ומעלה אותו לאחסון Stream. באנגלית שם המשימה הוא Upload recordings.</p>
+        <ul>
+          <li>אם אין רשומות בתור, הפלט הוא <code>Task: No meetings were found.</code></li>
+          <li>אם יש רשומות, הפלט מונה אותן: <code>Task: Found N meetings</code> ואז שורה לכל הקלטה.</li>
+          <li>אחרי יותר משתי ניסיונות כושלים בזמן עיבוד, הרשומה מסומנת כלא תקינה ולא תנוסה שוב.</li>
+          <li>אם האחסון הוא Stream והאפשרות להעלות רק הקלטה שמשויכת לקורס פעילה, הקלטה בלי קורס Moodle תדולג.</li>
+        </ul>
+        <p>בסיום העלאה מוצלחת נכנסת לתור הודעה למרצה. זו אינה משימה מתוזמנת: היא מופיעה תחת <strong>משימות אד־הוק</strong> ורצה ב-Cron הבא. אין לה שעת ריצה משלה.</p>
+      </section>
+
+      <section id="embed">
+        <h2>שיבוץ הקלטות</h2>
+        <p>המשימה לוקחת עד 100 הקלטות שכבר מוכנות ועדיין לא שובצו, ומוסיפה אותן לפעילות STREAM בקורס שמקושר למפגש. היא מכבדת את העדפות השיבוץ של מארח המפגש.</p>
+        <p>אם מופעל קיבוץ לפי מפגש, נשמרת הקלטה אחת לכל מפגש והשאר מסומנות כך שלא יעובדו שוב.</p>
+        <p>אם אין מה לשבץ, הפלט הוא <code>There are no recordings to be embedded.</code> אם <code>mod_stream</code> לא מותקן, המשימה נעצרת עם <code>mod_stream module type not found</code>.</p>
+      </section>
+
+      <section id="delete">
+        <h2>מחיקת הקלטות</h2>
+        <p>המשימה מטפלת בניקוי, לא בסנכרון השוטף:</p>
+        <ul>
+          <li>רשומות שסומנו למחיקה עוברות לארכיון.</li>
+          <li>ב-Zoom, אם בהגדרות מולא <strong>מחיקת הקלטת Zoom לאחר שיבוץ</strong>, ההקלטה נמחקת מענן Zoom אחרי מספר השעות הזה מרגע השיבוץ. הצפייה ב-Moodle נשארת מהעותק שב-Stream.</li>
+          <li>ב-Unicko, אם הוגדרו ימי ניקוי, נמחקות הקלטות ישנות יותר מהשרת של Unicko.</li>
+        </ul>
+        <p>ברירת המחדל היא דקה <code>*</code> ושעה <code>*/6</code>: המשימה זכאית לרוץ בכל דקה בשעות 00:00–00:59, 06:00–06:59, 12:00–12:59 ו-18:00–18:59. אם זה תכוף מדי, שנו את הדקה ל-<code>0</code> כדי שתרוץ פעם אחת באותן שעות.</p>
+      </section>
+
+      <section id="refresh">
+        <h2>יצירת אסימון חדש</h2>
+        <p>רלוונטית רק כשהפלטפורמה היא <strong>Webex</strong>. המשימה מחליפה את אסימון הגישה בעזרת ה-refresh token השמור בהגדרות. ב-Zoom, Teams ו-Unicko אין לה מה לעשות.</p>
+        <p>ברירת המחדל: דקה <code>0</code>, שעה <code>0</code>, יום <code>*/5</code> — בחצות, כל חמישה ימים. הצלחה נראית כ-<code>Task: refresh token expires in: ...</code>. כישלון נראה כ-<code>Task:</code> ואחריו הודעת השגיאה מ-Webex.</p>
+      </section>
+
+      <section id="revoke">
+        <h2>הורדת רישיון Zoom</h2>
+        <p>רצה רק כשהפלטפורמה היא Zoom והאפשרות להסיר רישיון ממשתמשים לא פעילים מופעלת. היא מדלגת על חברי קבוצות Zoom שהוגדרו כחריגים, על מי שנמצא כרגע במפגש, ועל מי שהתחבר לאחרונה.</p>
+        <p>ברירת המחדל: דקה <code>30</code> ושעה <code>*/2</code> — בשעה 00:30, 02:30, 04:30 וכן הלאה. אם הוסרו רישיונות, הפלט כולל <code>Revoked Zoom license for N user(s).</code> אם אי אפשר לקרוא את Zoom, המשימה מדפיסה את הסיבה ויוצאת בלי להסיר רישיונות.</p>
+      </section>
+
+      <section id="manual">
+        <h2>הרצה ידנית</h2>
+        <p>הרצה ידנית מפעילה את המשימה מיד, בלי לחכות לשעה שבלוח. מתאימה לבדיקה אחרי שיעור, אחרי שינוי הגדרות, או כשהריצה האחרונה נכשלה.</p>
+        <h3>מהממשק</h3>
+        <ol>
+          <li>במסך המשימות המתוזמנות אתרו את השורה.</li>
+          <li>לחצו <strong>הרץ עכשיו</strong>.</li>
+          <li>המתינו לסיום. Moodle מציג את אותו פלט שהיה מופיע בשרת.</li>
+        </ol>
+        <p>אם אין כפתור, המשימה מושבתת או שאין הרשאת מנהל. הפעילו אותה ושמרו, ואז נסו שוב.</p>
+        <h3>משורת הפקודה</h3>
+        <p>הריצו מתוך השרת, עם אותו משתמש שמריץ את האתר. החליפו את הנתיב ואת שם המחלקה:</p>
+        <pre>php /path/to/moodle/admin/cli/scheduled_task.php --execute='\local_stream\task\listing'</pre>
+        <p>אותה פקודה לשאר המשימות. שנו רק את החלק האחרון:</p>
+        <ul>
+          <li><code>\local_stream\task\listing</code></li>
+          <li><code>\local_stream\task\upload</code></li>
+          <li><code>\local_stream\task\embed</code></li>
+          <li><code>\local_stream\task\delete</code></li>
+          <li><code>\local_stream\task\refresh_token</code></li>
+          <li><code>\local_stream\task\revoke_zoom_license</code></li>
+        </ul>
+        <p>כדי לראות את כל המשימות ואת לוח הזמנים השמור:</p>
+        <pre>php /path/to/moodle/admin/cli/scheduled_task.php --list</pre>
+        <p>לבדיקה של הקלטה חדשה הריצו לפי הסדר: listing, אחר כך upload, אחר כך embed. מחיקה, אסימון ורישיון לא נדרשים לבדיקה הזו.</p>
+      </section>
+
+      <section id="schedule">
+        <h2>שינוי שעת הריצה</h2>
+        <ol>
+          <li>במסך המשימות המתוזמנות לחצו על עריכה בשורה של המשימה.</li>
+          <li>ערכו את חמשת השדות: <strong>דקה</strong>, <strong>שעה</strong>, <strong>יום</strong>, <strong>חודש</strong>, <strong>יום בשבוע</strong>.</li>
+          <li>שמרו. «הריצה הבאה» מתעדכנת מיד. Cron הבא יכבד את הלוח החדש.</li>
+        </ol>
+        <p>התחביר הוא של Cron:</p>
+        <ul>
+          <li><code>*</code> — כל ערך.</li>
+          <li><code>*/15</code> — כל 15 יחידות.</li>
+          <li><code>30</code> — רק בערך 30.</li>
+          <li><code>1-5</code> — טווח. ביום בשבוע: 0 ראשון, 1 שני, עד 6 שבת.</li>
+        </ul>
+        <p>דוגמאות שאפשר להעתיק. בשדות שלא מופיעים השאירו <code>*</code>.</p>
+        <table>
+          <thead>
+            <tr><th>מתי</th><th>דקה</th><th>שעה</th><th>יום בשבוע</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>כל 15 דקות, כל היום</td><td><code>*/15</code></td><td><code>*</code></td><td><code>*</code></td></tr>
+            <tr><td>כל שעה עגולה</td><td><code>0</code></td><td><code>*</code></td><td><code>*</code></td></tr>
+            <tr><td>פעם בלילה, ב-02:30</td><td><code>30</code></td><td><code>2</code></td><td><code>*</code></td></tr>
+            <tr><td>בימי לימודים, ב-08:00</td><td><code>0</code></td><td><code>8</code></td><td><code>1-5</code></td></tr>
+            <tr><td>מחיקה פעם ביום, ב-03:00</td><td><code>0</code></td><td><code>3</code></td><td><code>*</code></td></tr>
+          </tbody>
+        </table>
+        <div class="note">
+          <strong>שימו לב:</strong> listing, upload ו-embed תלויות זו בזו. אם יומן ההקלטות רץ פעם בלילה וההורדה כל 5 דקות, הקלטה חדשה תחכה עד ליומן הבא. כדאי ששלושתן ירוצו באותו סדר גודל, למשל כל 15 דקות.
+        </div>
+        <p>כדי לחזור לברירת המחדל של התוסף, החזירו את חמשת השדות לערכים שבטבלה למעלה. אם בעמוד העריכה יש איפוס לברירת המחדל, אפשר להשתמש בו במקום.</p>
+      </section>
+
+      <section id="check">
+        <h2>מה לבדוק אחרי ההרצה</h2>
+        <ul>
+          <li>בשורת המשימה, «ריצה אחרונה» היא הזמן של הבדיקה, ואין סימון כישלון.</li>
+          <li>בפלט אין <code>Task Error</code>, שגיאת API, או הודעה על שדות בסיס נתונים חסרים. הודעה על שדות חסרים במחיקה אומרת שצריך לשדרג את התוסף.</li>
+          <li>אחרי listing מופיעה רשומה חדשה. אחרי upload הסטטוס מתקדם. אחרי embed הסרטון נראה בפעילות STREAM בקורס.</li>
+          <li>אם המשימה נכשלת שוב ושוב, Moodle דוחה את הריצה הבאה. הרצה ידנית מוצלחת מאפסת את הדחייה.</li>
+        </ul>
+        <p>הגדרת התוסף עצמה, כולל ימים לסנכרון וחיבור Zoom, מתוארת ב<a href="moodle-integration.html">מדריך האינטגרציה עם Moodle</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>תמיכה: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>
