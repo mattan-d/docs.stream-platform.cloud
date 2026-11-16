@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Permanently delete files after – system settings</title>
+  <link rel="stylesheet" href="../guide-page.css?v=1">
+  <link rel="stylesheet" href="../lang-switch.css?v=1">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Permanently delete files after</h1>
+      <p class="lead">How long video files stay in storage after a video is deleted, and where to change that waiting period.</p>
+      <a class="back-link" href="index.html">← Back to the guide list</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Language</span>
+        <nav class="lang-switch" aria-label="Language">
+          <a href="../permanent-file-deletion.html" hreflang="he">עברית</a>
+          <a href="permanent-file-deletion.html" hreflang="en" aria-current="page">English</a>
+          <a href="../es/permanent-file-deletion.html" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="topic-nav" aria-label="Topics">
+        <a href="#where">Where to set it</a>
+        <a href="#what">What happens after deletion</a>
+        <a href="#options">Options</a>
+        <a href="#skip">Deletion without waiting</a>
+        <a href="#save">Save and locked setting</a>
+      </nav>
+
+      <section id="where">
+        <h2>Where to set it</h2>
+        <p>The setting is on <strong>System settings</strong> (<code>/admin/settings</code>), in <strong>Advanced settings</strong>. The field is labeled <strong>Permanently delete files after</strong>. The screenshots below are from the Hebrew interface, where the same field is <strong>מחיקה סופית של קבצים אחרי</strong>.</p>
+        <p>Open the page from the menu (<strong>Settings</strong>) or go directly to the address, for example <code>https://dev.video/admin/settings</code>. In the side navigation choose <strong>Advanced settings</strong> — the field is the first one in that section.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/admin-settings-purge-nav.png?v=1" alt="System settings navigation, Advanced settings item">
+          <figcaption>In the settings navigation, choose Advanced settings (הגדרות מתקדמות).</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/admin-settings-purge-days.png?v=1" alt="Permanently delete files after, with 90 days selected as the default">
+          <figcaption>Permanently delete files after — the default is 90 days (90 ימים).</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/admin-settings-purge-days-help.png?v=1" alt="Help text: files are permanently removed only after the selected number of days">
+          <figcaption>The help button: after a video is deleted, files are permanently removed only after the selected number of days.</figcaption>
+        </figure>
+      </section>
+
+      <section id="what">
+        <h2>What happens after deletion</h2>
+        <p>A normal delete (one video or several) in <a href="videos-admin.html">Video management</a> does not remove the files immediately.</p>
+        <ol>
+          <li>The video moves to <strong>Archive</strong>. It can still be restored, and the video file and thumbnail stay in storage.</li>
+          <li>The system background job (cron) checks archived videos. The count starts when the video was deleted, not when this setting was saved.</li>
+          <li>Once at least the selected number of days has passed, the files are removed from storage and the status becomes <strong>Deleted from system</strong>. The files cannot be restored after that.</li>
+        </ol>
+        <div class="note">
+          <strong>Changing the period applies to videos already in Archive.</strong> Shortening it (for example from 90 to 7) removes files for videos that have already waited at least the new number of days, on the next cron run. Lengthening it keeps the files until the new number of days has passed since deletion. Saving does not delete anything at that moment.
+        </div>
+        <p>Without a cron run, the files stay in storage even after the period has ended.</p>
+      </section>
+
+      <section id="options">
+        <h2>Options</h2>
+        <p>Only the fixed periods below can be selected. A custom number of days cannot be typed in.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Value</th>
+              <th>When files are removed</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>7 days</td>
+              <td>One week after deletion</td>
+            </tr>
+            <tr>
+              <td>30 days</td>
+              <td>One month after deletion</td>
+            </tr>
+            <tr>
+              <td>60 days</td>
+              <td>Two months after deletion</td>
+            </tr>
+            <tr>
+              <td>90 days (default)</td>
+              <td>Three months after deletion</td>
+            </tr>
+            <tr>
+              <td>180 days</td>
+              <td>Half a year after deletion</td>
+            </tr>
+            <tr>
+              <td>365 days</td>
+              <td>One year after deletion</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>If the stored value is not one of these, the system treats it as 90 days.</p>
+      </section>
+
+      <section id="skip">
+        <h2>Deletion without waiting</h2>
+        <p><strong>Delete from Excel</strong> (<code>/videos/excel_delete</code>) skips the waiting period. After confirmation the videos are marked deleted, and the files are removed on the next cron run. See <a href="videos-admin.html#section-7">Video management — permanent deletion from Excel</a>.</p>
+      </section>
+
+      <section id="save">
+        <h2>Save and locked setting</h2>
+        <p>After choosing the period, click <strong>Save</strong> at the bottom of the settings page. Without saving, the choice is not kept.</p>
+        <p>If the value is set in the server configuration file, the field is locked in the interface and the page shows that the setting is locked at the system level. In that case the value is changed in configuration, not on this screen.</p>
+        <p>The rest of the settings page is described in the <a href="admin-settings.html#section-advanced">System settings guide</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Support: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>

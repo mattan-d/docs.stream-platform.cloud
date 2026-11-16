@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eliminar archivos de forma permanente después de – configuración</title>
+  <link rel="stylesheet" href="../guide-page.css?v=1">
+  <link rel="stylesheet" href="../lang-switch.css?v=1">
+</head>
+<body>
+  <header class="page-header">
+    <div class="wrap">
+      <a href="https://centricapp.co.il/" target="_blank" rel="noopener">
+        <img src="https://www.centricapp.co.il/logos/logo.svg" alt="CentricApp" class="guide-logo" width="180" height="40">
+      </a>
+      <h1>Eliminar archivos de forma permanente después de</h1>
+      <p class="lead">Cuánto tiempo permanecen los archivos de vídeo en el almacenamiento después de eliminar un vídeo, y dónde se cambia ese plazo.</p>
+      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <div class="lang-switch-wrap">
+        <span class="lang-switch-label">Idioma</span>
+        <nav class="lang-switch" aria-label="Idioma">
+          <a href="../permanent-file-deletion.html" hreflang="he">עברית</a>
+          <a href="../en/permanent-file-deletion.html" hreflang="en">English</a>
+          <a href="permanent-file-deletion.html" hreflang="es" aria-current="page">Español</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="guide-content">
+      <nav class="topic-nav" aria-label="Temas">
+        <a href="#where">Dónde configurarlo</a>
+        <a href="#what">Qué ocurre tras eliminar</a>
+        <a href="#options">Opciones</a>
+        <a href="#skip">Eliminación sin espera</a>
+        <a href="#save">Guardar y ajuste bloqueado</a>
+      </nav>
+
+      <section id="where">
+        <h2>Dónde configurarlo</h2>
+        <p>El ajuste está en <strong>Configuración del sistema</strong> (<code>/admin/settings</code>), en <strong>Configuración avanzada</strong>. El campo se llama <strong>Eliminar archivos de forma permanente después de</strong>. Las capturas son de la interfaz en hebreo, donde el mismo campo es <strong>מחיקה סופית של קבצים אחרי</strong>.</p>
+        <p>Se abre desde el menú (botón <strong>Configuración</strong>) o directamente en la dirección, por ejemplo <code>https://dev.video/admin/settings</code>. En la navegación lateral elija <strong>Configuración avanzada</strong>: el campo es el primero de esa sección.</p>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/admin-settings-purge-nav.png?v=1" alt="Navegación de configuración, elemento Configuración avanzada">
+          <figcaption>En la navegación de ajustes, elija Configuración avanzada (הגדרות מתקדמות).</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/admin-settings-purge-days.png?v=1" alt="Campo de eliminación permanente, con 90 días como valor predeterminado">
+          <figcaption>Eliminar archivos de forma permanente después de — el valor predeterminado es 90 días.</figcaption>
+        </figure>
+        <figure class="screenshot">
+          <img src="../../docs/screenshot/admin-settings-purge-days-help.png?v=1" alt="Ayuda: los archivos se eliminan de forma permanente solo después de los días elegidos">
+          <figcaption>El botón de ayuda: tras eliminar un vídeo, los archivos se eliminan de forma permanente solo después del número de días seleccionado.</figcaption>
+        </figure>
+      </section>
+
+      <section id="what">
+        <h2>Qué ocurre tras eliminar</h2>
+        <p>Una eliminación normal (un vídeo o varios) en <a href="videos-admin.html">Gestión de vídeos</a> no borra los archivos de inmediato.</p>
+        <ol>
+          <li>El vídeo pasa al estado <strong>Archivo</strong>. Aún se puede recuperar, y el archivo de vídeo y la miniatura siguen en el almacenamiento.</li>
+          <li>La tarea en segundo plano del sistema (cron) revisa los vídeos en archivo. El recuento empieza en el momento de la eliminación, no cuando se guardó este ajuste.</li>
+          <li>Cuando han pasado al menos los días elegidos, los archivos se eliminan del almacenamiento y el estado pasa a <strong>Eliminado del sistema</strong>. A partir de ahí los archivos no se pueden recuperar.</li>
+        </ol>
+        <div class="note">
+          <strong>Cambiar el plazo afecta a los vídeos que ya están en Archivo.</strong> Acortarlo (por ejemplo de 90 a 7) hace que la siguiente ejecución del cron elimine los archivos de los vídeos que ya esperaron al menos el nuevo número de días. Alargarlo conserva los archivos hasta que pasen los nuevos días desde la eliminación. Guardar no borra nada en ese momento.
+        </div>
+        <p>Sin una ejecución del cron, los archivos permanecen en el almacenamiento aunque el plazo haya terminado.</p>
+      </section>
+
+      <section id="options">
+        <h2>Opciones</h2>
+        <p>Solo se puede elegir uno de estos plazos fijos. No se puede escribir un número de días libre.</p>
+        <table>
+          <thead>
+            <tr>
+              <th>Valor</th>
+              <th>Cuándo se eliminan los archivos</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>7 días</td>
+              <td>Una semana después de la eliminación</td>
+            </tr>
+            <tr>
+              <td>30 días</td>
+              <td>Un mes después de la eliminación</td>
+            </tr>
+            <tr>
+              <td>60 días</td>
+              <td>Dos meses después de la eliminación</td>
+            </tr>
+            <tr>
+              <td>90 días (predeterminado)</td>
+              <td>Tres meses después de la eliminación</td>
+            </tr>
+            <tr>
+              <td>180 días</td>
+              <td>Medio año después de la eliminación</td>
+            </tr>
+            <tr>
+              <td>365 días</td>
+              <td>Un año después de la eliminación</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Si el valor guardado no está en la lista, el sistema lo trata como 90 días.</p>
+      </section>
+
+      <section id="skip">
+        <h2>Eliminación sin espera</h2>
+        <p><strong>Eliminar desde Excel</strong> (<code>/videos/excel_delete</code>) omite el plazo de espera. Tras la confirmación los vídeos se marcan como eliminados y los archivos se retiran en la siguiente ejecución del cron. Detalle en <a href="videos-admin.html#section-7">Gestión de vídeos — eliminación permanente desde Excel</a>.</p>
+      </section>
+
+      <section id="save">
+        <h2>Guardar y ajuste bloqueado</h2>
+        <p>Después de elegir el plazo, pulse <strong>Guardar</strong> al final de la página de ajustes. Sin guardar, la elección no se conserva.</p>
+        <p>Si el valor está fijado en el archivo de configuración del servidor, el campo aparece bloqueado en la interfaz y se indica que el ajuste está bloqueado a nivel de sistema. En ese caso el valor se cambia en la configuración, no en esta pantalla.</p>
+        <p>El resto de la página se describe en la <a href="admin-settings.html#section-advanced">guía de configuración del sistema</a>.</p>
+      </section>
+    </div>
+    <footer class="guide-footer">
+      <p>© CentricApp LTD. 2026</p>
+      <p>Soporte: <a href="mailto:support@centricapp.co.il">support@centricapp.co.il</a> · <a href="https://centricapp.co.il/" target="_blank" rel="noopener">centricapp.co.il</a></p>
+    </footer>
+  </main>
+</body>
+</html>
