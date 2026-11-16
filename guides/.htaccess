@@ -1,0 +1,16 @@
+# Guide addresses use the page name only. Apache MultiViews already
+# serves /name from name.html. These rules send old .html addresses
+# to the short form so the browser shows the name.
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  RewriteCond %{THE_REQUEST} \s[^\s]*\.html[?\s] [NC]
+  RewriteRule ^index\.html$ / [R=301,L]
+
+  RewriteCond %{THE_REQUEST} \s[^\s]*\.html[?\s] [NC]
+  RewriteRule ^(.*/)index\.html$ $1 [R=301,L]
+
+  RewriteCond %{THE_REQUEST} \s[^\s]*\.html[?\s] [NC]
+  RewriteRule ^(.+)\.html$ $1 [R=301,L,NE]
+</IfModule>

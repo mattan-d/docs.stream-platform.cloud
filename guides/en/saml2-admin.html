@@ -15,13 +15,13 @@
       </a>
       <h1>SAML2 (SSO) Connection</h1>
       <p class="lead">Guide for system administrators: configuring single sign-on with a SAML&nbsp;2.0-compatible identity provider (IdP), including <strong>Microsoft Entra ID</strong> (Azure AD) and Microsoft&nbsp;365 licensing.</p>
-      <a class="back-link" href="index.html">← Back to guides list</a>
+      <a class="back-link" href="./">← Back to guides list</a>
       <div class="lang-switch-wrap">
         <span class="lang-switch-label">Language</span>
         <nav class="lang-switch" aria-label="Language">
-        <a href="../saml2-admin.html" hreflang="he">עברית</a>
-        <a href="saml2-admin.html" hreflang="en" aria-current="page">English</a>
-        <a href="../es/saml2-admin.html" hreflang="es">Español</a>
+        <a href="../saml2-admin" hreflang="he">עברית</a>
+        <a href="saml2-admin" hreflang="en" aria-current="page">English</a>
+        <a href="../es/saml2-admin" hreflang="es">Español</a>
       </nav>
       </div>
     </div>
@@ -43,7 +43,7 @@
             <h2>What it provides and what is required</h2>
             <p><strong>SAML2</strong> lets users sign in to the Stream site with their organization account (for example Microsoft&nbsp;365), without a separate system password – according to organizational policy.</p>
             <ul>
-              <li><strong>Administrator</strong> access to the <a href="admin-settings.html#section-saml2">System settings</a> page (<code>/admin/settings</code>) is required.</li>
+              <li><strong>Administrator</strong> access to the <a href="admin-settings#section-saml2">System settings</a> page (<code>/admin/settings</code>) is required.</li>
               <li>The system uses <strong>SimpleSAMLphp</strong> as the SAML service provider (SP) named <code>default-sp</code>.</li>
               <li>You must generate an <strong>SP certificate</strong>, provide <strong>SP metadata</strong> to the identity provider (or fill fields manually), then upload <strong>IdP metadata</strong> here (XML file).</li>
             </ul>
@@ -170,7 +170,7 @@
               <li>If Entra returns a SAML error, verify the Reply URL and Entity ID exactly against the SP XML file.</li>
               <li>Ensure the Entra application is assigned to the test user.</li>
             </ul>
-            <p>For a quick link to general system settings: <a href="admin-settings.html">System settings guide</a>.</p>
+            <p>For a quick link to general system settings: <a href="admin-settings">System settings guide</a>.</p>
           </section>
     </div>
     <footer class="guide-footer">

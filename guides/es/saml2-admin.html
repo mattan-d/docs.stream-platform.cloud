@@ -15,13 +15,13 @@
       </a>
       <h1>Conexión SAML2 (SSO)</h1>
       <p class="lead">Guía para administradores del sistema: configuración del inicio de sesión único con un proveedor de identidad (IdP) compatible con SAML&nbsp;2.0, incluido <strong>Microsoft Entra ID</strong> (Azure AD) y licencias de Microsoft&nbsp;365.</p>
-      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <a class="back-link" href="./">← Volver a la lista de guías</a>
       <div class="lang-switch-wrap">
         <span class="lang-switch-label">Idioma</span>
         <nav class="lang-switch" aria-label="Idioma">
-        <a href="../saml2-admin.html" hreflang="he">עברית</a>
-        <a href="../en/saml2-admin.html" hreflang="en">English</a>
-        <a href="saml2-admin.html" hreflang="es" aria-current="page">Español</a>
+        <a href="../saml2-admin" hreflang="he">עברית</a>
+        <a href="../en/saml2-admin" hreflang="en">English</a>
+        <a href="saml2-admin" hreflang="es" aria-current="page">Español</a>
       </nav>
       </div>
     </div>
@@ -43,7 +43,7 @@
             <h2>Qué ofrece y qué se necesita</h2>
             <p><strong>SAML2</strong> permite a los usuarios iniciar sesión en el sitio Stream con su cuenta organizativa (por ejemplo, Microsoft&nbsp;365), sin una contraseña separada del sistema, según la política de la organización.</p>
             <ul>
-              <li>Se requiere acceso de <strong>administrador</strong> a la página de <a href="admin-settings.html#section-saml2">configuración del sistema</a> (<code>/admin/settings</code>).</li>
+              <li>Se requiere acceso de <strong>administrador</strong> a la página de <a href="admin-settings#section-saml2">configuración del sistema</a> (<code>/admin/settings</code>).</li>
               <li>El sistema utiliza <strong>SimpleSAMLphp</strong> como servicio SAML (SP) con el nombre <code>default-sp</code>.</li>
               <li>Debe generar el <strong>certificado SP</strong>, enviar los <strong>metadatos del SP</strong> al proveedor de identidad (o completar los campos manualmente) y luego cargar aquí los <strong>metadatos del IdP</strong> (archivo XML).</li>
             </ul>
@@ -170,7 +170,7 @@
               <li>Si Entra devuelve un error SAML, compruebe exactamente el Reply URL y el Entity ID frente al archivo XML del SP.</li>
               <li>Asegúrese de que la aplicación en Entra esté asignada al usuario de prueba.</li>
             </ul>
-            <p>Enlace rápido a la configuración general del sistema: <a href="admin-settings.html">guía de configuración del sistema</a>.</p>
+            <p>Enlace rápido a la configuración general del sistema: <a href="admin-settings">guía de configuración del sistema</a>.</p>
           </section>
     </div>
     <footer class="guide-footer">

@@ -15,13 +15,13 @@
       </a>
       <h1>Eliminar archivos de forma permanente después de</h1>
       <p class="lead">Cuánto tiempo permanecen los archivos de vídeo en el almacenamiento después de eliminar un vídeo, y dónde se cambia ese plazo.</p>
-      <a class="back-link" href="index.html">← Volver a la lista de guías</a>
+      <a class="back-link" href="./">← Volver a la lista de guías</a>
       <div class="lang-switch-wrap">
         <span class="lang-switch-label">Idioma</span>
         <nav class="lang-switch" aria-label="Idioma">
-          <a href="../permanent-file-deletion.html" hreflang="he">עברית</a>
-          <a href="../en/permanent-file-deletion.html" hreflang="en">English</a>
-          <a href="permanent-file-deletion.html" hreflang="es" aria-current="page">Español</a>
+          <a href="../permanent-file-deletion" hreflang="he">עברית</a>
+          <a href="../en/permanent-file-deletion" hreflang="en">English</a>
+          <a href="permanent-file-deletion" hreflang="es" aria-current="page">Español</a>
         </nav>
       </div>
     </div>
@@ -57,7 +57,7 @@
 
       <section id="what">
         <h2>Qué ocurre tras eliminar</h2>
-        <p>Una eliminación normal (un vídeo o varios) en <a href="videos-admin.html">Gestión de vídeos</a> no borra los archivos de inmediato.</p>
+        <p>Una eliminación normal (un vídeo o varios) en <a href="videos-admin">Gestión de vídeos</a> no borra los archivos de inmediato.</p>
         <ol>
           <li>El vídeo pasa al estado <strong>Archivo</strong>. Aún se puede recuperar, y el archivo de vídeo y la miniatura siguen en el almacenamiento.</li>
           <li>La tarea en segundo plano del sistema (cron) revisa los vídeos en archivo. El recuento empieza en el momento de la eliminación, no cuando se guardó este ajuste.</li>
@@ -111,14 +111,14 @@
 
       <section id="skip">
         <h2>Eliminación sin espera</h2>
-        <p><strong>Eliminar desde Excel</strong> (<code>/videos/excel_delete</code>) omite el plazo de espera. Tras la confirmación los vídeos se marcan como eliminados y los archivos se retiran en la siguiente ejecución del cron. Detalle en <a href="videos-admin.html#section-7">Gestión de vídeos — eliminación permanente desde Excel</a>.</p>
+        <p><strong>Eliminar desde Excel</strong> (<code>/videos/excel_delete</code>) omite el plazo de espera. Tras la confirmación los vídeos se marcan como eliminados y los archivos se retiran en la siguiente ejecución del cron. Detalle en <a href="videos-admin#section-7">Gestión de vídeos — eliminación permanente desde Excel</a>.</p>
       </section>
 
       <section id="save">
         <h2>Guardar y ajuste bloqueado</h2>
         <p>Después de elegir el plazo, pulse <strong>Guardar</strong> al final de la página de ajustes. Sin guardar, la elección no se conserva.</p>
         <p>Si el valor está fijado en el archivo de configuración del servidor, el campo aparece bloqueado en la interfaz y se indica que el ajuste está bloqueado a nivel de sistema. En ese caso el valor se cambia en la configuración, no en esta pantalla.</p>
-        <p>El resto de la página se describe en la <a href="admin-settings.html#section-advanced">guía de configuración del sistema</a>.</p>
+        <p>El resto de la página se describe en la <a href="admin-settings#section-advanced">guía de configuración del sistema</a>.</p>
       </section>
     </div>
     <footer class="guide-footer">

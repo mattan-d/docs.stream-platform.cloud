@@ -15,13 +15,13 @@
       </a>
       <h1>Permanently delete files after</h1>
       <p class="lead">How long video files stay in storage after a video is deleted, and where to change that waiting period.</p>
-      <a class="back-link" href="index.html">← Back to the guide list</a>
+      <a class="back-link" href="./">← Back to the guide list</a>
       <div class="lang-switch-wrap">
         <span class="lang-switch-label">Language</span>
         <nav class="lang-switch" aria-label="Language">
-          <a href="../permanent-file-deletion.html" hreflang="he">עברית</a>
-          <a href="permanent-file-deletion.html" hreflang="en" aria-current="page">English</a>
-          <a href="../es/permanent-file-deletion.html" hreflang="es">Español</a>
+          <a href="../permanent-file-deletion" hreflang="he">עברית</a>
+          <a href="permanent-file-deletion" hreflang="en" aria-current="page">English</a>
+          <a href="../es/permanent-file-deletion" hreflang="es">Español</a>
         </nav>
       </div>
     </div>
@@ -57,7 +57,7 @@
 
       <section id="what">
         <h2>What happens after deletion</h2>
-        <p>A normal delete (one video or several) in <a href="videos-admin.html">Video management</a> does not remove the files immediately.</p>
+        <p>A normal delete (one video or several) in <a href="videos-admin">Video management</a> does not remove the files immediately.</p>
         <ol>
           <li>The video moves to <strong>Archive</strong>. It can still be restored, and the video file and thumbnail stay in storage.</li>
           <li>The system background job (cron) checks archived videos. The count starts when the video was deleted, not when this setting was saved.</li>
@@ -111,14 +111,14 @@
 
       <section id="skip">
         <h2>Deletion without waiting</h2>
-        <p><strong>Delete from Excel</strong> (<code>/videos/excel_delete</code>) skips the waiting period. After confirmation the videos are marked deleted, and the files are removed on the next cron run. See <a href="videos-admin.html#section-7">Video management — permanent deletion from Excel</a>.</p>
+        <p><strong>Delete from Excel</strong> (<code>/videos/excel_delete</code>) skips the waiting period. After confirmation the videos are marked deleted, and the files are removed on the next cron run. See <a href="videos-admin#section-7">Video management — permanent deletion from Excel</a>.</p>
       </section>
 
       <section id="save">
         <h2>Save and locked setting</h2>
         <p>After choosing the period, click <strong>Save</strong> at the bottom of the settings page. Without saving, the choice is not kept.</p>
         <p>If the value is set in the server configuration file, the field is locked in the interface and the page shows that the setting is locked at the system level. In that case the value is changed in configuration, not on this screen.</p>
-        <p>The rest of the settings page is described in the <a href="admin-settings.html#section-advanced">System settings guide</a>.</p>
+        <p>The rest of the settings page is described in the <a href="admin-settings#section-advanced">System settings guide</a>.</p>
       </section>
     </div>
     <footer class="guide-footer">

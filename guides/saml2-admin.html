@@ -15,13 +15,13 @@
       </a>
       <h1>חיבור SAML2 (SSO)</h1>
       <p class="lead">מדריך למנהלי המערכת: הגדרת התחברות יחידנית מול ספק זהות (IdP) תומך SAML&nbsp;2.0, כולל <strong>Microsoft Entra ID</strong> (Azure AD) ורישוי Microsoft&nbsp;365.</p>
-      <a class="back-link" href="index.html">← חזרה לרשימת המדריכים</a>
+      <a class="back-link" href="./">← חזרה לרשימת המדריכים</a>
       <div class="lang-switch-wrap">
         <span class="lang-switch-label">שפה</span>
         <nav class="lang-switch" aria-label="שפה">
-        <a href="saml2-admin.html" hreflang="he" aria-current="page">עברית</a>
-        <a href="en/saml2-admin.html" hreflang="en">English</a>
-        <a href="es/saml2-admin.html" hreflang="es">Español</a>
+        <a href="saml2-admin" hreflang="he" aria-current="page">עברית</a>
+        <a href="en/saml2-admin" hreflang="en">English</a>
+        <a href="es/saml2-admin" hreflang="es">Español</a>
       </nav>
       </div>
     </div>
@@ -43,7 +43,7 @@
             <h2>מה זה נותן ומה נדרש</h2>
             <p><strong>SAML2</strong> מאפשר למשתמשים להתחבר לאתר ה־Stream באמצעות חשבון הארגון (למשל Microsoft&nbsp;365), בלי סיסמה נפרדת של המערכת – בהתאם למדיניות הארגון.</p>
             <ul>
-              <li>נדרשת גישת <strong>מנהל</strong> לדף <a href="admin-settings.html#section-saml2">הגדרות המערכת</a> (<code>/admin/settings</code>).</li>
+              <li>נדרשת גישת <strong>מנהל</strong> לדף <a href="admin-settings#section-saml2">הגדרות המערכת</a> (<code>/admin/settings</code>).</li>
               <li>המערכת משתמשת ב־<strong>SimpleSAMLphp</strong> כשירות SAML (SP) בשם <code>default-sp</code>.</li>
               <li>יש להפיק <strong>תעודת SP</strong>, להעביר את <strong>מטא־דאטה של ה־SP</strong> לספק הזהות (או למלא שדות ידנית), ואז לטעון לכאן את <strong>מטא־דאטה של ה־IdP</strong> (קובץ XML).</li>
             </ul>
@@ -170,7 +170,7 @@
               <li>אם Entra מחזירה שגיאת SAML, בדקו בדיוק את ה־Reply URL וה־Entity ID מול קובץ ה־XML של ה־SP.</li>
               <li>ודאו שהאפליקציה ב־Entra מוקצית למשתמש הבודק.</li>
             </ul>
-            <p>לקישור מהיר להגדרות הכלליות של המערכת: <a href="admin-settings.html">מדריך הגדרות המערכת</a>.</p>
+            <p>לקישור מהיר להגדרות הכלליות של המערכת: <a href="admin-settings">מדריך הגדרות המערכת</a>.</p>
           </section>
     </div>
     <footer class="guide-footer">
