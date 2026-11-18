@@ -1,0 +1,5 @@
+data/deploy_webhook_secret
+data/deploy.lock
+data/deploy-logs/
+docs/node_modules/
+.DS_Store
